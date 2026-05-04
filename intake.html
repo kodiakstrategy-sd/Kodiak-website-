@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Your AI Assessment | Kodiak Strategy</title>
+<meta name="description" content="Start your $1,000 AI Assessment. Tell us about your business and Ryan will call you within 2 hours. Serving SD, ND, MT, WY, MN, NE.">
+<link rel="canonical" href="https://kodiakstrategy.com/intake">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0d1526;--navy2:#111827;--navy3:#1a2236;--gold:#b8952a;--gold2:#d4aa45;--white:#ffffff;--gray:#6b7280;--lgray:#9ca3af;--border:rgba(184,149,42,0.2);--green:#10b981;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;line-height:1.7;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,21,38,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-brand{display:flex;align-items:baseline;gap:8px;text-decoration:none;}
+.nav-logo{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:0.2em;color:var(--white);}
+.nav-strategy{font-style:italic;font-size:13px;color:var(--gold);font-family:'Cormorant Garamond',serif;}
+.intake-wrap{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:80px;}
+.intake-left{background:var(--navy2);padding:80px 56px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);}
+.intake-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:300;line-height:1.1;color:var(--white);margin-bottom:16px;}
+h1 em{font-style:italic;color:var(--gold);}
+.intake-sub{font-size:16px;color:var(--lgray);font-weight:300;line-height:1.8;margin-bottom:32px;}
+.contact-card{background:var(--navy3);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:16px;}
+.contact-card-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.contact-card-body{font-size:15px;color:var(--white);}
+.contact-card-sub{font-size:13px;color:var(--lgray);margin-top:4px;}
+.contact-card a{color:var(--gold);text-decoration:none;}
+.calendly-link{font-family:'DM Mono',monospace;font-size:11px;color:var(--gray);margin-top:16px;}
+.calendly-link a{color:var(--lgray);text-decoration:underline;}
+.guarantee-note{background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-radius:6px;padding:16px 20px;margin-top:24px;}
+.guarantee-note p{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.05em;color:#6ee7b7;line-height:1.7;}
+.guarantee-note strong{color:var(--white);}
+.intake-right{padding:80px 56px;display:flex;flex-direction:column;justify-content:center;}
+h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--white);margin-bottom:8px;}
+.form-sub{font-size:14px;color:var(--lgray);margin-bottom:32px;}
+.form-group{margin-bottom:20px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--lgray);display:block;margin-bottom:8px;}
+input,select,textarea{width:100%;background:var(--navy3);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--white);outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
+input::placeholder,textarea::placeholder{color:var(--gray);}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);}
+select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
+select option{background:var(--navy2);}
+textarea{resize:vertical;min-height:100px;}
+.sms-opt{display:flex;align-items:flex-start;gap:12px;margin-bottom:20px;}
+.sms-opt input[type="checkbox"]{width:18px;height:18px;flex-shrink:0;margin-top:2px;cursor:pointer;accent-color:var(--gold);}
+.sms-opt-label{font-size:12px;color:var(--lgray);line-height:1.6;}
+.sms-opt-label a{color:var(--gold);text-decoration:none;}
+.submit-btn{width:100%;background:var(--gold);color:var(--navy);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:16px;border:none;border-radius:4px;cursor:pointer;transition:all 0.2s;margin-top:8px;}
+.submit-btn:hover{background:var(--gold2);transform:translateY(-1px);}
+.form-note{font-family:'DM Mono',monospace;font-size:10px;color:var(--gray);text-align:center;margin-top:12px;letter-spacing:0.06em;}
+.payment-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+.payment-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.payment-card{background:var(--navy2);border:1px solid var(--border);border-top:2px solid var(--gold);border-radius:8px;padding:24px;}
+.payment-title{font-size:16px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.payment-price{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:var(--gold);line-height:1;margin:8px 0;}
+.payment-desc{font-size:13px;color:var(--lgray);line-height:1.7;margin-bottom:20px;}
+.payment-btn{display:block;background:var(--navy3);color:var(--white);font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:14px;border-radius:4px;text-decoration:none;text-align:center;border:1px solid var(--border);transition:all 0.2s;}
+.payment-btn:hover{border-color:var(--gold);color:var(--gold);}
+footer{background:var(--navy);border-top:1px solid var(--border);padding:40px 48px;}
+.footer-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-logo{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.2em;color:var(--white);}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+.footer-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);text-decoration:none;}
+.footer-contact{font-family:'DM Mono',monospace;font-size:11px;color:var(--gray);text-align:right;line-height:2;}
+.footer-contact a{color:var(--gold);text-decoration:none;}
+@media(max-width:900px){.intake-wrap{grid-template-columns:1fr;}.intake-left{padding:100px 24px 48px;}.intake-right{padding:48px 24px 80px;}.form-row{grid-template-columns:1fr;}nav{padding:16px 24px;}footer{padding:40px 24px;}.footer-inner{flex-direction:column;align-items:flex-start;}.footer-contact{text-align:left;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-brand"><span class="nav-logo">KODIAK</span><span class="nav-strategy"> Strategy</span></a>
+  <a href="tel:6056052558" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);text-decoration:none;letter-spacing:0.08em;">(605) 605-2558</a>
+</nav>
+
+<div class="intake-wrap">
+  <div class="intake-left">
+    <div class="intake-label">Get Your Assessment</div>
+    <h1>Get Your<br><em>Audit Report.</em></h1>
+    <p class="intake-sub">Tell us about your business and Ryan will call you personally within 2 hours. No automated systems. No waiting in a queue.</p>
+
+    <div class="contact-card">
+      <div class="contact-card-title">Call or text directly</div>
+      <div class="contact-card-body"><a href="tel:6056052558">(605) 605-2558</a></div>
+      <div class="contact-card-sub">Ryan Fagerstrom · Founder & AI Consultant</div>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-card-title">Email</div>
+      <div class="contact-card-body"><a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a></div>
+    </div>
+
+    <p class="calendly-link">Prefer to schedule online? <a href="https://calendly.com/kodiakstrategysd" target="_blank">Book on Calendly →</a></p>
+
+    <div class="guarantee-note">
+      <p><strong>Guaranteed:</strong> 3-4 actionable solutions you can implement yourself — each guaranteed to save measurable time and money. At least 5 hours returned per week and $1,000 in monthly recoverable value or your fee is fully refunded.</p>
+    </div>
+  </div>
+
+  <div class="intake-right">
+    <h2>Tell us about your business.</h2>
+    <p class="form-sub">We will be in touch within 2 hours.</p>
+
+    <form id="intake-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Your Name *</label>
+          <input type="text" id="name" name="name" placeholder="First Last" required>
+        </div>
+        <div class="form-group">
+          <label for="business">Business Name *</label>
+          <input type="text" id="business" name="business" placeholder="Acme Roofing Co." required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="industry">Industry *</label>
+        <select id="industry" name="industry" required>
+          <option value="" disabled selected>Select your industry</option>
+          <option>Optometry / Eye Care</option>
+          <option>Dental Practice</option>
+          <option>Medical / Healthcare</option>
+          <option>Law Firm</option>
+          <option>Accounting / Bookkeeping</option>
+          <option>Insurance Agency</option>
+          <option>Roofing / Construction</option>
+          <option>HVAC / Home Services</option>
+          <option>Real Estate</option>
+          <option>Restaurant / Hospitality</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" placeholder="(605) 000-0000" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="challenge">Biggest operational challenge right now *</label>
+        <textarea id="challenge" name="challenge" placeholder="What takes the most time or causes the most friction in your business?" required></textarea>
+      </div>
+
+      <div class="sms-opt">
+        <input type="checkbox" id="sms_opt_in" name="sms_opt_in">
+        <label class="sms-opt-label" for="sms_opt_in">I would like to receive text updates about my assessment and report delivery from Kodiak Strategy. Message and data rates may apply. Message frequency varies. Text HELP for help or STOP to opt out. <a href="/privacy">Privacy Policy</a></label>
+      </div>
+
+      <button type="submit" class="submit-btn">Get My Report →</button>
+      <p class="form-note">Your information is used only to prepare your assessment and is never shared with third parties.</p>
+    </form>
+
+    <div class="payment-section">
+      <div class="payment-label">Ready to pay and book now?</div>
+      <div class="payment-card">
+        <div class="payment-title">AI Workflow Assessment</div>
+        <div class="payment-price">$1,000</div>
+        <p class="payment-desc">Includes your full assessment session and a written report showing every automation opportunity with projected ROI. Guaranteed results or full refund.</p>
+        <a href="https://buy.stripe.com/6oU28renR7fZeVqfyr1VK02" target="_blank" class="payment-btn">Pay and Book →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">KODIAK <span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);">Strategy</span></div>
+    <div class="footer-links"><a href="/">Home</a><a href="/how-it-works">How It Works</a><a href="/services">Services</a><a href="/faq">FAQ</a><a href="/privacy">Privacy</a></div>
+    <div class="footer-contact"><div><a href="tel:6056052558">(605) 605-2558</a></div><div><a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a></div></div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('intake-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.submit-btn');
+  btn.textContent = 'Submitted — Ryan will call you within 2 hours.';
+  btn.style.background = '#10b981';
+  btn.style.color = '#fff';
+  btn.disabled = true;
+});
+</script>
+</body>
+</html>

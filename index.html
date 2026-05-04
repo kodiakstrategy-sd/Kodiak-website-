@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kodiak Strategy | AI Consulting — Black Hills, SD</title>
+<meta name="description" content="Kodiak Strategy helps businesses in SD, ND, MT, WY, MN and NE find exactly where AI saves time and money. Book a free discovery call to learn about your AI Assessment.">
+<meta name="keywords" content="AI consulting South Dakota, AI consulting Black Hills, business automation Rapid City, AI assessment South Dakota, workflow automation SD, AI consultant Northern Plains">
+<meta property="og:title" content="Kodiak Strategy | AI Consulting — Black Hills, SD">
+<meta property="og:description" content="See exactly what AI is worth to your business. Written report within one week. Guaranteed results.">
+<meta property="og:url" content="https://kodiakstrategy.com">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://kodiakstrategy.com">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Kodiak Strategy",
+  "description": "AI consulting firm helping businesses in the Northern Plains find where AI saves time and money.",
+  "telephone": "(605) 605-2558",
+  "email": "kodiakstrategysd@gmail.com",
+  "url": "https://kodiakstrategy.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Rapid City",
+    "addressRegion": "SD",
+    "addressCountry": "US"
+  },
+  "areaServed": ["South Dakota","North Dakota","Montana","Wyoming","Minnesota","Nebraska"],
+  "priceRange": "$$"
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0d1526;--navy2:#111827;--navy3:#1a2236;--gold:#b8952a;--gold2:#d4aa45;
+  --white:#ffffff;--off:#f4f4f0;--gray:#6b7280;--lgray:#9ca3af;
+  --border:rgba(184,149,42,0.2);--green:#10b981;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;line-height:1.7;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,21,38,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:transform 0.3s;}
+.nav-brand{display:flex;align-items:baseline;gap:8px;text-decoration:none;}
+.nav-logo{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:0.2em;color:var(--white);}
+.nav-strategy{font-style:italic;font-size:13px;color:var(--gold);font-family:'Cormorant Garamond',serif;}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--lgray);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{background:var(--gold);color:var(--navy);font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:10px 24px;border-radius:2px;text-decoration:none;transition:all 0.2s;}
+.nav-cta:hover{background:var(--gold2);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 48px 80px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(184,149,42,0.06) 0%,transparent 65%);pointer-events:none;}
+.hero-location{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;opacity:0;animation:fadeUp 0.8s 0.2s forwards;}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,6vw,80px);font-weight:300;line-height:1.1;color:var(--white);max-width:800px;margin:0 auto 24px;opacity:0;animation:fadeUp 0.8s 0.3s forwards;}
+.hero-h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:18px;color:var(--lgray);max-width:540px;margin:0 auto 48px;font-weight:300;line-height:1.8;opacity:0;animation:fadeUp 0.8s 0.4s forwards;}
+.hero-cta-group{display:flex;flex-direction:column;align-items:center;gap:12px;opacity:0;animation:fadeUp 0.8s 0.5s forwards;}
+.cta-primary{background:var(--gold);color:var(--navy);font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:16px 48px;border-radius:2px;text-decoration:none;display:inline-block;transition:all 0.2s;}
+.cta-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(184,149,42,0.25);}
+.cta-sub{font-family:'DM Mono',monospace;font-size:10px;color:var(--gray);letter-spacing:0.08em;}
+
+/* GUARANTEE STRIP */
+.guarantee{background:rgba(16,185,129,0.08);border-top:1px solid rgba(16,185,129,0.2);border-bottom:1px solid rgba(16,185,129,0.2);padding:20px 48px;text-align:center;}
+.guarantee p{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6ee7b7;}
+.guarantee strong{color:var(--white);}
+
+/* PROOF VISUAL */
+.proof{padding:80px 48px;max-width:860px;margin:0 auto;}
+.proof-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:24px;}
+.report-card{background:var(--navy2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.report-header{background:var(--navy3);padding:20px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.report-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);}
+.report-title{font-size:14px;font-weight:600;color:var(--white);}
+.report-body{padding:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.report-stat{text-align:center;padding:24px 16px;background:var(--navy3);border-radius:8px;border-top:2px solid var(--gold);}
+.report-num{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:var(--gold);line-height:1;}
+.report-unit{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--lgray);margin-top:8px;}
+.report-footer{padding:14px 28px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;color:var(--gray);letter-spacing:0.06em;font-style:italic;}
+
+/* PROCESS */
+.process-section{background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.process-inner{max-width:1000px;margin:0 auto;padding:100px 48px;}
+.section-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.section-label::after{content:'';width:48px;height:1px;background:var(--border);}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:300;line-height:1.15;color:var(--white);margin-bottom:20px;}
+h2 em{font-style:italic;color:var(--gold);}
+.section-body{font-size:17px;color:var(--lgray);max-width:600px;font-weight:300;line-height:1.85;margin-bottom:16px;}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:56px;}
+.process-step{background:var(--navy3);padding:40px 28px;position:relative;transition:background 0.2s;}
+.process-step:first-child{border-radius:8px 0 0 8px;}
+.process-step:last-child{border-radius:0 8px 8px 0;}
+.process-step:hover{background:#1e2a3d;}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:rgba(184,149,42,0.1);line-height:1;margin-bottom:12px;}
+.step-word{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.step-desc{font-size:13px;color:var(--lgray);line-height:1.7;font-weight:300;}
+.step-arrow{position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:16px;z-index:2;}
+
+/* WHAT SETS US APART */
+.apart-section{padding:100px 48px;max-width:1000px;margin:0 auto;}
+.apart-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
+.apart-card{background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:32px 24px;transition:border-color 0.2s,transform 0.2s;}
+.apart-card:hover{border-color:var(--gold);transform:translateY(-3px);}
+.apart-icon{font-size:28px;margin-bottom:16px;}
+.apart-title{font-size:16px;font-weight:600;color:var(--white);margin-bottom:10px;}
+.apart-desc{font-size:14px;color:var(--lgray);line-height:1.7;font-weight:300;}
+
+/* PILLARS */
+.pillars-section{background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:100px 48px;}
+.pillars-inner{max-width:1000px;margin:0 auto;}
+.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:48px;}
+.pillar{background:var(--navy3);border:1px solid rgba(255,255,255,0.04);border-radius:10px;padding:28px;transition:border-color 0.2s,transform 0.2s;}
+.pillar:hover{border-color:var(--border);transform:translateY(-3px);}
+.pillar-num{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--gold);margin-bottom:12px;}
+.pillar-title{font-size:16px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.pillar-desc{font-size:13.5px;color:var(--lgray);line-height:1.7;font-weight:300;}
+
+/* WHO WE SERVE */
+.serve-section{padding:100px 48px;max-width:1000px;margin:0 auto;}
+.verticals{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;}
+.vertical{background:var(--navy3);border:1px solid var(--border);border-radius:4px;padding:8px 16px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--lgray);transition:all 0.2s;}
+.vertical:hover{border-color:var(--gold);color:var(--white);}
+
+/* CLOSING CTA */
+.closing{background:var(--navy2);border-top:2px solid var(--gold);padding:120px 48px;text-align:center;}
+.closing-body{font-size:17px;color:var(--lgray);max-width:480px;margin:0 auto 48px;font-weight:300;line-height:1.8;}
+.closing-guarantee{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#6ee7b7;margin-top:16px;}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:1px solid var(--border);padding:48px;}
+.footer-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.footer-brand .footer-logo{font-family:'DM Mono',monospace;font-size:14px;letter-spacing:0.2em;color:var(--white);}
+.footer-brand .footer-strategy{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--gold);}
+.footer-tagline{font-size:12px;color:var(--gray);margin-top:4px;}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+.footer-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-contact{font-family:'DM Mono',monospace;font-size:11px;color:var(--gray);line-height:2;text-align:right;}
+.footer-contact a{color:var(--gold);text-decoration:none;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:768px){
+  nav{padding:16px 24px;}.nav-links{display:none;}
+  .hero{padding:100px 24px 60px;}
+  .proof{padding:48px 24px;}
+  .process-inner{padding:72px 24px;}
+  .process-steps{grid-template-columns:1fr;gap:2px;}
+  .process-step:first-child{border-radius:8px 8px 0 0;}
+  .process-step:last-child{border-radius:0 0 8px 8px;}
+  .step-arrow{display:none;}
+  .apart-section{padding:72px 24px;}
+  .apart-grid{grid-template-columns:1fr;}
+  .pillars-section{padding:72px 24px;}
+  .pillars{grid-template-columns:1fr;}
+  .serve-section{padding:72px 24px;}
+  .closing{padding:72px 24px;}
+  .report-body{grid-template-columns:1fr;}
+  footer{padding:48px 24px;}
+  .footer-inner{flex-direction:column;align-items:flex-start;}
+  .footer-contact{text-align:left;}
+  .guarantee{padding:20px 24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="nav-brand">
+    <span class="nav-logo">KODIAK</span>
+    <span class="nav-strategy"> Strategy</span>
+  </a>
+  <div class="nav-links">
+    <a href="/how-it-works">How It Works</a>
+    <a href="/services">Services</a>
+    <a href="/faq">FAQ</a>
+    <a href="/about">About</a>
+  </div>
+  <a href="/intake" class="nav-cta">Book Discovery Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-location">Black Hills, South Dakota · AI Consulting</div>
+  <h1 class="hero-h1">See exactly what AI is worth<br>to <em>your</em> business.</h1>
+  <p class="hero-sub">We assess your operation, identify every opportunity AI can save you time and money, and deliver a written report with real numbers — guaranteed.</p>
+  <div class="hero-cta-group">
+    <a href="/intake" class="cta-primary">Book a Free Discovery Call</a>
+    <span class="cta-sub">Learn how an AI Assessment could work for your business</span>
+  </div>
+</section>
+
+<!-- GUARANTEE STRIP -->
+<div class="guarantee">
+  <p><strong>Guaranteed:</strong> 3-4 actionable solutions you can implement yourself — each one guaranteed to save you measurable time and money. At least 5 hours returned per week and $1,000 in monthly recoverable value or your fee is fully refunded.</p>
+</div>
+
+<!-- PROOF VISUAL -->
+<div class="proof">
+  <div class="proof-label">Sample Assessment Report Output</div>
+  <div class="report-card">
+    <div class="report-header">
+      <span class="report-tag">AI Assessment Report — Kodiak Strategy</span>
+      <span class="report-title">Northern Plains Service Business</span>
+    </div>
+    <div class="report-body">
+      <div class="report-stat">
+        <div class="report-num">18+</div>
+        <div class="report-unit">Hours Returned Weekly</div>
+      </div>
+      <div class="report-stat">
+        <div class="report-num">$6,030</div>
+        <div class="report-unit">Monthly Net ROI</div>
+      </div>
+      <div class="report-stat">
+        <div class="report-num">&lt;2 mo</div>
+        <div class="report-unit">Payback Period</div>
+      </div>
+    </div>
+    <div class="report-footer">Results based on actual workflows and staff rates collected during assessment interview · Prepared by Ryan Fagerstrom, Kodiak Strategy</div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="process-section">
+  <div class="process-inner">
+    <div class="section-label">How It Works</div>
+    <h2>Assess. Report. Optimize. <em>Automate.</em></h2>
+    <p class="section-body">A proven four-step process built around one principle — we never automate before we understand, and we never automate before we optimize.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-word">Assess</div>
+        <p class="step-desc">One structured interview — in person or remote. We learn about your business, its processes, and walk through your friction points to identify every opportunity AI can help you regain time and money through automation.</p>
+        <span class="step-arrow">›</span>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-word">Report</div>
+        <p class="step-desc">Written report delivered within one week. Provides 3-4 solutions guaranteed to help you gain hours back every week — plus a long-term automation plan showing every other opportunity we found.</p>
+        <span class="step-arrow">›</span>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-word">Optimize</div>
+        <p class="step-desc">Before we automate anything, we make sure it's worth automating. We map your current processes and eliminate the waste first — a streamlined process creates a much more efficient automation.</p>
+        <span class="step-arrow">›</span>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-word">Automate</div>
+        <p class="step-desc">Based on your assessment, we identify 3-4 specific solutions showing exactly how much time and money each one recovers — tools you can start using the same week you receive your report.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT SETS US APART -->
+<section class="apart-section">
+  <div class="section-label">Why Kodiak</div>
+  <h2>Built different. <em>On purpose.</em></h2>
+  <div class="apart-grid">
+    <div class="apart-card">
+      <div class="apart-icon">📋</div>
+      <div class="apart-title">Assess first. Always.</div>
+      <p class="apart-desc">We never recommend a solution before we understand your operation. Every report is built from your actual workflows, your team, and your numbers — not a generic template.</p>
+    </div>
+    <div class="apart-card">
+      <div class="apart-icon">⚡</div>
+      <div class="apart-title">Optimize before you automate.</div>
+      <p class="apart-desc">Most consultants automate whatever they find. We simplify the process first. A broken workflow automated just breaks faster. We make sure the foundation is right.</p>
+    </div>
+    <div class="apart-card">
+      <div class="apart-icon">📍</div>
+      <div class="apart-title">Local. Not remote.</div>
+      <p class="apart-desc">We are based in the Black Hills and serve the Northern Plains. In-person assessments available across the region. We know how businesses here operate because we are here too.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<div class="pillars-section">
+  <div class="pillars-inner">
+    <div class="section-label">What We Assess</div>
+    <h2>Four areas. <em>Every opportunity found.</em></h2>
+    <p class="section-body">Every assessment covers your entire operation. Most businesses have opportunities in all four areas — the report shows exactly where and what each one is worth.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">PILLAR 01</div>
+        <div class="pillar-title">AI Automation</div>
+        <p class="pillar-desc">Manual repetitive tasks replaced by intelligent systems. Every recommendation includes projected hours saved and monthly ROI based on your actual staff rates.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">PILLAR 02</div>
+        <div class="pillar-title">Lead Generation & Marketing</div>
+        <p class="pillar-desc">Find where leads are leaking and fix it. Review generation, local SEO, social media, paid ads, and email marketing — revenue impact calculated for every recommendation.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">PILLAR 03</div>
+        <div class="pillar-title">Digital Infrastructure</div>
+        <p class="pillar-desc">The foundation every business needs. Online booking, payment processing, Google Business Profile, and a consistent digital presence that works while you focus on the work.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">PILLAR 04</div>
+        <div class="pillar-title">Revenue Operations</div>
+        <p class="pillar-desc">Stop losing money to gaps in your process. Win-back campaigns, upsell sequences, faster quote generation, and profitability tracking — monthly revenue increase calculated for each.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO WE SERVE -->
+<section class="serve-section">
+  <div class="section-label">Who We Work With</div>
+  <h2>Owner-operated businesses <em>across the Northern Plains.</em></h2>
+  <p class="section-body">We work with businesses that run on relationships and need systems that work the way they do — not the other way around.</p>
+  <div class="verticals">
+    <span class="vertical">Optometry & Eye Care</span>
+    <span class="vertical">Dental Practices</span>
+    <span class="vertical">Medical & Healthcare</span>
+    <span class="vertical">Law Firms</span>
+    <span class="vertical">Accounting & Bookkeeping</span>
+    <span class="vertical">Insurance Agencies</span>
+    <span class="vertical">Roofing & Construction</span>
+    <span class="vertical">HVAC & Home Services</span>
+    <span class="vertical">Real Estate</span>
+    <span class="vertical">Restaurants & Hospitality</span>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<div class="closing">
+  <div class="section-label" style="justify-content:center;display:flex;align-items:center;gap:12px;">Get Started<span style="width:48px;height:1px;background:var(--border);display:inline-block;"></span></div>
+  <h2>Ready to find out what AI<br>is worth to <em>your</em> business?</h2>
+  <p class="closing-body">Book a free discovery call. Ryan will learn about your business and walk you through exactly how the assessment works — no pressure, no pitch.</p>
+  <a href="/intake" class="cta-primary">Book a Free Discovery Call</a>
+  <p class="closing-guarantee">Guaranteed: 3-4 actionable solutions · 5+ hours returned per week · $1,000 monthly recoverable value — or full refund</p>
+  <p style="margin-top:16px;font-family:'DM Mono',monospace;font-size:11px;color:var(--gray);">Prefer to call or text? Reach Ryan directly at <a href="tel:6056052558" style="color:var(--gold);text-decoration:none;">(605) 605-2558</a></p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">KODIAK <span class="footer-strategy">Strategy</span></div>
+      <div class="footer-tagline">AI Consulting — Black Hills, South Dakota</div>
+    </div>
+    <div class="footer-links">
+      <a href="/how-it-works">How It Works</a>
+      <a href="/services">Services</a>
+      <a href="/faq">FAQ</a>
+      <a href="/about">About</a>
+      <a href="/intake">Get Started</a>
+      <a href="/privacy">Privacy</a>
+    </div>
+    <div class="footer-contact">
+      <div><a href="tel:6056052558">(605) 605-2558</a></div>
+      <div><a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a></div>
+      <div style="color:var(--gray);font-size:10px;margin-top:4px;">© 2026 Kodiak Strategy. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  const current = window.scrollY;
+  nav.style.transform = current > lastScroll && current > 80 ? 'translateY(-100%)' : 'translateY(0)';
+  lastScroll = current;
+});
+</script>
+</body>
+</html>
