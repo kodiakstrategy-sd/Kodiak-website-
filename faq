@@ -1,158 +1,110 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ | Kodiak Strategy — AI Assessment Questions Answered</title>
-<meta name="description" content="Questions about Kodiak Strategy's AI Assessment answered. What happens during the assessment, what the report includes, pricing, and more.">
+<title>FAQ | Kodiak Strategy</title>
+<meta name="description" content="Questions about Kodiak Strategy's AI Assessment answered. What happens during the assessment, what the report includes, and more.">
 <link rel="canonical" href="https://kodiakstrategy.com/faq">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What exactly happens during the assessment?","acceptedAnswer":{"@type":"Answer","text":"We conduct a structured one-on-one interview — in person when possible or by phone or video. We ask questions about how your business operates day to day, where time is lost, and where things fall through the cracks. That conversation becomes the foundation for your report."}},{"@type":"Question","name":"What does the report include?","acceptedAnswer":{"@type":"Answer","text":"A written breakdown of every automation opportunity we identified, organized by priority and impact. Each recommendation shows what the solution is, why it fits your operation, and what it is worth in time saved and dollars recovered per month. Plus 3-4 actionable solutions you can implement yourself and a long-term automation plan."}},{"@type":"Question","name":"Do I have to buy anything after the assessment?","acceptedAnswer":{"@type":"Answer","text":"No. The report is yours to keep regardless of what you decide. Some clients implement the recommendations on their own. Some hire us to build it. Some file the report and come back later."}},{"@type":"Question","name":"Do I need to know anything about AI?","acceptedAnswer":{"@type":"Answer","text":"Nothing. You just need to know your business — we handle the rest."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What exactly happens during the assessment?","acceptedAnswer":{"@type":"Answer","text":"We conduct a structured one-on-one interview — in person when possible or by phone or video. We ask questions about how your business operates day to day, where time is lost, and where things fall through the cracks."}},{"@type":"Question","name":"What does the report include?","acceptedAnswer":{"@type":"Answer","text":"A written breakdown of every automation opportunity we identified, organized by priority and impact. Plus 3-4 actionable solutions you can implement yourself and a long-term automation plan."}},{"@type":"Question","name":"Do I have to buy anything after the assessment?","acceptedAnswer":{"@type":"Answer","text":"No. The report is yours to keep regardless of what you decide. Some clients implement the recommendations on their own. Some hire us to build it. Some file the report and come back later."}}]}
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0d1526;--navy2:#111827;--navy3:#1a2236;--gold:#b8952a;--gold2:#d4aa45;--white:#ffffff;--gray:#6b7280;--lgray:#9ca3af;--border:rgba(184,149,42,0.2);}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;line-height:1.7;overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,21,38,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
-.nav-brand{display:flex;align-items:baseline;gap:8px;text-decoration:none;}
-.nav-logo{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:0.2em;color:var(--white);}
-.nav-strategy{font-style:italic;font-size:13px;color:var(--gold);font-family:'Cormorant Garamond',serif;}
-.nav-links{display:flex;align-items:center;gap:32px;}
-.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--lgray);text-decoration:none;}
-.nav-cta{background:var(--gold);color:var(--navy);font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:10px 24px;border-radius:2px;text-decoration:none;}
-.page-hero{padding:160px 48px 80px;max-width:700px;margin:0 auto;text-align:center;}
-.page-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,64px);font-weight:300;line-height:1.1;color:var(--white);margin-bottom:20px;}
-h1 em{font-style:italic;color:var(--gold);}
-.page-sub{font-size:17px;color:var(--lgray);font-weight:300;line-height:1.8;}
-.faq-section{padding:80px 48px;max-width:800px;margin:0 auto;}
-.faq-group{margin-bottom:48px;}
-.faq-group-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);}
-.faq-item{border-bottom:1px solid rgba(255,255,255,0.06);overflow:hidden;}
-.faq-q{width:100%;background:none;border:none;padding:20px 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;text-align:left;gap:16px;}
-.faq-q-text{font-size:16px;font-weight:500;color:var(--white);line-height:1.4;}
-.faq-icon{font-size:20px;color:var(--gold);flex-shrink:0;transition:transform 0.3s;font-family:'DM Mono',monospace;font-weight:300;}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease;}
-.faq-a-inner{padding:0 0 20px;font-size:15px;color:var(--lgray);line-height:1.8;font-weight:300;}
-.faq-item.open .faq-icon{transform:rotate(45deg);}
-.faq-item.open .faq-a{max-height:300px;}
-.cta-section{background:var(--navy2);border-top:2px solid var(--gold);padding:80px 48px;text-align:center;}
-.cta-primary{background:var(--gold);color:var(--navy);font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:16px 48px;border-radius:2px;text-decoration:none;display:inline-block;margin-top:32px;}
-footer{background:var(--navy);border-top:1px solid var(--border);padding:40px 48px;}
-.footer-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
-.footer-logo{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.2em;color:var(--white);}
-.footer-links{display:flex;gap:24px;flex-wrap:wrap;}
-.footer-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);text-decoration:none;}
-.footer-links a:hover{color:var(--gold);}
-.footer-contact{font-family:'DM Mono',monospace;font-size:11px;color:var(--gray);text-align:right;line-height:2;}
-.footer-contact a{color:var(--gold);text-decoration:none;}
-@media(max-width:768px){nav{padding:16px 24px;}.nav-links{display:none;}.page-hero{padding:120px 24px 60px;}.faq-section{padding:60px 24px;}.cta-section{padding:60px 24px;}footer{padding:40px 24px;}.footer-inner{flex-direction:column;align-items:flex-start;}.footer-contact{text-align:left;}}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #0B0B0B; scroll-behavior: smooth; }
+body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; line-height: 1.7; overflow-x: hidden; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: #0B0B0B; border-bottom: 1px solid rgba(198,168,90,0.2); }
+.nav-brand { display: flex; align-items: baseline; gap: 6px; text-decoration: none; }
+.nav-logo { font-size: 16px; font-weight: 800; letter-spacing: 0.25em; color: #FFFFFF; text-transform: uppercase; }
+.nav-strategy { font-size: 13px; font-weight: 400; letter-spacing: 0.15em; color: #C6A85A; text-transform: uppercase; }
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-links a { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #999999; text-decoration: none; }
+.nav-links a:hover { color: #FFFFFF; }
+.nav-cta { background: #C6A85A; color: #0B0B0B; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 11px 28px; border-radius: 2px; text-decoration: none; }
+.page-hero { padding: 140px 80px 60px; max-width: 700px; margin: 0 auto; text-align: center; }
+.page-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #C6A85A; margin-bottom: 20px; font-family: 'Courier New', monospace; display: block; }
+h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.1; color: #FFFFFF; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -0.01em; }
+h1 span { color: #C6A85A; }
+.page-sub { font-size: 17px; color: #999999; font-weight: 300; line-height: 1.8; }
+.faq-section { padding: 80px; max-width: 800px; margin: 0 auto; }
+.faq-group { margin-bottom: 48px; }
+.faq-group-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: #C6A85A; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(198,168,90,0.15); font-family: 'Courier New', monospace; }
+.faq-item { border-bottom: 1px solid rgba(255,255,255,0.04); overflow: hidden; }
+.faq-q { width: 100%; background: none; border: none; padding: 20px 0; display: flex; align-items: center; justify-content: space-between; cursor: pointer; text-align: left; gap: 16px; }
+.faq-q-text { font-size: 15px; font-weight: 600; color: #FFFFFF; line-height: 1.4; }
+.faq-icon { font-size: 20px; color: #C6A85A; flex-shrink: 0; transition: transform 0.3s; font-family: 'Courier New', monospace; font-weight: 300; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-a-inner { padding: 0 0 20px; font-size: 15px; color: #999999; line-height: 1.8; font-weight: 300; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-item.open .faq-a { max-height: 300px; }
+.cta-section { background: #111111; border-top: 2px solid #C6A85A; padding: 80px; text-align: center; }
+.cta-primary { background: #C6A85A; color: #0B0B0B; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 16px 48px; border-radius: 2px; text-decoration: none; display: inline-block; margin-top: 32px; }
+footer { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); padding: 40px 80px; }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-logo { font-size: 14px; font-weight: 800; letter-spacing: 0.2em; color: #FFFFFF; text-transform: uppercase; }
+.footer-strategy { color: #C6A85A; font-weight: 400; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #666666; text-decoration: none; font-family: 'Courier New', monospace; }
+.footer-links a:hover { color: #C6A85A; }
+.footer-contact { font-size: 11px; color: #666666; text-align: right; line-height: 2; font-family: 'Courier New', monospace; }
+.footer-contact a { color: #C6A85A; text-decoration: none; }
+h2 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; line-height: 1.2; color: #FFFFFF; margin-bottom: 16px; text-transform: uppercase; letter-spacing: -0.01em; }
+h2 span { color: #C6A85A; }
+@media(max-width: 768px) {
+  nav { padding: 0 24px; } .nav-links { display: none; }
+  .page-hero { padding: 120px 24px 40px; }
+  .faq-section { padding: 60px 24px; }
+  .cta-section { padding: 60px 24px; }
+  footer { padding: 40px 24px; } .footer-inner { flex-direction: column; align-items: flex-start; } .footer-contact { text-align: left; }
+}
 </style>
 </head>
 <body>
 <nav>
-  <a href="/" class="nav-brand"><span class="nav-logo">KODIAK</span><span class="nav-strategy"> Strategy</span></a>
+  <a href="/" class="nav-brand"><span class="nav-logo">KODIAK</span><span class="nav-strategy"> STRATEGY</span></a>
   <div class="nav-links"><a href="/how-it-works">How It Works</a><a href="/services">Services</a><a href="/faq">FAQ</a><a href="/about">About</a></div>
-  <a href="/intake" class="nav-cta">Get Started</a>
+  <a href="/intake" class="nav-cta">Book Discovery Call</a>
 </nav>
-
 <div class="page-hero">
   <div class="page-label">FAQ</div>
-  <h1>Straight answers. <em>No fluff.</em></h1>
+  <h1>Straight answers. <span>No fluff.</span></h1>
   <p class="page-sub">Everything you need to know before spending $1,000 with someone you just found online.</p>
 </div>
-
 <div class="faq-section">
-
   <div class="faq-group">
     <div class="faq-group-label">About the Assessment</div>
-
-    <div class="faq-item">
-      <button class="faq-q"><span class="faq-q-text">What exactly happens during the assessment?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">We schedule a one-on-one interview — in person when possible, or by phone or video depending on your location. We ask questions about how your business operates day to day. What your team spends time on, what is frustrating, what is repetitive, and where things fall through the cracks. That conversation becomes the foundation for your report.</div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q"><span class="faq-q-text">What does the report include?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">A written breakdown of every automation opportunity we identified — organized by priority and impact. Each recommendation shows what the solution is, why it fits your specific operation, and what it is worth in time saved and dollars recovered per month. The math is based on your actual workflows and rates — not industry averages. Plus 3-4 actionable solutions you can implement yourself immediately, and a long-term automation plan showing what is possible if you want to go further.</div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q"><span class="faq-q-text">How long does the report take to deliver?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">You will have it within one week of your assessment session.</div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q"><span class="faq-q-text">Do I have to buy anything after the assessment?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">No. The report is yours to keep regardless of what you decide. Some clients implement the recommendations on their own. Some hire us to build it. Some file the report and come back later. All three are fine.</div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q"><span class="faq-q-text">What if I am not ready to implement anything yet?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">That is exactly why the report exists. You will know what the opportunities are, what they are worth, and what it would take to act on them — so when the timing is right you are not starting from scratch.</div></div>
-    </div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">What exactly happens during the assessment?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">We schedule a one-on-one interview — in person when possible, or by phone or video depending on your location. We ask questions about how your business operates day to day. What your team spends time on, what is frustrating, what is repetitive, and where things fall through the cracks. That conversation becomes the foundation for your report.</div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">What does the report include?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">A written breakdown of every automation opportunity we identified — organized by priority and impact. Each recommendation shows what the solution is, why it fits your specific operation, and what it is worth in time saved and dollars recovered per month. Plus 3-4 actionable solutions you can implement yourself immediately, and a long-term automation plan showing what is possible if you want to go further.</div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">How long does the report take to deliver?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">You will have it within one week of your assessment session.</div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Do I have to buy anything after the assessment?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">No. The report is yours to keep regardless of what you decide. Some clients implement the recommendations on their own. Some hire us to build it. Some file the report and come back later. All three are fine.</div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">What if I am not ready to implement anything yet?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">That is exactly why the report exists. You will know what the opportunities are, what they are worth, and what it would take to act on them — so when the timing is right you are not starting from scratch.</div></div></div>
   </div>
-
   <div class="faq-group">
     <div class="faq-group-label">About AI & Technology</div>
-
-    <div class="faq-item">
-      <button class="faq-q"><span class="faq-q-text">Do I need to know anything about AI before we talk?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Nothing. You do not need to understand the technology. You just need to know your business — we handle the rest.</div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q"><span class="faq-q-text">Will AI replace my staff?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">No. The goal is to take the repetitive, time-consuming tasks off your team's plate so they can focus on the work that actually needs a person. Nobody went to work hoping to spend their day on manual data entry. We do not automate work that requires human judgment — if the relationship or expertise is the differentiator, we do not touch that touchpoint.</div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q"><span class="faq-q-text">How do you know the ROI numbers in the report are accurate?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">The numbers are built from two sources — the specific information you give us during the interview, and published performance data from the tools we recommend. They are conservative estimates based on your actual workflows and rates, not generic industry averages. We recommend measuring where you are today before implementing anything and tracking results at 30, 60, and 90 days so you always know exactly what changed.</div></div>
-    </div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Do I need to know anything about AI?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Nothing. You do not need to understand the technology. You just need to know your business — we handle the rest.</div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Will AI replace my staff?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">No. The goal is to take the repetitive, time-consuming tasks off your team's plate so they can focus on the work that actually needs a person. We do not automate work that requires human judgment — if the relationship or expertise is the differentiator, we do not touch that touchpoint.</div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">How do you know the ROI numbers are accurate?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">The numbers are built from the specific information you give us during the interview and published performance data from the tools we recommend. They are conservative estimates based on your actual workflows and rates — not generic industry averages.</div></div></div>
   </div>
-
   <div class="faq-group">
     <div class="faq-group-label">About Kodiak Strategy</div>
-
-    <div class="faq-item">
-      <button class="faq-q"><span class="faq-q-text">Where are you located and do you work remotely?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">We are based in the Black Hills of South Dakota and serve businesses across SD, ND, MT, WY, MN, and NE. In-person assessments are available across the region. The entire process can also be done remotely — phone or video for the session, email for the report.</div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q"><span class="faq-q-text">How is Kodiak Strategy different from other AI consultants?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">We assess first. We never recommend a solution before we understand your specific operation. The report you receive is built around your business — your workflows, your team, your numbers. Nothing generic, nothing off a shelf. And we built our methodology from actual field deployments with real businesses — not from a textbook.</div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q"><span class="faq-q-text">What happens after the assessment if I want to move forward?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">We schedule a strategy call to walk through the report together. From there you decide which recommendations to act on and we handle the setup, configuration, and training. Most clients start with one or two things from the report and build from there.</div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q"><span class="faq-q-text">What kinds of businesses do you work with?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Owner-operated businesses across the Northern Plains — optometry clinics, dental practices, law firms, accounting firms, insurance agencies, roofing companies, HVAC businesses, real estate agencies, and restaurants. If your team does the same things over and over every day there is almost certainly an opportunity worth finding.</div></div>
-    </div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Where are you located and do you work remotely?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">We are based in the Black Hills of South Dakota and serve businesses across SD, ND, MT, WY, MN, and NE. In-person assessments are available across the region. The entire process can also be done remotely.</div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">What kinds of businesses do you work with?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Owner-operated businesses across the Northern Plains — optometry clinics, dental practices, law firms, accounting firms, insurance agencies, roofing companies, HVAC businesses, real estate agencies, and restaurants. If your team does the same things over and over every day there is almost certainly an opportunity worth finding.</div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">What happens after the assessment if I want to move forward?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">We schedule a strategy call to walk through the report together. We present fully customized implementation options and you decide which one is the best fit. Then we get to work.</div></div></div>
   </div>
 </div>
-
 <div class="cta-section">
-  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);font-weight:300;color:var(--white);margin-bottom:16px;">Still have questions?</h2>
-  <p style="font-size:16px;color:var(--lgray);max-width:400px;margin:0 auto;">Call or text Ryan directly at <a href="tel:6056052558" style="color:var(--gold);text-decoration:none;">(605) 605-2558</a> — or hit the button below.</p>
-  <a href="/intake" class="cta-primary">Get Your $1,000 Assessment</a>
+  <h2>Still have <span>questions?</span></h2>
+  <p style="font-size:16px; color:#999999; max-width:400px; margin:0 auto;">Call or text Ryan directly at <a href="tel:6056052558" style="color:#C6A85A; text-decoration:none;">(605) 605-2558</a> — or hit the button below.</p>
+  <a href="/intake" class="cta-primary">Book a Free Discovery Call</a>
 </div>
-
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">KODIAK <span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);">Strategy</span></div>
-    <div class="footer-links"><a href="/">Home</a><a href="/how-it-works">How It Works</a><a href="/services">Services</a><a href="/faq">FAQ</a><a href="/privacy">Privacy</a></div>
+    <div><div class="footer-logo">KODIAK <span class="footer-strategy">STRATEGY</span></div><div style="font-size:10px; color:#666666; letter-spacing:0.1em; margin-top:4px; font-family:'Courier New',monospace; text-transform:uppercase;">Black Hills · AI Consulting · South Dakota</div></div>
+    <div class="footer-links"><a href="/">Home</a><a href="/how-it-works">How It Works</a><a href="/services">Services</a><a href="/faq">FAQ</a><a href="/intake">Get Started</a><a href="/privacy">Privacy</a></div>
     <div class="footer-contact"><div><a href="tel:6056052558">(605) 605-2558</a></div><div><a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a></div></div>
   </div>
 </footer>
-
 <script>
 document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
