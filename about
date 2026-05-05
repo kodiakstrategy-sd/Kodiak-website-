@@ -5,130 +5,94 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About | Kodiak Strategy — AI Consulting, Black Hills SD</title>
-<meta name="description" content="Learn about Kodiak Strategy and the story behind our audit-first AI consulting approach. Serving businesses across SD, ND, MT, WY, MN and NE.">
+<meta name="description" content="Learn about Kodiak Strategy and the story behind our assessment-first AI consulting approach. Serving businesses across SD, ND, MT, WY, MN and NE.">
 <link rel="canonical" href="https://kodiakstrategy.com/about">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0d1526;--navy2:#111827;--navy3:#1a2236;--gold:#b8952a;--gold2:#d4aa45;--white:#ffffff;--gray:#6b7280;--lgray:#9ca3af;--border:rgba(184,149,42,0.2);}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;line-height:1.7;overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,21,38,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
-.nav-brand{display:flex;align-items:baseline;gap:8px;text-decoration:none;}
-.nav-logo{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:0.2em;color:var(--white);}
-.nav-strategy{font-style:italic;font-size:13px;color:var(--gold);font-family:'Cormorant Garamond',serif;}
-.nav-links{display:flex;align-items:center;gap:32px;}
-.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--lgray);text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:var(--white);}
-.nav-cta{background:var(--gold);color:var(--navy);font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:10px 24px;border-radius:2px;text-decoration:none;}
-
-/* HERO */
-.page-hero{padding:160px 48px 80px;max-width:800px;margin:0 auto;text-align:center;}
-.page-label{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(–gold);margin-bottom:20px;}
-h1{font-family:‘Cormorant Garamond’,serif;font-size:clamp(36px,5vw,64px);font-weight:300;line-height:1.1;color:var(–white);margin-bottom:20px;}
-h1 em{font-style:italic;color:var(–gold);}
-.page-sub{font-size:18px;color:var(–lgray);font-weight:300;line-height:1.8;}
-
-/* PROFILE SECTION */
-.profile-section{padding:80px 48px;max-width:1000px;margin:0 auto;display:grid;grid-template-columns:320px 1fr;gap:64px;align-items:start;}
-.profile-card{background:var(–navy2);border:1px solid var(–border);border-radius:12px;overflow:hidden;position:sticky;top:100px;}
-.profile-photo{width:100%;aspect-ratio:4/5;background:var(–navy3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;border-bottom:1px solid var(–border);}
-.profile-logo{font-family:‘DM Mono’,monospace;font-size:32px;font-weight:500;letter-spacing:0.3em;color:var(–gold);}
-.profile-bear{font-size:48px;opacity:0.4;}
-/* REPLACE: swap .profile-photo background with actual headshot */
-/* img.headshot { width:100%; aspect-ratio:4/5; object-fit:cover; display:block; } */
-.profile-info{padding:24px;}
-.profile-name{font-size:18px;font-weight:600;color:var(–white);margin-bottom:4px;}
-.profile-title{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(–gold);margin-bottom:16px;}
-.profile-location{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:0.08em;color:var(–gray);margin-bottom:16px;}
-.profile-divider{height:1px;background:var(–border);margin-bottom:16px;}
-.profile-contact a{display:block;font-family:‘DM Mono’,monospace;font-size:11px;color:var(–lgray);text-decoration:none;margin-bottom:8px;transition:color 0.2s;}
-.profile-contact a:hover{color:var(–gold);}
-
-/* BIO */
-.bio{padding-top:8px;}
-.bio-section-label{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(–gold);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-.bio-section-label::after{content:’’;width:48px;height:1px;background:var(–border);}
-h2{font-family:‘Cormorant Garamond’,serif;font-size:clamp(28px,3.5vw,44px);font-weight:300;line-height:1.2;color:var(–white);margin-bottom:24px;}
-h2 em{font-style:italic;color:var(–gold);}
-.bio p{font-size:17px;color:var(–lgray);font-weight:300;line-height:1.9;margin-bottom:24px;}
-.bio p strong{color:var(–white);font-weight:500;}
-
-.pull-quote{border-left:2px solid var(–gold);padding:20px 28px;margin:40px 0;background:rgba(184,149,42,0.04);border-radius:0 8px 8px 0;}
-.pull-quote p{font-family:‘Cormorant Garamond’,serif;font-size:clamp(20px,2.5vw,26px);font-style:italic;font-weight:300;color:var(–white);line-height:1.5;margin:0;}
-
-/* VALUES */
-.values-section{background:var(–navy2);border-top:1px solid var(–border);border-bottom:1px solid var(–border);padding:80px 48px;}
-.values-inner{max-width:1000px;margin:0 auto;}
-.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
-.value-card{background:var(–navy3);border:1px solid rgba(255,255,255,0.04);border-radius:10px;padding:28px;border-top:2px solid var(–gold);}
-.value-word{font-family:‘DM Mono’,monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(–gold);margin-bottom:12px;}
-.value-desc{font-size:14px;color:var(–lgray);line-height:1.7;font-weight:300;}
-
-/* REGION */
-.region-section{padding:80px 48px;max-width:1000px;margin:0 auto;text-align:center;}
-.region-label{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(–gold);margin-bottom:20px;}
-.region-states{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px;}
-.region-state{background:var(–navy3);border:1px solid var(–border);border-radius:4px;padding:10px 20px;font-family:‘DM Mono’,monospace;font-size:11px;letter-spacing:0.1em;color:var(–lgray);}
-
-/* CTA */
-.cta-section{background:var(–navy2);border-top:2px solid var(–gold);padding:80px 48px;text-align:center;}
-.cta-primary{background:var(–gold);color:var(–navy);font-family:‘DM Mono’,monospace;font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:16px 48px;border-radius:2px;text-decoration:none;display:inline-block;margin-top:32px;transition:all 0.2s;}
-.cta-primary:hover{background:var(–gold2);}
-
-/* FOOTER */
-footer{background:var(–navy);border-top:1px solid var(–border);padding:40px 48px;}
-.footer-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
-.footer-logo{font-family:‘DM Mono’,monospace;font-size:13px;letter-spacing:0.2em;color:var(–white);}
-.footer-links{display:flex;gap:24px;flex-wrap:wrap;}
-.footer-links a{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(–gray);text-decoration:none;}
-.footer-links a:hover{color:var(–gold);}
-.footer-contact{font-family:‘DM Mono’,monospace;font-size:11px;color:var(–gray);text-align:right;line-height:2;}
-.footer-contact a{color:var(–gold);text-decoration:none;}
-
-@media(max-width:768px){
-nav{padding:16px 24px;}.nav-links{display:none;}
-.page-hero{padding:120px 24px 60px;}
-.profile-section{grid-template-columns:1fr;padding:60px 24px;gap:40px;}
-.profile-card{position:static;}
-.values-section{padding:60px 24px;}
-.values-grid{grid-template-columns:1fr;}
-.region-section{padding:60px 24px;}
-.cta-section{padding:60px 24px;}
-footer{padding:40px 24px;}
-.footer-inner{flex-direction:column;align-items:flex-start;}
-.footer-contact{text-align:left;}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #0B0B0B; scroll-behavior: smooth; }
+body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; line-height: 1.7; overflow-x: hidden; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: #0B0B0B; border-bottom: 1px solid rgba(198,168,90,0.2); }
+.nav-brand { display: flex; align-items: baseline; gap: 6px; text-decoration: none; }
+.nav-logo { font-size: 16px; font-weight: 800; letter-spacing: 0.25em; color: #FFFFFF; text-transform: uppercase; }
+.nav-strategy { font-size: 13px; font-weight: 400; letter-spacing: 0.15em; color: #C6A85A; text-transform: uppercase; }
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-links a { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #999999; text-decoration: none; }
+.nav-links a:hover { color: #FFFFFF; }
+.nav-cta { background: #C6A85A; color: #0B0B0B; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 11px 28px; border-radius: 2px; text-decoration: none; }
+.nav-cta:hover { background: #E0C97A; }
+.page-hero { padding: 140px 80px 60px; max-width: 800px; margin: 0 auto; text-align: center; }
+.page-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #C6A85A; margin-bottom: 20px; font-family: 'Courier New', monospace; display: block; }
+h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.1; color: #FFFFFF; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -0.01em; }
+h1 span { color: #C6A85A; }
+.page-sub { font-size: 18px; color: #999999; font-weight: 300; line-height: 1.8; }
+.profile-section { padding: 60px 80px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: start; }
+.profile-card { background: #111111; border: 1px solid rgba(198,168,90,0.15); border-top: 2px solid #C6A85A; border-radius: 4px; overflow: hidden; position: sticky; top: 80px; }
+.profile-photo { width: 100%; background: #1A1A1A; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 32px; border-bottom: 1px solid rgba(198,168,90,0.15); }
+.profile-info { padding: 24px; }
+.profile-name { font-size: 16px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+.profile-title { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #C6A85A; margin-bottom: 4px; font-family: 'Courier New', monospace; }
+.profile-location { font-size: 10px; letter-spacing: 0.08em; color: #666666; margin-bottom: 16px; font-family: 'Courier New', monospace; }
+.profile-divider { height: 1px; background: rgba(198,168,90,0.15); margin-bottom: 16px; }
+.profile-contact a { display: block; font-size: 11px; color: #999999; text-decoration: none; margin-bottom: 8px; font-family: 'Courier New', monospace; }
+.profile-contact a:hover { color: #C6A85A; }
+.bio { padding-top: 8px; }
+h2 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; line-height: 1.2; color: #FFFFFF; margin-bottom: 24px; text-transform: uppercase; letter-spacing: -0.01em; }
+h2 span { color: #C6A85A; }
+.bio p { font-size: 17px; color: #999999; font-weight: 300; line-height: 1.9; margin-bottom: 24px; }
+.bio p strong { color: #FFFFFF; font-weight: 500; }
+.pull-quote { border-left: 3px solid #C6A85A; padding: 20px 28px; margin: 40px 0; background: rgba(198,168,90,0.04); border-radius: 0 4px 4px 0; }
+.pull-quote p { font-size: clamp(18px, 2.5vw, 24px); font-weight: 700; color: #FFFFFF; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.02em; margin: 0; }
+.pull-quote p span { color: #C6A85A; }
+.values-section { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); border-bottom: 1px solid rgba(198,168,90,0.15); padding: 80px; }
+.values-inner { max-width: 1100px; margin: 0 auto; }
+.values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 40px; background: rgba(198,168,90,0.15); border: 1px solid rgba(198,168,90,0.15); border-radius: 4px; overflow: hidden; }
+.value-card { background: #1A1A1A; padding: 32px; }
+.value-word { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C6A85A; margin-bottom: 12px; font-family: 'Courier New', monospace; }
+.value-desc { font-size: 14px; color: #999999; line-height: 1.7; font-weight: 300; }
+.region-section { padding: 80px; max-width: 1100px; margin: 0 auto; text-align: center; }
+.region-states { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px; }
+.region-state { background: #1A1A1A; border: 1px solid rgba(198,168,90,0.15); border-radius: 2px; padding: 10px 20px; font-size: 11px; letter-spacing: 0.1em; color: #999999; font-family: 'Courier New', monospace; }
+.cta-section { background: #111111; border-top: 2px solid #C6A85A; padding: 80px; text-align: center; }
+.cta-primary { background: #C6A85A; color: #0B0B0B; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 16px 48px; border-radius: 2px; text-decoration: none; display: inline-block; margin-top: 32px; }
+.cta-primary:hover { background: #E0C97A; }
+footer { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); padding: 40px 80px; }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-logo { font-size: 14px; font-weight: 800; letter-spacing: 0.2em; color: #FFFFFF; text-transform: uppercase; }
+.footer-strategy { color: #C6A85A; font-weight: 400; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #666666; text-decoration: none; font-family: 'Courier New', monospace; }
+.footer-links a:hover { color: #C6A85A; }
+.footer-contact { font-size: 11px; color: #666666; text-align: right; line-height: 2; font-family: 'Courier New', monospace; }
+.footer-contact a { color: #C6A85A; text-decoration: none; }
+@media(max-width: 768px) {
+  nav { padding: 0 24px; } .nav-links { display: none; }
+  .page-hero { padding: 120px 24px 40px; }
+  .profile-section { grid-template-columns: 1fr; padding: 40px 24px; gap: 40px; }
+  .profile-card { position: static; }
+  .values-section { padding: 60px 24px; } .values-grid { grid-template-columns: 1fr; }
+  .region-section { padding: 60px 24px; }
+  .cta-section { padding: 60px 24px; }
+  footer { padding: 40px 24px; } .footer-inner { flex-direction: column; align-items: flex-start; } .footer-contact { text-align: left; }
 }
 </style>
-
 </head>
 <body>
 <nav>
-  <a href="/" class="nav-brand"><span class="nav-logo">KODIAK</span><span class="nav-strategy"> Strategy</span></a>
-  <div class="nav-links">
-    <a href="/how-it-works">How It Works</a>
-    <a href="/services">Services</a>
-    <a href="/faq">FAQ</a>
-    <a href="/about">About</a>
-  </div>
+  <a href="/" class="nav-brand"><span class="nav-logo">KODIAK</span><span class="nav-strategy"> STRATEGY</span></a>
+  <div class="nav-links"><a href="/how-it-works">How It Works</a><a href="/services">Services</a><a href="/faq">FAQ</a><a href="/about">About</a></div>
   <a href="/intake" class="nav-cta">Book Discovery Call</a>
 </nav>
 
 <div class="page-hero">
   <div class="page-label">About</div>
-  <h1>Built from a real problem,<br><em>not a resume.</em></h1>
-  <p class="page-sub">Kodiak Strategy was founded on one idea — that understanding the business always comes before recommending the technology.</p>
+  <h1>Built from a real problem, <span>not a resume.</span></h1>
+  <p class="page-sub">Kodiak Strategy was founded on one idea — understanding the business always comes before recommending the technology.</p>
 </div>
 
 <div class="profile-section">
-
-  <!-- PHOTO / PLACEHOLDER -->
-
   <div class="profile-card">
     <div class="profile-photo">
-      <!-- REPLACE WITH HEADSHOT: <img class="headshot" src="headshot.jpg" alt="Ryan Fagerstrom"> -->
-      <div class="profile-bear">🐻</div>
-      <div class="profile-logo">KODIAK</div>
+      <img src="5B9A5E21-C0AF-4818-B4BC-01BD011EE3F6.png" alt="Kodiak Strategy" style="width:180px; max-width:80%; opacity:0.95;" />
     </div>
     <div class="profile-info">
       <div class="profile-name">Ryan Fagerstrom</div>
@@ -143,99 +107,56 @@ footer{padding:40px 24px;}
     </div>
   </div>
 
-  <!-- BIO -->
-
   <div class="bio">
-    <div class="bio-section-label">The Story</div>
-    <h2>Why Kodiak <em>exists.</em></h2>
-
-```
-<p>I have always been an entrepreneur. So when I started learning about AI and what it could do for businesses, something became clear immediately — there are thousands of business owners who know they need to start implementing AI but have no idea where to begin.</p>
-
-<p>That gap is exactly where Kodiak Strategy lives.</p>
-
-<p>The clearest example I saw was in the roofing industry. Working with contractors, I kept running into the same thing. The tools were there. The problem was the tools required more from the operator than the operator had to give. Manual entry piled up, systems fell behind, and eventually everyone went back to doing it by hand. The technology wasn't the issue. The friction was.</p>
-
-<div class="pull-quote">
-  <p>The technology wasn't the issue. The friction was.</p>
-</div>
-
-<p>So I built Roof Flow to remove it. Not a new concept — just a better experience. One that worked the way a real operator works, not the way a software manual says they should.</p>
-
-<p>That project taught me something I didn't expect. The same friction exists everywhere. Dentists, lawyers, HVAC companies, real estate firms — different industries, same story. Good tools sitting unused because nobody had time to fight with them. And nobody giving business owners a straight answer on what was actually worth their time and what wasn't.</p>
-
-<p>That's the gap Kodiak Strategy was built to fill.</p>
-
-<p>Everyone knows AI is the future. But what does that actually mean for your business — your team, your workflows, your bottom line? That's the question most people can't answer. Our assessment process shows you exactly where it fits. Then we build it for you.</p>
-```
-
+    <div class="page-label">The Story</div>
+    <h2>Why Kodiak <span>exists.</span></h2>
+    <p>I have always been an entrepreneur. So when I started learning about AI and what it could do for businesses, something became clear immediately — there are thousands of business owners who know they need to start implementing AI but have no idea where to begin.</p>
+    <p>That gap is exactly where Kodiak Strategy lives.</p>
+    <p>The clearest example I saw was in the roofing industry. Working with contractors, I kept running into the same thing. The tools were there. The problem was they required more from the operator than the operator had to give. Manual entry piled up, systems fell behind, and eventually everyone went back to doing it by hand.</p>
+    <div class="pull-quote">
+      <p>The technology wasn't the issue. <span>The friction was.</span></p>
+    </div>
+    <p>So I built Roof Flow to remove it. Not a new concept — just a better experience. One that worked the way a real operator works, not the way a software manual says they should.</p>
+    <p>That project taught me something I didn't expect. The same friction exists everywhere. Dentists, lawyers, HVAC companies, real estate firms — different industries, same story. Good tools sitting unused because nobody had time to fight with them.</p>
+    <p>That's the gap Kodiak Strategy was built to fill.</p>
+    <p>Everyone knows AI is the future. But what does that actually mean for your business — your team, your workflows, your bottom line? Our assessment process shows you exactly where it fits. Then we build it for you.</p>
   </div>
 </div>
 
-<!-- BRAND VALUES -->
-
 <div class="values-section">
   <div class="values-inner">
-    <div class="region-label" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">How We Work</div>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);font-weight:300;color:var(--white);margin-bottom:16px;">Direct. Credible. <em>Local.</em></h2>
-    <p style="font-size:16px;color:var(--lgray);font-weight:300;max-width:560px;">Three words that define every client relationship, every report, and every recommendation we make.</p>
+    <div class="page-label">How We Work</div>
+    <h2>Direct. Credible. <span>Local.</span></h2>
     <div class="values-grid">
-      <div class="value-card">
-        <div class="value-word">Direct</div>
-        <p class="value-desc">We say what we mean. No buzzwords, no AI hype, no jargon. Every recommendation comes with plain language and real numbers — not a pitch.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-word">Credible</div>
-        <p class="value-desc">Every claim is backed by a number or a real example. ROI projections are built from your actual workflows and rates — not industry averages.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-word">Local</div>
-        <p class="value-desc">We are based in the Black Hills and we serve the Northern Plains. We know how businesses here operate because we are here too — not calling in from a coast.</p>
-      </div>
+      <div class="value-card"><div class="value-word">Direct</div><p class="value-desc">We say what we mean. No buzzwords, no AI hype, no jargon. Every recommendation comes with plain language and real numbers — not a pitch.</p></div>
+      <div class="value-card"><div class="value-word">Credible</div><p class="value-desc">Every claim is backed by a number or a real example. ROI projections are built from your actual workflows and rates — not industry averages.</p></div>
+      <div class="value-card"><div class="value-word">Local</div><p class="value-desc">Based in the Black Hills. Serving the Northern Plains. We know how businesses here operate because we are here too — not calling in from a coast.</p></div>
     </div>
   </div>
 </div>
 
-<!-- SERVICE REGION -->
-
 <div class="region-section">
-  <div class="region-label">Service Region</div>
-  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);font-weight:300;color:var(--white);margin-bottom:16px;">Serving the <em>Northern Plains.</em></h2>
-  <p style="font-size:16px;color:var(--lgray);font-weight:300;max-width:480px;margin:0 auto;">Based in the Black Hills. In-person assessments available across the region. Remote available nationwide.</p>
+  <div class="page-label">Service Region</div>
+  <h2>Serving the <span>Northern Plains.</span></h2>
+  <p style="font-size:16px; color:#999999; font-weight:300; max-width:480px; margin:12px auto 0;">Based in the Black Hills. In-person available across the region. Remote available nationwide.</p>
   <div class="region-states">
-    <span class="region-state">South Dakota</span>
-    <span class="region-state">North Dakota</span>
-    <span class="region-state">Montana</span>
-    <span class="region-state">Wyoming</span>
-    <span class="region-state">Minnesota</span>
-    <span class="region-state">Nebraska</span>
+    <span class="region-state">South Dakota</span><span class="region-state">North Dakota</span><span class="region-state">Montana</span><span class="region-state">Wyoming</span><span class="region-state">Minnesota</span><span class="region-state">Nebraska</span>
   </div>
 </div>
 
-<!-- CTA -->
-
 <div class="cta-section">
-  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);font-weight:300;color:var(--white);margin-bottom:16px;">Ready to find out what AI<br>is worth to <em>your</em> business?</h2>
-  <p style="font-size:16px;color:var(--lgray);max-width:440px;margin:0 auto;font-weight:300;">Book a free discovery call. No pressure, no pitch — just a real conversation about your business.</p>
+  <div class="page-label">Get Started</div>
+  <h2>Ready to find out what AI<br>can do for <span>your business?</span></h2>
+  <p style="font-size:16px; color:#999999; max-width:440px; margin:0 auto; font-weight:300;">Book a free discovery call. No pressure, no pitch — just a real conversation about your business.</p>
   <a href="/intake" class="cta-primary">Book a Free Discovery Call</a>
-  <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--gray);margin-top:16px;">Or call/text Ryan at <a href="tel:6056052558" style="color:var(--gold);text-decoration:none;">(605) 605-2558</a></p>
+  <p style="font-size:11px; color:#666666; margin-top:16px; font-family:'Courier New',monospace;">Or call Ryan at <a href="tel:6056052558" style="color:#C6A85A; text-decoration:none;">(605) 605-2558</a></p>
 </div>
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">KODIAK <span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);">Strategy</span></div>
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="/how-it-works">How It Works</a>
-      <a href="/services">Services</a>
-      <a href="/faq">FAQ</a>
-      <a href="/intake">Get Started</a>
-      <a href="/privacy">Privacy</a>
-    </div>
-    <div class="footer-contact">
-      <div><a href="tel:6056052558">(605) 605-2558</a></div>
-      <div><a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a></div>
-    </div>
+    <div><div class="footer-logo">KODIAK <span class="footer-strategy">STRATEGY</span></div><div style="font-size:10px; color:#666666; letter-spacing:0.1em; margin-top:4px; font-family:'Courier New',monospace; text-transform:uppercase;">Black Hills · AI Consulting · South Dakota</div></div>
+    <div class="footer-links"><a href="/">Home</a><a href="/how-it-works">How It Works</a><a href="/services">Services</a><a href="/faq">FAQ</a><a href="/intake">Get Started</a><a href="/privacy">Privacy</a></div>
+    <div class="footer-contact"><div><a href="tel:6056052558">(605) 605-2558</a></div><div><a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a></div></div>
   </div>
 </footer>
 </body>
