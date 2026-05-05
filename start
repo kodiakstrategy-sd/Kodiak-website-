@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kodiak Strategy — Let's Talk AI</title>
+<meta name="description" content="Thanks for scanning. Let's talk about what AI can do for your business. Kodiak Strategy — AI Consulting, Black Hills SD.">
+<link rel="canonical" href="https://kodiakstrategy.com/start">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #0B0B0B; }
+body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px; }
+.card { width: 100%; max-width: 480px; background: #111111; border: 1px solid rgba(198,168,90,0.2); border-radius: 4px; overflow: hidden; }
+.card-top { height: 3px; background: #C6A85A; }
+.card-header { padding: 48px 40px 32px; text-align: center; border-bottom: 1px solid rgba(198,168,90,0.12); }
+.logo-wordmark { font-size: 26px; font-weight: 900; letter-spacing: 0.3em; color: #FFFFFF; text-transform: uppercase; line-height: 1; }
+.logo-rule { width: 48px; height: 1px; background: #C6A85A; margin: 10px auto; opacity: 0.6; }
+.logo-strategy { font-size: 11px; font-weight: 400; letter-spacing: 0.45em; color: #C6A85A; text-transform: uppercase; font-family: 'Courier New', monospace; }
+.scan-message { padding: 36px 40px; text-align: center; border-bottom: 1px solid rgba(198,168,90,0.12); background: #0B0B0B; }
+.scan-eyebrow { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: #C6A85A; margin-bottom: 14px; font-family: 'Courier New', monospace; }
+.scan-headline { font-size: clamp(18px, 4vw, 24px); font-weight: 800; line-height: 1.2; color: #FFFFFF; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 14px; }
+.scan-headline span { color: #C6A85A; }
+.scan-body { font-size: 15px; color: #999999; font-weight: 300; line-height: 1.7; }
+.contact-section { padding: 32px 40px; border-bottom: 1px solid rgba(198,168,90,0.12); }
+.contact-label { font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase; color: #444444; margin-bottom: 10px; font-family: 'Courier New', monospace; display: block; }
+.contact-name { font-size: 17px; font-weight: 700; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+.contact-title { font-size: 11px; color: #666666; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Courier New', monospace; margin-bottom: 20px; }
+.phone-btn { display: block; background: #C6A85A; color: #0B0B0B; font-size: 20px; font-weight: 800; letter-spacing: 0.05em; padding: 16px; border-radius: 2px; text-decoration: none; text-align: center; transition: background 0.2s; margin-bottom: 10px; }
+.phone-btn:hover { background: #E0C97A; }
+.phone-sub { text-align: center; font-size: 10px; color: #444444; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Courier New', monospace; }
+.what-section { padding: 28px 40px; border-bottom: 1px solid rgba(198,168,90,0.12); }
+.what-label { font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase; color: #444444; margin-bottom: 14px; font-family: 'Courier New', monospace; display: block; }
+.what-list { display: flex; flex-direction: column; gap: 10px; }
+.what-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #999999; font-weight: 300; line-height: 1.5; }
+.what-dot { width: 4px; height: 4px; background: #C6A85A; border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+.cta-section { padding: 28px 40px; }
+.cta-btn { display: block; background: #1A1A1A; color: #C6A85A; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 14px; border-radius: 2px; text-decoration: none; text-align: center; border: 1px solid rgba(198,168,90,0.2); transition: all 0.2s; margin-bottom: 10px; font-family: 'Courier New', monospace; }
+.cta-btn:hover { border-color: #C6A85A; }
+.site-link { text-align: center; font-size: 10px; color: #333333; font-family: 'Courier New', monospace; letter-spacing: 0.08em; }
+.site-link a { color: #555555; text-decoration: none; }
+.site-link a:hover { color: #C6A85A; }
+.card-footer { background: #0B0B0B; padding: 14px 40px; text-align: center; border-top: 1px solid rgba(198,168,90,0.08); }
+.card-footer p { font-size: 8px; letter-spacing: 0.15em; text-transform: uppercase; color: #2a2a2a; font-family: 'Courier New', monospace; }
+.card-bottom { height: 3px; background: #C6A85A; }
+@media(max-width: 480px) {
+  body { padding: 24px 16px; }
+  .card-header, .scan-message, .contact-section, .what-section, .cta-section { padding-left: 24px; padding-right: 24px; }
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="card-top"></div>
+
+  <div class="card-header">
+    <div class="logo-wordmark">KODIAK</div>
+    <div class="logo-rule"></div>
+    <div class="logo-strategy">Strategy</div>
+  </div>
+
+  <div class="scan-message">
+    <div class="scan-eyebrow">Thanks for scanning</div>
+    <div class="scan-headline">Let's talk about what AI can do for <span>your business.</span></div>
+    <p class="scan-body">We help businesses across South Dakota find exactly where AI saves time and money — then we build it for you.</p>
+  </div>
+
+  <div class="contact-section">
+    <span class="contact-label">Talk to Ryan directly</span>
+    <div class="contact-name">Ryan Fagerstrom</div>
+    <div class="contact-title">Founder & AI Consultant · Kodiak Strategy</div>
+    <a href="tel:9075004010" class="phone-btn">(907) 500-4010</a>
+    <p class="phone-sub">Call or text — Ryan answers personally</p>
+  </div>
+
+  <div class="what-section">
+    <span class="what-label">What we do</span>
+    <div class="what-list">
+      <div class="what-item"><div class="what-dot"></div><span>Find every place AI can save your business time and money</span></div>
+      <div class="what-item"><div class="what-dot"></div><span>Deliver a written report with real numbers — within one week</span></div>
+      <div class="what-item"><div class="what-dot"></div><span>Present fully customized implementation options — you choose what fits</span></div>
+      <div class="what-item"><div class="what-dot"></div><span>Build it for you and manage it ongoing</span></div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <a href="https://calendly.com/kodiakstrategysd" target="_blank" class="cta-btn">Book a Free Discovery Call →</a>
+    <p class="site-link"><a href="https://kodiakstrategy.com">kodiakstrategy.com</a></p>
+  </div>
+
+  <div class="card-footer">
+    <p>Kodiak Strategy · Black Hills, South Dakota · AI Consulting</p>
+  </div>
+  <div class="card-bottom"></div>
+</div>
+</body>
+</html>
