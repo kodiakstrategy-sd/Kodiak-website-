@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kodiak Hub</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #0B0B0B; }
+body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; }
+
+/* LOGIN */
+.login-screen { position: fixed; inset: 0; background: #0B0B0B; display: flex; align-items: center; justify-content: center; z-index: 100; padding: 24px; }
+.login-card { width: 100%; max-width: 380px; background: #111111; border: 1px solid rgba(198,168,90,0.2); border-top: 2px solid #C6A85A; border-radius: 4px; padding: 40px 36px; }
+.login-logo { font-size: 22px; font-weight: 900; letter-spacing: 0.3em; color: #FFFFFF; text-transform: uppercase; text-align: center; margin-bottom: 4px; }
+.login-rule { width: 40px; height: 1px; background: #C6A85A; margin: 10px auto; }
+.login-sub { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #C6A85A; text-align: center; margin-bottom: 32px; }
+.login-label { font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #666666; display: block; margin-bottom: 8px; }
+.login-input { width: 100%; background: #1A1A1A; border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; padding: 13px 16px; font-size: 16px; color: #FFFFFF; outline: none; transition: border-color 0.2s; letter-spacing: 0.1em; text-align: center; font-family: ‘Courier New’, monospace; }
+.login-input:focus { border-color: #C6A85A; }
+.login-btn { width: 100%; background: #C6A85A; color: #0B0B0B; border: none; border-radius: 2px; padding: 13px; font-family: ‘Courier New’, monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; margin-top: 12px; transition: all 0.2s; }
+.login-btn:hover { background: #E0C97A; }
+.login-error { font-family: ‘Courier New’, monospace; font-size: 10px; color: #f87171; text-align: center; margin-top: 12px; letter-spacing: 0.08em; display: none; }
+.login-error.visible { display: block; }
+
+/* HUB */
+.hub-screen { display: none; position: relative; z-index: 1; }
+.hub-screen.visible { display: block; }
+
+.hub-header { position: sticky; top: 0; z-index: 100; background: rgba(11,11,11,0.96); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(198,168,90,0.15); padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.header-brand { display: flex; align-items: center; gap: 10px; }
+.brand-mark { font-family: ‘Courier New’, monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.3em; color: #C6A85A; }
+.brand-sep { width: 1px; height: 16px; background: rgba(198,168,90,0.2); }
+.brand-tool { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #666666; }
+.logout-btn { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.1em; color: #444444; background: none; border: none; cursor: pointer; transition: color 0.2s; }
+.logout-btn:hover { color: #f87171; }
+
+.hub-body { padding: 32px 28px; max-width: 1100px; margin: 0 auto; }
+
+/* GREETING */
+.greeting { margin-bottom: 32px; }
+.greeting-time { font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: #444444; margin-bottom: 6px; }
+.greeting-text { font-size: 22px; font-weight: 700; color: #FFFFFF; text-transform: uppercase; letter-spacing: -0.01em; }
+.greeting-text span { color: #C6A85A; }
+
+/* STATUS */
+.status-strip { background: #111111; border: 1px solid rgba(198,168,90,0.1); border-radius: 4px; padding: 16px 24px; display: flex; align-items: center; gap: 28px; margin-bottom: 32px; flex-wrap: wrap; }
+.status-item { display: flex; align-items: center; gap: 8px; }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.dot-green { background: #4ade80; box-shadow: 0 0 6px #4ade80; }
+.dot-gold { background: #C6A85A; box-shadow: 0 0 6px #C6A85A; }
+.dot-gray { background: #444444; }
+.status-text { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.06em; color: #666666; }
+.status-text strong { color: #FFFFFF; }
+
+/* TOOLS */
+.section-label { font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: #C6A85A; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.section-label::after { content: ‘’; flex: 1; height: 1px; background: rgba(198,168,90,0.15); }
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 40px; }
+.tool-card { background: #111111; border: 1px solid rgba(198,168,90,0.12); border-radius: 4px; padding: 28px 24px; text-decoration: none; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: all 0.25s; }
+.tool-card::before { content: ‘’; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: #C6A85A; transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left; }
+.tool-card:hover { background: #161616; border-color: rgba(198,168,90,0.3); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
+.tool-card:hover::before { transform: scaleX(1); }
+.tool-icon { font-size: 28px; margin-bottom: 16px; }
+.tool-num { font-family: ‘Courier New’, monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: #444444; margin-bottom: 6px; }
+.tool-name { font-size: 17px; font-weight: 700; color: #FFFFFF; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 8px; line-height: 1.2; }
+.tool-name span { color: #C6A85A; }
+.tool-desc { font-size: 13px; color: #666666; line-height: 1.7; font-weight: 300; flex: 1; margin-bottom: 20px; }
+.tool-arrow { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #C6A85A; display: flex; align-items: center; gap: 8px; transition: gap 0.2s; }
+.tool-card:hover .tool-arrow { gap: 12px; }
+
+/* QUICK LINKS */
+.links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 40px; }
+.quick-link { background: #0d1117; border: 1px solid rgba(255,255,255,0.04); border-radius: 4px; padding: 14px 18px; text-decoration: none; display: flex; align-items: center; gap: 12px; transition: all 0.2s; }
+.quick-link:hover { background: rgba(198,168,90,0.06); border-color: rgba(198,168,90,0.2); transform: translateY(-2px); }
+.ql-icon { font-size: 16px; flex-shrink: 0; }
+.ql-name { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #999999; display: block; }
+.ql-desc { font-size: 11px; color: #444444; display: block; margin-top: 2px; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+@media(max-width: 768px) {
+.hub-header { padding: 0 16px; }
+.hub-body { padding: 20px 16px; }
+.status-strip { gap: 16px; }
+.tools-grid { grid-template-columns: 1fr; }
+.links-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+
+</head>
+<body>
+
+<!-- LOGIN -->
+
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">KODIAK</div>
+    <div class="login-rule"></div>
+    <div class="login-sub">Command Hub</div>
+    <label class="login-label">Access Code</label>
+    <input type="password" class="login-input" id="passwordInput" placeholder="••••••••" onkeypress="if(event.key==='Enter')checkPassword()" />
+    <button class="login-btn" onclick="checkPassword()">Enter Hub →</button>
+    <div class="login-error" id="loginError">Incorrect access code</div>
+  </div>
+</div>
+
+<!-- HUB -->
+
+<div class="hub-screen" id="hubScreen">
+
+  <header class="hub-header">
+    <div class="header-brand">
+      <span class="brand-mark">KODIAK</span>
+      <div class="brand-sep"></div>
+      <span class="brand-tool">Command Hub</span>
+    </div>
+    <button class="logout-btn" onclick="logout()">Lock Hub</button>
+  </header>
+
+  <div class="hub-body">
+
+```
+<!-- GREETING -->
+<div class="greeting">
+  <div class="greeting-time" id="greetingTime"></div>
+  <div class="greeting-text" id="greetingText">Good morning, <span>Ryan.</span></div>
+</div>
+
+<!-- STATUS -->
+<div class="status-strip">
+  <div class="status-item"><div class="status-dot dot-green"></div><span class="status-text"><strong>kodiakstrategy.com</strong> — Live</span></div>
+  <div class="status-item"><div class="status-dot dot-gold"></div><span class="status-text"><strong>Jarvis Hub</strong> — Offline · Back soon</span></div>
+  <div class="status-item"><div class="status-dot dot-green"></div><span class="status-text"><strong>Claude API</strong> — Active</span></div>
+  <div class="status-item"><div class="status-dot dot-green"></div><span class="status-text"><strong>7 Tools</strong> — Ready</span></div>
+</div>
+
+<!-- TOOLS -->
+<div class="section-label">Core Tools</div>
+<div class="tools-grid">
+  <a class="tool-card" href="https://kodiakstrategy.com/kodiak-audit-tool" target="_blank">
+    <span class="tool-icon">📋</span>
+    <div class="tool-num">Tool 01</div>
+    <div class="tool-name">AI Assessment <span>Tool</span></div>
+    <p class="tool-desc">5-step workflow. Paste transcript, run pre-flight, get full 5-pillar analysis with ROI projections and 4-day quick wins plan.</p>
+    <div class="tool-arrow">Open Tool →</div>
+  </a>
+  <a class="tool-card" href="https://kodiakstrategy.com/kodiak-lead-tracker" target="_blank">
+    <span class="tool-icon">🎯</span>
+    <div class="tool-num">Tool 02</div>
+    <div class="tool-name">Lead <span>Tracker</span></div>
+    <p class="tool-desc">Full CRM pipeline. 12-stage status, activity log, follow-up alerts, deal value. Your leads managed in one place.</p>
+    <div class="tool-arrow">Open Tool →</div>
+  </a>
+  <a class="tool-card" href="https://kodiakstrategy.com/kodiak-email-finder" target="_blank">
+    <span class="tool-icon">🔍</span>
+    <div class="tool-num">Tool 03</div>
+    <div class="tool-name">Email <span>Finder</span></div>
+    <p class="tool-desc">AI-powered contact lookup. Enter business name and city — agent finds every email with confidence rating. Batch mode and CSV export.</p>
+    <div class="tool-arrow">Open Tool →</div>
+  </a>
+  <a class="tool-card" href="https://kodiakstrategy.com/kodiak-card-scanner" target="_blank">
+    <span class="tool-icon">📇</span>
+    <div class="tool-num">Tool 04</div>
+    <div class="tool-name">Card Scanner & <span>Outreach</span></div>
+    <p class="tool-desc">Scan a business card — AI extracts contact details. Lands in cold outreach list with pre-written email. Move to leads when they respond.</p>
+    <div class="tool-arrow">Open Tool →</div>
+  </a>
+  <a class="tool-card" href="https://kodiakstrategy.com/kodiak-content-agent" target="_blank">
+    <span class="tool-icon">📡</span>
+    <div class="tool-num">Tool 05</div>
+    <div class="tool-name">Content <span>Intelligence</span></div>
+    <p class="tool-desc">Weekly brief agent. Scans what's working — delivers synopsis, top hooks, and drafted Kodiak posts ready to publish.</p>
+    <div class="tool-arrow">Open Tool →</div>
+  </a>
+  <a class="tool-card" href="https://kodiakstrategy.com/kodiak-knowledge-base" target="_blank">
+    <span class="tool-icon">🧠</span>
+    <div class="tool-num">Tool 06</div>
+    <div class="tool-name">Knowledge <span>Base</span></div>
+    <p class="tool-desc">Personal research library. Frameworks, competitor insights, content strategies. Pre-loaded with today's key learnings.</p>
+    <div class="tool-arrow">Open Tool →</div>
+  </a>
+  <a class="tool-card" href="https://kodiakstrategy.com/kodiak-tool-database" target="_blank">
+    <span class="tool-icon">🔧</span>
+    <div class="tool-num">Tool 07</div>
+    <div class="tool-name">Client Tool <span>Database</span></div>
+    <p class="tool-desc">Tool recommendations for client assessments. Cost, ROI, pitch language, industry fit. Copy pitch in one tap.</p>
+    <div class="tool-arrow">Open Tool →</div>
+  </a>
+</div>
+
+<!-- QUICK LINKS -->
+<div class="section-label">Quick Links</div>
+<div class="links-grid">
+  <a class="quick-link" href="https://kodiakstrategy.com" target="_blank"><span class="ql-icon">🌐</span><div><span class="ql-name">Website</span><span class="ql-desc">kodiakstrategy.com</span></div></a>
+  <a class="quick-link" href="https://calendly.com/kodiakstrategysd" target="_blank"><span class="ql-icon">📅</span><div><span class="ql-name">Calendly</span><span class="ql-desc">Book discovery calls</span></div></a>
+  <a class="quick-link" href="https://buy.stripe.com/6oU28renR7fZeVqfyr1VK02" target="_blank"><span class="ql-icon">💳</span><div><span class="ql-name">Stripe</span><span class="ql-desc">$1,000 assessment link</span></div></a>
+  <a class="quick-link" href="https://jarvis-app-4c142e36.base44.app" target="_blank"><span class="ql-icon">🤖</span><div><span class="ql-name">Jarvis Hub</span><span class="ql-desc">Internal command center</span></div></a>
+  <a class="quick-link" href="mailto:kodiakstrategysd@gmail.com"><span class="ql-icon">✉️</span><div><span class="ql-name">Email</span><span class="ql-desc">kodiakstrategysd@gmail.com</span></div></a>
+  <a class="quick-link" href="tel:9075004010"><span class="ql-icon">📞</span><div><span class="ql-name">Phone</span><span class="ql-desc">(907) 500-4010</span></div></a>
+  <a class="quick-link" href="https://search.google.com/search-console" target="_blank"><span class="ql-icon">📊</span><div><span class="ql-name">Search Console</span><span class="ql-desc">Google SEO dashboard</span></div></a>
+  <a class="quick-link" href="https://business.google.com" target="_blank"><span class="ql-icon">📍</span><div><span class="ql-name">Google Business</span><span class="ql-desc">Local listing manager</span></div></a>
+</div>
+```
+
+  </div>
+</div>
+
+<script>
+// Password — change this to whatever you want
+const ACCESS_CODE = 'kodiak2026';
+const SESSION_KEY = 'kodiak_hub_auth';
+
+function checkPassword() {
+  const input = document.getElementById('passwordInput').value;
+  if (input === ACCESS_CODE) {
+    sessionStorage.setItem(SESSION_KEY, 'true');
+    showHub();
+  } else {
+    document.getElementById('loginError').classList.add('visible');
+    document.getElementById('passwordInput').value = '';
+    document.getElementById('passwordInput').focus();
+    setTimeout(() => document.getElementById('loginError').classList.remove('visible'), 3000);
+  }
+}
+
+function showHub() {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('hubScreen').classList.add('visible');
+  setGreeting();
+}
+
+function logout() {
+  sessionStorage.removeItem(SESSION_KEY);
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('hubScreen').classList.remove('visible');
+  document.getElementById('passwordInput').value = '';
+}
+
+function setGreeting() {
+  const now = new Date();
+  const hour = now.getHours();
+  const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('greetingTime').textContent = `${days[now.getDay()]} · ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+  document.getElementById('greetingText').innerHTML = `${greeting}, <span>Ryan.</span>`;
+}
+
+// Auto-login if session exists
+if (sessionStorage.getItem(SESSION_KEY) === 'true') showHub();
+</script>
+
+</body>
+</html>
