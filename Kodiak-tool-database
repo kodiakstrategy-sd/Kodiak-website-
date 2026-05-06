@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kodiak — Client Tool Database</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #0B0B0B; scroll-behavior: smooth; }
+body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; line-height: 1.7; min-height: 100vh; overflow-x: hidden; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; }
+
+.app-header { position: sticky; top: 0; z-index: 100; background: rgba(11,11,11,0.96); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(198,168,90,0.15); padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.header-left { display: flex; align-items: center; gap: 12px; }
+.brand-mark { font-family: ‘Courier New’, monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.3em; color: #C6A85A; }
+.brand-sep { width: 1px; height: 16px; background: rgba(198,168,90,0.2); }
+.brand-tool { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #666666; }
+.header-right { display: flex; align-items: center; gap: 12px; }
+.header-back { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.1em; color: #666666; text-decoration: none; }
+.header-back:hover { color: #C6A85A; }
+.add-btn { background: #C6A85A; color: #0B0B0B; border: none; border-radius: 2px; padding: 8px 20px; font-family: ‘Courier New’, monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+.add-btn:hover { background: #E0C97A; }
+
+.main { padding: 28px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+
+/* TOOLBAR */
+.toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+.search-wrap { position: relative; flex: 1; min-width: 200px; max-width: 340px; }
+.search-input { width: 100%; background: #111111; border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; padding: 10px 14px 10px 36px; font-size: 13px; color: #FFFFFF; outline: none; transition: border-color 0.2s; font-family: inherit; }
+.search-input:focus { border-color: #C6A85A; }
+.search-input::placeholder { color: #444444; }
+.search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #444444; font-size: 13px; }
+.filter-select { background: #111111; border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; padding: 10px 14px; font-family: ‘Courier New’, monospace; font-size: 10px; color: #999999; outline: none; cursor: pointer; }
+.filter-select:focus { border-color: #C6A85A; }
+.filter-select option { background: #111111; }
+.tool-count { font-family: ‘Courier New’, monospace; font-size: 10px; color: #444444; margin-left: auto; letter-spacing: 0.08em; }
+
+/* PILLAR TABS */
+.pillar-tabs { display: flex; gap: 6px; margin-bottom: 24px; flex-wrap: wrap; }
+.pillar-tab { font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 16px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.06); background: #111111; color: #666666; cursor: pointer; transition: all 0.2s; }
+.pillar-tab:hover { border-color: rgba(198,168,90,0.2); color: #999999; }
+.pillar-tab.active { background: rgba(198,168,90,0.1); border-color: #C6A85A; color: #C6A85A; }
+
+/* TOOL CARDS */
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+.tool-card { background: #111111; border: 1px solid rgba(255,255,255,0.04); border-radius: 4px; padding: 24px; transition: border-color 0.2s, transform 0.2s; animation: fadeIn 0.2s ease; }
+.tool-card:hover { border-color: rgba(198,168,90,0.2); transform: translateY(-2px); }
+.tool-card.featured { border-top: 2px solid #C6A85A; }
+.tool-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.tool-name { font-size: 16px; font-weight: 700; color: #FFFFFF; }
+.tool-badges { display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
+.badge { font-family: ‘Courier New’, monospace; font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+.badge-pillar-1 { background: rgba(198,168,90,0.12); color: #C6A85A; }
+.badge-pillar-2 { background: rgba(74,222,128,0.1); color: #4ade80; }
+.badge-pillar-3 { background: rgba(96,165,250,0.1); color: #60a5fa; }
+.badge-pillar-4 { background: rgba(248,113,113,0.1); color: #f87171; }
+.badge-route { background: rgba(167,139,250,0.12); color: #a78bfa; }
+.badge-free { background: rgba(74,222,128,0.08); color: #4ade80; }
+.tool-desc { font-size: 13px; color: #999999; line-height: 1.7; margin-bottom: 14px; font-weight: 300; }
+.tool-pitch { font-size: 13px; color: #CCCCCC; line-height: 1.6; margin-bottom: 14px; font-style: italic; padding-left: 12px; border-left: 2px solid rgba(198,168,90,0.3); }
+.tool-metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+.metric { background: #0B0B0B; border-radius: 2px; padding: 8px 10px; }
+.metric-label { font-family: ‘Courier New’, monospace; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: #444444; margin-bottom: 2px; }
+.metric-val { font-size: 13px; font-weight: 600; color: #FFFFFF; }
+.metric-val.gold { color: #C6A85A; }
+.metric-val.green { color: #4ade80; }
+.tool-industries { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px; }
+.industry-tag { font-family: ‘Courier New’, monospace; font-size: 8px; color: #444444; background: #1A1A1A; padding: 3px 8px; border-radius: 2px; }
+.tool-actions { display: flex; gap: 6px; }
+.tool-btn { font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 12px; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
+.btn-edit { background: #1A1A1A; border: 1px solid rgba(255,255,255,0.04); color: #666666; }
+.btn-edit:hover { border-color: #C6A85A; color: #C6A85A; }
+.btn-copy { background: #1A1A1A; border: 1px solid rgba(255,255,255,0.04); color: #666666; }
+.btn-copy:hover { border-color: #4ade80; color: #4ade80; }
+.btn-copy.copied { border-color: #4ade80; color: #4ade80; }
+.btn-delete:hover { border-color: #f87171; color: #f87171; }
+
+/* MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(11,11,11,0.9); backdrop-filter: blur(12px); z-index: 200; align-items: flex-start; justify-content: center; padding: 20px; overflow-y: auto; }
+.modal-overlay.visible { display: flex; }
+.modal { background: #111111; border: 1px solid rgba(198,168,90,0.2); border-top: 2px solid #C6A85A; border-radius: 4px; padding: 32px; width: 100%; max-width: 640px; margin: auto; animation: modalIn 0.25s ease; }
+@keyframes modalIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.modal-title { font-size: 20px; font-weight: 700; color: #FFFFFF; text-transform: uppercase; }
+.modal-title span { color: #C6A85A; }
+.modal-close { background: none; border: none; color: #444444; font-size: 20px; cursor: pointer; }
+.modal-close:hover { color: #FFFFFF; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-label { font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #666666; }
+input, select, textarea { background: #1A1A1A; border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; padding: 10px 14px; font-family: -apple-system, sans-serif; font-size: 13px; color: #FFFFFF; outline: none; transition: border-color 0.2s; width: 100%; }
+input:focus, select:focus, textarea:focus { border-color: #C6A85A; }
+input::placeholder, textarea::placeholder { color: #444444; }
+select option { background: #1A1A1A; }
+textarea { resize: vertical; min-height: 80px; }
+.modal-actions { display: flex; gap: 10px; margin-top: 8px; }
+.save-btn { flex: 1; background: #C6A85A; color: #0B0B0B; border: none; border-radius: 2px; padding: 12px; font-family: ‘Courier New’, monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; }
+.save-btn:hover { background: #E0C97A; }
+.cancel-btn { background: #1A1A1A; color: #666666; border: 1px solid rgba(198,168,90,0.15); border-radius: 2px; padding: 12px 20px; font-family: ‘Courier New’, monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
+.cancel-btn:hover { border-color: #C6A85A; color: #C6A85A; }
+.empty-state { text-align: center; padding: 60px 24px; }
+.empty-icon { font-size: 40px; opacity: 0.2; margin-bottom: 16px; }
+.empty-text { font-family: ‘Courier New’, monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #333333; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media(max-width: 768px) { .main { padding: 16px; } .tools-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } .app-header { padding: 0 16px; } }
+</style>
+
+</head>
+<body>
+
+<!-- MODAL -->
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Add <span>Tool</span></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <input type="hidden" id="editId" />
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Tool Name *</label><input type="text" id="f_name" placeholder="e.g. GoHighLevel" /></div>
+      <div class="form-group"><label class="form-label">Category / Pillar</label>
+        <select id="f_pillar">
+          <option value="1">Pillar 1 — AI Automation</option>
+          <option value="2">Pillar 2 — Lead Generation</option>
+          <option value="3">Pillar 3 — Digital Infrastructure</option>
+          <option value="4">Pillar 4 — Revenue Operations</option>
+          <option value="route">Route — CRM Capture</option>
+          <option value="multi">Multi-Pillar</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group"><label class="form-label">What it does *</label><textarea id="f_desc" placeholder="Plain English description of what this tool does"></textarea></div>
+    <div class="form-group"><label class="form-label">How to pitch it to a client</label><textarea id="f_pitch" placeholder="The one or two sentences you say to a client during an assessment" style="min-height:70px;"></textarea></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Monthly Cost</label><input type="text" id="f_cost" placeholder="e.g. $97/mo or Free" /></div>
+      <div class="form-group"><label class="form-label">Setup Time</label><input type="text" id="f_setup" placeholder="e.g. 30 min" /></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Time Saved / Week</label><input type="text" id="f_timeSaved" placeholder="e.g. 3-5 hrs/wk" /></div>
+      <div class="form-group"><label class="form-label">Monthly ROI Range</label><input type="text" id="f_roi" placeholder="e.g. $500-2,000/mo" /></div>
+    </div>
+    <div class="form-group"><label class="form-label">Best Industries (comma separated)</label><input type="text" id="f_industries" placeholder="e.g. Roofing, HVAC, Optometry, All" /></div>
+    <div class="form-group"><label class="form-label">Notes / Caveats</label><textarea id="f_notes" placeholder="Anything to know — limitations, setup complexity, client tech aptitude required" style="min-height:70px;"></textarea></div>
+    <div class="form-group" style="flex-direction:row;align-items:center;gap:10px;">
+      <input type="checkbox" id="f_featured" style="width:18px;height:18px;accent-color:#C6A85A;flex-shrink:0;" />
+      <label class="form-label" for="f_featured" style="cursor:pointer;">Featured — show at top of list</label>
+    </div>
+    <div class="modal-actions">
+      <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+      <button class="save-btn" onclick="saveTool()">Save Tool →</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+
+<header class="app-header">
+  <div class="header-left">
+    <span class="brand-mark">KODIAK</span>
+    <div class="brand-sep"></div>
+    <span class="brand-tool">Client Tool Database</span>
+  </div>
+  <div class="header-right">
+    <a href="kodiak-command-center.html" class="header-back">← Command Center</a>
+    <button class="add-btn" onclick="openModal()">+ Add Tool</button>
+  </div>
+</header>
+
+<div class="main">
+  <div class="toolbar">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search tools..." oninput="render()" />
+    </div>
+    <select class="filter-select" id="filterIndustry" onchange="render()">
+      <option value="">All Industries</option>
+      <option>Optometry</option><option>Dental</option><option>Medical</option>
+      <option>Law Firms</option><option>Roofing</option><option>HVAC</option>
+      <option>Real Estate</option><option>Restaurant</option><option>All</option>
+    </select>
+    <select class="filter-select" id="sortSelect" onchange="render()">
+      <option value="featured">Featured First</option>
+      <option value="az">A to Z</option>
+      <option value="roi">Highest ROI</option>
+    </select>
+    <span class="tool-count" id="toolCount">0 tools</span>
+  </div>
+
+  <div class="pillar-tabs">
+    <button class="pillar-tab active" data-pillar="all" onclick="filterPillar('all', this)">All</button>
+    <button class="pillar-tab" data-pillar="1" onclick="filterPillar('1', this)">P1 — Automation</button>
+    <button class="pillar-tab" data-pillar="2" onclick="filterPillar('2', this)">P2 — Lead Gen</button>
+    <button class="pillar-tab" data-pillar="3" onclick="filterPillar('3', this)">P3 — Infrastructure</button>
+    <button class="pillar-tab" data-pillar="4" onclick="filterPillar('4', this)">P4 — Revenue</button>
+    <button class="pillar-tab" data-pillar="route" onclick="filterPillar('route', this)">Route</button>
+  </div>
+
+  <div class="tools-grid" id="toolsGrid"></div>
+  <div class="empty-state" id="emptyState">
+    <div class="empty-icon">🔧</div>
+    <div class="empty-text">No tools yet — add your first one</div>
+  </div>
+</div>
+
+<script>
+let tools = JSON.parse(localStorage.getItem('kodiak_tools_client') || '[]');
+let activePillar = 'all';
+
+const PILLAR_BADGE = { '1':'badge-pillar-1','2':'badge-pillar-2','3':'badge-pillar-3','4':'badge-pillar-4','route':'badge-route','multi':'badge-pillar-1' };
+const PILLAR_LABEL = { '1':'Automation','2':'Lead Gen','3':'Infrastructure','4':'Revenue Ops','route':'Route','multi':'Multi-Pillar' };
+
+function save() { localStorage.setItem('kodiak_tools_client', JSON.stringify(tools)); }
+function genId() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
+
+function openModal(id = null) {
+  const isEdit = !!id;
+  document.getElementById('editId').value = id || '';
+  if (isEdit) {
+    const t = tools.find(x => x.id === id);
+    if (!t) return;
+    document.getElementById('f_name').value = t.name || '';
+    document.getElementById('f_pillar').value = t.pillar || '1';
+    document.getElementById('f_desc').value = t.desc || '';
+    document.getElementById('f_pitch').value = t.pitch || '';
+    document.getElementById('f_cost').value = t.cost || '';
+    document.getElementById('f_setup').value = t.setup || '';
+    document.getElementById('f_timeSaved').value = t.timeSaved || '';
+    document.getElementById('f_roi').value = t.roi || '';
+    document.getElementById('f_industries').value = (t.industries || []).join(', ');
+    document.getElementById('f_notes').value = t.notes || '';
+    document.getElementById('f_featured').checked = t.featured || false;
+  } else {
+    ['f_name','f_desc','f_pitch','f_cost','f_setup','f_timeSaved','f_roi','f_industries','f_notes'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('f_pillar').value = '1';
+    document.getElementById('f_featured').checked = false;
+  }
+  document.getElementById('modalOverlay').classList.add('visible');
+  setTimeout(() => document.getElementById('f_name').focus(), 100);
+}
+
+function closeModal() { document.getElementById('modalOverlay').classList.remove('visible'); }
+
+function saveTool() {
+  const name = document.getElementById('f_name').value.trim();
+  if (!name) { document.getElementById('f_name').focus(); return; }
+  const editId = document.getElementById('editId').value;
+  const data = {
+    name, pillar: document.getElementById('f_pillar').value,
+    desc: document.getElementById('f_desc').value,
+    pitch: document.getElementById('f_pitch').value,
+    cost: document.getElementById('f_cost').value,
+    setup: document.getElementById('f_setup').value,
+    timeSaved: document.getElementById('f_timeSaved').value,
+    roi: document.getElementById('f_roi').value,
+    industries: document.getElementById('f_industries').value.split(',').map(t=>t.trim()).filter(Boolean),
+    notes: document.getElementById('f_notes').value,
+    featured: document.getElementById('f_featured').checked,
+    updatedAt: Date.now()
+  };
+  if (editId) {
+    const idx = tools.findIndex(t => t.id === editId);
+    if (idx > -1) tools[idx] = { ...tools[idx], ...data };
+  } else {
+    tools.unshift({ id: genId(), ...data, createdAt: Date.now() });
+  }
+  save(); render(); closeModal();
+}
+
+function deleteTool(id) {
+  if (!confirm('Remove this tool?')) return;
+  tools = tools.filter(t => t.id !== id);
+  save(); render();
+}
+
+function filterPillar(pillar, btn) {
+  activePillar = pillar;
+  document.querySelectorAll('.pillar-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function copyPitch(id, btn) {
+  const t = tools.find(x => x.id === id);
+  if (!t) return;
+  const text = `${t.name}\n${t.pitch || t.desc}\nCost: ${t.cost || 'TBD'} | Time saved: ${t.timeSaved || 'TBD'} | ROI: ${t.roi || 'TBD'}`;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy Pitch'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function render() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const industry = document.getElementById('filterIndustry').value;
+  const sort = document.getElementById('sortSelect').value;
+
+  let filtered = tools.filter(t => {
+    const matchPillar = activePillar === 'all' || t.pillar === activePillar;
+    const matchIndustry = !industry || (t.industries || []).some(i => i.toLowerCase().includes(industry.toLowerCase()) || i === 'All');
+    const matchSearch = !search || (t.name + t.desc + t.pitch + (t.industries||[]).join(' ')).toLowerCase().includes(search);
+    return matchPillar && matchIndustry && matchSearch;
+  });
+
+  if (sort === 'az') filtered.sort((a,b) => a.name.localeCompare(b.name));
+  else if (sort === 'roi') filtered.sort((a,b) => (b.roi||'').localeCompare(a.roi||''));
+  else filtered.sort((a,b) => (b.featured?1:0) - (a.featured?1:0) || b.createdAt - a.createdAt);
+
+  document.getElementById('toolCount').textContent = `${filtered.length} tool${filtered.length !== 1 ? 's' : ''}`;
+  const grid = document.getElementById('toolsGrid');
+  const empty = document.getElementById('emptyState');
+
+  if (!filtered.length) {
+    grid.innerHTML = '';
+    empty.style.display = tools.length ? 'none' : 'block';
+    if (tools.length) grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;font-family:'Courier New',monospace;font-size:11px;color:#333;">No tools match your filters</div>`;
+    return;
+  }
+  empty.style.display = 'none';
+
+  grid.innerHTML = filtered.map(t => `
+    <div class="tool-card ${t.featured ? 'featured' : ''}">
+      <div class="tool-top">
+        <div class="tool-name">${t.name}</div>
+        <div class="tool-badges">
+          <span class="badge ${PILLAR_BADGE[t.pillar] || 'badge-pillar-1'}">${PILLAR_LABEL[t.pillar] || t.pillar}</span>
+          ${t.cost && t.cost.toLowerCase().includes('free') ? '<span class="badge badge-free">Free</span>' : ''}
+        </div>
+      </div>
+      <div class="tool-desc">${t.desc || ''}</div>
+      ${t.pitch ? `<div class="tool-pitch">"${t.pitch}"</div>` : ''}
+      <div class="tool-metrics">
+        <div class="metric"><div class="metric-label">Cost</div><div class="metric-val gold">${t.cost || '—'}</div></div>
+        <div class="metric"><div class="metric-label">Setup</div><div class="metric-val">${t.setup || '—'}</div></div>
+        <div class="metric"><div class="metric-label">ROI</div><div class="metric-val green">${t.roi || '—'}</div></div>
+      </div>
+      ${t.timeSaved ? `<div style="font-family:'Courier New',monospace;font-size:10px;color:#C6A85A;margin-bottom:10px;">⏱ ${t.timeSaved} returned per week</div>` : ''}
+      ${t.industries?.length ? `<div class="tool-industries">${t.industries.map(i=>`<span class="industry-tag">${i}</span>`).join('')}</div>` : ''}
+      ${t.notes ? `<div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:12px;font-style:italic;">${t.notes}</div>` : ''}
+      <div class="tool-actions">
+        <button class="tool-btn btn-edit" onclick="openModal('${t.id}')">Edit</button>
+        <button class="tool-btn btn-copy" onclick="copyPitch('${t.id}', this)">Copy Pitch</button>
+        <button class="tool-btn btn-delete" style="background:#1A1A1A;border:1px solid rgba(255,255,255,0.04);color:#444;" onclick="deleteTool('${t.id}')">✕</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Seed with core tools
+if (tools.length === 0) {
+  const seed = [
+    { id:genId(), name:'Route', pillar:'route', desc:'Voice-first AI capture layer. Speak a brain dump — Route parses every actionable item and routes it to the right place in the CRM automatically. No manual data entry.', pitch:'You finish a site visit with 6 follow-ups in your head. Speak them into Route on the drive back. CRM is updated before you hit the next job.', cost:'TBD', setup:'15 min', timeSaved:'3-5 hrs/wk', roi:'$500-2,000/mo', industries:['All'], notes:'Kodiak product. Built independently. Recommend in every assessment.', featured:true, createdAt:Date.now() },
+    { id:genId(), name:'AI Phone Receptionist (Smith.ai / Goodcall)', pillar:'1', desc:'AI answers every incoming call, qualifies the lead, books appointments, and sends follow-up texts. Works 24/7 including after hours and weekends.', pitch:'You\'re on a roof. Call comes in. Goes to voicemail. They\'ve called someone else by the time you check it. This answers every call and books the estimate.', cost:'$140-300/mo', setup:'2-4 hrs', timeSaved:'4-6 hrs/wk', roi:'$1,000-5,000/mo', industries:['Roofing','HVAC','Dental','Medical','Law Firms'], notes:'High ROI for any business that misses calls. Requires a business phone number to forward.', featured:true, createdAt:Date.now()-1000 },
+    { id:genId(), name:'Insurance Verification Automation (Weave / Availity)', pillar:'1', desc:'Automated eligibility verification — checks every patient on tomorrow\'s schedule overnight. Front desk walks in with a verified list, no portal-by-portal manual checking.', pitch:'Your front desk spends the first two hours every morning on insurance portals. This happens overnight while the office is closed. They walk in with a clean list.', cost:'$150-400/mo', setup:'4-8 hrs', timeSaved:'8-12 hrs/wk', roi:'$500-2,000/mo', industries:['Optometry','Dental','Medical'], notes:'Massive ROI for any medical practice. Tech aptitude: medium required.', featured:true, createdAt:Date.now()-2000 },
+    { id:genId(), name:'Google Review Automation (NiceJob / Birdeye)', pillar:'2', desc:'Automatically sends review requests to customers after service completion. Integrates with most scheduling and CRM systems. Filters unhappy customers before they hit Google.', pitch:'Most businesses get reviews from maybe 5% of happy customers because asking feels awkward. This asks every customer automatically right after the job. Most practices see 3-5x more reviews in 60 days.', cost:'$75-300/mo', setup:'1-2 hrs', timeSaved:'2-3 hrs/wk', roi:'$500-3,000/mo', industries:['All'], notes:'Universal win. Every business needs reviews. Zero tech aptitude required.', featured:true, createdAt:Date.now()-3000 },
+    { id:genId(), name:'Buffer', pillar:'2', desc:'Post to Instagram, Facebook, LinkedIn, and X simultaneously from one interface. Schedule posts in advance. Eliminates the friction of posting to multiple platforms separately.', pitch:'You create the content once and it goes everywhere. No logging into four different apps. No reformatting for each platform. One click.', cost:'Free / $15-18/mo', setup:'20 min', timeSaved:'1-2 hrs/wk', roi:'$200-500/mo', industries:['All'], notes:'Quick win candidate. Under 30 min setup. Free to start.', featured:false, createdAt:Date.now()-4000 },
+    { id:genId(), name:'Otter.ai', pillar:'1', desc:'AI meeting transcription and notes. Records conversations, transcribes in real time, creates searchable notes. Far superior to Apple Notes or Siri for business conversations.', pitch:'You\'re in a client meeting. You\'re listening and talking — not taking notes. Otter records, transcribes, and gives you a searchable summary before you\'re back to your desk.', cost:'Free / $17/mo', setup:'15 min', timeSaved:'2-3 hrs/wk', roi:'$300-800/mo', industries:['All'], notes:'Quick win. Works on any phone. Essential for assessments and client meetings.', featured:false, createdAt:Date.now()-5000 },
+    { id:genId(), name:'AI Website Chatbot (Tidio / Intercom)', pillar:'3', desc:'AI chatbot answers routine customer questions 24/7 — hours, pricing, services, booking links. Handles 80% of repetitive inquiries automatically.', pitch:'Your team answers the same 10 questions every day. What are your hours, do you take insurance, how long does it take. This handles all of it. Your team handles the work that needs a person.', cost:'Free / $29-100/mo', setup:'1-2 hrs', timeSaved:'3-5 hrs/wk', roi:'$300-1,500/mo', industries:['All'], notes:'Quick win candidate. Free tier available. Medium tech aptitude required.', featured:false, createdAt:Date.now()-6000 },
+    { id:genId(), name:'Online Booking (Calendly / Acuity)', pillar:'3', desc:'Customers book appointments directly without phone calls. Syncs with Google Calendar. Sends automatic reminders. Eliminates phone-tag for scheduling.', pitch:'Every appointment that gets booked by phone costs 5-8 minutes of staff time. At 20 appointments a day that\'s 2 hours of phone calls that disappear with a booking link.', cost:'Free / $16-20/mo', setup:'30-60 min', timeSaved:'2-4 hrs/wk', roi:'$300-1,000/mo', industries:['All'], notes:'Universal quick win. Free tier works for most businesses.', featured:false, createdAt:Date.now()-7000 },
+    { id:genId(), name:'Virtual Staging AI', pillar:'2', desc:'AI-generated virtual staging for real estate photos. $1 per photo versus $50+ from professional photographers. Upload empty room photos, get staged versions in minutes.', pitch:'You\'re spending $50 a photo for staging. This does the same thing for $1. On a 20-photo listing that\'s $980 back in your pocket every single listing.', cost:'$1/photo', setup:'10 min', timeSaved:'1-2 hrs/listing', roi:'$500-2,000/mo', industries:['Real Estate'], notes:'Realtor-specific. Massive ROI. Zero tech aptitude required.', featured:false, createdAt:Date.now()-8000 },
+    { id:genId(), name:'GoHighLevel', pillar:'multi', desc:'All-in-one CRM, pipeline management, email/SMS automation, landing pages, and reputation management. Enterprise-level marketing platform for small business pricing.', pitch:'Everything your business needs to manage leads, follow up automatically, collect reviews, and track your pipeline — one platform, one login.', cost:'$97-297/mo', setup:'8-20 hrs', timeSaved:'8-15 hrs/wk', roi:'$1,000-5,000/mo', industries:['Roofing','HVAC','Real Estate','Insurance'], notes:'High complexity. Requires high tech aptitude or Kodiak implementation. Best for businesses with 5+ employees managing active pipelines.', featured:false, createdAt:Date.now()-9000 },
+  ];
+  tools = seed;
+  save();
+}
+
+render();
+</script>
+
+</body>
+</html>
