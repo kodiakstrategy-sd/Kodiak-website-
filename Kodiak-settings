@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kodiak — Settings</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #0B0B0B; }
+body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+.app-header { position: sticky; top: 0; z-index: 100; background: rgba(11,11,11,0.96); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(198,168,90,0.15); padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.header-left { display: flex; align-items: center; gap: 12px; }
+.brand-mark { font-family: ‘Courier New’, monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.3em; color: #C6A85A; }
+.brand-sep { width: 1px; height: 16px; background: rgba(198,168,90,0.2); }
+.brand-tool { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #666666; }
+.header-back { font-family: ‘Courier New’, monospace; font-size: 10px; color: #666666; text-decoration: none; }
+.header-back:hover { color: #C6A85A; }
+
+.main { max-width: 640px; margin: 0 auto; padding: 40px 28px; }
+
+.section { background: #111111; border: 1px solid rgba(198,168,90,0.15); border-top: 2px solid #C6A85A; border-radius: 4px; padding: 32px; margin-bottom: 20px; }
+
+.section-title { font-size: 16px; font-weight: 700; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.section-desc { font-size: 13px; color: #666666; line-height: 1.6; margin-bottom: 24px; font-family: ‘Courier New’, monospace; }
+
+.field-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.field-label { font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #666666; }
+.field-input { background: #1A1A1A; border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; padding: 12px 16px; font-family: ‘Courier New’, monospace; font-size: 12px; color: #FFFFFF; outline: none; transition: border-color 0.2s; width: 100%; }
+.field-input:focus { border-color: #C6A85A; }
+.field-input::placeholder { color: #333333; }
+.field-input.masked { letter-spacing: 0.1em; }
+
+.save-btn { background: #C6A85A; color: #0B0B0B; border: none; border-radius: 2px; padding: 12px 32px; font-family: ‘Courier New’, monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+.save-btn:hover { background: #E0C97A; }
+
+.status-bar { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 2px; margin-bottom: 20px; font-family: ‘Courier New’, monospace; font-size: 11px; letter-spacing: 0.06em; }
+.status-bar.connected { background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.2); color: #4ade80; }
+.status-bar.disconnected { background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.2); color: #f87171; }
+.status-bar.testing { background: rgba(198,168,90,0.08); border: 1px solid rgba(198,168,90,0.2); color: #C6A85A; }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.dot-green { background: #4ade80; }
+.dot-red { background: #f87171; }
+.dot-gold { background: #C6A85A; animation: pulse 1s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.test-btn { background: #1A1A1A; border: 1px solid rgba(198,168,90,0.2); border-radius: 2px; padding: 10px 20px; font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #C6A85A; cursor: pointer; transition: all 0.2s; margin-left: 10px; }
+.test-btn:hover { border-color: #C6A85A; background: rgba(198,168,90,0.05); }
+.clear-btn { background: #1A1A1A; border: 1px solid rgba(248,113,113,0.2); border-radius: 2px; padding: 10px 20px; font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #f87171; cursor: pointer; transition: all 0.2s; margin-left: 10px; }
+.clear-btn:hover { border-color: #f87171; background: rgba(248,113,113,0.05); }
+
+.btn-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.info-card { background: #1A1A1A; border-radius: 2px; padding: 12px 16px; }
+.info-key { font-family: ‘Courier New’, monospace; font-size: 8px; letter-spacing: 0.15em; text-transform: uppercase; color: #444444; margin-bottom: 4px; }
+.info-val { font-size: 12px; color: #FFFFFF; font-family: ‘Courier New’, monospace; }
+.info-val.gold { color: #C6A85A; }
+
+.sql-block { background: #0B0B0B; border: 1px solid rgba(198,168,90,0.1); border-radius: 2px; padding: 16px; font-family: ‘Courier New’, monospace; font-size: 10px; color: #666666; line-height: 1.8; margin-bottom: 16px; overflow-x: auto; white-space: pre; }
+.copy-sql-btn { background: #1A1A1A; border: 1px solid rgba(198,168,90,0.15); border-radius: 2px; padding: 8px 16px; font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: #666666; cursor: pointer; transition: all 0.2s; }
+.copy-sql-btn:hover { border-color: #C6A85A; color: #C6A85A; }
+.copy-sql-btn.copied { border-color: #4ade80; color: #4ade80; }
+
+.warning-box { background: rgba(248,113,113,0.06); border: 1px solid rgba(248,113,113,0.2); border-radius: 2px; padding: 12px 16px; font-size: 12px; color: #f87171; font-family: ‘Courier New’, monospace; line-height: 1.6; margin-bottom: 16px; }
+
+@media(max-width: 768px) { .main { padding: 20px 16px; } .info-grid { grid-template-columns: 1fr; } }
+</style>
+
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-left">
+    <span class="brand-mark">KODIAK</span>
+    <div class="brand-sep"></div>
+    <span class="brand-tool">Settings & Configuration</span>
+  </div>
+  <a href="hub" class="header-back">← Command Hub</a>
+</header>
+
+<div class="main">
+
+  <!-- CONNECTION STATUS -->
+
+  <div class="status-bar disconnected" id="statusBar">
+    <div class="status-dot dot-red" id="statusDot"></div>
+    <span id="statusText">Not connected — enter your Supabase anon key below</span>
+  </div>
+
+  <!-- SUPABASE CONFIG -->
+
+  <div class="section">
+    <div class="section-title">Supabase Connection</div>
+    <div class="section-desc">Your API key is stored only on this device. It never leaves your browser and is never sent anywhere except directly to Supabase.</div>
+
+```
+<div class="info-grid">
+  <div class="info-card">
+    <div class="info-key">Project URL</div>
+    <div class="info-val gold">flhnntxmikmppcoucdky.supabase.co</div>
+  </div>
+  <div class="info-card">
+    <div class="info-key">Status</div>
+    <div class="info-val" id="infoStatus">Not connected</div>
+  </div>
+</div>
+
+<div class="warning-box">⚠ Never share your anon key publicly or commit it to GitHub. This settings page stores it only in your browser's localStorage on this device.</div>
+
+<div class="field-group">
+  <label class="field-label">Supabase Anon Key</label>
+  <input type="password" class="field-input masked" id="anonKey" placeholder="eyJ..." autocomplete="off" onkeypress="if(event.key==='Enter')saveKey()" />
+</div>
+
+<div class="btn-row">
+  <button class="save-btn" onclick="saveKey()">Save & Connect</button>
+  <button class="test-btn" onclick="testConnection()">Test Connection</button>
+  <button class="clear-btn" onclick="clearKey()">Clear Key</button>
+</div>
+```
+
+  </div>
+
+  <!-- DATABASE SETUP -->
+
+  <div class="section">
+    <div class="section-title">Database Setup</div>
+    <div class="section-desc">Run this SQL in your Supabase dashboard → SQL Editor to create all required tables. Only needs to be done once.</div>
+
+```
+<div class="sql-block" id="sqlBlock">-- Run this in Supabase SQL Editor
+```
+
+create table if not exists leads (
+id text primary key,
+name text, business text, industry text,
+city text, phone text, email text,
+status text, deal_value numeric, source text,
+follow_up_date text, notes text,
+activity jsonb default ‘[]’,
+created_at bigint
+);
+
+create table if not exists contacts (
+id text primary key,
+name text, title text, business text,
+email text, phone text, website text,
+city text, status text, source text,
+activity jsonb default ‘[]’,
+added_at bigint
+);
+
+create table if not exists knowledge (
+id text primary key,
+title text, category text, summary text,
+source text, application text,
+tags jsonb default ‘[]’,
+created_at bigint, updated_at bigint
+);
+
+create table if not exists client_tools (
+id text primary key,
+name text, pillar text,
+tool_desc text, pitch text,
+cost text, setup text,
+time_saved text, roi text,
+industries jsonb default ‘[]’,
+notes text, featured boolean default false,
+created_at bigint
+);
+
+create table if not exists vertical_solutions (
+id text primary key,
+vert_id text, vert_name text, vert_icon text,
+sol_name text, pillar text, problem text,
+pitch text,
+before_points jsonb default ‘[]’,
+after_points jsonb default ‘[]’,
+cost text, setup text, time_saved text,
+notes text, featured boolean default false,
+created_at bigint
+);</div>
+<button class="copy-sql-btn" id="copySqlBtn" onclick="copySQL()">Copy SQL</button>
+
+  </div>
+
+  <!-- DATA MIGRATION -->
+
+  <div class="section">
+    <div class="section-title">Migrate Existing Data</div>
+    <div class="section-desc">Push your existing localStorage data up to Supabase. Run after connecting and creating tables.</div>
+    <div class="btn-row">
+      <button class="test-btn" onclick="migrateData('leads', 'kodiak_leads')">Migrate Leads</button>
+      <button class="test-btn" onclick="migrateData('contacts', 'kodiak_contacts')">Migrate Contacts</button>
+      <button class="test-btn" onclick="migrateData('knowledge', 'kodiak_knowledge')">Migrate Knowledge</button>
+      <button class="test-btn" onclick="migrateData('client_tools', 'kodiak_tools_client')">Migrate Tools</button>
+    </div>
+    <div id="migrateStatus" style="font-family:'Courier New',monospace;font-size:10px;color:#666;margin-top:12px;"></div>
+  </div>
+
+</div>
+
+<script>
+const SUPABASE_URL = 'https://flhnntxmikmppcoucdky.supabase.co';
+const KEY_STORE = 'kodiak_supabase_key';
+
+function getKey() { return localStorage.getItem(KEY_STORE) || ''; }
+
+function saveKey() {
+  const key = document.getElementById('anonKey').value.trim();
+  if (!key || key.length < 20) {
+    setStatus('disconnected', 'Key too short — paste the full anon key from Supabase');
+    return;
+  }
+  localStorage.setItem(KEY_STORE, key);
+  document.getElementById('anonKey').value = '';
+  setStatus('testing', 'Key saved — testing connection...');
+  setTimeout(testConnection, 500);
+}
+
+function clearKey() {
+  localStorage.removeItem(KEY_STORE);
+  document.getElementById('anonKey').value = '';
+  setStatus('disconnected', 'Key cleared');
+  document.getElementById('infoStatus').textContent = 'Not connected';
+}
+
+async function testConnection() {
+  const key = getKey();
+  if (!key) { setStatus('disconnected', 'No key saved — enter your anon key above'); return; }
+  setStatus('testing', 'Testing connection...');
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/leads?limit=1`, {
+      headers: {
+        'apikey': key,
+        'Authorization': `Bearer ${key}`,
+        'Content-Type': 'application/json'
+      }
+    });
+    if (res.ok) {
+      setStatus('connected', 'Connected to Supabase — all tools are now synced');
+      document.getElementById('infoStatus').textContent = 'Connected ✓';
+      document.getElementById('infoStatus').style.color = '#4ade80';
+    } else if (res.status === 401 || res.status === 403) {
+      setStatus('disconnected', `Auth failed (${res.status}) — double check you copied the anon key not the service key`);
+    } else if (res.status === 404) {
+      setStatus('connected', 'Connected — run the SQL above to create your tables');
+      document.getElementById('infoStatus').textContent = 'Connected — needs tables';
+      document.getElementById('infoStatus').style.color = '#C6A85A';
+    } else if (res.status === 406) {
+      setStatus('connected', 'Connected to Supabase successfully');
+      document.getElementById('infoStatus').textContent = 'Connected ✓';
+      document.getElementById('infoStatus').style.color = '#4ade80';
+    } else {
+      const body = await res.text();
+      setStatus('disconnected', `Failed (${res.status}) — ${body.slice(0, 80)}`);
+    }
+  } catch(e) {
+    setStatus('disconnected', `Network error — ${e.message}`);
+  }
+}
+
+function setStatus(type, msg) {
+  const bar = document.getElementById('statusBar');
+  const dot = document.getElementById('statusDot');
+  const text = document.getElementById('statusText');
+  bar.className = `status-bar ${type}`;
+  dot.className = `status-dot dot-${type === 'connected' ? 'green' : type === 'testing' ? 'gold' : 'red'}`;
+  text.textContent = msg;
+}
+
+function copySQL() {
+  const sql = document.getElementById('sqlBlock').textContent;
+  navigator.clipboard.writeText(sql).then(() => {
+    const btn = document.getElementById('copySqlBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy SQL'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+async function migrateData(table, localKey) {
+  const key = getKey();
+  if (!key) { document.getElementById('migrateStatus').textContent = 'Connect first before migrating.'; return; }
+  const data = JSON.parse(localStorage.getItem(localKey) || '[]');
+  if (!data.length) { document.getElementById('migrateStatus').textContent = `No local data found for ${table}.`; return; }
+
+  document.getElementById('migrateStatus').textContent = `Migrating ${data.length} ${table} records...`;
+
+  // Remap field names for client_tools
+  const remapped = data.map(item => {
+    if (table === 'client_tools') {
+      const { desc, ...rest } = item;
+      return { ...rest, tool_desc: desc };
+    }
+    return item;
+  });
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+      method: 'POST',
+      headers: {
+        'apikey': key,
+        'Authorization': `Bearer ${key}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'resolution=merge-duplicates'
+      },
+      body: JSON.stringify(remapped)
+    });
+    if (res.ok || res.status === 201) {
+      document.getElementById('migrateStatus').textContent = `✓ ${data.length} ${table} records migrated to Supabase.`;
+    } else {
+      const err = await res.text();
+      document.getElementById('migrateStatus').textContent = `Error migrating ${table}: ${err}`;
+    }
+  } catch(e) {
+    document.getElementById('migrateStatus').textContent = `Network error: ${e.message}`;
+  }
+}
+
+// Auto-test on load if key exists
+if (getKey()) {
+  document.getElementById('anonKey').placeholder = 'Key saved — click Test Connection to verify';
+  testConnection();
+}
+</script>
+
+</body>
+</html>
