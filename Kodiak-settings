@@ -139,7 +139,7 @@ name text, business text, industry text,
 city text, phone text, email text,
 status text, deal_value numeric, source text,
 follow_up_date text, notes text,
-activity jsonb default ‘[]’,
+activity jsonb default ‘[]’::jsonb,
 created_at bigint
 );
 
@@ -148,7 +148,7 @@ id text primary key,
 name text, title text, business text,
 email text, phone text, website text,
 city text, status text, source text,
-activity jsonb default ‘[]’,
+activity jsonb default ‘[]’::jsonb,
 added_at bigint
 );
 
@@ -156,7 +156,7 @@ create table if not exists knowledge (
 id text primary key,
 title text, category text, summary text,
 source text, application text,
-tags jsonb default ‘[]’,
+tags jsonb default ‘[]’::jsonb,
 created_at bigint, updated_at bigint
 );
 
@@ -166,7 +166,7 @@ name text, pillar text,
 tool_desc text, pitch text,
 cost text, setup text,
 time_saved text, roi text,
-industries jsonb default ‘[]’,
+industries jsonb default ‘[]’::jsonb,
 notes text, featured boolean default false,
 created_at bigint
 );
@@ -176,8 +176,8 @@ id text primary key,
 vert_id text, vert_name text, vert_icon text,
 sol_name text, pillar text, problem text,
 pitch text,
-before_points jsonb default ‘[]’,
-after_points jsonb default ‘[]’,
+before_points jsonb default ‘[]’::jsonb,
+after_points jsonb default ‘[]’::jsonb,
 cost text, setup text, time_saved text,
 notes text, featured boolean default false,
 created_at bigint
