@@ -200,6 +200,17 @@ created_at bigint
     <div id="migrateStatus" style="font-family:'Courier New',monospace;font-size:10px;color:#666;margin-top:12px;"></div>
   </div>
 
+  <!-- SEED DEFAULT DATA -->
+
+  <div class="section">
+    <div class="section-title">Seed Default Data</div>
+    <div class="section-desc">Push Kodiak's starter data directly to Supabase — pre-loaded leads, knowledge base entries, and client tools. Safe to run multiple times.</div>
+    <div class="btn-row">
+      <button class="save-btn" onclick="seedAllData()">Seed All Default Data →</button>
+    </div>
+    <div id="seedStatus" style="font-family:'Courier New',monospace;font-size:10px;color:#666;margin-top:12px;line-height:1.8;"></div>
+  </div>
+
 </div>
 
 <script>
@@ -318,6 +329,77 @@ async function migrateData(table, localKey) {
   } catch(e) {
     document.getElementById('migrateStatus').textContent = `Network error: ${e.message}`;
   }
+}
+
+async function seedAllData() {
+  const key = getKey();
+  if (!key) { document.getElementById('seedStatus').textContent = 'Connect first.'; return; }
+  const status = document.getElementById('seedStatus');
+  status.textContent = 'Seeding data...';
+
+  const now = Date.now();
+  const genId = () => Math.random().toString(36).slice(2) + Date.now().toString(36);
+
+  // ── KNOWLEDGE ──
+  const knowledge = [
+    { id: genId(), title: 'Job-to-done → Outcome Framework', category: 'framework', summary: 'Stop asking what the job is. Ask what outcome they are trying to reach. Everyone else automates the job. We rethink the process and work backward from the desired outcome.', source: 'Internal — Ryan Fagerstrom', application: 'Reframes every assessment. The five outcome questions are now standard in every interview.', tags: ['frameworks','assessment','positioning','core'], created_at: now, updated_at: now },
+    { id: genId(), title: 'Corey Ganim — AI Tools Assessment Framework', category: 'competitor', summary: '3-step system: $999 assessment call → AI analysis → report → review call closes upsell. 40% say they dont want to implement themselves. Upsell menu: Process Optimization $3-5K, Automation Builds $1-3K, Full Implementation $5-10K+.', source: 'LinkedIn — Corey Ganim', application: 'This is the framework Kodiak Strategy is built on. Coreys model is personal brand. Ours is client-facing. Different positioning, same foundation.', tags: ['competitor','framework','pricing','assessment'], created_at: now - 1000, updated_at: now - 1000 },
+    { id: genId(), title: '3-Layer Claude System — Plugins, Context, Workflows', category: 'framework', summary: 'Layer 1: Plugins (skills). Layer 2: Context files (memory) — about-me.md, brand-voice.md, current-projects.md. Layer 3: Workflows — chain plugins and context to kill busywork.', source: 'LinkedIn post', application: 'We already have this system — KODIAK_CONTENT_VOICE.md and KODIAK_WEEKLY.md are our context files.', tags: ['frameworks','AI','productivity','systems'], created_at: now - 2000, updated_at: now - 2000 },
+    { id: genId(), title: 'Kodiak Content Voice Formula', category: 'content', summary: 'Image: 5-8 words, one idea. Caption structure: hook → false assumption → make it real → simple explanation → we fix that → soft CTA. Never more than 150 words. Every post ends with: Book an Assessment.', source: 'Internal — Kodiak Content SOP', application: 'Master reference for all content. Paste KODIAK_CONTENT_VOICE.md into any Claude session before writing.', tags: ['content','voice','social','brand'], created_at: now - 3000, updated_at: now - 3000 },
+    { id: genId(), title: 'Assess → Optimize → Automate', category: 'framework', summary: 'Never automate before you optimize. A broken process automated just breaks faster. Map the process, eliminate waste, THEN automate the streamlined version.', source: 'Internal methodology', application: 'Phase 3 of every Kodiak engagement. Built into the assessment tool. Key differentiator.', tags: ['frameworks','assessment','methodology','core'], created_at: now - 4000, updated_at: now - 4000 },
+    { id: genId(), title: 'Product Market Fit — Time to Value', category: 'strategy', summary: 'Only two things matter: time to value (how fast does someone land and understand) and content efficiency (15 min max creation rule). One post a day, real and fast, is the distribution engine.', source: 'Internal — Ryan Fagerstrom', application: 'Drives all content and website decisions. Stop polishing, start publishing.', tags: ['strategy','content','product','distribution'], created_at: now - 5000, updated_at: now - 5000 },
+  ];
+
+  // ── CLIENT TOOLS ──
+  const client_tools = [
+    { id: genId(), name: 'Route', pillar: 'route', tool_desc: 'Voice-first AI capture layer. Speak a brain dump — Route parses every actionable item and routes it to the right place automatically. No manual data entry.', pitch: 'You finish a site visit with 6 follow-ups in your head. Speak them into Route on the drive back. CRM is updated before you hit the next job.', cost: 'TBD', setup: '15 min', time_saved: '3-5 hrs/wk', roi: '$500-2,000/mo', industries: ['All'], notes: 'Kodiak product. Recommend in every assessment.', featured: true, created_at: now },
+    { id: genId(), name: 'AI Phone Receptionist', pillar: '1', tool_desc: 'AI answers every incoming call, qualifies the lead, books appointments, and sends follow-up texts. Works 24/7.', pitch: 'You are on a roof. Call comes in. Goes to voicemail. They called someone else before you checked it. This answers every call and books the estimate.', cost: '$140-300/mo', setup: '2-4 hrs', time_saved: '4-6 hrs/wk', roi: '$1,000-5,000/mo', industries: ['Roofing','HVAC','Dental','Medical','Law Firms'], notes: 'High ROI for any business that misses calls.', featured: true, created_at: now - 1000 },
+    { id: genId(), name: 'Insurance Verification Automation', pillar: '1', tool_desc: 'Automated eligibility verification — checks every patient overnight. Front desk walks in with a verified list.', pitch: 'Your front desk spends two hours every morning on insurance portals. This happens overnight while the office is closed.', cost: '$150-400/mo', setup: '4-8 hrs', time_saved: '8-12 hrs/wk', roi: '$500-2,000/mo', industries: ['Optometry','Dental','Medical'], notes: 'Massive ROI for any medical practice.', featured: true, created_at: now - 2000 },
+    { id: genId(), name: 'Google Review Automation', pillar: '2', tool_desc: 'Automatically sends review requests after service completion. Filters unhappy customers before they hit Google.', pitch: 'Most businesses get reviews from 5% of happy customers. This asks every customer automatically right after the job.', cost: '$75-300/mo', setup: '1-2 hrs', time_saved: '2-3 hrs/wk', roi: '$500-3,000/mo', industries: ['All'], notes: 'Universal win. Zero tech aptitude required.', featured: true, created_at: now - 3000 },
+    { id: genId(), name: 'Buffer', pillar: '2', tool_desc: 'Post to Instagram, Facebook, LinkedIn, and X simultaneously from one interface. Schedule posts in advance.', pitch: 'You create the content once and it goes everywhere. No logging into four different apps.', cost: 'Free / $15-18/mo', setup: '20 min', time_saved: '1-2 hrs/wk', roi: '$200-500/mo', industries: ['All'], notes: 'Quick win candidate. Free to start.', featured: false, created_at: now - 4000 },
+    { id: genId(), name: 'Otter.ai', pillar: '1', tool_desc: 'AI meeting transcription and notes. Records, transcribes in real time, creates searchable summaries.', pitch: 'You are in a client meeting. You are listening and talking — not taking notes. Otter records and gives you a searchable summary before you are back at your desk.', cost: 'Free / $17/mo', setup: '15 min', time_saved: '2-3 hrs/wk', roi: '$300-800/mo', industries: ['All'], notes: 'Quick win. Works on any phone.', featured: false, created_at: now - 5000 },
+    { id: genId(), name: 'AI Website Chatbot', pillar: '3', tool_desc: 'AI chatbot answers routine customer questions 24/7 — hours, pricing, services, booking links.', pitch: 'Your team answers the same 10 questions every day. This handles all of it. Your team handles work that needs a person.', cost: 'Free / $29-100/mo', setup: '1-2 hrs', time_saved: '3-5 hrs/wk', roi: '$300-1,500/mo', industries: ['All'], notes: 'Quick win candidate. Free tier available.', featured: false, created_at: now - 6000 },
+    { id: genId(), name: 'Online Booking', pillar: '3', tool_desc: 'Customers book appointments directly without phone calls. Syncs with Google Calendar. Sends automatic reminders.', pitch: 'Every appointment booked by phone costs 5-8 minutes of staff time. At 20 appointments a day that is 2 hours of phone calls that disappear with a booking link.', cost: 'Free / $16-20/mo', setup: '30-60 min', time_saved: '2-4 hrs/wk', roi: '$300-1,000/mo', industries: ['All'], notes: 'Universal quick win. Free tier works for most.', featured: false, created_at: now - 7000 },
+    { id: genId(), name: 'GoHighLevel', pillar: 'multi', tool_desc: 'All-in-one CRM, pipeline management, email/SMS automation, landing pages, and reputation management.', pitch: 'Everything your business needs to manage leads, follow up automatically, collect reviews, and track your pipeline — one platform.', cost: '$97-297/mo', setup: '8-20 hrs', time_saved: '8-15 hrs/wk', roi: '$1,000-5,000/mo', industries: ['Roofing','HVAC','Real Estate','Insurance'], notes: 'High complexity. Requires high tech aptitude or Kodiak implementation.', featured: false, created_at: now - 8000 },
+  ];
+
+  // ── LEADS ──
+  const leads = [
+    { id: genId(), name: 'Dr. Taylor Haley', business: 'Haley Optical', industry: 'Optometry', city: 'Black Hills, SD', phone: '', email: '', status: 'Warm', deal_value: 5000, source: 'Personal', follow_up_date: '', notes: 'Brother-in-law. First completed assessment. Do not contact — wait for him to initiate.', activity: [], created_at: now },
+    { id: genId(), name: 'Austin Paul', business: 'Design North Roofing', industry: 'Roofing', city: 'Juneau, AK', phone: '', email: '', status: 'Warm', deal_value: 3000, source: 'Personal', follow_up_date: '', notes: 'Warm personal connection. Follow up by phone.', activity: [], created_at: now - 1000 },
+    { id: genId(), name: "Marv's Body Shop", business: "Marv's Body Shop", industry: 'Auto Body', city: 'South Dakota', phone: '', email: '', status: 'Hot', deal_value: 8000, source: 'Door Knock', follow_up_date: '', notes: 'Very interested. Multiple locations. Pain points: receptionist bottleneck, manual quote review, inexperienced staff. Presentation delivered. Follow up this week.', activity: [], created_at: now - 2000 },
+  ];
+
+  const tables = [
+    { name: 'knowledge', data: knowledge },
+    { name: 'client_tools', data: client_tools },
+    { name: 'leads', data: leads },
+  ];
+
+  let results = [];
+  for (const { name, data } of tables) {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/${name}`, {
+        method: 'POST',
+        headers: {
+          'apikey': key,
+          'Authorization': `Bearer ${key}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'resolution=merge-duplicates'
+        },
+        body: JSON.stringify(data)
+      });
+      if (res.ok || res.status === 201) {
+        results.push(`✓ ${data.length} ${name} records seeded`);
+      } else {
+        const err = await res.text();
+        results.push(`✗ ${name} failed: ${err.slice(0, 100)}`);
+      }
+    } catch(e) {
+      results.push(`✗ ${name} error: ${e.message}`);
+    }
+  }
+  status.innerHTML = results.join('<br>');
 }
 
 // Auto-test on load if key exists
