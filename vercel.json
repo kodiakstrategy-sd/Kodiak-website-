@@ -6,6 +6,11 @@
       "has": [{ "type": "host", "value": "www.kodiakstrategy.com" }],
       "destination": "https://kodiakstrategy.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/Home",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "headers": [
