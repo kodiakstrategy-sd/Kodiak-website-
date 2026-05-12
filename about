@@ -85,8 +85,8 @@ footer { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); paddi
 
 <div class="page-hero">
   <div class="page-label">About</div>
-  <h1>I saw a gap between knowing AI matters and knowing what to actually do with it. <span>Kodiak Strategy exists to help business owners cross that gap.</span></h1>
-  <p class="page-sub">Understanding the business always comes before recommending the technology.</p>
+  <h1>Built from a <span>real problem.</span></h1>
+  <p class="page-sub">Where can AI help your business?</p>
 </div>
 
 <div class="profile-section">
