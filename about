@@ -85,8 +85,8 @@ footer { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); paddi
 
 <div class="page-hero">
   <div class="page-label">About</div>
-  <h1>Built from a real problem, <span>not a resume.</span></h1>
-  <p class="page-sub">Kodiak Strategy was founded on one idea — understanding the business always comes before recommending the technology.</p>
+  <h1>I saw a gap between knowing AI matters and knowing what to actually do with it. <span>Kodiak Strategy exists to help business owners cross that gap.</span></h1>
+  <p class="page-sub">Understanding the business always comes before recommending the technology.</p>
 </div>
 
 <div class="profile-section">
@@ -120,6 +120,7 @@ footer { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); paddi
     <p>That project taught me something I didn't expect. The same friction exists everywhere. Dentists, lawyers, HVAC companies, real estate firms — different industries, same story. Good tools sitting unused because nobody had time to fight with them.</p>
     <p>That's the gap Kodiak Strategy was built to fill.</p>
     <p>Everyone knows AI is the future. But what does that actually mean for your business — your team, your workflows, your bottom line? Our assessment process shows you exactly where it fits. Then we build it for you.</p>
+    <p>When he's not working, Ryan spends his time with his wife Mallorie and their four kids.</p>
   </div>
 </div>
 
