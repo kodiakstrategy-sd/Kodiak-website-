@@ -10,118 +10,292 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { background: #0B0B0B; scroll-behavior: smooth; }
-body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; min-height: 100vh; }
-.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 48px 28px 40px; max-width: 560px; margin: 0 auto; }
-.hero-eyebrow { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.3em; color: #C6A85A; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-.hero-eyebrow::before { content: ''; width: 24px; height: 1px; background: #C6A85A; }
-.hero-name { font-size: 36px; font-weight: 900; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1; margin-bottom: 4px; }
-.hero-sub { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.25em; color: #C6A85A; text-transform: uppercase; margin-bottom: 28px; }
+body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; }
+
+.wrap { max-width: 580px; margin: 0 auto; padding: 0 24px; }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 56px 24px 48px; max-width: 580px; margin: 0 auto; }
+.hero-eyebrow { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.3em; color: #C6A85A; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.hero-eyebrow::before { content: ‘’; width: 24px; height: 1px; background: #C6A85A; }
+.hero-wordmark { font-size: 38px; font-weight: 900; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1; margin-bottom: 4px; }
+.hero-wordmark-sub { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.28em; color: #C6A85A; text-transform: uppercase; margin-bottom: 28px; }
 .hero-rule { width: 40px; height: 2px; background: #C6A85A; margin-bottom: 28px; }
-.hero-headline { font-size: 26px; font-weight: 800; color: #FFFFFF; line-height: 1.25; margin-bottom: 18px; }
+.hero-headline { font-size: 28px; font-weight: 800; color: #FFFFFF; line-height: 1.2; margin-bottom: 18px; }
 .hero-headline span { color: #C6A85A; }
-.hero-body { font-size: 15px; color: #999999; line-height: 1.8; margin-bottom: 36px; }
-.cta-stack { display: flex; flex-direction: column; gap: 12px; margin-bottom: 48px; }
-.cta-primary { display: block; background: #C6A85A; color: #0B0B0B; text-decoration: none; text-align: center; padding: 16px 24px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
-.cta-primary:hover { background: #E0C97A; }
-.cta-secondary { display: block; background: transparent; color: #C6A85A; text-decoration: none; text-align: center; padding: 16px 24px; border-radius: 3px; border: 1px solid rgba(198,168,90,0.3); font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; }
-.cta-secondary:hover { border-color: #C6A85A; }
-.what-section { padding: 0 28px 60px; max-width: 560px; margin: 0 auto; }
-.section-label { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.25em; color: #444; text-transform: uppercase; margin-bottom: 24px; }
-.service-card { background: #111111; border: 1px solid rgba(255,255,255,0.05); border-left: 2px solid #C6A85A; border-radius: 3px; padding: 20px; margin-bottom: 12px; }
-.service-level { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.2em; color: #C6A85A; text-transform: uppercase; margin-bottom: 6px; }
-.service-name { font-size: 15px; font-weight: 700; color: #FFFFFF; margin-bottom: 6px; }
-.service-desc { font-size: 13px; color: #777; line-height: 1.6; }
-.process-section { padding: 0 28px 60px; max-width: 560px; margin: 0 auto; }
-.process-item { display: flex; gap: 16px; margin-bottom: 24px; }
-.process-num { font-size: 28px; font-weight: 900; color: rgba(198,168,90,0.25); line-height: 1; flex-shrink: 0; width: 36px; }
-.process-text-title { font-size: 13px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
-.process-text-desc { font-size: 13px; color: #666; line-height: 1.6; }
-.contact-section { padding: 0 28px 80px; max-width: 560px; margin: 0 auto; }
-.contact-card { background: #111; border: 1px solid rgba(198,168,90,0.2); border-top: 2px solid #C6A85A; border-radius: 4px; padding: 28px 24px; }
-.contact-name { font-size: 18px; font-weight: 800; color: #FFFFFF; margin-bottom: 2px; }
-.contact-title { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.2em; color: #C6A85A; text-transform: uppercase; margin-bottom: 20px; }
+.hero-body { font-size: 15px; color: #999; line-height: 1.85; margin-bottom: 36px; }
+.cta-stack { display: flex; flex-direction: column; gap: 12px; }
+.btn-gold { display: block; background: #C6A85A; color: #0B0B0B; text-decoration: none; text-align: center; padding: 16px 24px; border-radius: 3px; font-family: ‘Courier New’, monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
+.btn-gold:hover { background: #E0C97A; }
+.btn-outline { display: block; background: transparent; color: #C6A85A; text-decoration: none; text-align: center; padding: 15px 24px; border-radius: 3px; border: 1px solid rgba(198,168,90,0.3); font-family: ‘Courier New’, monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; }
+.btn-outline:hover { border-color: #C6A85A; background: rgba(198,168,90,0.04); }
+
+/* SECTION */
+.section { padding: 56px 24px; max-width: 580px; margin: 0 auto; }
+.section-eyebrow { font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.25em; color: #444; text-transform: uppercase; margin-bottom: 20px; }
+.section-headline { font-size: 24px; font-weight: 800; color: #FFFFFF; line-height: 1.25; margin-bottom: 14px; }
+.section-headline span { color: #C6A85A; }
+.section-body { font-size: 14px; color: #888; line-height: 1.85; margin-bottom: 24px; }
+
+/* STAT BLOCK */
+.stat-block { background: #111; border: 1px solid rgba(198,168,90,0.2); border-left: 3px solid #C6A85A; border-radius: 3px; padding: 20px 22px; margin-bottom: 16px; }
+.stat-num { font-size: 36px; font-weight: 900; color: #C6A85A; line-height: 1; margin-bottom: 6px; }
+.stat-label { font-size: 13px; color: #888; line-height: 1.6; }
+
+/* DIVIDER */
+.divider { height: 1px; background: rgba(198,168,90,0.08); margin: 0 24px; }
+
+/* SOLUTION CARDS */
+.solution-card { background: #111; border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; padding: 24px; margin-bottom: 14px; }
+.solution-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; gap: 12px; }
+.solution-name { font-size: 16px; font-weight: 800; color: #FFFFFF; margin-bottom: 4px; }
+.solution-tag { font-family: ‘Courier New’, monospace; font-size: 8px; letter-spacing: 0.12em; color: #C6A85A; background: rgba(198,168,90,0.08); padding: 4px 10px; border-radius: 2px; text-transform: uppercase; white-space: nowrap; flex-shrink: 0; }
+.solution-desc { font-size: 13px; color: #777; line-height: 1.75; margin-bottom: 14px; }
+.solution-points { display: flex; flex-direction: column; gap: 6px; }
+.solution-point { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: #999; line-height: 1.5; }
+.solution-point::before { content: ‘→’; color: #C6A85A; flex-shrink: 0; font-size: 11px; margin-top: 1px; }
+
+/* ROUTE BLOCK */
+.route-block { background: #C6A85A; border-radius: 4px; padding: 28px 24px; margin-bottom: 14px; }
+.route-wordmark { font-size: 22px; font-weight: 900; letter-spacing: 0.2em; color: #0B0B0B; margin-bottom: 2px; }
+.route-by { font-size: 11px; color: rgba(11,11,11,0.55); font-style: italic; margin-bottom: 16px; }
+.route-headline { font-size: 17px; font-weight: 800; color: #0B0B0B; margin-bottom: 10px; line-height: 1.3; }
+.route-desc { font-size: 13px; color: rgba(11,11,11,0.7); line-height: 1.75; margin-bottom: 18px; }
+.route-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.route-step { background: rgba(11,11,11,0.1); border-radius: 3px; padding: 10px 12px; }
+.route-step-label { font-family: ‘Courier New’, monospace; font-size: 8px; font-weight: 700; letter-spacing: 0.15em; color: #0B0B0B; margin-bottom: 3px; }
+.route-step-desc { font-size: 11px; color: rgba(11,11,11,0.65); line-height: 1.4; }
+
+/* HOW WE WORK */
+.step-item { display: flex; gap: 18px; margin-bottom: 28px; }
+.step-num { font-size: 30px; font-weight: 900; color: rgba(198,168,90,0.2); line-height: 1; flex-shrink: 0; width: 38px; }
+.step-title { font-size: 14px; font-weight: 700; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+.step-desc { font-size: 13px; color: #666; line-height: 1.65; }
+
+/* CONTACT */
+.contact-block { background: #111; border: 1px solid rgba(198,168,90,0.2); border-top: 2px solid #C6A85A; border-radius: 4px; padding: 28px 24px; }
+.contact-name { font-size: 20px; font-weight: 800; color: #FFFFFF; margin-bottom: 2px; }
+.contact-title { font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.18em; color: #C6A85A; text-transform: uppercase; margin-bottom: 22px; }
 .contact-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-.contact-icon { font-size: 16px; width: 20px; flex-shrink: 0; }
+.contact-icon { font-size: 16px; width: 22px; flex-shrink: 0; }
 .contact-val { font-size: 14px; color: #CCCCCC; text-decoration: none; }
 .contact-val:hover { color: #C6A85A; }
-.catchphrase { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.2em; color: #333; text-transform: uppercase; text-align: center; padding: 24px 28px; }
+
+.footer-tag { font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.22em; color: #2A2A2A; text-transform: uppercase; text-align: center; padding: 28px 24px 40px; }
 </style>
+
 </head>
 <body>
 
+<!-- HERO -->
+
 <div class="hero">
-  <div class="hero-eyebrow">Kodiak Strategy</div>
-  <div class="hero-name">KODIAK</div>
-  <div class="hero-sub">Strategy &nbsp;·&nbsp; Black Hills, SD</div>
+  <div class="hero-eyebrow">Black Hills, South Dakota</div>
+  <div class="hero-wordmark">KODIAK</div>
+  <div class="hero-wordmark-sub">Strategy &nbsp;·&nbsp; AI Consulting</div>
   <div class="hero-rule"></div>
   <div class="hero-headline">Where can AI <span>actually help</span> your business?</div>
-  <div class="hero-body">We work with business owners across South Dakota to answer that question — then build the solutions that make it happen. No generic recommendations. No tech jargon. Just a real conversation about your operation and a clear picture of what's possible.</div>
+  <div class="hero-body">We work with business owners across South Dakota to answer that question — then build the systems that make it happen. No generic tools. No tech jargon. A real conversation about your operation and a clear plan for what's possible.</div>
   <div class="cta-stack">
-    <a href="tel:9075004010" class="cta-primary">📞 Call Ryan — (907) 500-4010</a>
-    <a href="mailto:ryan@kodiakstrategy.com" class="cta-secondary">✉ ryan@kodiakstrategy.com</a>
-    <a href="https://kodiakstrategy.com/intake" class="cta-secondary">Book a Free Discovery Call →</a>
+    <a href="tel:9075004010" class="btn-gold">📞 Call Ryan — (907) 500-4010</a>
+    <a href="https://kodiakstrategy.com/intake" class="btn-outline">Book a Free Discovery Call →</a>
+    <a href="mailto:ryan@kodiakstrategy.com" class="btn-outline">✉ ryan@kodiakstrategy.com</a>
   </div>
 </div>
 
-<div class="what-section">
-  <div class="section-label">What We Build</div>
-  <div class="service-card">
-    <div class="service-level">Level 1</div>
-    <div class="service-name">AI Website Assistant</div>
-    <div class="service-desc">Answers customer questions, captures leads, and books appointments on your website — 24 hours a day without any staff involvement.</div>
+<div class="divider"></div>
+
+<!-- SPEED TO LEAD -->
+
+<div class="section">
+  <div class="section-eyebrow">The #1 Revenue Leak We Fix</div>
+  <div class="section-headline">Most businesses lose clients before they ever <span>talk to them.</span></div>
+  <div class="section-body">When a potential customer reaches out — through your website, a missed call, or a contact form — how long before someone on your team responds? For most businesses the honest answer is hours. Sometimes the next day. By then they've already moved on.</div>
+
+  <div class="stat-block">
+    <div class="stat-num">9x</div>
+    <div class="stat-label">You are 9 times more likely to close a lead if you respond within 5 minutes versus 30 minutes. After an hour the odds drop off a cliff.</div>
   </div>
-  <div class="service-card">
-    <div class="service-level">Level 2</div>
-    <div class="service-name">AI Phone Receptionist</div>
-    <div class="service-desc">Every call answered, every time. Handles status updates, books appointments, and routes complex calls to your team — after hours and weekends included.</div>
+
+  <div class="stat-block">
+    <div class="stat-num">78%</div>
+    <div class="stat-label">Of customers go with the first business that responds. Not the best one. Not the cheapest one. The first one.</div>
   </div>
-  <div class="service-card">
-    <div class="service-level">Level 3 — In Development</div>
-    <div class="service-name">AI Chief of Staff</div>
-    <div class="service-desc">A fully integrated command center built around your operation. Connects every system you use and surfaces what matters — every morning, in one place.</div>
+
+  <div class="section-body" style="margin-top:20px;margin-bottom:0;">Speed to Lead is the single highest-impact fix in any sales-driven business. We build systems that respond to every new lead within 60 seconds — automatically — so your team never loses a client to slow response time again.</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SOLUTIONS -->
+
+<div class="section">
+  <div class="section-eyebrow">What We Build</div>
+  <div class="section-headline">AI systems built around <span>how your business actually runs.</span></div>
+  <div class="section-body" style="margin-bottom:28px;">Every solution we build starts with understanding your operation. We never recommend something until we know exactly where it makes sense for you.</div>
+
+  <!-- Speed to Lead -->
+
+  <div class="solution-card">
+    <div class="solution-card-top">
+      <div class="solution-name">Speed to Lead System</div>
+      <span class="solution-tag">Highest ROI</span>
+    </div>
+    <div class="solution-desc">Every new lead gets a response within 60 seconds — text, email, or both. The system qualifies them automatically, answers basic questions, and books a call or appointment before your team ever gets involved.</div>
+    <div class="solution-points">
+      <div class="solution-point">Responds to every inbound lead in under 60 seconds</div>
+      <div class="solution-point">Qualifies leads automatically with targeted questions</div>
+      <div class="solution-point">Books appointments without any staff involvement</div>
+      <div class="solution-point">Works from your website, missed calls, and contact forms</div>
+      <div class="solution-point">Your team only gets involved when the lead is ready</div>
+    </div>
   </div>
-  <div class="service-card" style="border-left-color:#C6A85A;background:rgba(198,168,90,0.04);">
-    <div class="service-level" style="color:#E0C97A;">A Kodiak Product</div>
-    <div class="service-name">Route</div>
-    <div class="service-desc">Update your CRM without ever opening it. Speak a voice memo between jobs — Route parses every task, follow-up, and note and puts each one exactly where it belongs.</div>
+
+  <!-- AI Website Assistant -->
+
+  <div class="solution-card">
+    <div class="solution-card-top">
+      <div class="solution-name">AI Website Assistant</div>
+      <span class="solution-tag">Always On</span>
+    </div>
+    <div class="solution-desc">An AI assistant built specifically for your business and embedded on your website. It answers customer questions, captures contact information, and books appointments — 24 hours a day, without any staff involvement.</div>
+    <div class="solution-points">
+      <div class="solution-point">Answers questions specific to your business instantly</div>
+      <div class="solution-point">Captures leads your team would have missed after hours</div>
+      <div class="solution-point">Books appointments directly into your calendar</div>
+      <div class="solution-point">Converts website visitors into booked consultations</div>
+    </div>
+  </div>
+
+  <!-- AI Phone Receptionist -->
+
+  <div class="solution-card">
+    <div class="solution-card-top">
+      <div class="solution-name">AI Phone Receptionist</div>
+      <span class="solution-tag">Zero Missed Calls</span>
+    </div>
+    <div class="solution-desc">Every call answered, every time. Your AI receptionist handles status updates, books appointments, qualifies callers, and routes complex calls to the right person — after hours, weekends, and holidays included.</div>
+    <div class="solution-points">
+      <div class="solution-point">Answers every inbound call immediately — 24/7</div>
+      <div class="solution-point">Handles routine questions and status updates automatically</div>
+      <div class="solution-point">Books appointments without staff involvement</div>
+      <div class="solution-point">Sounds like a real receptionist — not a robot</div>
+      <div class="solution-point">Logs and transcribes every call automatically</div>
+    </div>
+  </div>
+
+  <!-- Reputation & Reviews -->
+
+  <div class="solution-card">
+    <div class="solution-card-top">
+      <div class="solution-name">Reputation & Review System</div>
+      <span class="solution-tag">More 5-Star Reviews</span>
+    </div>
+    <div class="solution-desc">Automatically sends review requests after every completed job or appointment. Filters unhappy customers before they reach Google. Builds your reputation on autopilot while you focus on the work.</div>
+    <div class="solution-points">
+      <div class="solution-point">Review requests sent automatically after every job</div>
+      <div class="solution-point">Unhappy customers redirected before they post publicly</div>
+      <div class="solution-point">Google rating improves consistently over time</div>
+      <div class="solution-point">Works while you sleep — zero additional overhead</div>
+    </div>
+  </div>
+
+  <!-- Seasonal Outreach -->
+
+  <div class="solution-card">
+    <div class="solution-card-top">
+      <div class="solution-name">Seasonal Outreach Engine</div>
+      <span class="solution-tag">Recurring Revenue</span>
+    </div>
+    <div class="solution-desc">Automatically contacts your past customers before every peak season. Spring tune-ups, fall checkups, annual reminders — your existing customer base becomes a predictable revenue engine without anyone picking up the phone.</div>
+    <div class="solution-points">
+      <div class="solution-point">Campaigns run automatically before every season</div>
+      <div class="solution-point">Past customers reactivated without manual outreach</div>
+      <div class="solution-point">Bookings filled before the season starts</div>
+      <div class="solution-point">Works for HVAC, roofing, dental, medical, and more</div>
+    </div>
+  </div>
+
+  <!-- AI Chief of Staff -->
+
+  <div class="solution-card" style="border-color:rgba(198,168,90,0.2);">
+    <div class="solution-card-top">
+      <div class="solution-name">AI Chief of Staff</div>
+      <span class="solution-tag" style="background:rgba(198,168,90,0.15);color:#E0C97A;">In Development</span>
+    </div>
+    <div class="solution-desc">A fully integrated command center built around your operation. Connects every system you use — phone, CRM, scheduling, staff knowledge, reputation — and surfaces what matters to you every single morning in one place.</div>
+    <div class="solution-points">
+      <div class="solution-point">Morning briefing — open items, priorities, alerts</div>
+      <div class="solution-point">Fully integrated over all your existing systems</div>
+      <div class="solution-point">Staff knowledge base — your SOPs always accessible</div>
+      <div class="solution-point">Voice capture via Route — no manual data entry</div>
+      <div class="solution-point">Early access available — reach out to get on the list</div>
+    </div>
+  </div>
+
+  <!-- Route -->
+
+  <div class="route-block">
+    <div class="route-wordmark">R O U T E</div>
+    <div class="route-by">by Kodiak Strategy</div>
+    <div class="route-headline">Update your CRM without ever opening it.</div>
+    <div class="route-desc">Your team is in the field all day — not at a computer. Route turns a spoken voice memo into organized, routed data. Speak everything on your mind between jobs and Route puts each item exactly where it belongs.</div>
+    <div class="route-steps">
+      <div class="route-step"><div class="route-step-label">DUMP</div><div class="route-step-desc">Speak everything — one voice memo</div></div>
+      <div class="route-step"><div class="route-step-label">PARSE</div><div class="route-step-desc">AI breaks it into tasks and notes</div></div>
+      <div class="route-step"><div class="route-step-label">REVIEW</div><div class="route-step-desc">30-second confirmation</div></div>
+      <div class="route-step"><div class="route-step-label">ROUTE</div><div class="route-step-desc">Everything lands where it belongs</div></div>
+    </div>
   </div>
 </div>
 
-<div class="process-section">
-  <div class="section-label">How It Works</div>
-  <div class="process-item">
-    <div class="process-num">01</div>
+<div class="divider"></div>
+
+<!-- HOW WE WORK -->
+
+<div class="section">
+  <div class="section-eyebrow">How It Works</div>
+  <div class="section-headline">We move fast and <span>make an impact first.</span></div>
+  <div class="section-body" style="margin-bottom:32px;">Most clients ask us to stay on retainer after the first build. That's the goal — show you real results before we ever talk about an ongoing relationship.</div>
+
+  <div class="step-item">
+    <div class="step-num">01</div>
     <div>
-      <div class="process-text-title">Free Discovery Call</div>
-      <div class="process-text-desc">We learn your operation. No pitch, no pressure. Just a real conversation about how your business runs.</div>
+      <div class="step-title">Free Discovery Call</div>
+      <div class="step-desc">We learn your operation. No pitch, no pressure. We want to understand the business before we recommend anything.</div>
     </div>
   </div>
-  <div class="process-item">
-    <div class="process-num">02</div>
+  <div class="step-item">
+    <div class="step-num">02</div>
     <div>
-      <div class="process-text-title">We Build Fast</div>
-      <div class="process-text-desc">Most Level 1 and 2 solutions are live within one to two weeks. We move quickly and you see results fast.</div>
+      <div class="step-title">We Build Fast</div>
+      <div class="step-desc">Most solutions are live within one to two weeks. We move quickly because your time and revenue matter.</div>
     </div>
   </div>
-  <div class="process-item">
-    <div class="process-num">03</div>
+  <div class="step-item">
+    <div class="step-num">03</div>
     <div>
-      <div class="process-text-title">Real Impact</div>
-      <div class="process-text-desc">Calls answered, leads captured, time saved. You feel it within the first month.</div>
+      <div class="step-title">You Feel It Immediately</div>
+      <div class="step-desc">Calls answered, leads captured, time saved. The impact shows up in the first month — not the first quarter.</div>
     </div>
   </div>
-  <div class="process-item">
-    <div class="process-num">04</div>
+  <div class="step-item" style="margin-bottom:0;">
+    <div class="step-num">04</div>
     <div>
-      <div class="process-text-title">We Stay &amp; Keep Building</div>
-      <div class="process-text-desc">We manage everything ongoing and keep adding as your operation grows. Most clients ask us to stay on retainer after the first build.</div>
+      <div class="step-title">We Stay and Keep Building</div>
+      <div class="step-desc">We manage everything ongoing and keep adding as your operation grows. One partner, everything handled.</div>
     </div>
   </div>
 </div>
 
-<div class="contact-section">
-  <div class="section-label">Get In Touch</div>
-  <div class="contact-card">
+<div class="divider"></div>
+
+<!-- CONTACT -->
+
+<div class="section">
+  <div class="section-eyebrow">Let's Talk</div>
+  <div class="section-headline" style="margin-bottom:24px;">Start with a <span>free discovery call.</span></div>
+  <div class="contact-block">
     <div class="contact-name">Ryan Fagerstrom</div>
     <div class="contact-title">Founder &amp; AI Consultant · Kodiak Strategy</div>
     <div class="contact-row"><span class="contact-icon">📞</span><a href="tel:9075004010" class="contact-val">(907) 500-4010</a></div>
@@ -131,7 +305,7 @@ body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helveti
   </div>
 </div>
 
-<div class="catchphrase">Assess &nbsp;·&nbsp; Optimize &nbsp;·&nbsp; Automate</div>
+<div class="footer-tag">Assess &nbsp;·&nbsp; Optimize &nbsp;·&nbsp; Automate</div>
 
 </body>
 </html>
