@@ -660,16 +660,25 @@ white-space: nowrap;
 
   <!-- PHOTO CAPTURE BUTTONS -->
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
     <button onclick="document.getElementById('cardInputCamera').click()" style="background:#C6A85A;color:#0B0B0B;border:none;border-radius:6px;padding:16px;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
       📷 Take Photo
     </button>
     <button onclick="document.getElementById('cardInputLibrary').click()" style="background:#1A1A1A;color:#C6A85A;border:1px solid #C6A85A;border-radius:6px;padding:16px;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
       🖼 Choose Photo
     </button>
-    <input type="file" id="cardInputCamera" class="upload-input" accept="image/*" capture="environment" onchange="handleFile(event)" />
-    <input type="file" id="cardInputLibrary" class="upload-input" accept="image/*" multiple onchange="handleFiles(event)" />
   </div>
+
+  <!-- MANUAL ENTRY BUTTON -->
+
+  <button onclick="openManualEntry()" style="width:100%;background:#111;color:#666;border:1px dashed rgba(198,168,90,0.25);border-radius:6px;padding:12px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;margin-bottom:16px;transition:all 0.2s;" onmouseover="this.style.borderColor='#C6A85A';this.style.color='#C6A85A'" onmouseout="this.style.borderColor='rgba(198,168,90,0.25)';this.style.color='#666'">
+    ✏️ Enter Manually — no photo needed
+  </button>
+
+```
+<input type="file" id="cardInputCamera" class="upload-input" accept="image/*" capture="environment" onchange="handleFile(event)" />
+<input type="file" id="cardInputLibrary" class="upload-input" accept="image/*" multiple onchange="handleFiles(event)" />
+```
 
   <!-- PREVIEW -->
 
@@ -821,6 +830,18 @@ function updateCounts() {
   document.getElementById('countConverted').textContent = converted;
 }
 
+// ── MANUAL ENTRY ──
+function openManualEntry() {
+  ['ex_name','ex_title','ex_business','ex_email','ex_phone','ex_website','ex_city','ex_notes'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('previewSection').style.display = 'none';
+  document.getElementById('scanLoading').classList.remove('visible');
+  document.getElementById('extractedFields').classList.add('visible');
+  document.getElementById('scannerActions').classList.add('visible');
+  setTimeout(() => document.getElementById('ex_name').focus(), 100);
+}
+
 // ── FILE HANDLING ──
 function handleFile(event) {
   const file = event.target.files[0];
@@ -887,11 +908,15 @@ async function extractCard(base64) {
   document.getElementById('extractedFields').classList.remove('visible');
   document.getElementById('scannerActions').classList.remove('visible');
 
+  const claudeKey = localStorage.getItem('kodiak_claude_key') || '';
+
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'x-api-key': claudeKey,
+        'anthropic-version': '2023-06-01',
         'anthropic-dangerous-direct-browser-access': 'true'
       },
       body: JSON.stringify({
@@ -1036,6 +1061,11 @@ function removeBatchItem(i) {
 }
 
 async function processBatch() {
+  const claudeKey = localStorage.getItem('kodiak_claude_key') || '';
+  if (!claudeKey) {
+    alert('Claude API key not set. Go to Settings and add your Claude API key.');
+    return;
+  }
   const btn = document.getElementById('batchProcessBtn');
   btn.disabled = true;
   btn.textContent = `Processing 0 of ${batchQueue.length}...`;
@@ -1052,6 +1082,8 @@ async function processBatch() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'x-api-key': claudeKey,
+          'anthropic-version': '2023-06-01',
           'anthropic-dangerous-direct-browser-access': 'true'
         },
         body: JSON.stringify({
@@ -1067,6 +1099,7 @@ async function processBatch() {
         })
       });
       const data = await response.json();
+      if (data.error) throw new Error(data.error.message);
       const text = data.content?.map(b => b.text || '').join('') || '';
       const clean = text.replace(/```json|```/g, '').trim();
       const extracted = JSON.parse(clean);
@@ -1089,10 +1122,10 @@ async function processBatch() {
       await save();
       item.status = 'done';
     } catch(e) {
+      console.error('Batch item error:', e);
       item.status = 'error';
     }
     renderBatchQueue();
-    // Small delay between API calls
     await new Promise(r => setTimeout(r, 800));
   }
 
