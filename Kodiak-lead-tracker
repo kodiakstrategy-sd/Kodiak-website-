@@ -606,9 +606,14 @@ text-align: center;
             <option>Other</option>
           </select>
         </div>
+      <div class="form-row-2">
         <div class="field-group">
           <label class="field-label">City / State</label>
           <input type="text" id="f_city" placeholder="Rapid City, SD" />
+        </div>
+        <div class="field-group">
+          <label class="field-label">Address</label>
+          <input type="text" id="f_address" placeholder="123 Main St" />
         </div>
       </div>
       <div class="form-row-2">
@@ -661,10 +666,6 @@ text-align: center;
             <option>Other</option>
           </select>
         </div>
-        <div class="field-group">
-          <label class="field-label">Follow-Up Date</label>
-          <input type="date" id="f_followup" />
-        </div>
       </div>
       <div class="field-group">
         <label class="field-label">Notes</label>
@@ -706,7 +707,7 @@ text-align: center;
     <div class="drawer-field"><div class="drawer-field-label">Status</div><div class="drawer-field-val" id="d_status">—</div></div>
     <div class="drawer-field"><div class="drawer-field-label">Deal Value</div><div class="drawer-field-val" id="d_value">—</div></div>
     <div class="drawer-field"><div class="drawer-field-label">Source</div><div class="drawer-field-val" id="d_source">—</div></div>
-    <div class="drawer-field"><div class="drawer-field-label">Follow-Up</div><div class="drawer-field-val" id="d_followup">—</div></div>
+    <div class="drawer-field"><div class="drawer-field-label">Address</div><div class="drawer-field-val" id="d_followup">—</div></div>
   </div>
 
   <div class="drawer-section">
@@ -1032,24 +1033,24 @@ function openModal(id = null) {
     document.getElementById('f_business').value = l.business || '';
     document.getElementById('f_industry').value = l.industry || '';
     document.getElementById('f_city').value = l.city || '';
+    document.getElementById('f_address').value = l.address || '';
     document.getElementById('f_phone').value = l.phone || '';
     document.getElementById('f_email').value = l.email || '';
     document.getElementById('f_status').value = l.status || 'New';
     document.getElementById('f_value').value = l.dealValue || '';
     document.getElementById('f_source').value = l.source || '';
-    document.getElementById('f_followup').value = l.followUpDate || '';
     document.getElementById('f_notes').value = l.notes || '';
   } else {
     document.getElementById('f_name').value = '';
     document.getElementById('f_business').value = '';
     document.getElementById('f_industry').value = '';
     document.getElementById('f_city').value = '';
+    document.getElementById('f_address').value = '';
     document.getElementById('f_phone').value = '';
     document.getElementById('f_email').value = '';
     document.getElementById('f_status').value = 'New';
     document.getElementById('f_value').value = '';
     document.getElementById('f_source').value = '';
-    document.getElementById('f_followup').value = '';
     document.getElementById('f_notes').value = '';
   }
 
@@ -1076,12 +1077,12 @@ function saveLead() {
     name, business,
     industry: document.getElementById('f_industry').value,
     city: document.getElementById('f_city').value,
+    address: document.getElementById('f_address').value,
     phone: document.getElementById('f_phone').value,
     email: document.getElementById('f_email').value,
     status: document.getElementById('f_status').value,
     dealValue: document.getElementById('f_value').value,
     source: document.getElementById('f_source').value,
-    followUpDate: document.getElementById('f_followup').value,
     notes: document.getElementById('f_notes').value,
   };
 
@@ -1115,7 +1116,7 @@ function openDrawer(id) {
   document.getElementById('d_status').innerHTML = `<span class="status-pill ${STATUS_CLASS[l.status] || 's-new'}">${l.status}</span>`;
   document.getElementById('d_value').textContent = l.dealValue ? '$' + parseFloat(l.dealValue).toLocaleString() : '—';
   document.getElementById('d_source').textContent = l.source || '—';
-  document.getElementById('d_followup').textContent = l.followUpDate || '—';
+  document.getElementById('d_followup').textContent = l.address || '—';
   document.getElementById('d_notes_text').textContent = l.notes || 'No notes yet.';
 
   const activity = (l.activity || []).slice().reverse();
