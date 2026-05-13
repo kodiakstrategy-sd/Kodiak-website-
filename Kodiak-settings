@@ -244,9 +244,8 @@ create policy “anon_all” on config for all using (true) with check (true);</
 
 <script>
 const SUPABASE_URL = 'https://flhnntxmikmppcoucdky.supabase.co';
-const KEY_STORE = 'kodiak_supabase_key';
-
-function getKey() { return localStorage.getItem(KEY_STORE) || ''; }
+const HARDCODED_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZsaG5udHhtaWttcHBjb3VjZGt5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyMTQyMzYsImV4cCI6MjA5Mzc5MDIzNn0.yTuZsVJmFrqUgKKVaHCJ2V0Wz-Ws1jzTGpcr2oZHRmc';
+const getKey = () => localStorage.getItem(KEY_STORE) || HARDCODED_KEY;
 
 function saveKey() {
   const key = document.getElementById('anonKey').value.trim();
