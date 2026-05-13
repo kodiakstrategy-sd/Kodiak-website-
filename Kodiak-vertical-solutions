@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kodiak — Vertical Solutions Database</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #0B0B0B; scroll-behavior: smooth; }
+body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; line-height: 1.7; min-height: 100vh; overflow-x: hidden; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; }
+
+.app-header { position: sticky; top: 0; z-index: 100; background: rgba(11,11,11,0.96); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(198,168,90,0.15); padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.header-left { display: flex; align-items: center; gap: 12px; }
+.brand-mark { font-family: ‘Courier New’, monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.3em; color: #C6A85A; }
+.brand-sep { width: 1px; height: 16px; background: rgba(198,168,90,0.2); }
+.brand-tool { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #666666; }
+.header-right { display: flex; align-items: center; gap: 12px; }
+.header-back { font-family: ‘Courier New’, monospace; font-size: 10px; color: #666666; text-decoration: none; }
+.header-back:hover { color: #C6A85A; }
+.add-btn { background: #C6A85A; color: #0B0B0B; border: none; border-radius: 2px; padding: 8px 20px; font-family: ‘Courier New’, monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; }
+.add-btn:hover { background: #E0C97A; }
+
+.app-body { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 56px); position: relative; z-index: 1; }
+
+/* SIDEBAR */
+.sidebar { background: #0d1117; border-right: 1px solid rgba(198,168,90,0.1); padding: 16px 12px; position: sticky; top: 56px; height: calc(100vh - 56px); overflow-y: auto; }
+.sidebar-label { font-family: ‘Courier New’, monospace; font-size: 8px; letter-spacing: 0.25em; text-transform: uppercase; color: #333333; padding: 10px 12px 6px; }
+.vert-btn { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-radius: 2px; border: none; background: none; cursor: pointer; width: 100%; text-align: left; transition: background 0.2s; }
+.vert-btn:hover { background: rgba(198,168,90,0.06); }
+.vert-btn.active { background: rgba(198,168,90,0.1); }
+.vert-name { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.08em; color: #999999; transition: color 0.2s; }
+.vert-btn.active .vert-name, .vert-btn:hover .vert-name { color: #C6A85A; }
+.vert-icon { font-size: 14px; margin-right: 8px; }
+.vert-count { font-family: ‘Courier New’, monospace; font-size: 9px; color: #333333; background: #1A1A1A; padding: 2px 7px; border-radius: 10px; }
+.add-vert-btn { width: 100%; margin-top: 12px; background: none; border: 1px dashed rgba(198,168,90,0.2); border-radius: 2px; padding: 10px; font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.12em; color: #444444; cursor: pointer; transition: all 0.2s; text-transform: uppercase; }
+.add-vert-btn:hover { border-color: #C6A85A; color: #C6A85A; }
+
+/* MAIN */
+.main { padding: 28px; overflow-y: auto; }
+.vertical-header { margin-bottom: 24px; }
+.vert-header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.vert-title { font-size: 26px; font-weight: 800; color: #FFFFFF; text-transform: uppercase; letter-spacing: -0.01em; }
+.vert-title span { color: #C6A85A; }
+.vert-subtitle { font-size: 14px; color: #666666; font-weight: 300; }
+.vert-stats { display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
+.vstat { background: #111111; border: 1px solid rgba(198,168,90,0.1); border-radius: 4px; padding: 12px 18px; }
+.vstat-num { font-size: 22px; font-weight: 800; color: #C6A85A; line-height: 1; }
+.vstat-label { font-family: ‘Courier New’, monospace; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: #444444; margin-top: 3px; }
+
+/* SOLUTIONS */
+.solutions-grid { display: grid; gap: 14px; }
+.solution-card { background: #111111; border: 1px solid rgba(198,168,90,0.12); border-radius: 4px; overflow: hidden; transition: border-color 0.2s; animation: fadeIn 0.2s ease; }
+.solution-card:hover { border-color: rgba(198,168,90,0.3); }
+.solution-card.featured { border-top: 2px solid #C6A85A; }
+.sol-header { background: #1A1A1A; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+.sol-header-left { display: flex; align-items: center; gap: 14px; }
+.sol-num { font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.15em; color: #C6A85A; }
+.sol-name { font-size: 15px; font-weight: 700; color: #FFFFFF; }
+.sol-badges { display: flex; gap: 8px; align-items: center; }
+.badge { font-family: ‘Courier New’, monospace; font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; }
+.badge-p1 { background: rgba(198,168,90,0.12); color: #C6A85A; }
+.badge-p2 { background: rgba(74,222,128,0.1); color: #4ade80; }
+.badge-p3 { background: rgba(96,165,250,0.1); color: #60a5fa; }
+.badge-p4 { background: rgba(248,113,113,0.1); color: #f87171; }
+.badge-route { background: rgba(167,139,250,0.12); color: #a78bfa; }
+.sol-toggle { color: #444444; font-size: 16px; transition: transform 0.3s; }
+.sol-body { padding: 24px; display: none; border-top: 1px solid rgba(255,255,255,0.04); }
+.sol-body.open { display: block; animation: fadeIn 0.2s ease; }
+.sol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.before-after { background: #0B0B0B; border-radius: 2px; padding: 14px; }
+.ba-label { font-family: ‘Courier New’, monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: #666666; margin-bottom: 10px; }
+.ba-label.gold { color: #C6A85A; }
+.ba-item { font-size: 12px; color: #999999; line-height: 1.6; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.ba-item:last-child { border-bottom: none; }
+.ba-item.pos { color: #FFFFFF; }
+.ba-item.pos::before { content: ’✓ ’; color: #C6A85A; }
+.ba-item.neg::before { content: ’— ’; color: #444444; }
+.pitch-block { background: rgba(198,168,90,0.04); border-left: 2px solid #C6A85A; padding: 14px 18px; margin-bottom: 16px; border-radius: 0 4px 4px 0; }
+.pitch-label { font-family: ‘Courier New’, monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: #C6A85A; margin-bottom: 8px; }
+.pitch-text { font-size: 13px; color: #CCCCCC; line-height: 1.7; font-style: italic; }
+.sol-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.meta-chip { background: #1A1A1A; border-radius: 2px; padding: 6px 12px; }
+.meta-key { font-family: ‘Courier New’, monospace; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: #444444; }
+.meta-val { font-size: 12px; font-weight: 600; color: #FFFFFF; margin-top: 2px; }
+.sol-actions { display: flex; gap: 8px; }
+.sol-btn { font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 14px; border-radius: 2px; cursor: pointer; transition: all 0.2s; background: #1A1A1A; border: 1px solid rgba(255,255,255,0.04); color: #666666; }
+.sol-btn:hover { border-color: #C6A85A; color: #C6A85A; }
+.sol-btn.copy:hover { border-color: #4ade80; color: #4ade80; }
+.sol-btn.copy.copied { border-color: #4ade80; color: #4ade80; }
+.sol-btn.danger:hover { border-color: #f87171; color: #f87171; }
+
+/* EMPTY */
+.empty-vert { text-align: center; padding: 60px 24px; }
+.empty-icon { font-size: 40px; opacity: 0.2; margin-bottom: 12px; }
+.empty-text { font-family: ‘Courier New’, monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #333333; }
+
+/* MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(11,11,11,0.92); backdrop-filter: blur(12px); z-index: 200; align-items: flex-start; justify-content: center; padding: 20px; overflow-y: auto; }
+.modal-overlay.visible { display: flex; }
+.modal { background: #111111; border: 1px solid rgba(198,168,90,0.2); border-top: 2px solid #C6A85A; border-radius: 4px; padding: 32px; width: 100%; max-width: 680px; margin: auto; animation: modalIn 0.25s ease; }
+@keyframes modalIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.modal-title { font-size: 20px; font-weight: 700; color: #FFFFFF; text-transform: uppercase; }
+.modal-title span { color: #C6A85A; }
+.modal-close { background: none; border: none; color: #444444; font-size: 20px; cursor: pointer; }
+.modal-close:hover { color: #FFFFFF; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-label { font-family: ‘Courier New’, monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #666666; }
+input, select, textarea { background: #1A1A1A; border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; padding: 10px 14px; font-family: -apple-system, sans-serif; font-size: 13px; color: #FFFFFF; outline: none; transition: border-color 0.2s; width: 100%; }
+input:focus, select:focus, textarea:focus { border-color: #C6A85A; }
+input::placeholder, textarea::placeholder { color: #444444; }
+select option { background: #1A1A1A; }
+textarea { resize: vertical; min-height: 80px; }
+.modal-actions { display: flex; gap: 10px; margin-top: 8px; }
+.save-btn { flex: 1; background: #C6A85A; color: #0B0B0B; border: none; border-radius: 2px; padding: 12px; font-family: ‘Courier New’, monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; }
+.save-btn:hover { background: #E0C97A; }
+.cancel-btn { background: #1A1A1A; color: #666666; border: 1px solid rgba(198,168,90,0.15); border-radius: 2px; padding: 12px 20px; font-family: ‘Courier New’, monospace; font-size: 11px; cursor: pointer; }
+.cancel-btn:hover { border-color: #C6A85A; color: #C6A85A; }
+.ba-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media(max-width: 768px) {
+.app-body { grid-template-columns: 1fr; }
+.sidebar { position: static; height: auto; flex-direction: row; display: flex; overflow-x: auto; padding: 8px 12px; border-right: none; border-bottom: 1px solid rgba(198,168,90,0.1); }
+.sidebar-label { display: none; }
+.vert-btn { min-width: 100px; }
+.main { padding: 16px; }
+.sol-grid { grid-template-columns: 1fr; }
+.form-row, .ba-inputs { grid-template-columns: 1fr; }
+.app-header { padding: 0 16px; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- MODAL -->
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Add <span>Solution</span></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <input type="hidden" id="editId" />
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Solution Name *</label><input type="text" id="f_name" placeholder="e.g. AI Phone Receptionist" /></div>
+      <div class="form-group"><label class="form-label">Pillar</label>
+        <select id="f_pillar">
+          <option value="1">Pillar 1 — AI Automation</option>
+          <option value="2">Pillar 2 — Lead Generation</option>
+          <option value="3">Pillar 3 — Digital Infrastructure</option>
+          <option value="4">Pillar 4 — Revenue Operations</option>
+          <option value="route">Route</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group"><label class="form-label">The Problem It Solves (one sentence)</label><input type="text" id="f_problem" placeholder="What pain does this fix?" /></div>
+    <div class="form-group"><label class="form-label">The Pitch — What you say to the client</label><textarea id="f_pitch" placeholder="Write it exactly how you'd say it in the room. Real scenario, before and after, one or two sentences."></textarea></div>
+    <div class="ba-inputs">
+      <div class="form-group"><label class="form-label">Before (current state — 3-5 bullet points)</label><textarea id="f_before" placeholder="One point per line" style="min-height:100px;"></textarea></div>
+      <div class="form-group"><label class="form-label">After (with solution — 3-5 bullet points)</label><textarea id="f_after" placeholder="One point per line" style="min-height:100px;"></textarea></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Estimated Cost</label><input type="text" id="f_cost" placeholder="e.g. $140-300/mo" /></div>
+      <div class="form-group"><label class="form-label">Setup Time</label><input type="text" id="f_setup" placeholder="e.g. 2-4 hrs" /></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Time Saved / Week</label><input type="text" id="f_time" placeholder="e.g. 4-6 hrs/wk" /></div>
+      <div class="form-group"><label class="form-label">Notes</label><input type="text" id="f_notes" placeholder="Caveats, tech aptitude, etc." /></div>
+    </div>
+    <div class="form-group" style="flex-direction:row;align-items:center;gap:10px;">
+      <input type="checkbox" id="f_featured" style="width:18px;height:18px;accent-color:#C6A85A;flex-shrink:0;" />
+      <label class="form-label" for="f_featured" style="cursor:pointer;">Feature this solution — show at top</label>
+    </div>
+    <div class="modal-actions">
+      <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+      <button class="save-btn" onclick="saveSolution()">Save Solution →</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+
+<header class="app-header">
+  <div class="header-left">
+    <span class="brand-mark">KODIAK</span>
+    <div class="brand-sep"></div>
+    <span class="brand-tool">Vertical Solutions Database</span>
+  </div>
+  <div class="header-right">
+    <a href="kodiak-command-center.html" class="header-back">← Command Center</a>
+    <button class="add-btn" onclick="openModal()">+ Add Solution</button>
+  </div>
+</header>
+
+<div class="app-body">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-label">Verticals</div>
+    <div id="vertList"></div>
+    <button class="add-vert-btn" onclick="addVertical()">+ Add Vertical</button>
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="main" id="mainPanel">
+    <div id="vertHeader"></div>
+    <div class="solutions-grid" id="solutionsList"></div>
+    <div class="empty-vert" id="emptyState" style="display:none;">
+      <div class="empty-icon">💡</div>
+      <div class="empty-text">No solutions yet — add the first one for this vertical</div>
+    </div>
+  </main>
+</div>
+
+<script>
+const PILLAR_BADGE = { '1':'badge-p1','2':'badge-p2','3':'badge-p3','4':'badge-p4','route':'badge-route' };
+const PILLAR_LABEL = { '1':'Automation','2':'Lead Gen','3':'Infrastructure','4':'Revenue','route':'Route' };
+
+let db = JSON.parse(localStorage.getItem('kodiak_vertical_db') || 'null');
+let activeVertId = null;
+
+if (!db) {
+  db = {
+    verticals: [
+      { id: 'auto', name: 'Auto & Body Shop', icon: '🔧', notes: 'Multi-location body shops. Pain points: receptionist bottleneck, insurance supplements, inexperienced staff, manual estimate review.' },
+    ],
+    solutions: [
+      {
+        id: 'sol1', vertId: 'auto', featured: true,
+        name: 'AI Phone Receptionist',
+        pillar: '1',
+        problem: 'Receptionist is the single bottleneck for all incoming calls — she can\'t do anything else.',
+        pitch: 'Right now every call — status updates, scheduling, basic questions — goes to one person. She can\'t do anything else while she\'s on the phone. We put an AI in front of every call. It handles everything routine. She handles what actually needs a person.',
+        before: ['Every call goes to one person', 'She can\'t work while on the phone', 'Status updates eat hours every day', 'After-hours calls go to voicemail', 'Customers hang up and call a competitor'],
+        after: ['AI answers every call, every time', 'Handles status updates automatically', 'Books appointments without staff involvement', 'Works after hours, weekends, holidays', 'Receptionist focuses on what needs her'],
+        cost: '$140-300/mo', setup: '2-4 hrs', timeSaved: '25-30 hrs/wk', notes: 'Works with any business phone number. High ROI for any location with call volume.',
+        createdAt: Date.now()
+      },
+      {
+        id: 'sol2', vertId: 'auto', featured: true,
+        name: 'Insurance Supplement Tracking',
+        pillar: '4',
+        problem: 'Open supplements go un-followed-up — revenue owed to the shop gets written off or lost.',
+        pitch: 'You submit a supplement and then someone has to remember to follow up. Some fall through. Money you\'re owed sits uncollected. We build a system that tracks every open supplement automatically — follow-up at 48 hours, 5 days, 10 days. Nothing falls through.',
+        before: ['Supplements followed up manually', 'Some get lost and never collected', 'Revenue sits in limbo', 'Depends on someone remembering', 'No visibility across locations'],
+        after: ['Every supplement tracked automatically', 'Follow-up triggered at 48h, 5d, 10d', 'Escalation path built in', 'Full dashboard across all locations', 'Revenue gets collected — not written off'],
+        cost: 'Custom build', setup: '4-8 hrs', timeSaved: '5-8 hrs/wk', notes: 'High value for multi-location shops. Recovery of even 2-3 missed supplements per month pays for the entire engagement.',
+        createdAt: Date.now() - 1000
+      },
+      {
+        id: 'sol3', vertId: 'auto', featured: true,
+        name: 'Staff Knowledge System',
+        pillar: '1',
+        problem: 'Institutional knowledge lives in 2-3 people\'s heads — new staff make expensive mistakes.',
+        pitch: 'Right now when a new tech has a question, they interrupt a senior tech. That senior tech loses their train of thought, makes a mistake, or just isn\'t available. We build a knowledge base from your SOPs and procedures. New hire asks the system before they ask a person. Senior staff stop getting interrupted for things that are already documented.',
+        before: ['New techs make costly mistakes', 'Senior staff interrupted constantly', 'Knowledge lives in 2-3 people\'s heads', 'Training takes months', 'Quality inconsistent across locations'],
+        after: ['New hires have expert knowledge day one', 'Questions answered instantly — no interruptions', 'SOPs always accessible to every employee', 'Consistent quality across locations', 'Senior staff focused on complex work'],
+        cost: 'Custom build', setup: '6-12 hrs', timeSaved: '8-12 hrs/wk', notes: 'Improves over time. Ask pattern data reveals training gaps for management.',
+        createdAt: Date.now() - 2000
+      },
+      {
+        id: 'sol4', vertId: 'auto', featured: false,
+        name: 'Automated Estimate Review',
+        pillar: '1',
+        problem: 'Manual estimate review is slow, experience-dependent, and catches errors too late.',
+        pitch: 'Your manager reviews every estimate manually. Wrong parts, missed labor, unclaimed supplements — these get caught after the fact. We build a system that cross-references every estimate against your parts database and labor standards the moment it\'s written. Errors flagged before anyone approves.',
+        before: ['Manager reviews every estimate manually', 'Wrong parts caught after ordering', 'Labor miscalculations found at billing', 'Supplements missed at teardown not write-up', 'Quality depends on reviewer experience'],
+        after: ['AI cross-references against parts database', 'Wrong parts flagged before approval', 'Labor inconsistencies caught immediately', 'Supplements identified at write-up', 'Consistent quality regardless of who writes it'],
+        cost: 'Custom build', setup: '8-16 hrs', timeSaved: '10-15 hrs/wk', notes: 'Requires access to parts database and labor time standards. High complexity but high ROI.',
+        createdAt: Date.now() - 3000
+      },
+      {
+        id: 'sol5', vertId: 'auto', featured: false,
+        name: 'Customer Status Communication',
+        pillar: '1',
+        problem: 'Customers call constantly for job status — eating front desk time all day.',
+        pitch: 'Your front desk answers the same question 20 times a day: where\'s my car. We set up automated status texts that go out every time a car moves stages. Customer knows where their car is without calling. Your front desk stops answering the same question.',
+        before: ['Customers call for status constantly', 'Same question answered 20+ times daily', 'Delays communicated only when customers call', 'No proactive outreach when jobs take longer'],
+        after: ['Automated status texts at each stage', 'Delay notifications sent proactively', 'Review requests sent at pickup automatically', 'Front desk freed from status call volume'],
+        cost: '$75-200/mo', setup: '2-3 hrs', timeSaved: '5-8 hrs/wk', notes: 'Integrates with most shop management software. Quick win candidate.',
+        createdAt: Date.now() - 4000
+      }
+    ]
+  };
+  save();
+}
+
+function save() { localStorage.setItem('kodiak_vertical_db', JSON.stringify(db)); }
+function genId() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
+
+function renderSidebar() {
+  const list = document.getElementById('vertList');
+  list.innerHTML = db.verticals.map(v => {
+    const count = db.solutions.filter(s => s.vertId === v.id).length;
+    const active = v.id === activeVertId;
+    return `
+      <button class="vert-btn ${active ? 'active' : ''}" onclick="selectVert('${v.id}')">
+        <span><span class="vert-icon">${v.icon}</span><span class="vert-name">${v.name}</span></span>
+        <span class="vert-count">${count}</span>
+      </button>
+    `;
+  }).join('');
+}
+
+function selectVert(id) {
+  activeVertId = id;
+  renderSidebar();
+  renderMain();
+}
+
+function renderMain() {
+  const vert = db.verticals.find(v => v.id === activeVertId);
+  if (!vert) return;
+  const solutions = db.solutions.filter(s => s.vertId === activeVertId)
+    .sort((a,b) => (b.featured?1:0)-(a.featured?1:0) || a.createdAt - b.createdAt);
+
+  document.getElementById('vertHeader').innerHTML = `
+    <div class="vertical-header">
+      <div class="vert-header-top">
+        <div class="vert-title">${vert.icon} ${vert.name} <span>Solutions</span></div>
+      </div>
+      ${vert.notes ? `<div class="vert-subtitle">${vert.notes}</div>` : ''}
+      <div class="vert-stats">
+        <div class="vstat"><div class="vstat-num">${solutions.length}</div><div class="vstat-label">Solutions</div></div>
+        <div class="vstat"><div class="vstat-num">${solutions.filter(s=>s.featured).length}</div><div class="vstat-label">Featured</div></div>
+        <div class="vstat"><div class="vstat-num">${solutions.filter(s=>s.pillar==='1').length}</div><div class="vstat-label">Automation</div></div>
+        <div class="vstat"><div class="vstat-num">${solutions.filter(s=>s.pillar==='4').length}</div><div class="vstat-label">Revenue</div></div>
+      </div>
+    </div>
+  `;
+
+  const list = document.getElementById('solutionsList');
+  const empty = document.getElementById('emptyState');
+
+  if (!solutions.length) { list.innerHTML = ''; empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+
+  list.innerHTML = solutions.map((sol, i) => `
+    <div class="solution-card ${sol.featured ? 'featured' : ''}" id="card_${sol.id}">
+      <div class="sol-header" onclick="toggleSol('${sol.id}')">
+        <div class="sol-header-left">
+          <span class="sol-num">${String(i+1).padStart(2,'0')}</span>
+          <span class="sol-name">${sol.name}</span>
+          <span class="badge ${PILLAR_BADGE[sol.pillar] || 'badge-p1'}">${PILLAR_LABEL[sol.pillar] || sol.pillar}</span>
+          ${sol.featured ? '<span class="badge badge-p1">Featured</span>' : ''}
+        </div>
+        <span class="sol-toggle" id="toggle_${sol.id}">▼</span>
+      </div>
+      <div class="sol-body" id="body_${sol.id}">
+        ${sol.problem ? `<div style="font-size:13px;color:#999;margin-bottom:16px;padding:10px 14px;background:#0B0B0B;border-radius:2px;"><span style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#C6A85A;">THE PROBLEM: </span>${sol.problem}</div>` : ''}
+        <div class="sol-grid">
+          <div class="before-after">
+            <div class="ba-label">Right Now</div>
+            ${(sol.before||[]).map(b=>`<div class="ba-item neg">${b}</div>`).join('')}
+          </div>
+          <div class="before-after">
+            <div class="ba-label gold">With This Solution</div>
+            ${(sol.after||[]).map(a=>`<div class="ba-item pos">${a}</div>`).join('')}
+          </div>
+        </div>
+        ${sol.pitch ? `<div class="pitch-block"><div class="pitch-label">How to Pitch It</div><div class="pitch-text">"${sol.pitch}"</div></div>` : ''}
+        <div class="sol-meta">
+          ${sol.cost ? `<div class="meta-chip"><div class="meta-key">Cost</div><div class="meta-val">${sol.cost}</div></div>` : ''}
+          ${sol.setup ? `<div class="meta-chip"><div class="meta-key">Setup</div><div class="meta-val">${sol.setup}</div></div>` : ''}
+          ${sol.timeSaved ? `<div class="meta-chip"><div class="meta-key">Time Saved</div><div class="meta-val">${sol.timeSaved}</div></div>` : ''}
+        </div>
+        ${sol.notes ? `<div style="font-size:12px;color:#555;font-style:italic;margin-bottom:14px;">${sol.notes}</div>` : ''}
+        <div class="sol-actions">
+          <button class="sol-btn" onclick="openModal('${sol.id}')">Edit</button>
+          <button class="sol-btn copy" onclick="copyPitch('${sol.id}', this)">Copy Pitch</button>
+          <button class="sol-btn danger" onclick="deleteSolution('${sol.id}')">✕ Remove</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleSol(id) {
+  const body = document.getElementById('body_' + id);
+  const toggle = document.getElementById('toggle_' + id);
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  toggle.style.transform = isOpen ? '' : 'rotate(180deg)';
+}
+
+function openModal(id = null) {
+  const isEdit = !!id;
+  document.getElementById('editId').value = id || '';
+  if (isEdit) {
+    const s = db.solutions.find(x => x.id === id);
+    if (!s) return;
+    document.getElementById('f_name').value = s.name || '';
+    document.getElementById('f_pillar').value = s.pillar || '1';
+    document.getElementById('f_problem').value = s.problem || '';
+    document.getElementById('f_pitch').value = s.pitch || '';
+    document.getElementById('f_before').value = (s.before||[]).join('\n');
+    document.getElementById('f_after').value = (s.after||[]).join('\n');
+    document.getElementById('f_cost').value = s.cost || '';
+    document.getElementById('f_setup').value = s.setup || '';
+    document.getElementById('f_time').value = s.timeSaved || '';
+    document.getElementById('f_notes').value = s.notes || '';
+    document.getElementById('f_featured').checked = s.featured || false;
+  } else {
+    ['f_name','f_problem','f_pitch','f_before','f_after','f_cost','f_setup','f_time','f_notes'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('f_pillar').value = '1';
+    document.getElementById('f_featured').checked = false;
+  }
+  document.getElementById('modalOverlay').classList.add('visible');
+}
+
+function closeModal() { document.getElementById('modalOverlay').classList.remove('visible'); }
+
+function saveSolution() {
+  const name = document.getElementById('f_name').value.trim();
+  if (!name || !activeVertId) return;
+  const editId = document.getElementById('editId').value;
+  const data = {
+    name, vertId: activeVertId,
+    pillar: document.getElementById('f_pillar').value,
+    problem: document.getElementById('f_problem').value,
+    pitch: document.getElementById('f_pitch').value,
+    before: document.getElementById('f_before').value.split('\n').map(s=>s.trim()).filter(Boolean),
+    after: document.getElementById('f_after').value.split('\n').map(s=>s.trim()).filter(Boolean),
+    cost: document.getElementById('f_cost').value,
+    setup: document.getElementById('f_setup').value,
+    timeSaved: document.getElementById('f_time').value,
+    notes: document.getElementById('f_notes').value,
+    featured: document.getElementById('f_featured').checked,
+    updatedAt: Date.now()
+  };
+  if (editId) {
+    const idx = db.solutions.findIndex(s => s.id === editId);
+    if (idx > -1) db.solutions[idx] = { ...db.solutions[idx], ...data };
+  } else {
+    db.solutions.unshift({ id: genId(), ...data, createdAt: Date.now() });
+  }
+  save(); renderMain(); renderSidebar(); closeModal();
+}
+
+function deleteSolution(id) {
+  if (!confirm('Remove this solution?')) return;
+  db.solutions = db.solutions.filter(s => s.id !== id);
+  save(); renderMain(); renderSidebar();
+}
+
+function copyPitch(id, btn) {
+  const s = db.solutions.find(x => x.id === id);
+  if (!s) return;
+  const text = `${s.name}\n\nThe Problem: ${s.problem}\n\nThe Pitch: "${s.pitch}"\n\nBefore:\n${(s.before||[]).map(b=>'— '+b).join('\n')}\n\nAfter:\n${(s.after||[]).map(a=>'✓ '+a).join('\n')}`;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy Pitch'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function addVertical() {
+  const name = prompt('Vertical name (e.g. Optometry, Roofing):');
+  if (!name) return;
+  const icon = prompt('Icon emoji:', '🏢');
+  const v = { id: genId(), name, icon: icon || '🏢', notes: '' };
+  db.verticals.push(v);
+  save();
+  selectVert(v.id);
+}
+
+// Init
+if (!activeVertId && db.verticals.length) activeVertId = db.verticals[0].id;
+renderSidebar();
+renderMain();
+</script>
+
+</body>
+</html>
