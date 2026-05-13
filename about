@@ -75,6 +75,7 @@ footer { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); paddi
   footer { padding: 40px 24px; } .footer-inner { flex-direction: column; align-items: flex-start; } .footer-contact { text-align: left; }
 }
 </style>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <nav>
@@ -123,7 +124,6 @@ footer { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); paddi
     <p>That project taught me something I didn't expect. The same friction exists everywhere. Dentists, lawyers, HVAC companies, real estate firms — different industries, same story. Good tools sitting unused because nobody had time to fight with them.</p>
     <p>That's the gap Kodiak Strategy was built to fill.</p>
     <p>Everyone knows AI is the future. But what does that actually mean for your business — your team, your workflows, your bottom line? Our assessment process shows you exactly where it fits. Then we build it for you.</p>
-    <p>When he's not working, Ryan spends his time with his wife Mallorie and their four kids.</p>
   </div>
 </div>
 
