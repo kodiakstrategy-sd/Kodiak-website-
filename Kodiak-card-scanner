@@ -771,7 +771,11 @@ const SUPABASE_URL = 'https://flhnntxmikmppcoucdky.supabase.co';
 const getKey = () => localStorage.getItem('kodiak_supabase_key') || '';
 
 async function getClaudeKey() {
-  // Try Supabase first
+  // Try localStorage first (fastest)
+  const local = localStorage.getItem('kodiak_claude_key');
+  if (local) return local;
+
+  // Try Supabase using hardcoded URL with anon key from localStorage
   const sbKey = getKey();
   if (sbKey) {
     try {
@@ -787,8 +791,7 @@ async function getClaudeKey() {
       }
     } catch(e) {}
   }
-  // Fall back to localStorage
-  return localStorage.getItem('kodiak_claude_key') || '';
+  return '';
 }
 
 async function sbPost(table, data) {
