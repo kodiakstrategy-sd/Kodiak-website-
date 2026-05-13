@@ -818,7 +818,7 @@ text-align: center;
         <th>Contact / Business</th>
         <th>Status</th>
         <th>Industry</th>
-        <th>Follow-Up</th>
+        <th>City</th>
         <th>Value</th>
         <th>Actions</th>
       </tr>
@@ -996,7 +996,6 @@ function renderTable() {
   }
 
   empty.style.display = 'none';
-  const fu = filtered.map(l => formatFollowUp(l.followUpDate));
 
   tbody.innerHTML = filtered.map((l, i) => `
     <tr class="lead-row" onclick="openDrawer('${l.id}')">
@@ -1006,7 +1005,7 @@ function renderTable() {
       </td>
       <td><span class="status-pill ${STATUS_CLASS[l.status] || 's-new'}">${l.status || 'New'}</span></td>
       <td style="font-size:12px;color:var(--lgray);">${l.industry || '—'}</td>
-      <td><span class="follow-up-date ${fu[i].cls}">${fu[i].text}</span></td>
+      <td style="font-size:12px;color:var(--lgray);">${l.city || '—'}</td>
       <td><span class="deal-value">${l.dealValue ? '$' + parseFloat(l.dealValue).toLocaleString() : '—'}</span></td>
       <td onclick="event.stopPropagation()">
         <div class="action-btns">
