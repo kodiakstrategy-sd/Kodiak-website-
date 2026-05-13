@@ -657,99 +657,65 @@ white-space: nowrap;
 <!-- SCAN PANEL -->
 
 <div class="panel active" id="panelScan">
-  <div class="scanner-wrap">
 
-```
-<div>
-  <div class="upload-zone" id="uploadZone" ondragover="handleDrag(event)" ondrop="handleDrop(event)">
-    <div class="upload-icon">📇</div>
-    <div class="upload-title">Scan a <em>business card</em></div>
-    <p class="upload-sub">Take a photo or upload from your camera roll. The AI will extract every contact detail automatically.</p>
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
-      <button class="upload-btn" onclick="document.getElementById('cardInputCamera').click()" style="display:flex;align-items:center;gap:6px;">📷 Take Photo</button>
-      <button class="upload-btn" onclick="document.getElementById('cardInputLibrary').click()" style="background:#1A1A1A;color:#C6A85A;border:1px solid #C6A85A;display:flex;align-items:center;gap:6px;">🖼 Choose Photo</button>
-    </div>
-    <input type="file" id="cardInputCamera" class="upload-input" accept="image/*" capture="environment" onchange="handleFiles(event)" />
+  <!-- PHOTO CAPTURE BUTTONS -->
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+    <button onclick="document.getElementById('cardInputCamera').click()" style="background:#C6A85A;color:#0B0B0B;border:none;border-radius:6px;padding:16px;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
+      📷 Take Photo
+    </button>
+    <button onclick="document.getElementById('cardInputLibrary').click()" style="background:#1A1A1A;color:#C6A85A;border:1px solid #C6A85A;border-radius:6px;padding:16px;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
+      🖼 Choose Photo
+    </button>
+    <input type="file" id="cardInputCamera" class="upload-input" accept="image/*" capture="environment" onchange="handleFile(event)" />
     <input type="file" id="cardInputLibrary" class="upload-input" accept="image/*" multiple onchange="handleFiles(event)" />
   </div>
 
-  <div style="margin-top:16px;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:8px;">
-    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Tips for best results</div>
-    <div style="font-size:12px;color:var(--lgray);line-height:1.8;">
-      • Flat surface, good lighting<br>
-      • Card fills most of the frame<br>
-      • Avoid glare and shadows<br>
-      • Both sides if contact info is on back
-    </div>
+  <!-- PREVIEW -->
+
+  <div id="previewSection" style="display:none;margin-bottom:16px;">
+    <img id="previewImg" style="width:100%;max-height:200px;object-fit:contain;border-radius:6px;background:#111;display:block;" alt="Card preview" />
   </div>
 
-  <!-- BATCH QUEUE -->
-  <div class="batch-queue" id="batchQueue" style="display:none;">
-    <div class="batch-label">
-      <span>Cards in Queue — <span id="batchCount">0</span></span>
-      <span style="font-size:9px;color:var(--gray);">Tap to preview</span>
-    </div>
-    <div class="batch-grid" id="batchGrid"></div>
-    <button class="batch-process-btn" id="batchProcessBtn" onclick="processBatch()">Process All Cards →</button>
-  </div>
-</div>
-
-<div class="card-preview">
-  <div class="preview-header">Card Preview & Extracted Data</div>
-
-  <div class="preview-img-wrap" id="previewImgWrap">
-    <img id="previewImg" class="preview-img" alt="Card preview" />
-    <div class="preview-placeholder" id="previewPlaceholder">Upload a card to see preview</div>
-  </div>
+  <!-- LOADING -->
 
   <div class="scan-loading" id="scanLoading">
     <div class="spin-ring"></div>
     <div class="scan-loading-text">Extracting contact info...</div>
   </div>
 
+  <!-- EXTRACTED FIELDS -->
+
   <div class="extracted-fields" id="extractedFields">
-    <div class="field-row">
-      <span class="field-key">Name</span>
-      <input type="text" class="field-val-input" id="ex_name" placeholder="—" />
-    </div>
-    <div class="field-row">
-      <span class="field-key">Title</span>
-      <input type="text" class="field-val-input" id="ex_title" placeholder="—" />
-    </div>
-    <div class="field-row">
-      <span class="field-key">Business</span>
-      <input type="text" class="field-val-input" id="ex_business" placeholder="—" />
-    </div>
-    <div class="field-row">
-      <span class="field-key">Email</span>
-      <input type="email" class="field-val-input" id="ex_email" placeholder="—" />
-    </div>
-    <div class="field-row">
-      <span class="field-key">Phone</span>
-      <input type="tel" class="field-val-input" id="ex_phone" placeholder="—" />
-    </div>
-    <div class="field-row">
-      <span class="field-key">Website</span>
-      <input type="text" class="field-val-input" id="ex_website" placeholder="—" />
-    </div>
-    <div class="field-row">
-      <span class="field-key">Location</span>
-      <input type="text" class="field-val-input" id="ex_city" placeholder="—" />
-    </div>
-    <div class="field-row">
-      <span class="field-key">Notes</span>
-      <input type="text" class="field-val-input" id="ex_notes" placeholder="What did you talk about? Any context from the conversation." />
-    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#C6A85A;margin-bottom:14px;">Extracted Info — Edit if needed</div>
+    <div class="field-row"><span class="field-key">Name</span><input type="text" class="field-val-input" id="ex_name" placeholder="—" /></div>
+    <div class="field-row"><span class="field-key">Title</span><input type="text" class="field-val-input" id="ex_title" placeholder="—" /></div>
+    <div class="field-row"><span class="field-key">Business</span><input type="text" class="field-val-input" id="ex_business" placeholder="—" /></div>
+    <div class="field-row"><span class="field-key">Email</span><input type="email" class="field-val-input" id="ex_email" placeholder="—" /></div>
+    <div class="field-row"><span class="field-key">Phone</span><input type="tel" class="field-val-input" id="ex_phone" placeholder="—" /></div>
+    <div class="field-row"><span class="field-key">Website</span><input type="text" class="field-val-input" id="ex_website" placeholder="—" /></div>
+    <div class="field-row"><span class="field-key">Location</span><input type="text" class="field-val-input" id="ex_city" placeholder="—" /></div>
+    <div class="field-row"><span class="field-key">Notes</span><input type="text" class="field-val-input" id="ex_notes" placeholder="What did you talk about?" /></div>
   </div>
+
+  <!-- ACTIONS -->
 
   <div class="scanner-actions" id="scannerActions">
     <button class="btn-secondary" onclick="resetScanner()">Scan Another</button>
-    <button class="btn-primary" onclick="addToOutreach()">Add to Outreach List →</button>
+    <button class="btn-primary" onclick="addToOutreach()">Add to Outreach →</button>
   </div>
-</div>
-```
 
+  <!-- BATCH QUEUE -->
+
+  <div class="batch-queue" id="batchQueue" style="display:none;margin-top:16px;">
+    <div class="batch-label">
+      <span>Cards in Queue — <span id="batchCount">0</span></span>
+      <span style="font-size:9px;color:var(--gray);">Select multiple from camera roll</span>
+    </div>
+    <div class="batch-grid" id="batchGrid"></div>
+    <button class="batch-process-btn" id="batchProcessBtn" onclick="processBatch()">Process All Cards →</button>
   </div>
+
 </div>
 
 <!-- OUTREACH PANEL -->
@@ -874,21 +840,47 @@ function handleDrop(e) {
 }
 
 function processImage(file) {
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const base64 = e.target.result;
-    currentImageBase64 = base64.split(',')[1];
+  // Use canvas to convert any format (including HEIC) to JPEG
+  const img = new Image();
+  const objectUrl = URL.createObjectURL(file);
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    // Scale down if too large for API
+    const maxSize = 1200;
+    let w = img.width, h = img.height;
+    if (w > maxSize || h > maxSize) {
+      if (w > h) { h = Math.round(h * maxSize / w); w = maxSize; }
+      else { w = Math.round(w * maxSize / h); h = maxSize; }
+    }
+    canvas.width = w; canvas.height = h;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, w, h);
+    const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+    currentImageBase64 = dataUrl.split(',')[1];
 
     // Show preview
-    const img = document.getElementById('previewImg');
-    img.src = base64;
-    img.style.display = 'block';
+    const previewImg = document.getElementById('previewImg');
+    previewImg.src = dataUrl;
+    previewImg.style.display = 'block';
     document.getElementById('previewPlaceholder').style.display = 'none';
 
-    // Run extraction
+    URL.revokeObjectURL(objectUrl);
     extractCard(currentImageBase64);
   };
-  reader.readAsDataURL(file);
+  img.onerror = () => {
+    // Fallback to FileReader
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      currentImageBase64 = e.target.result.split(',')[1];
+      const previewImg = document.getElementById('previewImg');
+      previewImg.src = e.target.result;
+      previewImg.style.display = 'block';
+      document.getElementById('previewPlaceholder').style.display = 'none';
+      extractCard(currentImageBase64);
+    };
+    reader.readAsDataURL(file);
+  };
+  img.src = objectUrl;
 }
 
 async function extractCard(base64) {
@@ -994,6 +986,11 @@ function resetScanner() {
 
 // ── BATCH QUEUE ──
 let batchQueue = []; // [{base64, dataUrl, status}]
+
+function handleFile(event) {
+  const file = event.target.files[0];
+  if (file) processImage(file);
+}
 
 function handleFiles(event) {
   const files = Array.from(event.target.files);
@@ -1110,6 +1107,7 @@ async function processBatch() {
     switchTab('outreach');
   }, 2000);
 }
+// ── OUTREACH LIST ──
 function renderOutreach() {
   const search = document.getElementById('outreachSearch').value.toLowerCase();
   const filter = document.getElementById('outreachFilter').value;
@@ -1131,28 +1129,26 @@ function renderOutreach() {
   }
   empty.style.display = 'none';
 
-  list.innerHTML = filtered.map(c => `
-    <div class="outreach-card ${c.status === 'emailed' ? 'emailed' : ''}" id="card_${c.id}">
-      <div>
-        <div class="contact-name">${c.name || '—'}</div>
-        <div class="contact-biz">${c.business || ''}${c.title ? ' · ' + c.title : ''}</div>
-        <div class="contact-details">
-          ${c.email ? `<span class="contact-detail"><a href="mailto:${c.email}">${c.email}</a></span>` : ''}
-          ${c.phone ? `<span class="contact-detail"><a href="tel:${c.phone}">${c.phone}</a></span>` : ''}
-          ${c.city ? `<span class="contact-detail">📍 ${c.city}</span>` : ''}
-          ${c.website ? `<span class="contact-detail"><a href="${c.website}" target="_blank">🌐 Website</a></span>` : ''}
-        </div>
-        ${c.activity?.length ? `<div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gray);margin-top:8px;">Last: ${c.activity[c.activity.length-1]?.note}</div>` : ''}
+  list.innerHTML = `<div class="outreach-grid">${filtered.map(c => `
+    <div class="biz-card ${c.status === 'emailed' ? 'emailed' : ''}" id="card_${c.id}">
+      <div class="biz-card-name">${c.name || '—'}</div>
+      <div class="biz-card-biz">${c.business || ''}${c.title ? ' · ' + c.title : ''}</div>
+      <span class="biz-card-status status-${c.status}">${c.status === 'cold' ? 'Not Contacted' : c.status === 'emailed' ? 'Email Sent' : 'Replied'}</span>
+      <div class="biz-card-details">
+        ${c.email ? `<span class="biz-card-detail">✉ <a href="mailto:${c.email}">${c.email}</a></span>` : ''}
+        ${c.phone ? `<span class="biz-card-detail">📞 <a href="tel:${c.phone}">${c.phone}</a></span>` : ''}
+        ${c.city ? `<span class="biz-card-detail">📍 ${c.city}</span>` : ''}
+        ${c.website ? `<span class="biz-card-detail">🌐 <a href="${c.website}" target="_blank">${c.website.replace(/https?:\/\//,'')}</a></span>` : ''}
       </div>
-      <div class="card-actions">
-        <span class="outreach-status status-${c.status}">${c.status === 'cold' ? 'Not Contacted' : c.status === 'emailed' ? 'Email Sent' : 'Replied'}</span>
-        <button class="action-btn primary" onclick="openCompose('${c.id}')">✉ Compose Email</button>
-        <button class="action-btn success" onclick="markReplied('${c.id}')">↩ Mark Replied</button>
-        <button class="action-btn success" onclick="convertToLead('${c.id}')">→ Move to Leads</button>
-        <button class="action-btn danger" onclick="deleteContact('${c.id}')">✕ Remove</button>
+      ${c.notes ? `<div class="biz-card-notes">${c.notes}</div>` : ''}
+      <div class="biz-card-actions">
+        <button class="biz-card-btn" onclick="openCompose('${c.id}')">✉ Email</button>
+        <button class="biz-card-btn success" onclick="markReplied('${c.id}')">↩ Replied</button>
+        <button class="biz-card-btn success" onclick="convertToLead('${c.id}')">→ Lead</button>
+        <button class="biz-card-btn danger" onclick="deleteContact('${c.id}')">✕</button>
       </div>
     </div>
-  `).join('');
+  `).join('')}</div>`;
 }
 
 function renderConverted() {
