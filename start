@@ -48,6 +48,7 @@ body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helveti
   .card-header, .scan-message, .contact-section, .what-section, .cta-section { padding-left: 24px; padding-right: 24px; }
 }
 </style>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <div class="card">
