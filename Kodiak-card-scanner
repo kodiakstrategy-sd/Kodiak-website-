@@ -861,8 +861,7 @@ function processImage(file) {
     // Show preview
     const previewImg = document.getElementById('previewImg');
     previewImg.src = dataUrl;
-    previewImg.style.display = 'block';
-    document.getElementById('previewPlaceholder').style.display = 'none';
+    document.getElementById('previewSection').style.display = 'block';
 
     URL.revokeObjectURL(objectUrl);
     extractCard(currentImageBase64);
@@ -971,8 +970,8 @@ function addToOutreach() {
 }
 
 function resetScanner() {
-  document.getElementById('previewImg').style.display = 'none';
-  document.getElementById('previewPlaceholder').style.display = 'block';
+  document.getElementById('previewSection').style.display = 'none';
+  document.getElementById('previewImg').src = '';
   document.getElementById('extractedFields').classList.remove('visible');
   document.getElementById('scannerActions').classList.remove('visible');
   document.getElementById('scanLoading').classList.remove('visible');
