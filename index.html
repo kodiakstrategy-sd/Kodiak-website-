@@ -104,164 +104,13 @@ footer { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); paddi
 .footer-contact { font-size: 11px; color: #666666; line-height: 2; text-align: right; font-family: ‘Courier New’, monospace; }
 .footer-contact a { color: #C6A85A; text-decoration: none; }
 
-/* ── KAI FLOATING WIDGET ── */
-#kai-widget { position: fixed; bottom: 28px; right: 28px; z-index: 999; font-family: -apple-system, ‘Helvetica Neue’, Arial, sans-serif; }
-
-#kai-panel {
-position: absolute;
-bottom: 72px;
-right: 0;
-width: 360px;
-background: #111111;
-border: 1px solid rgba(198,168,90,0.3);
-box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-display: none;
-flex-direction: column;
-height: 480px;
-border-radius: 4px;
-overflow: hidden;
-animation: kaiOpen 0.2s ease;
-}
-#kai-panel.open { display: flex; }
-@keyframes kaiOpen {
-from { opacity: 0; transform: translateY(12px) scale(0.97); }
-to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-#kai-header {
-padding: 14px 16px;
-border-bottom: 1px solid rgba(198,168,90,0.15);
-display: flex;
-align-items: center;
-justify-content: space-between;
-background: #1A1A1A;
-flex-shrink: 0;
-}
-.kai-header-left { display: flex; align-items: center; gap: 10px; }
-.kai-avatar {
-width: 32px; height: 32px;
-background: #C6A85A;
-display: flex; align-items: center; justify-content: center;
-font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
-color: #0B0B0B;
-border-radius: 2px;
-flex-shrink: 0;
-}
-.kai-header-info h5 { font-size: 13px; font-weight: 600; color: #FFFFFF; letter-spacing: 0.04em; }
-.kai-header-info p { font-size: 11px; color: #C6A85A; display: flex; align-items: center; gap: 5px; font-family: ‘Courier New’, monospace; letter-spacing: 0.06em; }
-.kai-status-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; display: inline-block; }
-#kai-close { background: none; border: none; cursor: pointer; color: #666666; font-size: 20px; line-height: 1; padding: 2px; transition: color 0.2s; }
-#kai-close:hover { color: #FFFFFF; }
-
-#kai-messages {
-flex: 1;
-overflow-y: auto;
-padding: 16px;
-display: flex;
-flex-direction: column;
-gap: 12px;
-scrollbar-width: thin;
-scrollbar-color: #2A2A2A transparent;
-}
-.kai-msg { display: flex; gap: 8px; align-items: flex-start; animation: msgFadeIn 0.2s ease; }
-@keyframes msgFadeIn { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
-.kai-msg.user { flex-direction: row-reverse; }
-.kai-msg-avatar {
-width: 24px; height: 24px;
-border-radius: 2px;
-background: #2A2A2A;
-display: flex; align-items: center; justify-content: center;
-font-size: 9px; color: #666666; flex-shrink: 0;
-font-family: ‘Courier New’, monospace;
-letter-spacing: 0.05em;
-}
-.kai-msg.assistant .kai-msg-avatar { background: #C6A85A; color: #0B0B0B; font-weight: 800; }
-.kai-bubble {
-max-width: 80%;
-padding: 10px 13px;
-font-size: 13px;
-line-height: 1.65;
-border-radius: 2px;
-}
-.kai-msg.assistant .kai-bubble { background: #1A1A1A; border: 1px solid rgba(198,168,90,0.12); color: #CCCCCC; }
-.kai-msg.user .kai-bubble { background: #C6A85A; color: #0B0B0B; font-weight: 500; }
-.kai-bubble a { color: #C6A85A; }
-.kai-msg.user .kai-bubble a { color: #0B0B0B; text-decoration: underline; }
-
-.kai-typing { display: flex; gap: 4px; align-items: center; padding: 2px 0; }
-.kai-typing span { width: 5px; height: 5px; background: #666666; border-radius: 50%; animation: kaiBounce 0.9s infinite; }
-.kai-typing span:nth-child(2) { animation-delay: 0.15s; }
-.kai-typing span:nth-child(3) { animation-delay: 0.3s; }
-@keyframes kaiBounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
-
-#kai-input-row {
-padding: 12px;
-border-top: 1px solid rgba(198,168,90,0.15);
-display: flex;
-gap: 8px;
-align-items: flex-end;
-background: #111111;
-flex-shrink: 0;
-}
-#kai-input {
-flex: 1;
-background: #1A1A1A;
-border: 1px solid #2A2A2A;
-color: #FFFFFF;
-font-family: -apple-system, ‘Helvetica Neue’, Arial, sans-serif;
-font-size: 13px;
-padding: 9px 13px;
-resize: none;
-outline: none;
-line-height: 1.5;
-max-height: 90px;
-border-radius: 2px;
-transition: border-color 0.2s;
-}
-#kai-input:focus { border-color: rgba(198,168,90,0.5); }
-#kai-input::placeholder { color: #555555; }
-#kai-send {
-background: #C6A85A;
-border: none;
-color: #0B0B0B;
-width: 36px; height: 36px;
-cursor: pointer;
-display: flex; align-items: center; justify-content: center;
-border-radius: 2px;
-flex-shrink: 0;
-transition: background 0.2s;
-}
-#kai-send:hover { background: #E0C97A; }
-#kai-send:disabled { background: #2A2A2A; cursor: not-allowed; }
-#kai-send svg { width: 14px; height: 14px; }
-
-#kai-toggle {
-width: 54px; height: 54px;
-background: #C6A85A;
-border: none;
-cursor: pointer;
-display: flex; align-items: center; justify-content: center;
-border-radius: 2px;
-box-shadow: 0 4px 24px rgba(198,168,90,0.35);
-transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-position: relative;
-}
-#kai-toggle:hover { background: #E0C97A; transform: translateY(-2px); box-shadow: 0 6px 32px rgba(198,168,90,0.45); }
-#kai-toggle svg { width: 22px; height: 22px; color: #0B0B0B; }
-#kai-badge {
-position: absolute; top: -3px; right: -3px;
-width: 13px; height: 13px;
-background: #4ade80;
-border-radius: 50%;
-border: 2px solid #0B0B0B;
-}
-
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 @media(max-width: 900px) {
 nav { padding: 0 24px; }
 .nav-links { display: none; }
-.hero { padding: 120px 24px 60px; }
+.hero { padding: 120px 24px 60px; flex-direction: column !important; }
+.hero img { width: 220px !important; max-width: 70vw !important; margin-top: 40px; }
 .problem-inner { padding: 72px 24px; }
 .steps-section { padding: 72px 24px; }
 .steps-grid { grid-template-columns: 1fr; }
@@ -274,9 +123,10 @@ nav { padding: 0 24px; }
 footer { padding: 48px 24px; }
 .footer-inner { flex-direction: column; align-items: flex-start; }
 .footer-contact { text-align: left; }
-#kai-panel { width: calc(100vw - 32px); right: 0; }
 }
 </style>
+
+<script defer src="/_vercel/insights/script.js"></script>
 
 </head>
 <body>
@@ -295,21 +145,21 @@ footer { padding: 48px 24px; }
   <a href="/intake" class="nav-cta">Book Discovery Call</a>
 </nav>
 
-<section class="hero">
-  <div class="hero-eyebrow">Spearfish to Sioux Falls · AI Consulting</div>
-  <h1 class="hero-h1">We show you exactly where AI can help <span>your business.</span></h1>
-  <div class="hero-h2">Then we build it for you.</div>
-  <p class="hero-body">Most business owners know AI is the future. Very few know where it fits in their specific operation — or what it's actually worth. <strong>That's the conversation we start.</strong></p>
-  <div class="hero-cta-group">
-    <a href="/intake" class="cta-primary">Book a Free Discovery Call</a>
-    <span class="cta-sub">Or call Ryan directly — <a href="tel:6056052558">(605) 605-2558</a></span>
+<section class="hero" style="flex-direction:row; align-items:center; justify-content:space-between; gap:48px; text-align:left;">
+  <div style="flex:1; min-width:0;">
+    <div class="hero-eyebrow">Spearfish to Sioux Falls · AI Consulting</div>
+    <h1 class="hero-h1">We show you exactly where AI can help <span>your business.</span></h1>
+    <div class="hero-h2">Then we build it for you.</div>
+    <p class="hero-body">Most business owners know AI is the future. Very few know where it fits in their specific operation — or what it's actually worth. <strong>That's the conversation we start.</strong></p>
+    <div class="hero-cta-group">
+      <a href="/intake" class="cta-primary">Book a Free Discovery Call</a>
+      <span class="cta-sub">Or call Ryan directly — <a href="tel:6056052558">(605) 605-2558</a></span>
+    </div>
+  </div>
+  <div style="flex-shrink:0; display:flex; align-items:center; justify-content:center;">
+    <img src="5B9A5E21-C0AF-4818-B4BC-01BD011EE3F6.png" alt="Kodiak Strategy Logo" style="width:340px; max-width:40vw; opacity:0.95;" />
   </div>
 </section>
-
-<div style="background:#0B0B0B; padding:80px 48px; display:flex; flex-direction:column; align-items:center; justify-content:center; border-top:1px solid rgba(198,168,90,0.1);">
-  <img src="5B9A5E21-C0AF-4818-B4BC-01BD011EE3F6.png" alt="Kodiak Strategy" style="width:240px; max-width:60vw; opacity:0.95;" />
-  <div style="font-size:10px; letter-spacing:0.4em; text-transform:uppercase; color:rgba(198,168,90,0.5); margin-top:24px; font-family:'Courier New',monospace;">Black Hills · AI Consulting · South Dakota</div>
-</div>
 
 <div class="problem-section">
   <div class="problem-inner">
@@ -433,56 +283,7 @@ footer { padding: 48px 24px; }
   </div>
 </footer>
 
-<!-- ── KAI FLOATING WIDGET ── -->
-
-<div id="kai-widget">
-
-  <div id="kai-panel">
-    <div id="kai-header">
-      <div class="kai-header-left">
-        <div class="kai-avatar">KAI</div>
-        <div class="kai-header-info">
-          <h5>KAI — KODIAK STRATEGY</h5>
-          <p><span class="kai-status-dot"></span> ONLINE NOW</p>
-        </div>
-      </div>
-      <button id="kai-close" onclick="kaiClose()" aria-label="Close">×</button>
-    </div>
-
-```
-<div id="kai-messages">
-  <div class="kai-msg assistant">
-    <div class="kai-msg-avatar">KAI</div>
-    <div class="kai-bubble">Hey — I'm Kai, Kodiak Strategy's AI assistant. I can answer questions or help you book a free discovery call with Ryan.<br><br>What would you like to know?</div>
-  </div>
-</div>
-
-<div id="kai-input-row">
-  <textarea id="kai-input" placeholder="Ask me anything..." rows="1"
-    onkeydown="kaiHandleKey(event)"
-    oninput="kaiResize(this)"></textarea>
-  <button id="kai-send" onclick="kaiSend()" aria-label="Send">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="22" y1="2" x2="11" y2="13"></line>
-      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-    </svg>
-  </button>
-</div>
-```
-
-  </div>
-
-  <button id="kai-toggle" onclick="kaiToggle()" aria-label="Chat with Kai">
-    <div id="kai-badge"></div>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-    </svg>
-  </button>
-
-</div>
-
 <script>
-// ── NAV HIDE ON SCROLL ──
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('nav');
@@ -490,126 +291,6 @@ window.addEventListener('scroll', () => {
   nav.style.transform = current > lastScroll && current > 80 ? 'translateY(-100%)' : 'translateY(0)';
   lastScroll = current;
 });
-
-// ── KAI CHAT ──
-const KAI_SYSTEM = `You are Kai, the AI assistant for Kodiak Strategy — a local AI consulting firm based in the Black Hills of South Dakota. You are embedded on the Kodiak Strategy website (kodiakstrategy.com).
-
-YOUR JOB:
-1. Answer questions about Kodiak Strategy accurately and confidently
-2. Be warm, direct, and helpful — not salesy
-3. After answering their main question(s), naturally offer to connect them with Ryan for a free discovery call
-
-ABOUT KODIAK STRATEGY:
-- We help owner-operated businesses across South Dakota and the Northern Plains figure out exactly where AI fits in their operation and what it's worth
-- Services: Free discovery call → Business assessment → Custom AI implementation plan → Build & deploy
-- Core products: Custom AI chatbots trained on a business's FAQs that answer questions 24/7 and book appointments; workflow automation; full business AI audits
-- Pricing: Free discovery call to start. Business audits typically $500. AI builds quoted custom — most start around $500 setup + $99–199/month. No packages off a shelf — every plan is built from the assessment.
-- Typical timeline: Discovery call → assessment within a week → implementation plan presented → builds take 5–10 business days
-- Who we serve: Optometry, dental, medical, law firms, roofing, HVAC, home services, restaurants, real estate, insurance — any owner-operated local business
-- Owner: Ryan — available for a free 15-minute discovery call
-- Phone: (605) 605-2558
-- Email: kodiakstrategysd@gmail.com
-- Book a call: kodiakstrategy.com/intake or Calendly at calendly.com/kodiakstrategysd
-- Location: Black Hills, South Dakota — serving Spearfish to Sioux Falls
-
-TONE: Confident, direct, warm. Like a knowledgeable local advisor — not a pitch bot. Keep responses concise: 2–3 short paragraphs max.
-
-BOOKING TRIGGER: After answering their main question(s), if they seem interested offer: "Want to set up a free 15-minute discovery call with Ryan? You can book at kodiakstrategy.com/intake or just call/text (605) 605-2558."
-
-Keep all responses to 2-3 sentences maximum. Be concise and direct.
-
-Never make up details. If unsure, point them to Ryan directly.`;
-
-let kaiHistory = [];
-let kaiOpen = false;
-
-function kaiToggle() { kaiOpen ? kaiClose() : kaiOpenPanel(); }
-function kaiOpenPanel() {
-  kaiOpen = true;
-  document.getElementById('kai-panel').classList.add('open');
-  document.getElementById('kai-badge').style.display = 'none';
-  setTimeout(() => document.getElementById('kai-input').focus(), 100);
-}
-function kaiClose() {
-  kaiOpen = false;
-  document.getElementById('kai-panel').classList.remove('open');
-}
-
-async function kaiSend() {
-  const input = document.getElementById('kai-input');
-  const text = input.value.trim();
-  if (!text) return;
-
-  kaiAppendMsg('user', text);
-  input.value = '';
-  kaiResize(input);
-  kaiSetLoading(true);
-
-  kaiHistory.push({ role: 'user', content: text });
-
-  try {
-    const res = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-5',
-        max_tokens: 1000,
-        system: KAI_SYSTEM,
-        messages: kaiHistory
-      })
-    });
-    const data = await res.json();
-    const reply = data.content?.map(b => b.text || '').join('') || 'Sorry, something went wrong. Please try again or call us at (605) 605-2558.';
-    kaiHistory.push({ role: 'assistant', content: reply });
-    kaiSetLoading(false);
-    kaiAppendMsg('assistant', reply);
-  } catch(e) {
-    kaiSetLoading(false);
-    kaiAppendMsg('assistant', 'Sorry, I ran into an issue. You can reach Ryan directly at <a href="tel:6056052558">(605) 605-2558</a> or <a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a>.');
-  }
-}
-
-function kaiAppendMsg(role, text) {
-  const container = document.getElementById('kai-messages');
-  const el = document.createElement('div');
-  el.className = 'kai-msg ' + role;
-  el.innerHTML = `<div class="kai-msg-avatar">${role === 'assistant' ? 'KAI' : 'YOU'}</div><div class="kai-bubble">${kaiFormat(text)}</div>`;
-  container.appendChild(el);
-  container.scrollTop = container.scrollHeight;
-}
-
-function kaiFormat(t) {
-  return t
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g,'<em>$1</em>')
-    .replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank">$1</a>')
-    .replace(/\n/g,'<br>');
-}
-
-let kaiTypingEl = null;
-function kaiSetLoading(on) {
-  document.getElementById('kai-send').disabled = on;
-  const container = document.getElementById('kai-messages');
-  if (on) {
-    kaiTypingEl = document.createElement('div');
-    kaiTypingEl.className = 'kai-msg assistant';
-    kaiTypingEl.innerHTML = `<div class="kai-msg-avatar">KAI</div><div class="kai-bubble"><div class="kai-typing"><span></span><span></span><span></span></div></div>`;
-    container.appendChild(kaiTypingEl);
-    container.scrollTop = container.scrollHeight;
-  } else if (kaiTypingEl) {
-    kaiTypingEl.remove();
-    kaiTypingEl = null;
-  }
-}
-
-function kaiHandleKey(e) {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); kaiSend(); }
-}
-function kaiResize(el) {
-  el.style.height = 'auto';
-  el.style.height = Math.min(el.scrollHeight, 90) + 'px';
-}
 </script>
 
 </body>
