@@ -202,6 +202,8 @@ body::before { content: ''; position: fixed; inset: 0; background-image: url("da
   <a class="quick-link" href="tel:9075004010"><span class="ql-icon">📞</span><div><span class="ql-name">Phone</span><span class="ql-desc">(907) 500-4010</span></div></a>
   <a class="quick-link" href="https://search.google.com/search-console" target="_blank"><span class="ql-icon">📊</span><div><span class="ql-name">Search Console</span><span class="ql-desc">Google SEO dashboard</span></div></a>
   <a class="quick-link" href="https://business.google.com" target="_blank"><span class="ql-icon">📍</span><div><span class="ql-name">Google Business</span><span class="ql-desc">Local listing manager</span></div></a>
+  <a class="quick-link" href="https://supabase.com/dashboard/project/flhnntxmikmppcoucdky" target="_blank"><span class="ql-icon">🗄</span><div><span class="ql-name">Supabase</span><span class="ql-desc">Database dashboard</span></div></a>
+  <a class="quick-link" href="https://kodiakstrategy.com/Kodiak-settings"><span class="ql-icon">⚙️</span><div><span class="ql-name">Settings</span><span class="ql-desc">API keys & configuration</span></div></a>
 </div>
 ```
 
