@@ -202,7 +202,15 @@ after_points jsonb default ‘[]’::jsonb,
 cost text, setup text, time_saved text,
 notes text, featured boolean default false,
 created_at bigint
-);</div>
+);
+
+create table if not exists config (
+id text primary key,
+value text
+);
+
+alter table config enable row level security;
+create policy “anon_all” on config for all using (true) with check (true);</div>
 <button class="copy-sql-btn" id="copySqlBtn" onclick="copySQL()">Copy SQL</button>
 
   </div>
@@ -423,20 +431,55 @@ async function seedAllData() {
   status.innerHTML = results.join('<br>');
 }
 
-function saveClaudeKey() {
+async function saveClaudeKey() {
   const key = document.getElementById('claudeKey').value.trim();
   if (!key || !key.startsWith('sk-ant-')) {
     document.getElementById('claudeKeyStatus').textContent = 'Invalid key — Claude API keys start with sk-ant-';
     return;
   }
-  localStorage.setItem('kodiak_claude_key', key);
-  document.getElementById('claudeKey').value = '';
-  document.getElementById('claudeKeyStatus').textContent = '✓ Claude API key saved';
-  document.getElementById('claudeKeyStatus').style.color = '#4ade80';
+  const sbKey = getKey();
+  if (!sbKey) {
+    document.getElementById('claudeKeyStatus').textContent = 'Connect Supabase first — your Claude key will be stored there';
+    return;
+  }
+  // Store in Supabase config table
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/config`, {
+      method: 'POST',
+      headers: { 'apikey': sbKey, 'Authorization': `Bearer ${sbKey}`, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates' },
+      body: JSON.stringify([{ id: 'claude_api_key', value: key }])
+    });
+    if (res.ok || res.status === 201) {
+      // Also store locally as fallback
+      localStorage.setItem('kodiak_claude_key', key);
+      document.getElementById('claudeKey').value = '';
+      document.getElementById('claudeKeyStatus').textContent = '✓ Claude API key saved to Supabase';
+      document.getElementById('claudeKeyStatus').style.color = '#4ade80';
+    } else {
+      // Table might not exist yet — fall back to localStorage only
+      localStorage.setItem('kodiak_claude_key', key);
+      document.getElementById('claudeKey').value = '';
+      document.getElementById('claudeKeyStatus').textContent = '✓ Saved locally — run SQL below to enable cross-device sync';
+      document.getElementById('claudeKeyStatus').style.color = '#C6A85A';
+    }
+  } catch(e) {
+    localStorage.setItem('kodiak_claude_key', key);
+    document.getElementById('claudeKeyStatus').textContent = '✓ Saved locally';
+    document.getElementById('claudeKeyStatus').style.color = '#4ade80';
+  }
 }
 
-function clearClaudeKey() {
+async function clearClaudeKey() {
   localStorage.removeItem('kodiak_claude_key');
+  const sbKey = getKey();
+  if (sbKey) {
+    try {
+      await fetch(`${SUPABASE_URL}/rest/v1/config?id=eq.claude_api_key`, {
+        method: 'DELETE',
+        headers: { 'apikey': sbKey, 'Authorization': `Bearer ${sbKey}` }
+      });
+    } catch(e) {}
+  }
   document.getElementById('claudeKey').value = '';
   document.getElementById('claudeKeyStatus').textContent = 'Key cleared';
   document.getElementById('claudeKeyStatus').style.color = '#f87171';
