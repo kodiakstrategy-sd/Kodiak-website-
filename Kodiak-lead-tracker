@@ -288,7 +288,8 @@ textarea.form-input { resize: vertical; min-height: 80px; }
 
 <script>
 const SB = 'https://flhnntxmikmppcoucdky.supabase.co';
-const key = () => localStorage.getItem('kodiak_supabase_key') || '';
+const ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZsaG5udHhtaWttcHBjb3VjZGt5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyMTQyMzYsImV4cCI6MjA5Mzc5MDIzNn0.yTuZsVJmFrqUgKKVaHCJ2V0Wz-Ws1jzTGpcr2oZHRmc';
+const key = () => ANON;
 const STAGES = ['New','Contacted','Follow-Up','Warm','Call Booked','Assessment Scheduled','Report Out','Strategy Call','Proposal Sent','Negotiating','Closed Won','Closed Lost'];
 const PILLS = {'New':'pill-new','Contacted':'pill-contacted','Follow-Up':'pill-followup','Warm':'pill-warm','Call Booked':'pill-callbooked','Assessment Scheduled':'pill-assessment','Report Out':'pill-reportout','Strategy Call':'pill-strategycall','Proposal Sent':'pill-proposal','Negotiating':'pill-negotiating','Closed Won':'pill-won','Closed Lost':'pill-lost'};
 let leads = [], activeId = null;
