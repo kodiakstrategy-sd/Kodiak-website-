@@ -832,8 +832,29 @@ text-align: center;
 </div>
 
 <script>
+// ── SUPABASE CONFIG ──
+const SUPABASE_URL = 'https://flhnntxmikmppcoucdky.supabase.co';
+const getKey = () => localStorage.getItem('kodiak_supabase_key') || '';
+
+async function sbFetch(path, method = 'GET', body = null) {
+  const key = getKey();
+  const opts = {
+    method,
+    headers: {
+      'apikey': key,
+      'Authorization': `Bearer ${key}`,
+      'Content-Type': 'application/json',
+      'Prefer': method === 'POST' ? 'resolution=merge-duplicates' : ''
+    }
+  };
+  if (body) opts.body = JSON.stringify(body);
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, opts);
+  if (method === 'GET' && res.ok) return res.json();
+  return res;
+}
+
 // ── DATA ──
-let leads = JSON.parse(localStorage.getItem('kodiak_leads') || '[]');
+let leads = [];
 let activeDrawerId = null;
 const STAGES = ['New','Contacted','Follow-Up','Warm','Call Booked','Assessment Scheduled','Report Out','Strategy Call','Proposal Sent','Negotiating','Closed Won','Closed Lost'];
 const STATUS_CLASS = {
@@ -843,7 +864,42 @@ const STATUS_CLASS = {
   'Closed Won':'s-closed','Closed Lost':'s-lost'
 };
 
-function save() { localStorage.setItem('kodiak_leads', JSON.stringify(leads)); }
+async function loadLeads() {
+  if (!getKey()) {
+    // Fallback to localStorage if no key
+    leads = JSON.parse(localStorage.getItem('kodiak_leads') || '[]');
+    return;
+  }
+  try {
+    const data = await sbFetch('leads?order=created_at.desc');
+    leads = data.map(l => ({
+      id: l.id, name: l.name, business: l.business,
+      industry: l.industry, city: l.city, phone: l.phone,
+      email: l.email, status: l.status, dealValue: l.deal_value,
+      source: l.source, followUpDate: l.follow_up_date,
+      notes: l.notes, activity: l.activity || [],
+      createdAt: l.created_at
+    }));
+  } catch(e) {
+    leads = JSON.parse(localStorage.getItem('kodiak_leads') || '[]');
+  }
+}
+
+async function save() {
+  if (!getKey()) { localStorage.setItem('kodiak_leads', JSON.stringify(leads)); return; }
+  // Push all leads to Supabase
+  const mapped = leads.map(l => ({
+    id: l.id, name: l.name, business: l.business,
+    industry: l.industry, city: l.city, phone: l.phone,
+    email: l.email, status: l.status, deal_value: l.dealValue,
+    source: l.source, follow_up_date: l.followUpDate,
+    notes: l.notes, activity: l.activity || [],
+    created_at: l.createdAt
+  }));
+  await sbFetch('leads', 'POST', mapped);
+  localStorage.setItem('kodiak_leads', JSON.stringify(leads));
+}
+
 function genId() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
 
 // ── PIPELINE STRIP ──
@@ -1132,23 +1188,27 @@ function confirmDelete(id) {
 }
 
 // ── INIT ──
-renderTable();
-renderPipeline();
-renderStats();
-
-// Seed sample data if empty
-if (leads.length === 0) {
-  const samples = [
-    { id: genId(), name: 'Kristel Liska', business: 'The Grind Coffee', industry: 'Restaurant / Hospitality', city: 'Juneau, AK', phone: '', email: '', status: 'Follow-Up', dealValue: 1000, source: 'Personal Connection', followUpDate: new Date().toISOString().split('T')[0], notes: 'Warm personal connection. Offered free assessment. Follow up via call.', activity: [], createdAt: Date.now() - 86400000 * 3 },
-    { id: genId(), name: 'Austin Paul', business: 'Design North Roofing', industry: 'Roofing / Construction', city: 'Juneau, AK', phone: '', email: '', status: 'Follow-Up', dealValue: 1000, source: 'Personal Connection', followUpDate: new Date().toISOString().split('T')[0], notes: 'Warm personal connection. Offered free assessment. Follow up via call.', activity: [], createdAt: Date.now() - 86400000 * 3 },
-    { id: genId(), name: 'Dr. Taylor Haley', business: 'Haley Optical', industry: 'Optometry / Eye Care', city: 'Rapid City, SD', phone: '', email: '', status: 'Assessment Scheduled', dealValue: 1000, source: 'Personal Connection', followUpDate: '', notes: 'Practice audit scheduled. Taylor fully on board. Staff may be resistant to change.', activity: [{ date: Date.now() - 86400000 * 7, note: 'Initial contact made. Assessment scheduled.' }], createdAt: Date.now() - 86400000 * 10 },
-  ];
-  leads = samples;
-  save();
+async function init() {
+  await loadLeads();
   renderTable();
   renderPipeline();
   renderStats();
+
+  if (leads.length === 0 && !getKey()) {
+    const samples = [
+      { id: genId(), name: 'Kristel Liska', business: 'The Grind Coffee', industry: 'Restaurant / Hospitality', city: 'Juneau, AK', phone: '', email: '', status: 'Follow-Up', dealValue: 1000, source: 'Personal Connection', followUpDate: new Date().toISOString().split('T')[0], notes: 'Warm personal connection.', activity: [], createdAt: Date.now() - 86400000 * 3 },
+      { id: genId(), name: 'Austin Paul', business: 'Design North Roofing', industry: 'Roofing / Construction', city: 'Juneau, AK', phone: '', email: '', status: 'Follow-Up', dealValue: 1000, source: 'Personal Connection', followUpDate: new Date().toISOString().split('T')[0], notes: 'Warm personal connection.', activity: [], createdAt: Date.now() - 86400000 * 3 },
+      { id: genId(), name: 'Dr. Taylor Haley', business: 'Haley Optical', industry: 'Optometry / Eye Care', city: 'Rapid City, SD', phone: '', email: '', status: 'Assessment Scheduled', dealValue: 1000, source: 'Personal Connection', followUpDate: '', notes: 'Practice audit scheduled.', activity: [], createdAt: Date.now() - 86400000 * 10 },
+    ];
+    leads = samples;
+    save();
+    renderTable();
+    renderPipeline();
+    renderStats();
+  }
 }
+
+init();
 </script>
 
 </body>
