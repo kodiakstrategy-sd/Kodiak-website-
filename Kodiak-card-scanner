@@ -625,12 +625,16 @@ white-space: nowrap;
 
 ```
 <div>
-  <div class="upload-zone" id="uploadZone" onclick="document.getElementById('cardInput').click()" ondragover="handleDrag(event)" ondrop="handleDrop(event)">
+  <div class="upload-zone" id="uploadZone" ondragover="handleDrag(event)" ondrop="handleDrop(event)">
     <div class="upload-icon">📇</div>
-    <div class="upload-title">Drop a <em>business card</em></div>
-    <p class="upload-sub">Take a photo of the card and upload it here. The AI will extract every contact detail automatically.</p>
-    <button class="upload-btn" onclick="event.stopPropagation()">Choose Photo</button>
-    <input type="file" id="cardInput" class="upload-input" accept="image/*" onchange="handleFile(event)" />
+    <div class="upload-title">Scan a <em>business card</em></div>
+    <p class="upload-sub">Take a photo or upload from your camera roll. The AI will extract every contact detail automatically.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
+      <button class="upload-btn" onclick="document.getElementById('cardInputCamera').click()" style="display:flex;align-items:center;gap:6px;">📷 Take Photo</button>
+      <button class="upload-btn" onclick="document.getElementById('cardInputLibrary').click()" style="background:#1A1A1A;color:#C6A85A;border:1px solid #C6A85A;display:flex;align-items:center;gap:6px;">🖼 Choose Photo</button>
+    </div>
+    <input type="file" id="cardInputCamera" class="upload-input" accept="image/*" capture="environment" onchange="handleFile(event)" />
+    <input type="file" id="cardInputLibrary" class="upload-input" accept="image/*" onchange="handleFile(event)" />
   </div>
 
   <div style="margin-top:16px;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:8px;">
@@ -929,7 +933,8 @@ function resetScanner() {
   document.getElementById('extractedFields').classList.remove('visible');
   document.getElementById('scannerActions').classList.remove('visible');
   document.getElementById('scanLoading').classList.remove('visible');
-  document.getElementById('cardInput').value = '';
+  document.getElementById('cardInputCamera').value = '';
+  document.getElementById('cardInputLibrary').value = '';
   currentImageBase64 = null;
   ['ex_name','ex_title','ex_business','ex_email','ex_phone','ex_website','ex_city'].forEach(id => {
     document.getElementById(id).value = '';
