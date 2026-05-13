@@ -123,6 +123,27 @@ body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helveti
 
   </div>
 
+  <!-- CLAUDE API KEY -->
+
+  <div class="section">
+    <div class="section-title">Claude API Key</div>
+    <div class="section-desc">Required for the card scanner AI extraction and any other Claude-powered tools. Get your key from console.anthropic.com. Stored locally only — never in GitHub.</div>
+
+```
+<div class="field-group">
+  <label class="field-label">API Key</label>
+  <input type="password" class="field-input masked" id="claudeKey" placeholder="sk-ant-..." autocomplete="off" onkeypress="if(event.key==='Enter')saveClaudeKey()" />
+</div>
+
+<div class="btn-row">
+  <button class="save-btn" onclick="saveClaudeKey()">Save Claude Key</button>
+  <button class="clear-btn" onclick="clearClaudeKey()">Clear Key</button>
+</div>
+<div id="claudeKeyStatus" style="font-family:'Courier New',monospace;font-size:10px;color:#666;margin-top:10px;"></div>
+```
+
+  </div>
+
   <!-- DATABASE SETUP -->
 
   <div class="section">
@@ -402,10 +423,34 @@ async function seedAllData() {
   status.innerHTML = results.join('<br>');
 }
 
+function saveClaudeKey() {
+  const key = document.getElementById('claudeKey').value.trim();
+  if (!key || !key.startsWith('sk-ant-')) {
+    document.getElementById('claudeKeyStatus').textContent = 'Invalid key — Claude API keys start with sk-ant-';
+    return;
+  }
+  localStorage.setItem('kodiak_claude_key', key);
+  document.getElementById('claudeKey').value = '';
+  document.getElementById('claudeKeyStatus').textContent = '✓ Claude API key saved';
+  document.getElementById('claudeKeyStatus').style.color = '#4ade80';
+}
+
+function clearClaudeKey() {
+  localStorage.removeItem('kodiak_claude_key');
+  document.getElementById('claudeKey').value = '';
+  document.getElementById('claudeKeyStatus').textContent = 'Key cleared';
+  document.getElementById('claudeKeyStatus').style.color = '#f87171';
+}
+
 // Auto-test on load if key exists
 if (getKey()) {
   document.getElementById('anonKey').placeholder = 'Key saved — click Test Connection to verify';
   testConnection();
+}
+if (localStorage.getItem('kodiak_claude_key')) {
+  document.getElementById('claudeKeyStatus').textContent = '✓ Claude API key saved';
+  document.getElementById('claudeKeyStatus').style.color = '#4ade80';
+  document.getElementById('claudeKey').placeholder = 'Key saved — enter new key to replace';
 }
 </script>
 
