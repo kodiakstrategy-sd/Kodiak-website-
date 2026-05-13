@@ -768,29 +768,31 @@ white-space: nowrap;
 <script>
 // ── SUPABASE ──
 const SUPABASE_URL = 'https://flhnntxmikmppcoucdky.supabase.co';
-const getKey = () => localStorage.getItem('kodiak_supabase_key') || '';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZsaG5udHhtaWttcHBjb3VjZGt5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyMTQyMzYsImV4cCI6MjA5Mzc5MDIzNn0.yTuZsVJmFrqUgKKVaHCJ2V0Wz-Ws1jzTGpcr2oZHRmc';
+const getKey = () => SUPABASE_ANON_KEY;
 
 async function getClaudeKey() {
-  // Try localStorage first (fastest)
+  // Check localStorage first
   const local = localStorage.getItem('kodiak_claude_key');
   if (local) return local;
 
-  // Try Supabase using hardcoded URL with anon key from localStorage
-  const sbKey = getKey();
-  if (sbKey) {
-    try {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/config?id=eq.claude_api_key&select=value`, {
-        headers: { 'apikey': sbKey, 'Authorization': `Bearer ${sbKey}` }
-      });
-      if (res.ok) {
-        const data = await res.json();
-        if (data && data.length && data[0].value) {
-          localStorage.setItem('kodiak_claude_key', data[0].value);
-          return data[0].value;
-        }
+  // Try fetching from Supabase config table
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/config?id=eq.claude_api_key&select=value`, {
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
       }
-    } catch(e) {}
-  }
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.length && data[0].value) {
+        localStorage.setItem('kodiak_claude_key', data[0].value);
+        return data[0].value;
+      }
+    }
+  } catch(e) {}
+
   return '';
 }
 
