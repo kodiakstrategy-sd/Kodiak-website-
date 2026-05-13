@@ -737,13 +737,51 @@ white-space: nowrap;
 </div>
 
 <script>
+// ── SUPABASE ──
+const SUPABASE_URL = 'https://flhnntxmikmppcoucdky.supabase.co';
+const getKey = () => localStorage.getItem('kodiak_supabase_key') || '';
+
+async function sbPost(table, data) {
+  const key = getKey();
+  if (!key) return;
+  await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+    method: 'POST',
+    headers: { 'apikey': key, 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates' },
+    body: JSON.stringify(Array.isArray(data) ? data : [data])
+  });
+}
+
+async function sbLoad(table, order = 'added_at') {
+  const key = getKey();
+  if (!key) return null;
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?order=${order}.desc`, {
+      headers: { 'apikey': key, 'Authorization': `Bearer ${key}` }
+    });
+    if (res.ok) return res.json();
+  } catch(e) {}
+  return null;
+}
+
 // ── DATA ──
 let contacts = JSON.parse(localStorage.getItem('kodiak_contacts') || '[]');
 let activeComposeId = null;
 let currentImageBase64 = null;
 
-function save() { localStorage.setItem('kodiak_contacts', JSON.stringify(contacts)); }
+async function save() {
+  localStorage.setItem('kodiak_contacts', JSON.stringify(contacts));
+  if (getKey()) await sbPost('contacts', contacts);
+}
+
 function genId() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
+
+async function loadContacts() {
+  const data = await sbLoad('contacts', 'added_at');
+  if (data && data.length) {
+    contacts = data;
+    localStorage.setItem('kodiak_contacts', JSON.stringify(contacts));
+  }
+}
 
 // ── TABS ──
 function switchTab(tab) {
@@ -994,25 +1032,26 @@ function convertToLead(id) {
   if (!c.activity) c.activity = [];
   c.activity.push({ date: Date.now(), note: 'Converted to lead' });
 
-  // Add to lead tracker storage
-  const leads = JSON.parse(localStorage.getItem('kodiak_leads') || '[]');
-  leads.unshift({
+  const newLead = {
     id: 'lead_' + id,
-    name: c.name,
-    business: c.business,
-    industry: c.industry || '',
-    city: c.city,
-    phone: c.phone,
-    email: c.email,
-    status: 'Warm',
-    dealValue: 1000,
+    name: c.name, business: c.business,
+    industry: c.industry || '', city: c.city,
+    phone: c.phone, email: c.email,
+    status: 'Warm', deal_value: 1000,
     source: 'Business Card',
-    followUpDate: new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0],
+    follow_up_date: new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0],
     notes: `Converted from business card scan. Title: ${c.title || '—'}`,
     activity: [{ date: Date.now(), note: 'Added from card scanner — converted to lead' }],
-    createdAt: Date.now()
-  });
-  localStorage.setItem('kodiak_leads', JSON.stringify(leads));
+    created_at: Date.now()
+  };
+
+  // Write to Supabase leads
+  if (getKey()) sbPost('leads', newLead);
+
+  // Also update localStorage for lead tracker fallback
+  const localLeads = JSON.parse(localStorage.getItem('kodiak_leads') || '[]');
+  localLeads.unshift({ ...newLead, dealValue: 1000, followUpDate: newLead.follow_up_date, createdAt: newLead.created_at });
+  localStorage.setItem('kodiak_leads', JSON.stringify(localLeads));
 
   save();
   renderOutreach();
@@ -1107,8 +1146,12 @@ function exportCSV() {
 }
 
 // ── INIT ──
-updateCounts();
-renderOutreach();
+async function init() {
+  await loadContacts();
+  updateCounts();
+  renderOutreach();
+}
+init();
 </script>
 
 </body>
