@@ -3,392 +3,191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kodiak Strategy</title>
+<title>Are You Ready — Kodiak Strategy</title>
 <style>
-/* System fonts only — no external dependencies */
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --stone-1: #0A0906;
-  --stone-2: #100E0B;
-  --stone-3: #121009;
-  --stone-4: #1C1915;
-  --stone-5: #221E19;
+  --stone: #070604;
   --engraved: #F0EBE0;
-  --engraved-dim: rgba(232,226,214,0.45);
-  --engraved-ghost: rgba(232,226,214,0.07);
-  --engraved-trace: rgba(232,226,214,0.04);
-  --incised: rgba(232,226,214,0.12);
+  --engraved-dim: rgba(240,235,224,0.72);
+  --engraved-ghost: rgba(240,235,224,0.08);
+  --incised: rgba(240,235,224,0.14);
+  --incised-faint: rgba(240,235,224,0.08);
 }
-
-html { background: var(--stone-1); }
-
+html { background: var(--stone); scroll-behavior: smooth; }
 body {
-  background-color: var(--stone-1);
-  color: var(--engraved);
-  font-family: 'Courier New', 'Courier', monospace;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-
-  /* STONE TEXTURE — layered SVG noise + topo rings + grain */
+  background-color: var(--stone);
   background-image:
-    /* Grain layer */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.042'/%3E%3C/svg%3E"),
-    /* Fine grain detail */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"),
-    /* Stone depth variation */
-    radial-gradient(ellipse at 15% 25%, rgba(40,34,26,0.6) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 75%, rgba(30,25,18,0.5) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(20,16,11,0.3) 0%, transparent 70%),
-    /* Topo contour lines — geological strata */
-    repeating-radial-gradient(circle at 30% 40%, transparent 0px, transparent 68px, rgba(232,226,214,0.015) 68px, rgba(232,226,214,0.015) 70px),
-    repeating-radial-gradient(circle at 30% 40%, transparent 0px, transparent 138px, rgba(232,226,214,0.012) 138px, rgba(232,226,214,0.012) 140px),
-    repeating-radial-gradient(circle at 30% 40%, transparent 0px, transparent 208px, rgba(232,226,214,0.01) 208px, rgba(232,226,214,0.01) 210px),
-    repeating-radial-gradient(circle at 70% 60%, transparent 0px, transparent 88px, rgba(232,226,214,0.01) 88px, rgba(232,226,214,0.01) 90px),
-    repeating-radial-gradient(circle at 70% 60%, transparent 0px, transparent 178px, rgba(232,226,214,0.008) 178px, rgba(232,226,214,0.008) 180px);
-  background-size: 400px 400px, 200px 200px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='5' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 20% 30%, rgba(22,18,13,0.5) 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 70%, rgba(16,13,9,0.45) 0%, transparent 40%);
+  background-size: 400px 400px, 100% 100%, 100% 100%;
   background-attachment: fixed;
-}
-
-/* ── PRINT BAR ── */
-.print-bar { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,9,6,0.97); border-bottom: 1px solid var(--incised); padding: 9px 32px; display: flex; align-items: center; justify-content: space-between; z-index: 999; backdrop-filter: blur(8px); }
-.print-bar-label { font-size: 8px; letter-spacing: 0.35em; color: var(--engraved-dim); text-transform: uppercase; }
-.print-btn { background: transparent; border: 1px solid var(--incised); color: var(--engraved-dim); padding: 5px 14px; font-family: 'Courier New', 'Courier', monospace; font-size: 8px; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
-.print-btn:hover { border-color: var(--engraved-dim); color: var(--engraved); }
-
-/* ── WRAPPER ── */
-.site { max-width: 1200px; margin: 0 auto; padding: 0 56px; }
-@media(max-width: 900px) { .site { padding: 0 28px; } }
-
-/* ── NAV ── */
-.nav-wrap { border-bottom: 1px solid var(--incised); position: sticky; top: 40px; z-index: 100; background: rgba(10,9,6,0.92); backdrop-filter: blur(12px); }
-.nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-.nav-wordmark { font-family: 'Georgia', 'Times New Roman', serif; font-size: 15px; font-weight: 900; letter-spacing: 0.25em; color: var(--engraved); text-transform: uppercase; }
-.nav-wordmark em { font-style: italic; font-weight: 700; color: var(--engraved); opacity: 0.6; }
-.nav-links { display: flex; align-items: center; gap: 40px; }
-.nav-links a { font-size: 9px; letter-spacing: 0.2em; color: var(--engraved-dim); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
-.nav-links a:hover { color: var(--engraved); }
-.nav-cta { border: 1px solid var(--incised) !important; padding: 8px 20px !important; letter-spacing: 0.15em !important; }
-.nav-cta:hover { background: var(--engraved-ghost) !important; }
-
-/* ── HERO ── */
-.hero { padding: 140px 0 100px; border-bottom: 1px solid var(--incised); position: relative; }
-
-/* Carved rule above hero */
-.hero::before { content: ''; position: absolute; top: 60px; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--incised) 20%, var(--incised) 80%, transparent); }
-
-.hero-opening {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: clamp(18px, 2.2vw, 26px);
-  font-style: italic;
-  font-weight: 400;
   color: var(--engraved);
-  max-width: 760px;
-  line-height: 1.6;
-  margin-bottom: 52px;
-  opacity: 0.88;
-  letter-spacing: -0.01em;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
-
-.hero-provenance { font-size: 8px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 36px; display: flex; align-items: center; gap: 16px; opacity: 0.6; }
-.hero-provenance::after { content: ''; flex: 0 0 48px; height: 1px; background: var(--engraved-dim); }
-
-.hero-headline { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(38px, 5.5vw, 68px); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; color: var(--engraved); margin-bottom: 14px; max-width: 900px; }
-.hero-headline em { font-style: italic; font-weight: 700; color: var(--engraved-dim); }
-
-.hero-subhead { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(16px, 2vw, 22px); font-weight: 300; font-style: italic; color: var(--engraved-dim); margin-bottom: 52px; max-width: 640px; line-height: 1.6; letter-spacing: 0.02em; }
-
-.hero-cta-group { display: flex; align-items: center; gap: 28px; }
-.hero-cta { border: 1px solid var(--engraved-dim); color: var(--engraved); padding: 14px 32px; font-family: 'Courier New', 'Courier', monospace; font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; display: inline-block; }
-.hero-cta:hover { background: var(--engraved-ghost); }
-.hero-cta-secondary { font-size: 9px; letter-spacing: 0.15em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.5; }
-
-/* Marker stats */
-.hero-markers { display: flex; gap: 0; margin-top: 80px; border-top: 1px solid var(--incised); }
-.hero-marker { flex: 1; padding: 32px 0 0; border-right: 1px solid var(--incised); padding-right: 40px; margin-right: 40px; }
-.hero-marker:last-child { border-right: none; }
-.marker-n { font-family: 'Georgia', 'Times New Roman', serif; font-size: 44px; font-weight: 900; color: var(--engraved); line-height: 1; margin-bottom: 8px; letter-spacing: -0.02em; }
-.marker-l { font-size: 8px; letter-spacing: 0.2em; color: var(--engraved-dim); text-transform: uppercase; line-height: 1.7; opacity: 0.5; max-width: 160px; }
-
-/* ── DISARMER ── */
-.disarmer { padding: 100px 0; border-bottom: 1px solid var(--incised); }
-.disarmer-inner { max-width: 860px; }
-.disarmer-kicker { font-size: 8px; letter-spacing: 0.45em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 28px; opacity: 0.5; }
-.disarmer-headline { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(24px, 3.5vw, 36px); font-weight: 900; color: var(--engraved); margin-bottom: 32px; line-height: 1.2; letter-spacing: -0.01em; }
-.disarmer-headline em { font-style: italic; color: var(--engraved-dim); }
-.disarmer-body { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(16px, 1.8vw, 20px); font-weight: 300; color: var(--engraved-dim); line-height: 1.8; margin-bottom: 20px; }
-.disarmer-body strong { font-weight: 600; color: var(--engraved); }
-
-/* ── SECTION LABEL ── */
-.sec-label { font-size: 7px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 16px; opacity: 0.45; display: flex; align-items: center; gap: 14px; }
-.sec-label::after { content: ''; flex: 0 0 32px; height: 1px; background: currentColor; }
-.sec-headline { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(22px, 3.5vw, 34px); font-weight: 900; color: var(--engraved); margin-bottom: 52px; line-height: 1.15; letter-spacing: -0.01em; max-width: 700px; }
-.sec-headline em { font-style: italic; color: var(--engraved-dim); }
-
-/* ── TRACKS ── */
-.tracks { padding: 100px 0; border-bottom: 1px solid var(--incised); }
-.tracks-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--incised); }
-.track { background: var(--stone-1); padding: 52px 48px; position: relative; }
-.track::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--engraved-dim), transparent); }
-.track-n { font-size: 7px; letter-spacing: 0.45em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 28px; opacity: 0.4; padding-bottom: 20px; border-bottom: 1px solid var(--incised); }
-.track-name { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: var(--engraved); margin-bottom: 10px; line-height: 1.2; letter-spacing: -0.01em; }
-.track-tagline { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(14px, 1.6vw, 17px); font-weight: 300; font-style: italic; color: var(--engraved-dim); margin-bottom: 28px; line-height: 1.6; }
-.track-body { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(14px, 1.5vw, 16px); font-weight: 300; color: var(--engraved-dim); line-height: 1.8; margin-bottom: 36px; opacity: 0.75; }
-.track-specs { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--incised); padding-top: 28px; }
-.spec { display: flex; gap: 14px; }
-.spec-key { font-size: 7px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--engraved-dim); flex-shrink: 0; width: 80px; opacity: 0.4; padding-top: 1px; }
-.spec-val { font-family: 'Georgia', 'Garamond', serif; font-size: 14px; color: var(--engraved-dim); line-height: 1.5; font-style: italic; }
-
-/* ── KODIAK OS ── */
-.os { padding: 100px 0; border-bottom: 1px solid var(--incised); }
-.os-intro { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(16px, 1.8vw, 20px); font-weight: 300; color: var(--engraved-dim); max-width: 760px; line-height: 1.85; margin-bottom: 64px; }
-.os-intro strong { font-weight: 600; color: var(--engraved); font-style: italic; }
-.layers { display: flex; flex-direction: column; }
-.layer { display: grid; grid-template-columns: 260px 1fr; border-top: 1px solid var(--incised); }
-.layer:last-child { border-bottom: 1px solid var(--incised); }
-.layer-l { padding: 44px 40px 44px 0; border-right: 1px solid var(--incised); }
-.layer-n { font-size: 7px; letter-spacing: 0.45em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 12px; opacity: 0.4; }
-.layer-name { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(16px, 2vw, 20px); font-weight: 900; color: var(--engraved); line-height: 1.25; letter-spacing: -0.01em; }
-.layer-r { padding: 44px 0 44px 48px; display: flex; align-items: center; }
-.layer-desc { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(15px, 1.6vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.8; opacity: 0.8; }
-.layer-desc strong { font-weight: 600; color: var(--engraved); font-style: italic; }
-
-/* ── CAPABILITIES ── */
-.caps { padding: 100px 0; border-bottom: 1px solid var(--incised); }
-.caps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--incised); }
-.cap { background: var(--stone-1); padding: 44px 36px; }
-.cap-tag { font-size: 7px; letter-spacing: 0.4em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 20px; opacity: 0.4; }
-.cap-name { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(16px, 2vw, 20px); font-weight: 900; color: var(--engraved); margin-bottom: 16px; line-height: 1.25; letter-spacing: -0.01em; }
-.cap-desc { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(14px, 1.5vw, 16px); font-weight: 300; color: var(--engraved-dim); line-height: 1.8; opacity: 0.7; }
-
-/* ── STATEMENT ── */
-.statement { padding: 120px 0; border-bottom: 1px solid var(--incised); text-align: center; position: relative; }
-.statement::before, .statement::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); height: 60px; width: 1px; background: linear-gradient(to bottom, transparent, var(--incised)); }
-.statement::before { top: 0; }
-.statement::after { bottom: 0; }
-.statement-text { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(20px, 3vw, 32px); font-weight: 300; font-style: italic; color: var(--engraved-dim); max-width: 820px; margin: 0 auto; line-height: 1.65; }
-.statement-text strong { font-weight: 600; color: var(--engraved); font-style: normal; }
-
-/* ── CTA ── */
-.cta { padding: 120px 0; border-bottom: 1px solid var(--incised); }
-.cta-inner { max-width: 640px; }
-.cta-headline { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 900; color: var(--engraved); margin-bottom: 20px; line-height: 1.1; letter-spacing: -0.02em; }
-.cta-headline em { font-style: italic; color: var(--engraved-dim); }
-.cta-body { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(15px, 1.7vw, 18px); font-weight: 300; color: var(--engraved-dim); margin-bottom: 48px; line-height: 1.8; opacity: 0.75; }
-.cta-embed { border: 1px solid var(--incised); padding: 40px; display: flex; align-items: center; justify-content: center; background: var(--engraved-trace); }
-.cta-embed span { font-size: 8px; letter-spacing: 0.3em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.3; }
-
-/* ── FOOTER ── */
-.footer { padding: 56px 0; }
-.footer-inner { display: flex; align-items: flex-end; justify-content: space-between; border-top: 1px solid var(--incised); padding-top: 32px; }
-.footer-wordmark { font-family: 'Georgia', 'Times New Roman', serif; font-size: 13px; font-weight: 900; letter-spacing: 0.25em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.4; }
-.footer-wordmark em { font-style: italic; }
-.footer-details { font-size: 8px; letter-spacing: 0.2em; color: var(--engraved-dim); text-align: right; line-height: 2.2; opacity: 0.3; }
-
-/* ── RESPONSIVE ── */
-@media(max-width: 780px) {
-  .nav-links { display: none; }
-  .tracks-grid { grid-template-columns: 1fr; }
-  .caps-grid { grid-template-columns: 1fr; }
-  .layer { grid-template-columns: 1fr; }
-  .layer-l { border-right: none; border-bottom: 1px solid var(--incised); padding: 32px 0; }
-  .layer-r { padding: 32px 0; }
-  .hero-markers { flex-direction: column; gap: 28px; }
-  .hero-marker { border-right: none; padding-right: 0; margin-right: 0; border-bottom: 1px solid var(--incised); padding-bottom: 28px; }
-  .hero-marker:last-child { border-bottom: none; }
+.vignette { position: fixed; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(4,3,2,0.3) 65%, rgba(2,1,0,0.65) 88%, rgba(1,0,0,0.82) 100%); }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(7,6,4,0.95); border-bottom: 1px solid var(--incised-faint); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 60px; backdrop-filter: blur(10px); }
+.nav-wordmark { font-family: 'Georgia', serif; font-size: 13px; font-weight: 700; letter-spacing: 0.25em; color: var(--engraved); text-transform: uppercase; }
+.nav-wordmark em { font-style: italic; font-weight: 400; opacity: 0.55; }
+.nav-cta { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--engraved-dim); border: 1px solid var(--incised); padding: 7px 16px; text-decoration: none; }
+.page { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 100px 40px 120px; }
+.opening { padding: 80px 0 80px; border-bottom: 1px solid var(--incised-faint); }
+.opening-kicker { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 32px; opacity: 0.45; display: flex; align-items: center; gap: 14px; }
+.opening-kicker::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+.opening-statement { font-family: 'Georgia', serif; font-size: clamp(24px, 4vw, 40px); font-weight: 400; font-style: italic; color: var(--engraved); line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 32px; }
+.opening-statement strong { font-style: normal; font-weight: 700; }
+.opening-sub { font-family: 'Georgia', serif; font-size: clamp(15px, 1.8vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.85; max-width: 640px; }
+.section { padding: 72px 0; border-bottom: 1px solid var(--incised-faint); }
+.section-label { font-family: 'Courier New', monospace; font-size: 7px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 16px; opacity: 0.4; display: flex; align-items: center; gap: 12px; }
+.section-label::after { content: ''; flex: 0 0 28px; height: 1px; background: currentColor; }
+.section-headline { font-family: 'Georgia', serif; font-size: clamp(22px, 3.5vw, 32px); font-weight: 700; color: var(--engraved); line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 28px; }
+.section-headline em { font-style: italic; color: var(--engraved-dim); }
+p { font-size: clamp(15px, 1.7vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.88; margin-bottom: 24px; }
+p:last-child { margin-bottom: 0; }
+p strong { font-weight: 600; color: var(--engraved); }
+.shifts { display: flex; flex-direction: column; gap: 2px; margin: 40px 0; }
+.shift { background: var(--engraved-ghost); border: 1px solid var(--incised-faint); padding: 36px 40px; position: relative; }
+.shift::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 2px; background: var(--engraved-dim); opacity: 0.3; }
+.shift-date { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.3em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 14px; opacity: 0.5; }
+.shift-headline { font-family: 'Georgia', serif; font-size: clamp(16px, 2vw, 20px); font-weight: 700; color: var(--engraved); margin-bottom: 16px; line-height: 1.3; }
+.shift-body { font-size: clamp(14px, 1.6vw, 16px); color: var(--engraved-dim); line-height: 1.85; font-weight: 300; margin-bottom: 16px; }
+.shift-conclusion { font-family: 'Georgia', serif; font-size: clamp(14px, 1.6vw, 16px); font-style: italic; color: var(--engraved); opacity: 0.8; border-top: 1px solid var(--incised-faint); padding-top: 16px; margin-top: 20px; line-height: 1.7; }
+.pull-quote { margin: 52px 0; padding: 0 0 0 24px; border-left: 1px solid var(--engraved-dim); }
+.pull-quote p { font-family: 'Georgia', serif; font-size: clamp(18px, 2.5vw, 26px); font-weight: 700; font-style: italic; color: var(--engraved); line-height: 1.4; margin-bottom: 0; opacity: 0.88; letter-spacing: -0.01em; }
+.ready-items { display: flex; flex-direction: column; gap: 1px; background: var(--incised-faint); margin: 36px 0; }
+.ready-item { background: var(--stone); padding: 24px 28px; display: flex; gap: 20px; }
+.ready-num { font-family: 'Courier New', monospace; font-size: 9px; color: var(--engraved-dim); flex-shrink: 0; opacity: 0.4; padding-top: 3px; }
+.ready-title { font-family: 'Georgia', serif; font-size: clamp(14px, 1.6vw, 16px); font-weight: 700; color: var(--engraved); margin-bottom: 4px; }
+.ready-desc { font-size: clamp(13px, 1.4vw, 15px); color: var(--engraved-dim); line-height: 1.7; font-weight: 300; }
+.window-block { background: var(--engraved-ghost); border: 1px solid var(--incised-faint); border-top: 2px solid var(--engraved-dim); padding: 40px 44px; margin: 36px 0; }
+.cta-section { padding: 80px 0 0; text-align: center; }
+.cta-headline { font-family: 'Georgia', serif; font-size: clamp(26px, 4vw, 42px); font-weight: 700; color: var(--engraved); margin-bottom: 16px; line-height: 1.2; letter-spacing: -0.01em; font-style: italic; }
+.cta-sub { font-size: clamp(14px, 1.6vw, 16px); color: var(--engraved-dim); margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.8; font-weight: 300; }
+.cta-btn { display: inline-block; border: 1px solid var(--incised); color: var(--engraved); padding: 14px 36px; font-family: 'Courier New', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; }
+.cta-contact { margin-top: 28px; font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.15em; color: var(--engraved-dim); line-height: 2.2; opacity: 0.4; }
+.footer { margin-top: 80px; padding-top: 28px; border-top: 1px solid var(--incised-faint); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-brand { font-family: 'Georgia', serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.3; font-style: italic; }
+.footer-tagline { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.25em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.2; }
+@media(max-width: 680px) {
+  .page { padding: 90px 24px 80px; }
+  .nav { padding: 0 20px; }
+  .shift { padding: 28px 24px; }
+  .window-block { padding: 28px 28px; }
 }
 </style>
 </head>
 <body>
+<div class="vignette"></div>
+<nav class="nav">
+  <div class="nav-wordmark">Kodiak <em>Strategy</em></div>
+  <a href="mailto:ryan@kodiakstrategy.com" class="nav-cta">Schedule a Discovery Call</a>
+</nav>
+<div class="page">
 
-<div class="print-bar no-print">
-  <span class="print-bar-label">Kodiak Strategy — Homepage Direction</span>
-  <button class="print-btn" onclick="window.print()">Save PDF</button>
-</div>
-
-<div style="height:40px;"></div>
-
-<div class="nav-wrap">
-  <div class="site">
-    <nav class="nav">
-      <div class="nav-wordmark">Kodiak <em>Strategy</em></div>
-      <div class="nav-links">
-        <a href="#">The Blueprint</a>
-        <a href="#">Partner Track</a>
-        <a href="#">Kodiak OS</a>
-        <a href="#" class="nav-cta">Schedule Audit</a>
-      </div>
-    </nav>
+  <div class="opening">
+    <div class="opening-kicker">Kodiak Strategy &nbsp;·&nbsp; Black Hills, South Dakota</div>
+    <div class="opening-statement">The next AI shift isn't coming.<br><strong>It's arriving.</strong><br>The only question is whether your operation is ready when it does.</div>
+    <p class="opening-sub">Most business owners are focused on today's problems. The foundation feels like a future investment. That's exactly what makes it a competitive advantage — because most of your competitors are thinking the same thing.</p>
   </div>
-</div>
 
-<div class="site">
+  <div class="section">
+    <div class="section-label">The Problem</div>
+    <div class="section-headline">It doesn't feel urgent yet.<br><em>That's the whole point.</em></div>
+    <p>Nobody woke up in October 2022 thinking they needed to get their business ready for AI. It wasn't on the radar. It wasn't a pain point. It felt like something that mattered to tech companies — not construction firms, not logistics operations, not healthcare groups in the middle of the country.</p>
+    <p>Then November happened. And the businesses that had their processes documented, their data organized, and their institutional knowledge captured somewhere other than people's heads — they moved immediately. The ones that didn't spent the next year trying to catch up.</p>
+    <p><strong>That pattern has repeated. It will repeat again.</strong> The businesses that understand this and act before the next shift are the ones that will look back and call it the most important strategic decision they ever made.</p>
+  </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-opening">The operators who built their AI foundation early will look back on that decision as the most important strategic move of their business lives.</div>
-    <div class="hero-provenance">Black Hills, South Dakota &nbsp;·&nbsp; Est. 2025</div>
-    <h1 class="hero-headline">We don't sell AI tools.<br><em>We build the infrastructure<br>they run on.</em></h1>
-    <p class="hero-subhead">Permanent infrastructure. Permanent advantage. We go inside the operation, build what it needs to run at full capacity, and stay to make sure it does.</p>
-    <p class="hero-subhead" style="margin-top: -20px; font-size: clamp(14px, 1.5vw, 17px); opacity: 0.6;">Every AI tool you bring in from this point forward hits the ground already knowing your business — your processes, your people, your institutional knowledge. Not starting from scratch. Starting from complete. That is what the foundation does.</p>
-    <div class="hero-cta-group">
-      <a href="#" class="hero-cta">Schedule a Discovery Call</a>
-      <span class="hero-cta-secondary">No sales scripts &nbsp;·&nbsp; Straight evaluation</span>
-    </div>
-    <div class="hero-markers">
-      <div class="hero-marker">
-        <div class="marker-n">Limited</div>
-        <div class="marker-l">Client roster kept small by design to protect the depth of every engagement</div>
+  <div class="section">
+    <div class="section-label">What Actually Happened</div>
+    <div class="section-headline">This isn't a theory.<br><em>It has already happened twice.</em></div>
+    <p>Both times the pattern was identical. A capability leap arrived. Businesses with operational foundations moved fast. Everyone else spent months starting from scratch.</p>
+    <div class="shifts">
+      <div class="shift">
+        <div class="shift-date">November 2022</div>
+        <div class="shift-headline">ChatGPT launches. Overnight, everything changes.</div>
+        <p class="shift-body">Suddenly every business owner in the country had access to an AI that could write, analyze, summarize, and answer questions. The potential was immediate and obvious. The gap between businesses that could use it and businesses that couldn't was not about access — everyone had access. It was about foundation.</p>
+        <p class="shift-body">The businesses that could point the tool at their operation — their documented processes, their organized data, their captured institutional knowledge — started saving hours every week within days. They fed it their SOPs and it trained their staff. They connected it to their data and it built their reports. It worked at full capacity from day one because everything it needed was already in place.</p>
+        <p class="shift-body">The businesses that wanted to use it had nothing to point it at. Their processes lived in people's heads. Their data sat in spreadsheets nobody maintained. Their institutional knowledge existed in email chains nobody could find. They spent months trying to teach a tool about a business that had never been documented. Many gave up and called it overhyped.</p>
+        <div class="shift-conclusion">Same tool. Same access. Completely different outcomes. The only difference was what was already in place before it arrived.</div>
       </div>
-      <div class="hero-marker">
-        <div class="marker-n">Week 1</div>
-        <div class="marker-l">On-site sprint begins immediately upon engagement</div>
+      <div class="shift">
+        <div class="shift-date">2024</div>
+        <div class="shift-headline">AI gets connected. The leap from "answers questions" to "runs workflows" happens faster than anyone predicted.</div>
+        <p class="shift-body">The tools stopped being isolated. They could read documents, analyze operational data, connect directly to systems, and take action on behalf of the business. For operations with organized infrastructure this was transformational — automations that would have taken months to build were running in days. The intelligence layer that used to require an entire IT department now required a conversation and a connected data source.</p>
+        <p class="shift-body">For businesses still running on fragmented, undocumented operations the new capabilities were effectively inaccessible. There was nothing to connect to. No organized data to analyze. No documented processes to automate. They watched the next wave of capability arrive and had the exact same problem they had in 2022. They weren't ready.</p>
+        <div class="shift-conclusion">The businesses that had been building their foundation since 2022 compounded their advantage. The gap between them and everyone else got wider — not smaller.</div>
       </div>
-
     </div>
-  </section>
-
-  <!-- PHILOSOPHY -->
-  <section class="disarmer">
-    <div class="disarmer-inner">
-      <div class="disarmer-kicker">How We Think About This</div>
-      <h2 class="disarmer-headline">We build what your business runs on.<br><em>Not a tool you buy. A foundation you own.</em></h2>
-      <p class="disarmer-body">Every AI vendor sells a feature. Features get replaced, repriced, and discontinued. What we build belongs to your business — a custom operational infrastructure that deepens every month and outlasts every technology shift.</p>
-      <p class="disarmer-body"><strong>Built into the operation. Not bolted on.</strong> The businesses we work with do not think of us as a vendor. We are part of how the operation runs.</p>
+    <div class="pull-quote">
+      <p>The next time this happens — and it will happen — which side of that story is your business on?</p>
     </div>
-  </section>
+  </div>
 
-  <!-- TRACKS -->
-  <section class="tracks">
-    <div class="sec-label">Engagement</div>
-    <div class="sec-headline">Two ways to work together.<br><em>One standard of execution.</em></div>
-    <div class="tracks-grid">
-      <div class="track">
-        <div class="track-n">Track 01 &nbsp;·&nbsp; Focused Build</div>
-        <div class="track-name">The Specific Fix</div>
-        <div class="track-tagline">You have a defined problem. We build the solution.</div>
-        <p class="track-body">A workflow that keeps breaking. Leads falling through the cracks. SOPs that live in nobody's head. A process that needs to exist. We assess the specific problem, build the fix, and hand it off. Clean scope. Fixed price. Some clients stop here. Most don't — because once we are inside the operation, we both start seeing what else is possible.</p>
-        <div class="track-specs">
-          <div class="spec"><div class="spec-key">Deliverable</div><div class="spec-val">One defined solution, fully built and handed off</div></div>
-          <div class="spec"><div class="spec-key">Pricing</div><div class="spec-val">Fixed — quoted based on scope after discovery</div></div>
-          <div class="spec"><div class="spec-key">Who it's for</div><div class="spec-val">Operators with a specific problem ready to solve now</div></div>
+  <div class="section">
+    <div class="section-label">What Readiness Actually Is</div>
+    <div class="section-headline">Not a tool. Not a subscription.<br><em>A foundation.</em></div>
+    <p>The businesses that were ready both times didn't have better tools. They had better infrastructure. Everything the AI needed to work at full capacity was already in place before it arrived. That is what Kodiak builds.</p>
+    <p>Every AI tool you bring in from this point forward hits the ground already knowing your business — your processes, your people, your institutional knowledge. Not starting from scratch. Starting from complete. That is what the foundation does.</p>
+    <div class="ready-items">
+      <div class="ready-item">
+        <div class="ready-num">01</div>
+        <div>
+          <div class="ready-title">Every process documented and structured</div>
+          <div class="ready-desc">Not in people's heads. Not in a document nobody updates. In a system that is organized, searchable, and ready to work with any AI tool the moment it arrives.</div>
         </div>
       </div>
-      <div class="track">
-        <div class="track-n">Track 02 &nbsp;·&nbsp; Blueprint Engagement</div>
-        <div class="track-name">The Strategic Roadmap</div>
-        <div class="track-tagline">We assess your operation, identify every structural gap, and deliver a complete AI implementation plan.</div>
-        <p class="track-body">Before we build anything we learn how your business actually runs. Workflows. Software dependencies. Team bottlenecks. What is breaking and why. The result is a comprehensive roadmap you can execute independently or engage us to build. One hundred percent of this fee credits toward the fractional retainer.</p>
-        <div class="track-specs">
-          <div class="spec"><div class="spec-key">Deliverable</div><div class="spec-val">Custom operational implementation blueprint</div></div>
-          <div class="spec"><div class="spec-key">Pricing</div><div class="spec-val">Scoped and fixed — quoted after discovery</div></div>
-          <div class="spec"><div class="spec-key">The pivot</div><div class="spec-val">100% of fee credits toward Track 2 retainer</div></div>
+      <div class="ready-item">
+        <div class="ready-num">02</div>
+        <div>
+          <div class="ready-title">Institutional knowledge preserved</div>
+          <div class="ready-desc">The decades of operational knowledge your best people carry — relationships, context, history — captured before it walks out the door. Permanently.</div>
         </div>
       </div>
-      <div class="track">
-        <div class="track-n">Track 03 &nbsp;·&nbsp; Fractional Partnership</div>
-        <div class="track-name">The Embedded Operator</div>
-        <div class="track-tagline">We join your executive team on a recurring basis to build, maintain, and expand your operational infrastructure.</div>
-        <p class="track-body">Not a vendor. Not a consultant who hands you a report and leaves. We embed inside the operation, learn it deeply, and build AI systems around how it actually works. Value compounds with every month of institutional knowledge we accumulate.</p>
-        <div class="track-specs">
-          <div class="spec"><div class="spec-key">Deliverable</div><div class="spec-val">Ongoing execution, optimization, and Kodiak OS build</div></div>
-          <div class="spec"><div class="spec-key">Pricing</div><div class="spec-val">Monthly retainer — structured around scope and complexity</div></div>
-          <div class="spec"><div class="spec-key">Roster</div><div class="spec-val">Deliberately limited — full attention is the only way this works</div></div>
+      <div class="ready-item">
+        <div class="ready-num">03</div>
+        <div>
+          <div class="ready-title">Data connected and accessible</div>
+          <div class="ready-desc">Every system your operation runs on, unified into one picture. When the next AI capability arrives that can act on that data, it plugs in immediately.</div>
+        </div>
+      </div>
+      <div class="ready-item">
+        <div class="ready-num">04</div>
+        <div>
+          <div class="ready-title">The foundation already built</div>
+          <div class="ready-desc">When the next shift arrives your operation deploys in days. Your competitors spend months catching up. That gap does not close. It widens every month the foundation exists.</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- KODIAK OS -->
-  <section class="os">
-    <div class="sec-label">Architecture</div>
-    <div class="sec-headline">Kodiak OS<br><em>The foundation your business runs on.</em></div>
-    <p class="os-intro">Most operations approach automation backward. They purchase isolated tools and subscriptions. The moment those vendors modify their pricing or change access rules, the business loses its leverage. <strong>We build your company's custom, permanent infrastructure from the ground up</strong> — a private operational asset that compounds in value every month it exists and survives every technology shift without being rebuilt.</p>
-    <div class="layers">
-      <div class="layer">
-        <div class="layer-l">
-          <div class="layer-n">Layer 01</div>
-          <div class="layer-name">The Knowledge Foundation</div>
-        </div>
-        <div class="layer-r">
-          <div class="layer-desc">Every SOP, every process, every piece of institutional knowledge that currently lives in your best people's heads — documented, structured, and permanently preserved. The operational history that walks out the door when someone retires or resigns, <strong>captured before it disappears.</strong> This is what everything else is built on.</div>
-        </div>
-      </div>
-      <div class="layer">
-        <div class="layer-l">
-          <div class="layer-n">Layer 02</div>
-          <div class="layer-name">The Intelligence Layer</div>
-        </div>
-        <div class="layer-r">
-          <div class="layer-desc">Every data source your operation generates — CRM records, financial data, field logs, customer communications — connected and unified into one clear picture. A morning briefing that shows every open item, alert, and priority across all locations. <strong>Automated reporting that replaces manual processes taking days.</strong> Full visibility without a single call to find out where things stand.</div>
-        </div>
-      </div>
-      <div class="layer">
-        <div class="layer-l">
-          <div class="layer-n">Layer 03</div>
-          <div class="layer-name">The Automation Layer</div>
-        </div>
-        <div class="layer-r">
-          <div class="layer-desc">All workflows and automations built on top of the foundation. Because they run on a complete operational picture rather than a generic system, they work better, adapt faster, and survive every technology shift without being rebuilt. <strong>When the next AI advancement arrives, you deploy in days.</strong> Your competitors spend months catching up.</div>
-        </div>
-      </div>
+  <div class="section">
+    <div class="section-label">The Window</div>
+    <div class="section-headline">Right now this is still<br><em>a differentiator.</em></div>
+    <div class="window-block">
+      <p>In three years it will be table stakes. The businesses building the foundation today will have three years of compounding operational intelligence by the time it becomes obvious to everyone else. That gap does not close. It widens every month.</p>
+      <p>A business that starts building now has twelve months of documented processes, connected data, and captured institutional knowledge by this time next year. A business that waits has nothing. Every month is a month your competitors don't have.</p>
+      <p><strong>The businesses that are sitting in position when the next shift arrives — ready to move in days while everyone else scrambles — are the ones who started building before they needed to. That is the whole advantage. And right now, most of your competitors haven't started.</strong></p>
     </div>
-  </section>
+  </div>
 
-  <!-- CAPABILITIES -->
-  <section class="caps">
-    <div class="sec-label">Deployments</div>
-    <div class="sec-headline">Proprietary systems built<br><em>to protect your margins.</em></div>
-    <div class="caps-grid">
-      <div class="cap">
-        <div class="cap-tag">Speed to Lead</div>
-        <div class="cap-name">Instant Response System</div>
-        <div class="cap-desc">Every inbound inquiry — web forms, missed calls, social messages — responded to within 60 seconds automatically. Studies show 78% of contracts go to the first operation that responds. Most of your competitors respond in hours.</div>
-      </div>
-      <div class="cap">
-        <div class="cap-tag">Proprietary — Kodiak</div>
-        <div class="cap-name">Route — Voice Field Capture</div>
-        <div class="cap-desc">Field staff or coordinators speak a voice memo between jobs. Route parses every task, follow-up, note, and update and routes each one to exactly where it belongs. Update your CRM without ever opening it.</div>
-      </div>
-      <div class="cap">
-        <div class="cap-tag">Proprietary — Kodiak</div>
-        <div class="cap-name">KAI — AI Chief of Staff</div>
-        <div class="cap-desc">A unified operational command center. Morning briefings pulling from every connected system. Cross-location visibility for multi-site operations. Know exactly where everything stands before the first call of the day.</div>
-      </div>
+  <div class="cta-section">
+    <div class="cta-headline">The foundation doesn't build itself.</div>
+    <p class="cta-sub">A free conversation about your operation, where the gaps are, and what it would take to be ready for what comes next. No pitch. No commitment beyond the call.</p>
+    <a href="mailto:ryan@kodiakstrategy.com" class="cta-btn">Schedule a Discovery Call</a>
+    <div class="cta-contact">
+      (907) 500-4010 &nbsp;·&nbsp; ryan@kodiakstrategy.com &nbsp;·&nbsp; kodiakstrategy.com
     </div>
-  </section>
+  </div>
 
-  <!-- STATEMENT -->
-  <section class="statement">
-    <p class="statement-text"><strong>Every AI tool that exists today will be a standard feature in Microsoft Office or Salesforce within three years.</strong> What will not commoditize is the infrastructure that makes those tools work for a specific business. That foundation does not get replaced. It compounds. The businesses building it now will be years ahead when it matters most.</p>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="cta-inner">
-      <div class="sec-label">Discovery Call</div>
-      <h2 class="cta-headline">Let's isolate<br><em>the structural leaks.</em></h2>
-      <p class="cta-body">Select a time to speak with Ryan directly. A free conversation about your operation and whether Kodiak is the right fit. No pitch. No commitment beyond the call.</p>
-      <div class="cta-embed">
-        <span>GoHighLevel Calendar Embed</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-wordmark">Kodiak <em>Strategy</em></div>
-      <div class="footer-details">
-        Black Hills, South Dakota &nbsp;·&nbsp; (907) 500-4010<br>
-        ryan@kodiakstrategy.com &nbsp;·&nbsp; kodiakstrategy.com<br>
-        Built into the operation. Not bolted on.
-      </div>
-    </div>
+    <div class="footer-brand">Kodiak <em>Strategy</em></div>
+    <div class="footer-tagline">Built into the operation. Not bolted on.</div>
   </footer>
 
 </div>
 </body>
 </html>
-
