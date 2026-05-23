@@ -12,10 +12,10 @@
 :root {
   --stone-1: #0A0906;
   --stone-2: #100E0B;
-  --stone-3: #161310;
+  --stone-3: #121009;
   --stone-4: #1C1915;
   --stone-5: #221E19;
-  --engraved: #E8E2D6;
+  --engraved: #F0EBE0;
   --engraved-dim: rgba(232,226,214,0.45);
   --engraved-ghost: rgba(232,226,214,0.07);
   --engraved-trace: rgba(232,226,214,0.04);
@@ -77,6 +77,18 @@ body {
 
 /* Carved rule above hero */
 .hero::before { content: ''; position: absolute; top: 60px; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--incised) 20%, var(--incised) 80%, transparent); }
+
+.hero-opening {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(12px, 1.4vw, 15px);
+  font-style: italic;
+  color: var(--engraved-dim);
+  max-width: 680px;
+  line-height: 1.75;
+  margin-bottom: 48px;
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
 
 .hero-provenance { font-size: 8px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 36px; display: flex; align-items: center; gap: 16px; opacity: 0.6; }
 .hero-provenance::after { content: ''; flex: 0 0 48px; height: 1px; background: var(--engraved-dim); }
@@ -214,9 +226,10 @@ body {
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-opening">The operators who built their AI foundation early will look back on that decision as the most important strategic move of their business lives.</div>
     <div class="hero-provenance">Black Hills, South Dakota &nbsp;·&nbsp; Est. 2025</div>
     <h1 class="hero-headline">We don't sell AI tools.<br><em>We build the infrastructure<br>they run on.</em></h1>
-    <p class="hero-subhead">Permanent infrastructure. Permanent advantage. We embed inside established regional operations, build custom AI systems from the ground up, and maintain them as the technology evolves.</p>
+    <p class="hero-subhead">Permanent infrastructure. Permanent advantage. We go inside the operation, build what it needs to run at full capacity, and stay to make sure it does.</p>
     <div class="hero-cta-group">
       <a href="#" class="hero-cta">Schedule an Operational Audit</a>
       <span class="hero-cta-secondary">No sales scripts &nbsp;·&nbsp; Straight evaluation</span>
@@ -230,10 +243,7 @@ body {
         <div class="marker-n">Week 1</div>
         <div class="marker-l">On-site sprint begins immediately upon engagement</div>
       </div>
-      <div class="hero-marker">
-        <div class="marker-n">∞</div>
-        <div class="marker-l">No defined end date on fractional partnerships</div>
-      </div>
+
     </div>
   </section>
 
@@ -241,9 +251,9 @@ body {
   <section class="disarmer">
     <div class="disarmer-inner">
       <div class="disarmer-kicker">How We Think About This</div>
-      <h2 class="disarmer-headline">We do not automate your business.<br><em>We build the infrastructure it runs on.</em></h2>
-      <p class="disarmer-body">Every system we build includes what we call the Immediate Eject. When a situation exceeds the system's scope or a client asks for a person, the call routes directly to your team with a full transcript of everything discussed up to that point.</p>
-      <p class="disarmer-body"><strong>The system handles volume. Your people handle relationships.</strong> That division of responsibility is by design, not by accident. The businesses we work with have spent years building operational trust with their clients. We build around that — never over it.</p>
+      <h2 class="disarmer-headline">We build what your business runs on.<br><em>Not a tool you buy. A foundation you own.</em></h2>
+      <p class="disarmer-body">Every AI vendor sells a feature. Features get replaced, repriced, and discontinued. What we build belongs to your business — a custom operational infrastructure that deepens every month and outlasts every technology shift.</p>
+      <p class="disarmer-body"><strong>Built into the operation. Not bolted on.</strong> The businesses we work with do not think of us as a vendor. We are part of how the operation runs.</p>
     </div>
   </section>
 
@@ -259,7 +269,7 @@ body {
         <p class="track-body">Before we build anything we learn how your business actually runs. Workflows. Software dependencies. Team bottlenecks. What is breaking and why. The result is a comprehensive roadmap you can execute independently or engage us to build. One hundred percent of this fee credits toward the fractional retainer.</p>
         <div class="track-specs">
           <div class="spec"><div class="spec-key">Deliverable</div><div class="spec-val">Custom operational implementation blueprint</div></div>
-          <div class="spec"><div class="spec-key">Pricing</div><div class="spec-val">$5,000 to $25,000 — scoped and fixed</div></div>
+          <div class="spec"><div class="spec-key">Pricing</div><div class="spec-val">Scoped and fixed — quoted after discovery</div></div>
           <div class="spec"><div class="spec-key">The pivot</div><div class="spec-val">100% of fee credits toward Track 2 retainer</div></div>
         </div>
       </div>
@@ -267,10 +277,10 @@ body {
         <div class="track-n">Track 02 &nbsp;·&nbsp; Fractional Partnership</div>
         <div class="track-name">The Embedded Operator</div>
         <div class="track-tagline">We join your executive team on a recurring basis to build, maintain, and expand your operational infrastructure.</div>
-        <p class="track-body">Not a vendor. Not a consultant who hands you a report and leaves. We embed inside the operation, learn it deeply, and build AI systems around how it actually works. The relationship has no defined end date because the value compounds with every month of institutional knowledge we accumulate.</p>
+        <p class="track-body">Not a vendor. Not a consultant who hands you a report and leaves. We embed inside the operation, learn it deeply, and build AI systems around how it actually works. Value compounds with every month of institutional knowledge we accumulate.</p>
         <div class="track-specs">
           <div class="spec"><div class="spec-key">Deliverable</div><div class="spec-val">Ongoing execution, optimization, and Kodiak OS build</div></div>
-          <div class="spec"><div class="spec-key">Pricing</div><div class="spec-val">$3,000 to $10,000 per month depending on scope</div></div>
+          <div class="spec"><div class="spec-key">Pricing</div><div class="spec-val">Monthly retainer — structured around scope and complexity</div></div>
           <div class="spec"><div class="spec-key">Roster</div><div class="spec-val">Deliberately limited — full attention is the only way this works</div></div>
         </div>
       </div>
@@ -338,7 +348,7 @@ body {
 
   <!-- STATEMENT -->
   <section class="statement">
-    <p class="statement-text">Every AI tool that exists today will be a standard feature in Microsoft Office or Salesforce within three years. <strong>What will not commoditize is the deep operational infrastructure that makes those tools actually work for a specific business.</strong> The businesses that are years ahead of their competition in 2030 are building that foundation today. Permanent infrastructure. Permanent advantage.</p>
+    <p class="statement-text"><strong>Every AI tool that exists today will be a standard feature in Microsoft Office or Salesforce within three years.</strong> What will not commoditize is the infrastructure that makes those tools work for a specific business. That foundation does not get replaced. It compounds. The businesses building it now will be years ahead when it matters most.</p>
   </section>
 
   <!-- CTA -->
@@ -346,7 +356,7 @@ body {
     <div class="cta-inner">
       <div class="sec-label">Operational Audit</div>
       <h2 class="cta-headline">Let's isolate<br><em>the structural leaks.</em></h2>
-      <p class="cta-body">Select a time to speak directly with Ryan Fagerstrom. No sales scripts and no technology demonstrations. A straight operational evaluation of where your business is losing time and revenue and what it would take to close those gaps permanently.</p>
+      <p class="cta-body">Select a time to speak with Ryan directly. No pitch. A straight conversation about your operation, where the gaps are, and whether this is the right fit.</p>
       <div class="cta-embed">
         <span>GoHighLevel Calendar Embed</span>
       </div>
