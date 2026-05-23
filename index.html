@@ -1,297 +1,370 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kodiak Strategy | AI Consulting — Black Hills, SD</title>
-<meta name="description" content="Kodiak Strategy helps businesses across South Dakota find exactly where AI saves time and money. Book a free discovery call.">
-<meta name="keywords" content="AI consulting South Dakota, AI consulting Black Hills, business automation Rapid City, AI assessment South Dakota">
-<link rel="canonical" href="https://kodiakstrategy.com">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LocalBusiness","name":"Kodiak Strategy","telephone":"(605) 605-2558","email":"kodiakstrategysd@gmail.com","url":"https://kodiakstrategy.com","address":{"@type":"PostalAddress","addressLocality":"Rapid City","addressRegion":"SD","addressCountry":"US"}}
-</script>
+<title>Kodiak Strategy</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { background: #0B0B0B; scroll-behavior: smooth; }
-body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; line-height: 1.7; overflow-x: hidden; }
+/* System fonts only — no external dependencies */
 
-/* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: #0B0B0B; border-bottom: 1px solid rgba(198,168,90,0.2); transition: transform 0.3s; }
-.nav-brand { display: flex; align-items: baseline; gap: 6px; text-decoration: none; }
-.nav-logo { font-size: 16px; font-weight: 800; letter-spacing: 0.25em; color: #FFFFFF; text-transform: uppercase; }
-.nav-strategy { font-size: 13px; font-weight: 400; letter-spacing: 0.15em; color: #C6A85A; text-transform: uppercase; }
-.nav-links { display: flex; align-items: center; gap: 36px; }
-.nav-links a { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #999999; text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: #FFFFFF; }
-.nav-cta { background: #C6A85A; color: #0B0B0B; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 11px 28px; border-radius: 2px; text-decoration: none; transition: all 0.2s; }
-.nav-cta:hover { background: #E0C97A; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* HERO */
-.hero { min-height: 100vh; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 140px 80px 80px; position: relative; overflow: hidden; }
-.hero-eyebrow { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #C6A85A; margin-bottom: 28px; font-family: ‘Courier New’, monospace; }
-.hero-h1 { font-size: clamp(40px, 6vw, 76px); font-weight: 800; line-height: 1.05; color: #FFFFFF; max-width: 760px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: -0.01em; }
-.hero-h1 span { color: #C6A85A; }
-.hero-h2 { font-size: clamp(22px, 3vw, 36px); font-weight: 400; line-height: 1.2; color: #999999; max-width: 640px; margin-bottom: 40px; }
-.hero-body { font-size: 17px; color: #999999; max-width: 520px; font-weight: 300; line-height: 1.8; margin-bottom: 48px; }
-.hero-body strong { color: #FFFFFF; font-weight: 500; }
-.hero-cta-group { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
-.cta-primary { background: #C6A85A; color: #0B0B0B; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 16px 48px; border-radius: 2px; text-decoration: none; display: inline-block; transition: all 0.2s; }
-.cta-primary:hover { background: #E0C97A; }
-.cta-sub { font-size: 10px; color: #666666; letter-spacing: 0.08em; font-family: ‘Courier New’, monospace; }
-.cta-sub a { color: #C6A85A; text-decoration: none; }
+:root {
+  --stone-1: #0A0906;
+  --stone-2: #100E0B;
+  --stone-3: #161310;
+  --stone-4: #1C1915;
+  --stone-5: #221E19;
+  --engraved: #E8E2D6;
+  --engraved-dim: rgba(232,226,214,0.45);
+  --engraved-ghost: rgba(232,226,214,0.07);
+  --engraved-trace: rgba(232,226,214,0.04);
+  --incised: rgba(232,226,214,0.12);
+}
 
-/* PROBLEM */
-.problem-section { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); border-bottom: 1px solid rgba(198,168,90,0.15); }
-.problem-inner { max-width: 900px; margin: 0 auto; padding: 100px 80px; }
-.section-label { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: #C6A85A; margin-bottom: 20px; font-family: ‘Courier New’, monospace; }
-h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 800; line-height: 1.1; color: #FFFFFF; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 20px; }
-h2 span { color: #C6A85A; }
-.body-text { font-size: 17px; color: #999999; font-weight: 300; line-height: 1.85; margin-bottom: 16px; max-width: 620px; }
-.pull-quote { border-left: 3px solid #C6A85A; padding: 24px 36px; margin: 40px 0; background: rgba(198,168,90,0.04); border-radius: 0 4px 4px 0; }
-.pull-quote p { font-size: clamp(18px, 2.5vw, 24px); font-weight: 700; color: #FFFFFF; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.02em; }
-.pull-quote p span { color: #C6A85A; }
+html { background: var(--stone-1); }
 
-/* STEPS */
-.steps-section { padding: 100px 80px; max-width: 1100px; margin: 0 auto; }
-.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 56px; background: rgba(198,168,90,0.15); border: 1px solid rgba(198,168,90,0.15); border-radius: 4px; overflow: hidden; }
-.step-card { background: #111111; padding: 48px 36px; position: relative; transition: background 0.2s; }
-.step-card:hover { background: #1A1A1A; }
-.step-number { font-size: 72px; font-weight: 900; color: rgba(198,168,90,0.08); line-height: 1; margin-bottom: 16px; }
-.step-label { font-size: 11px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #C6A85A; margin-bottom: 12px; font-family: ‘Courier New’, monospace; }
-.step-desc { font-size: 14px; color: #999999; line-height: 1.7; font-weight: 300; }
-.step-connector { position: absolute; right: -16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #0B0B0B; border: 1px solid #C6A85A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; font-size: 12px; color: #C6A85A; }
+body {
+  background-color: var(--stone-1);
+  color: var(--engraved);
+  font-family: 'Courier New', 'Courier', monospace;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 
-/* PROMISE */
-.promise-section { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); border-bottom: 1px solid rgba(198,168,90,0.15); }
-.promise-inner { max-width: 900px; margin: 0 auto; padding: 100px 80px; text-align: center; }
-.promise-statement { font-size: clamp(22px, 3.5vw, 40px); font-weight: 800; text-transform: uppercase; line-height: 1.15; color: #FFFFFF; margin: 32px auto; letter-spacing: -0.01em; }
-.promise-statement span { color: #C6A85A; }
+  /* STONE TEXTURE — layered SVG noise + topo rings + grain */
+  background-image:
+    /* Grain layer */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.042'/%3E%3C/svg%3E"),
+    /* Fine grain detail */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"),
+    /* Stone depth variation */
+    radial-gradient(ellipse at 15% 25%, rgba(40,34,26,0.6) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 75%, rgba(30,25,18,0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(20,16,11,0.3) 0%, transparent 70%),
+    /* Topo contour lines — geological strata */
+    repeating-radial-gradient(circle at 30% 40%, transparent 0px, transparent 68px, rgba(232,226,214,0.015) 68px, rgba(232,226,214,0.015) 70px),
+    repeating-radial-gradient(circle at 30% 40%, transparent 0px, transparent 138px, rgba(232,226,214,0.012) 138px, rgba(232,226,214,0.012) 140px),
+    repeating-radial-gradient(circle at 30% 40%, transparent 0px, transparent 208px, rgba(232,226,214,0.01) 208px, rgba(232,226,214,0.01) 210px),
+    repeating-radial-gradient(circle at 70% 60%, transparent 0px, transparent 88px, rgba(232,226,214,0.01) 88px, rgba(232,226,214,0.01) 90px),
+    repeating-radial-gradient(circle at 70% 60%, transparent 0px, transparent 178px, rgba(232,226,214,0.008) 178px, rgba(232,226,214,0.008) 180px);
+  background-size: 400px 400px, 200px 200px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+}
 
-/* SERVE */
-.serve-section { padding: 100px 80px; max-width: 1100px; margin: 0 auto; }
-.verticals { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
-.vertical { background: #1A1A1A; border: 1px solid rgba(198,168,90,0.15); border-radius: 2px; padding: 8px 16px; font-size: 10px; letter-spacing: 0.1em; color: #999999; transition: all 0.2s; font-family: ‘Courier New’, monospace; }
-.vertical:hover { border-color: #C6A85A; color: #FFFFFF; }
+/* ── PRINT BAR ── */
+.print-bar { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,9,6,0.97); border-bottom: 1px solid var(--incised); padding: 9px 32px; display: flex; align-items: center; justify-content: space-between; z-index: 999; backdrop-filter: blur(8px); }
+.print-bar-label { font-size: 8px; letter-spacing: 0.35em; color: var(--engraved-dim); text-transform: uppercase; }
+.print-btn { background: transparent; border: 1px solid var(--incised); color: var(--engraved-dim); padding: 5px 14px; font-family: 'Courier New', 'Courier', monospace; font-size: 8px; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+.print-btn:hover { border-color: var(--engraved-dim); color: var(--engraved); }
 
-/* WHY */
-.why-section { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); border-bottom: 1px solid rgba(198,168,90,0.15); padding: 100px 80px; }
-.why-inner { max-width: 1100px; margin: 0 auto; }
-.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 48px; background: rgba(198,168,90,0.15); border: 1px solid rgba(198,168,90,0.15); border-radius: 4px; overflow: hidden; }
-.why-card { background: #1A1A1A; padding: 40px 32px; transition: background 0.2s; }
-.why-card:hover { background: #2A2A2A; }
-.why-num { font-size: 9px; letter-spacing: 0.2em; color: #C6A85A; margin-bottom: 16px; font-family: ‘Courier New’, monospace; }
-.why-title { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #FFFFFF; margin-bottom: 12px; }
-.why-desc { font-size: 14px; color: #999999; line-height: 1.7; font-weight: 300; }
+/* ── WRAPPER ── */
+.site { max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+@media(max-width: 900px) { .site { padding: 0 28px; } }
 
-/* CLOSING */
-.closing { padding: 120px 80px; text-align: center; }
-.closing-sub { font-size: 17px; color: #999999; max-width: 520px; margin: 0 auto 8px; font-weight: 300; line-height: 1.8; }
-.closing-main { font-size: 18px; color: #FFFFFF; max-width: 520px; margin: 0 auto 48px; font-weight: 400; line-height: 1.8; }
-.contact-options { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
-.contact-opt { font-size: 11px; letter-spacing: 0.08em; color: #666666; font-family: ‘Courier New’, monospace; }
-.contact-opt a { color: #C6A85A; text-decoration: none; }
+/* ── NAV ── */
+.nav-wrap { border-bottom: 1px solid var(--incised); position: sticky; top: 40px; z-index: 100; background: rgba(10,9,6,0.92); backdrop-filter: blur(12px); }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.nav-wordmark { font-family: 'Georgia', 'Times New Roman', serif; font-size: 15px; font-weight: 900; letter-spacing: 0.25em; color: var(--engraved); text-transform: uppercase; }
+.nav-wordmark em { font-style: italic; font-weight: 700; color: var(--engraved); opacity: 0.6; }
+.nav-links { display: flex; align-items: center; gap: 40px; }
+.nav-links a { font-size: 9px; letter-spacing: 0.2em; color: var(--engraved-dim); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--engraved); }
+.nav-cta { border: 1px solid var(--incised) !important; padding: 8px 20px !important; letter-spacing: 0.15em !important; }
+.nav-cta:hover { background: var(--engraved-ghost) !important; }
 
-/* FOOTER */
-footer { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); padding: 48px 80px; }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
-.footer-logo { font-size: 15px; font-weight: 800; letter-spacing: 0.2em; color: #FFFFFF; text-transform: uppercase; }
-.footer-strategy { color: #C6A85A; font-weight: 400; }
-.footer-tagline { font-size: 10px; color: #666666; letter-spacing: 0.1em; margin-top: 4px; font-family: ‘Courier New’, monospace; text-transform: uppercase; }
-.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-.footer-links a { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #666666; text-decoration: none; transition: color 0.2s; font-family: ‘Courier New’, monospace; }
-.footer-links a:hover { color: #C6A85A; }
-.footer-contact { font-size: 11px; color: #666666; line-height: 2; text-align: right; font-family: ‘Courier New’, monospace; }
-.footer-contact a { color: #C6A85A; text-decoration: none; }
+/* ── HERO ── */
+.hero { padding: 140px 0 100px; border-bottom: 1px solid var(--incised); position: relative; }
 
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+/* Carved rule above hero */
+.hero::before { content: ''; position: absolute; top: 60px; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--incised) 20%, var(--incised) 80%, transparent); }
 
-@media(max-width: 900px) {
-nav { padding: 0 24px; }
-.nav-links { display: none; }
-.hero { padding: 120px 24px 60px; flex-direction: column !important; }
-.hero img { width: 220px !important; max-width: 70vw !important; margin-top: 40px; }
-.problem-inner { padding: 72px 24px; }
-.steps-section { padding: 72px 24px; }
-.steps-grid { grid-template-columns: 1fr; }
-.step-connector { display: none; }
-.promise-inner { padding: 72px 24px; }
-.serve-section { padding: 72px 24px; }
-.why-section { padding: 72px 24px; }
-.why-grid { grid-template-columns: 1fr; }
-.closing { padding: 72px 24px; }
-footer { padding: 48px 24px; }
-.footer-inner { flex-direction: column; align-items: flex-start; }
-.footer-contact { text-align: left; }
+.hero-provenance { font-size: 8px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 36px; display: flex; align-items: center; gap: 16px; opacity: 0.6; }
+.hero-provenance::after { content: ''; flex: 0 0 48px; height: 1px; background: var(--engraved-dim); }
+
+.hero-headline { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(38px, 5.5vw, 68px); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; color: var(--engraved); margin-bottom: 14px; max-width: 900px; }
+.hero-headline em { font-style: italic; font-weight: 700; color: var(--engraved-dim); }
+
+.hero-subhead { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(16px, 2vw, 22px); font-weight: 300; font-style: italic; color: var(--engraved-dim); margin-bottom: 52px; max-width: 640px; line-height: 1.6; letter-spacing: 0.02em; }
+
+.hero-cta-group { display: flex; align-items: center; gap: 28px; }
+.hero-cta { border: 1px solid var(--engraved-dim); color: var(--engraved); padding: 14px 32px; font-family: 'Courier New', 'Courier', monospace; font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; display: inline-block; }
+.hero-cta:hover { background: var(--engraved-ghost); }
+.hero-cta-secondary { font-size: 9px; letter-spacing: 0.15em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.5; }
+
+/* Marker stats */
+.hero-markers { display: flex; gap: 0; margin-top: 80px; border-top: 1px solid var(--incised); }
+.hero-marker { flex: 1; padding: 32px 0 0; border-right: 1px solid var(--incised); padding-right: 40px; margin-right: 40px; }
+.hero-marker:last-child { border-right: none; }
+.marker-n { font-family: 'Georgia', 'Times New Roman', serif; font-size: 44px; font-weight: 900; color: var(--engraved); line-height: 1; margin-bottom: 8px; letter-spacing: -0.02em; }
+.marker-l { font-size: 8px; letter-spacing: 0.2em; color: var(--engraved-dim); text-transform: uppercase; line-height: 1.7; opacity: 0.5; max-width: 160px; }
+
+/* ── DISARMER ── */
+.disarmer { padding: 100px 0; border-bottom: 1px solid var(--incised); }
+.disarmer-inner { max-width: 860px; }
+.disarmer-kicker { font-size: 8px; letter-spacing: 0.45em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 28px; opacity: 0.5; }
+.disarmer-headline { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(24px, 3.5vw, 36px); font-weight: 900; color: var(--engraved); margin-bottom: 32px; line-height: 1.2; letter-spacing: -0.01em; }
+.disarmer-headline em { font-style: italic; color: var(--engraved-dim); }
+.disarmer-body { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(16px, 1.8vw, 20px); font-weight: 300; color: var(--engraved-dim); line-height: 1.8; margin-bottom: 20px; }
+.disarmer-body strong { font-weight: 600; color: var(--engraved); }
+
+/* ── SECTION LABEL ── */
+.sec-label { font-size: 7px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 16px; opacity: 0.45; display: flex; align-items: center; gap: 14px; }
+.sec-label::after { content: ''; flex: 0 0 32px; height: 1px; background: currentColor; }
+.sec-headline { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(22px, 3.5vw, 34px); font-weight: 900; color: var(--engraved); margin-bottom: 52px; line-height: 1.15; letter-spacing: -0.01em; max-width: 700px; }
+.sec-headline em { font-style: italic; color: var(--engraved-dim); }
+
+/* ── TRACKS ── */
+.tracks { padding: 100px 0; border-bottom: 1px solid var(--incised); }
+.tracks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--incised); }
+.track { background: var(--stone-1); padding: 52px 48px; position: relative; }
+.track::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--engraved-dim), transparent); }
+.track-n { font-size: 7px; letter-spacing: 0.45em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 28px; opacity: 0.4; padding-bottom: 20px; border-bottom: 1px solid var(--incised); }
+.track-name { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: var(--engraved); margin-bottom: 10px; line-height: 1.2; letter-spacing: -0.01em; }
+.track-tagline { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(14px, 1.6vw, 17px); font-weight: 300; font-style: italic; color: var(--engraved-dim); margin-bottom: 28px; line-height: 1.6; }
+.track-body { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(14px, 1.5vw, 16px); font-weight: 300; color: var(--engraved-dim); line-height: 1.8; margin-bottom: 36px; opacity: 0.75; }
+.track-specs { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--incised); padding-top: 28px; }
+.spec { display: flex; gap: 14px; }
+.spec-key { font-size: 7px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--engraved-dim); flex-shrink: 0; width: 80px; opacity: 0.4; padding-top: 1px; }
+.spec-val { font-family: 'Georgia', 'Garamond', serif; font-size: 14px; color: var(--engraved-dim); line-height: 1.5; font-style: italic; }
+
+/* ── KODIAK OS ── */
+.os { padding: 100px 0; border-bottom: 1px solid var(--incised); }
+.os-intro { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(16px, 1.8vw, 20px); font-weight: 300; color: var(--engraved-dim); max-width: 760px; line-height: 1.85; margin-bottom: 64px; }
+.os-intro strong { font-weight: 600; color: var(--engraved); font-style: italic; }
+.layers { display: flex; flex-direction: column; }
+.layer { display: grid; grid-template-columns: 260px 1fr; border-top: 1px solid var(--incised); }
+.layer:last-child { border-bottom: 1px solid var(--incised); }
+.layer-l { padding: 44px 40px 44px 0; border-right: 1px solid var(--incised); }
+.layer-n { font-size: 7px; letter-spacing: 0.45em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 12px; opacity: 0.4; }
+.layer-name { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(16px, 2vw, 20px); font-weight: 900; color: var(--engraved); line-height: 1.25; letter-spacing: -0.01em; }
+.layer-r { padding: 44px 0 44px 48px; display: flex; align-items: center; }
+.layer-desc { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(15px, 1.6vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.8; opacity: 0.8; }
+.layer-desc strong { font-weight: 600; color: var(--engraved); font-style: italic; }
+
+/* ── CAPABILITIES ── */
+.caps { padding: 100px 0; border-bottom: 1px solid var(--incised); }
+.caps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--incised); }
+.cap { background: var(--stone-1); padding: 44px 36px; }
+.cap-tag { font-size: 7px; letter-spacing: 0.4em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 20px; opacity: 0.4; }
+.cap-name { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(16px, 2vw, 20px); font-weight: 900; color: var(--engraved); margin-bottom: 16px; line-height: 1.25; letter-spacing: -0.01em; }
+.cap-desc { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(14px, 1.5vw, 16px); font-weight: 300; color: var(--engraved-dim); line-height: 1.8; opacity: 0.7; }
+
+/* ── STATEMENT ── */
+.statement { padding: 120px 0; border-bottom: 1px solid var(--incised); text-align: center; position: relative; }
+.statement::before, .statement::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); height: 60px; width: 1px; background: linear-gradient(to bottom, transparent, var(--incised)); }
+.statement::before { top: 0; }
+.statement::after { bottom: 0; }
+.statement-text { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(20px, 3vw, 32px); font-weight: 300; font-style: italic; color: var(--engraved-dim); max-width: 820px; margin: 0 auto; line-height: 1.65; }
+.statement-text strong { font-weight: 600; color: var(--engraved); font-style: normal; }
+
+/* ── CTA ── */
+.cta { padding: 120px 0; border-bottom: 1px solid var(--incised); }
+.cta-inner { max-width: 640px; }
+.cta-headline { font-family: 'Georgia', 'Times New Roman', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 900; color: var(--engraved); margin-bottom: 20px; line-height: 1.1; letter-spacing: -0.02em; }
+.cta-headline em { font-style: italic; color: var(--engraved-dim); }
+.cta-body { font-family: 'Georgia', 'Garamond', serif; font-size: clamp(15px, 1.7vw, 18px); font-weight: 300; color: var(--engraved-dim); margin-bottom: 48px; line-height: 1.8; opacity: 0.75; }
+.cta-embed { border: 1px solid var(--incised); padding: 40px; display: flex; align-items: center; justify-content: center; background: var(--engraved-trace); }
+.cta-embed span { font-size: 8px; letter-spacing: 0.3em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.3; }
+
+/* ── FOOTER ── */
+.footer { padding: 56px 0; }
+.footer-inner { display: flex; align-items: flex-end; justify-content: space-between; border-top: 1px solid var(--incised); padding-top: 32px; }
+.footer-wordmark { font-family: 'Georgia', 'Times New Roman', serif; font-size: 13px; font-weight: 900; letter-spacing: 0.25em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.4; }
+.footer-wordmark em { font-style: italic; }
+.footer-details { font-size: 8px; letter-spacing: 0.2em; color: var(--engraved-dim); text-align: right; line-height: 2.2; opacity: 0.3; }
+
+/* ── RESPONSIVE ── */
+@media(max-width: 780px) {
+  .nav-links { display: none; }
+  .tracks-grid { grid-template-columns: 1fr; }
+  .caps-grid { grid-template-columns: 1fr; }
+  .layer { grid-template-columns: 1fr; }
+  .layer-l { border-right: none; border-bottom: 1px solid var(--incised); padding: 32px 0; }
+  .layer-r { padding: 32px 0; }
+  .hero-markers { flex-direction: column; gap: 28px; }
+  .hero-marker { border-right: none; padding-right: 0; margin-right: 0; border-bottom: 1px solid var(--incised); padding-bottom: 28px; }
+  .hero-marker:last-child { border-bottom: none; }
 }
 </style>
-
-<script defer src="/_vercel/insights/script.js"></script>
-
 </head>
 <body>
 
-<nav id="nav">
-  <a href="/" class="nav-brand">
-    <span class="nav-logo">KODIAK</span>
-    <span class="nav-strategy"> STRATEGY</span>
-  </a>
-  <div class="nav-links">
-    <a href="/how-it-works">How It Works</a>
-    <a href="/services">Services</a>
-    <a href="/faq">FAQ</a>
-    <a href="/about">About</a>
-  </div>
-  <a href="/intake" class="nav-cta">Book Discovery Call</a>
-</nav>
+<div class="print-bar no-print">
+  <span class="print-bar-label">Kodiak Strategy — Homepage Direction</span>
+  <button class="print-btn" onclick="window.print()">Save PDF</button>
+</div>
 
-<section class="hero" style="flex-direction:row; align-items:center; justify-content:space-between; gap:48px; text-align:left;">
-  <div style="flex:1; min-width:0;">
-    <div class="hero-eyebrow">Spearfish to Sioux Falls · AI Consulting</div>
-    <h1 class="hero-h1">We show you exactly where AI can help <span>your business.</span></h1>
-    <div class="hero-h2">Then we build it for you.</div>
-    <p class="hero-body">Most business owners know AI is the future. Very few know where it fits in their specific operation — or what it's actually worth. <strong>That's the conversation we start.</strong></p>
+<div style="height:40px;"></div>
+
+<div class="nav-wrap">
+  <div class="site">
+    <nav class="nav">
+      <div class="nav-wordmark">Kodiak <em>Strategy</em></div>
+      <div class="nav-links">
+        <a href="#">The Blueprint</a>
+        <a href="#">Partner Track</a>
+        <a href="#">Kodiak OS</a>
+        <a href="#" class="nav-cta">Schedule Audit</a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="site">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-provenance">Black Hills, South Dakota &nbsp;·&nbsp; Est. 2025</div>
+    <h1 class="hero-headline">We don't sell AI tools.<br><em>We build the infrastructure<br>they run on.</em></h1>
+    <p class="hero-subhead">Permanent infrastructure. Permanent advantage. We embed inside established regional operations, build custom AI systems from the ground up, and maintain them as the technology evolves.</p>
     <div class="hero-cta-group">
-      <a href="/intake" class="cta-primary">Book a Free Discovery Call</a>
-      <span class="cta-sub">Or call Ryan directly — <a href="tel:6056052558">(605) 605-2558</a></span>
+      <a href="#" class="hero-cta">Schedule an Operational Audit</a>
+      <span class="hero-cta-secondary">No sales scripts &nbsp;·&nbsp; Straight evaluation</span>
     </div>
-  </div>
-  <div style="flex-shrink:0; display:flex; align-items:center; justify-content:center;">
-    <img src="5B9A5E21-C0AF-4818-B4BC-01BD011EE3F6.png" alt="Kodiak Strategy Logo" style="width:340px; max-width:40vw; opacity:0.95;" />
-  </div>
-</section>
-
-<div class="problem-section">
-  <div class="problem-inner">
-    <div class="section-label">The Problem</div>
-    <h2>You know AI matters.<br><span>You just don't know where to start.</span></h2>
-    <p class="body-text">Business owners across South Dakota are working harder than ever. The tools exist. The technology is ready. But nobody has sat down with them and shown them specifically — for their business, their team, their workflows — where AI actually fits and what it's worth.</p>
-    <div class="pull-quote">
-      <p>The gap isn't knowing that AI exists. <span>It's knowing what to do with it.</span></p>
-    </div>
-    <p class="body-text">That's what Kodiak Strategy was built to close.</p>
-  </div>
-</div>
-
-<div class="steps-section">
-  <div class="section-label">How It Works</div>
-  <h2>A conversation. An assessment.<br><span>A plan built around your business.</span></h2>
-  <p class="body-text">Every engagement starts the same way — we learn about your business before we recommend anything.</p>
-  <div class="steps-grid">
-    <div class="step-card">
-      <div class="step-number">01</div>
-      <div class="step-label">Discover</div>
-      <p class="step-desc">A free conversation about your business — where you are, where you want to go, and what role AI could play. No pitch. No pressure. Just a real conversation about what's possible.</p>
-      <div class="step-connector">›</div>
-    </div>
-    <div class="step-card">
-      <div class="step-number">02</div>
-      <div class="step-label">Assess</div>
-      <p class="step-desc">We conduct a comprehensive assessment of your operation — your workflows, your team, your friction points — to identify every opportunity AI can help you reclaim time and money.</p>
-      <div class="step-connector">›</div>
-    </div>
-    <div class="step-card">
-      <div class="step-number">03</div>
-      <div class="step-label">Build</div>
-      <p class="step-desc">We present fully customized AI implementation plans and you decide which one is the best fit for you right now. Then we get to work making it a reality.</p>
-    </div>
-  </div>
-</div>
-
-<div class="promise-section">
-  <div class="promise-inner">
-    <div class="section-label" style="text-align:center;">What You Can Expect</div>
-    <div class="promise-statement">We assess your operation.<br>We show you what's possible.<br><span>Then you choose the path that fits.</span></div>
-    <p class="body-text" style="margin: 0 auto; text-align: center;">No packages off a shelf. No recommendations before we understand your business. Every implementation plan we present is built specifically around what we found in your assessment.</p>
-  </div>
-</div>
-
-<div class="serve-section">
-  <div class="section-label">Who We Work With</div>
-  <h2>Owner-operated businesses<br><span>across South Dakota and the Northern Plains.</span></h2>
-  <p class="body-text">From Spearfish to Sioux Falls — we work with businesses that run on relationships and need systems that work the way they do.</p>
-  <div class="verticals">
-    <span class="vertical">Optometry & Eye Care</span>
-    <span class="vertical">Dental Practices</span>
-    <span class="vertical">Medical & Healthcare</span>
-    <span class="vertical">Law Firms</span>
-    <span class="vertical">Accounting & Bookkeeping</span>
-    <span class="vertical">Insurance Agencies</span>
-    <span class="vertical">Roofing & Construction</span>
-    <span class="vertical">HVAC & Home Services</span>
-    <span class="vertical">Real Estate</span>
-    <span class="vertical">Restaurants & Hospitality</span>
-  </div>
-</div>
-
-<div class="why-section">
-  <div class="why-inner">
-    <div class="section-label">Why Kodiak</div>
-    <h2>We understand before<br><span>we recommend.</span></h2>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-num">01</div>
-        <div class="why-title">Assessment First. Always.</div>
-        <p class="why-desc">We never recommend a solution before we understand your operation. Every plan we present is built from your actual workflows, your team, and your goals — not a template.</p>
+    <div class="hero-markers">
+      <div class="hero-marker">
+        <div class="marker-n">Limited</div>
+        <div class="marker-l">Client roster kept small by design to protect the depth of every engagement</div>
       </div>
-      <div class="why-card">
-        <div class="why-num">02</div>
-        <div class="why-title">Optimize Before You Automate.</div>
-        <p class="why-desc">Before we automate anything we make sure it's worth automating. A streamlined process creates a far more efficient automation than speeding up a broken one.</p>
+      <div class="hero-marker">
+        <div class="marker-n">Week 1</div>
+        <div class="marker-l">On-site sprint begins immediately upon engagement</div>
       </div>
-      <div class="why-card">
-        <div class="why-num">03</div>
-        <div class="why-title">Local. Not Remote.</div>
-        <p class="why-desc">Based in the Black Hills. Serving South Dakota and the Northern Plains. We know how businesses here operate because we are here too — not calling in from a coast.</p>
+      <div class="hero-marker">
+        <div class="marker-n">∞</div>
+        <div class="marker-l">No defined end date on fractional partnerships</div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="disarmer">
+    <div class="disarmer-inner">
+      <div class="disarmer-kicker">How We Think About This</div>
+      <h2 class="disarmer-headline">We do not automate your business.<br><em>We build the infrastructure it runs on.</em></h2>
+      <p class="disarmer-body">Every system we build includes what we call the Immediate Eject. When a situation exceeds the system's scope or a client asks for a person, the call routes directly to your team with a full transcript of everything discussed up to that point.</p>
+      <p class="disarmer-body"><strong>The system handles volume. Your people handle relationships.</strong> That division of responsibility is by design, not by accident. The businesses we work with have spent years building operational trust with their clients. We build around that — never over it.</p>
+    </div>
+  </section>
+
+  <!-- TRACKS -->
+  <section class="tracks">
+    <div class="sec-label">Engagement</div>
+    <div class="sec-headline">Two ways to work together.<br><em>One standard of execution.</em></div>
+    <div class="tracks-grid">
+      <div class="track">
+        <div class="track-n">Track 01 &nbsp;·&nbsp; Blueprint Engagement</div>
+        <div class="track-name">The Strategic Roadmap</div>
+        <div class="track-tagline">We assess your operation, identify every structural gap, and deliver a complete AI implementation plan.</div>
+        <p class="track-body">Before we build anything we learn how your business actually runs. Workflows. Software dependencies. Team bottlenecks. What is breaking and why. The result is a comprehensive roadmap you can execute independently or engage us to build. One hundred percent of this fee credits toward the fractional retainer.</p>
+        <div class="track-specs">
+          <div class="spec"><div class="spec-key">Deliverable</div><div class="spec-val">Custom operational implementation blueprint</div></div>
+          <div class="spec"><div class="spec-key">Pricing</div><div class="spec-val">$5,000 to $25,000 — scoped and fixed</div></div>
+          <div class="spec"><div class="spec-key">The pivot</div><div class="spec-val">100% of fee credits toward Track 2 retainer</div></div>
+        </div>
+      </div>
+      <div class="track">
+        <div class="track-n">Track 02 &nbsp;·&nbsp; Fractional Partnership</div>
+        <div class="track-name">The Embedded Operator</div>
+        <div class="track-tagline">We join your executive team on a recurring basis to build, maintain, and expand your operational infrastructure.</div>
+        <p class="track-body">Not a vendor. Not a consultant who hands you a report and leaves. We embed inside the operation, learn it deeply, and build AI systems around how it actually works. The relationship has no defined end date because the value compounds with every month of institutional knowledge we accumulate.</p>
+        <div class="track-specs">
+          <div class="spec"><div class="spec-key">Deliverable</div><div class="spec-val">Ongoing execution, optimization, and Kodiak OS build</div></div>
+          <div class="spec"><div class="spec-key">Pricing</div><div class="spec-val">$3,000 to $10,000 per month depending on scope</div></div>
+          <div class="spec"><div class="spec-key">Roster</div><div class="spec-val">Deliberately limited — full attention is the only way this works</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KODIAK OS -->
+  <section class="os">
+    <div class="sec-label">Architecture</div>
+    <div class="sec-headline">Kodiak OS<br><em>The foundation your business runs on.</em></div>
+    <p class="os-intro">Most operations approach automation backward. They purchase isolated tools and subscriptions. The moment those vendors modify their pricing or change access rules, the business loses its leverage. <strong>We build your company's custom, permanent infrastructure from the ground up</strong> — a private operational asset that compounds in value every month it exists and survives every technology shift without being rebuilt.</p>
+    <div class="layers">
+      <div class="layer">
+        <div class="layer-l">
+          <div class="layer-n">Layer 01</div>
+          <div class="layer-name">The Knowledge Foundation</div>
+        </div>
+        <div class="layer-r">
+          <div class="layer-desc">Every SOP, every process, every piece of institutional knowledge that currently lives in your best people's heads — documented, structured, and permanently preserved. The operational history that walks out the door when someone retires or resigns, <strong>captured before it disappears.</strong> This is what everything else is built on.</div>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="layer-l">
+          <div class="layer-n">Layer 02</div>
+          <div class="layer-name">The Intelligence Layer</div>
+        </div>
+        <div class="layer-r">
+          <div class="layer-desc">Every data source your operation generates — CRM records, financial data, field logs, customer communications — connected and unified into one clear picture. A morning briefing that shows every open item, alert, and priority across all locations. <strong>Automated reporting that replaces manual processes taking days.</strong> Full visibility without a single call to find out where things stand.</div>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="layer-l">
+          <div class="layer-n">Layer 03</div>
+          <div class="layer-name">The Automation Layer</div>
+        </div>
+        <div class="layer-r">
+          <div class="layer-desc">All workflows and automations built on top of the foundation. Because they run on a complete operational picture rather than a generic system, they work better, adapt faster, and survive every technology shift without being rebuilt. <strong>When the next AI advancement arrives, you deploy in days.</strong> Your competitors spend months catching up.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="caps">
+    <div class="sec-label">Deployments</div>
+    <div class="sec-headline">Proprietary systems built<br><em>to protect your margins.</em></div>
+    <div class="caps-grid">
+      <div class="cap">
+        <div class="cap-tag">Speed to Lead</div>
+        <div class="cap-name">Instant Response System</div>
+        <div class="cap-desc">Every inbound inquiry — web forms, missed calls, social messages — responded to within 60 seconds automatically. Studies show 78% of contracts go to the first operation that responds. Most of your competitors respond in hours.</div>
+      </div>
+      <div class="cap">
+        <div class="cap-tag">Proprietary — Kodiak</div>
+        <div class="cap-name">Route — Voice Field Capture</div>
+        <div class="cap-desc">Field staff or coordinators speak a voice memo between jobs. Route parses every task, follow-up, note, and update and routes each one to exactly where it belongs. Update your CRM without ever opening it.</div>
+      </div>
+      <div class="cap">
+        <div class="cap-tag">Proprietary — Kodiak</div>
+        <div class="cap-name">KAI — AI Chief of Staff</div>
+        <div class="cap-desc">A unified operational command center. Morning briefings pulling from every connected system. Cross-location visibility for multi-site operations. Know exactly where everything stands before the first call of the day.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section class="statement">
+    <p class="statement-text">Every AI tool that exists today will be a standard feature in Microsoft Office or Salesforce within three years. <strong>What will not commoditize is the deep operational infrastructure that makes those tools actually work for a specific business.</strong> The businesses that are years ahead of their competition in 2030 are building that foundation today. Permanent infrastructure. Permanent advantage.</p>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-inner">
+      <div class="sec-label">Operational Audit</div>
+      <h2 class="cta-headline">Let's isolate<br><em>the structural leaks.</em></h2>
+      <p class="cta-body">Select a time to speak directly with Ryan Fagerstrom. No sales scripts and no technology demonstrations. A straight operational evaluation of where your business is losing time and revenue and what it would take to close those gaps permanently.</p>
+      <div class="cta-embed">
+        <span>GoHighLevel Calendar Embed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-wordmark">Kodiak <em>Strategy</em></div>
+      <div class="footer-details">
+        Black Hills, South Dakota &nbsp;·&nbsp; (907) 500-4010<br>
+        ryan@kodiakstrategy.com &nbsp;·&nbsp; kodiakstrategy.com<br>
+        Built into the operation. Not bolted on.
+      </div>
+    </div>
+  </footer>
+
 </div>
-
-<div class="closing">
-  <div class="section-label" style="text-align:center; display:block;">Start the Conversation</div>
-  <h2>Ready to find out what AI<br>can do for <span>your business?</span></h2>
-  <p class="closing-sub">It starts with a free discovery call. We learn about your business and your goals.</p>
-  <p class="closing-main">No pitch. No pressure. Just a real conversation about what's possible.</p>
-  <a href="/intake" class="cta-primary">Book a Free Discovery Call</a>
-  <div class="contact-options">
-    <span class="contact-opt">Call or text — <a href="tel:6056052558">(605) 605-2558</a></span>
-    <span class="contact-opt">Email — <a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a></span>
-    <span class="contact-opt">Schedule — <a href="https://calendly.com/kodiakstrategysd" target="_blank">Calendly</a></span>
-  </div>
-</div>
-
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">KODIAK <span class="footer-strategy">STRATEGY</span></div>
-      <div class="footer-tagline">Black Hills · AI Consulting · South Dakota</div>
-    </div>
-    <div class="footer-links">
-      <a href="/how-it-works">How It Works</a>
-      <a href="/services">Services</a>
-      <a href="/faq">FAQ</a>
-      <a href="/about">About</a>
-      <a href="/intake">Get Started</a>
-      <a href="/privacy">Privacy</a>
-    </div>
-    <div class="footer-contact">
-      <div><a href="tel:6056052558">(605) 605-2558</a></div>
-      <div><a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a></div>
-      <div style="color:#444444; font-size:10px; margin-top:4px;">© 2026 Kodiak Strategy. All rights reserved.</div>
-    </div>
-  </div>
-</footer>
-
-<script>
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-  const nav = document.getElementById('nav');
-  const current = window.scrollY;
-  nav.style.transform = current > lastScroll && current > 80 ? 'translateY(-100%)' : 'translateY(0)';
-  lastScroll = current;
-});
-</script>
-
 </body>
 </html>
