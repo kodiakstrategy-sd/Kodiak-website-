@@ -79,15 +79,16 @@ body {
 .hero::before { content: ''; position: absolute; top: 60px; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--incised) 20%, var(--incised) 80%, transparent); }
 
 .hero-opening {
-  font-family: 'Courier New', monospace;
-  font-size: clamp(12px, 1.4vw, 15px);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: clamp(18px, 2.2vw, 26px);
   font-style: italic;
-  color: var(--engraved-dim);
-  max-width: 680px;
-  line-height: 1.75;
-  margin-bottom: 48px;
-  opacity: 0.7;
-  letter-spacing: 0.02em;
+  font-weight: 400;
+  color: var(--engraved);
+  max-width: 760px;
+  line-height: 1.6;
+  margin-bottom: 52px;
+  opacity: 0.88;
+  letter-spacing: -0.01em;
 }
 
 .hero-provenance { font-size: 8px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 36px; display: flex; align-items: center; gap: 16px; opacity: 0.6; }
@@ -230,6 +231,7 @@ body {
     <div class="hero-provenance">Black Hills, South Dakota &nbsp;·&nbsp; Est. 2025</div>
     <h1 class="hero-headline">We don't sell AI tools.<br><em>We build the infrastructure<br>they run on.</em></h1>
     <p class="hero-subhead">Permanent infrastructure. Permanent advantage. We go inside the operation, build what it needs to run at full capacity, and stay to make sure it does.</p>
+    <p class="hero-subhead" style="margin-top: -20px; font-size: clamp(14px, 1.5vw, 17px); opacity: 0.6;">Every AI tool you bring in from this point forward hits the ground already knowing your business — your processes, your people, your institutional knowledge. Not starting from scratch. Starting from complete. That is what the foundation does.</p>
     <div class="hero-cta-group">
       <a href="#" class="hero-cta">Schedule a Discovery Call</a>
       <span class="hero-cta-secondary">No sales scripts &nbsp;·&nbsp; Straight evaluation</span>
@@ -389,3 +391,4 @@ body {
 </div>
 </body>
 </html>
+
