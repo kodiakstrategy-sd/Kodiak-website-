@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Are You Ready — Kodiak Strategy</title>
+<title>Kodiak Strategy — Where AI Fits in Your Business</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -30,7 +30,7 @@ body {
 }
 .vignette { position: fixed; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(4,3,2,0.3) 65%, rgba(2,1,0,0.65) 88%, rgba(1,0,0,0.82) 100%); }
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(7,6,4,0.95); border-bottom: 1px solid var(--incised-faint); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 60px; backdrop-filter: blur(10px); }
-.nav-wordmark { font-family: 'Georgia', serif; font-size: 13px; font-weight: 700; letter-spacing: 0.25em; color: var(--engraved); text-transform: uppercase; }
+.nav-wordmark { font-family: 'Georgia', serif; font-size: 13px; font-weight: 700; letter-spacing: 0.25em; color: var(--engraved); text-transform: uppercase; text-decoration: none; }
 .nav-wordmark em { font-style: italic; font-weight: 400; opacity: 0.55; }
 .nav-cta { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--engraved-dim); border: 1px solid var(--incised); padding: 7px 16px; text-decoration: none; }
 .page { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 100px 40px 120px; }
@@ -39,7 +39,7 @@ body {
 .opening-kicker::before { content: ''; width: 28px; height: 1px; background: currentColor; }
 .opening-statement { font-family: 'Georgia', serif; font-size: clamp(24px, 4vw, 40px); font-weight: 400; font-style: italic; color: var(--engraved); line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 32px; }
 .opening-statement strong { font-style: normal; font-weight: 700; }
-.opening-sub { font-family: 'Georgia', serif; font-size: clamp(15px, 1.8vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.85; max-width: 640px; }
+.opening-sub { font-family: 'Georgia', serif; font-size: clamp(15px, 1.8vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.85; max-width: 640px; margin-bottom: 36px; }
 .section { padding: 72px 0; border-bottom: 1px solid var(--incised-faint); }
 .section-label { font-family: 'Courier New', monospace; font-size: 7px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 16px; opacity: 0.4; display: flex; align-items: center; gap: 12px; }
 .section-label::after { content: ''; flex: 0 0 28px; height: 1px; background: currentColor; }
@@ -48,21 +48,31 @@ body {
 p { font-size: clamp(15px, 1.7vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.88; margin-bottom: 24px; }
 p:last-child { margin-bottom: 0; }
 p strong { font-weight: 600; color: var(--engraved); }
-.shifts { display: flex; flex-direction: column; gap: 2px; margin: 40px 0; }
-.shift { background: var(--engraved-ghost); border: 1px solid var(--incised-faint); padding: 36px 40px; position: relative; }
-.shift::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 2px; background: var(--engraved-dim); opacity: 0.3; }
-.shift-date { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.3em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 14px; opacity: 0.5; }
-.shift-headline { font-family: 'Georgia', serif; font-size: clamp(16px, 2vw, 20px); font-weight: 700; color: var(--engraved); margin-bottom: 16px; line-height: 1.3; }
-.shift-body { font-size: clamp(14px, 1.6vw, 16px); color: var(--engraved-dim); line-height: 1.85; font-weight: 300; margin-bottom: 16px; }
-.shift-conclusion { font-family: 'Georgia', serif; font-size: clamp(14px, 1.6vw, 16px); font-style: italic; color: var(--engraved); opacity: 0.8; border-top: 1px solid var(--incised-faint); padding-top: 16px; margin-top: 20px; line-height: 1.7; }
-.pull-quote { margin: 52px 0; padding: 0 0 0 24px; border-left: 1px solid var(--engraved-dim); }
+.steps { display: flex; flex-direction: column; gap: 1px; background: var(--incised-faint); margin: 36px 0 0; }
+.step { background: var(--stone); padding: 30px 32px; display: flex; gap: 24px; }
+.step-num { font-family: 'Courier New', monospace; font-size: 10px; color: var(--engraved-dim); flex-shrink: 0; opacity: 0.5; padding-top: 4px; letter-spacing: 0.1em; }
+.step-title { font-family: 'Georgia', serif; font-size: clamp(16px, 2vw, 20px); font-weight: 700; color: var(--engraved); margin-bottom: 8px; }
+.step-meta { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--engraved-dim); opacity: 0.6; margin-bottom: 12px; }
+.step-desc { font-size: clamp(14px, 1.5vw, 16px); color: var(--engraved-dim); line-height: 1.8; font-weight: 300; }
+.tiers { display: flex; flex-direction: column; gap: 2px; margin: 36px 0 0; }
+.tier { background: var(--engraved-ghost); border: 1px solid var(--incised-faint); padding: 30px 36px; position: relative; }
+.tier::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 2px; background: var(--engraved-dim); opacity: 0.3; }
+.tier-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.tier-name { font-family: 'Georgia', serif; font-size: clamp(16px, 2vw, 20px); font-weight: 700; color: var(--engraved); }
+.tier-price { font-family: 'Courier New', monospace; font-size: clamp(13px, 1.5vw, 15px); letter-spacing: 0.08em; color: var(--engraved); }
+.tier-desc { font-size: clamp(14px, 1.5vw, 16px); color: var(--engraved-dim); line-height: 1.8; font-weight: 300; }
+.builds { display: flex; flex-wrap: wrap; gap: 1px; background: var(--incised-faint); margin: 36px 0 0; }
+.build { background: var(--stone); padding: 18px 22px; flex: 1 1 240px; }
+.build-name { font-family: 'Georgia', serif; font-size: clamp(14px, 1.5vw, 16px); font-weight: 700; color: var(--engraved); margin-bottom: 4px; }
+.build-desc { font-size: clamp(12px, 1.3vw, 14px); color: var(--engraved-dim); line-height: 1.65; font-weight: 300; }
+.why-items { display: flex; flex-direction: column; gap: 1px; background: var(--incised-faint); margin: 36px 0 0; }
+.why-item { background: var(--stone); padding: 24px 28px; display: flex; gap: 20px; }
+.why-num { font-family: 'Courier New', monospace; font-size: 9px; color: var(--engraved-dim); flex-shrink: 0; opacity: 0.4; padding-top: 3px; }
+.why-title { font-family: 'Georgia', serif; font-size: clamp(14px, 1.6vw, 16px); font-weight: 700; color: var(--engraved); margin-bottom: 4px; }
+.why-desc { font-size: clamp(13px, 1.4vw, 15px); color: var(--engraved-dim); line-height: 1.7; font-weight: 300; }
+.verticals { font-family: 'Courier New', monospace; font-size: clamp(10px, 1.2vw, 12px); letter-spacing: 0.08em; color: var(--engraved-dim); line-height: 2.4; margin-top: 28px; opacity: 0.7; }
+.pull-quote { margin: 52px 0 0; padding: 0 0 0 24px; border-left: 1px solid var(--engraved-dim); }
 .pull-quote p { font-family: 'Georgia', serif; font-size: clamp(18px, 2.5vw, 26px); font-weight: 700; font-style: italic; color: var(--engraved); line-height: 1.4; margin-bottom: 0; opacity: 0.88; letter-spacing: -0.01em; }
-.ready-items { display: flex; flex-direction: column; gap: 1px; background: var(--incised-faint); margin: 36px 0; }
-.ready-item { background: var(--stone); padding: 24px 28px; display: flex; gap: 20px; }
-.ready-num { font-family: 'Courier New', monospace; font-size: 9px; color: var(--engraved-dim); flex-shrink: 0; opacity: 0.4; padding-top: 3px; }
-.ready-title { font-family: 'Georgia', serif; font-size: clamp(14px, 1.6vw, 16px); font-weight: 700; color: var(--engraved); margin-bottom: 4px; }
-.ready-desc { font-size: clamp(13px, 1.4vw, 15px); color: var(--engraved-dim); line-height: 1.7; font-weight: 300; }
-.window-block { background: var(--engraved-ghost); border: 1px solid var(--incised-faint); border-top: 2px solid var(--engraved-dim); padding: 40px 44px; margin: 36px 0; }
 .cta-section { padding: 80px 0 0; text-align: center; }
 .cta-headline { font-family: 'Georgia', serif; font-size: clamp(26px, 4vw, 42px); font-weight: 700; color: var(--engraved); margin-bottom: 16px; line-height: 1.2; letter-spacing: -0.01em; font-style: italic; }
 .cta-sub { font-size: clamp(14px, 1.6vw, 16px); color: var(--engraved-dim); margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.8; font-weight: 300; }
@@ -74,110 +84,179 @@ p strong { font-weight: 600; color: var(--engraved); }
 @media(max-width: 680px) {
   .page { padding: 90px 24px 80px; }
   .nav { padding: 0 20px; }
-  .shift { padding: 28px 24px; }
-  .window-block { padding: 28px 28px; }
+  .nav-cta { font-size: 8px; padding: 6px 12px; }
+  .tier { padding: 24px 24px; }
+  .step { padding: 24px 22px; }
 }
 </style>
 </head>
 <body>
 <div class="vignette"></div>
 <nav class="nav">
-  <div class="nav-wordmark">Kodiak <em>Strategy</em></div>
-  <a href="mailto:ryan@kodiakstrategy.com" class="nav-cta">Schedule a Discovery Call</a>
+  <a href="/" class="nav-wordmark">Kodiak <em>Strategy</em></a>
+  <a href="/intake" class="nav-cta">Book a Discovery Call</a>
 </nav>
 <div class="page">
 
   <div class="opening">
-    <div class="opening-kicker">Kodiak Strategy &nbsp;·&nbsp; Black Hills, South Dakota</div>
-    <div class="opening-statement">The next AI shift isn't coming.<br><strong>It's arriving.</strong><br>The only question is whether your operation is ready when it does.</div>
-    <p class="opening-sub">Most business owners are focused on today's problems. The foundation feels like a future investment. That's exactly what makes it a competitive advantage — because most of your competitors are thinking the same thing.</p>
+    <div class="opening-kicker">Kodiak Strategy &nbsp;·&nbsp; Spearfish to Sioux Falls</div>
+    <div class="opening-statement">You know AI could help your business.<br><strong>You just don't know where it fits.</strong></div>
+    <p class="opening-sub">That's the gap we close. We learn how your operation actually runs, find the workflows that are costing you time and money, and build the fix. No guesswork. No tool you'll never use. A clear plan built around what we find in your business.</p>
+    <a href="/intake" class="cta-btn">Book a Discovery Call</a>
   </div>
 
   <div class="section">
-    <div class="section-label">The Problem</div>
-    <div class="section-headline">It doesn't feel urgent yet.<br><em>That's the whole point.</em></div>
-    <p>Nobody woke up in October 2022 thinking they needed to get their business ready for AI. It wasn't on the radar. It wasn't a pain point. It felt like something that mattered to tech companies — not construction firms, not logistics operations, not healthcare groups in the middle of the country.</p>
-    <p>Then November happened. And the businesses that had their processes documented, their data organized, and their institutional knowledge captured somewhere other than people's heads — they moved immediately. The ones that didn't spent the next year trying to catch up.</p>
-    <p><strong>That pattern has repeated. It will repeat again.</strong> The businesses that understand this and act before the next shift are the ones that will look back and call it the most important strategic decision they ever made.</p>
-  </div>
-
-  <div class="section">
-    <div class="section-label">What Actually Happened</div>
-    <div class="section-headline">This isn't a theory.<br><em>It has already happened twice.</em></div>
-    <p>Both times the pattern was identical. A capability leap arrived. Businesses with operational foundations moved fast. Everyone else spent months starting from scratch.</p>
-    <div class="shifts">
-      <div class="shift">
-        <div class="shift-date">November 2022</div>
-        <div class="shift-headline">ChatGPT launches. Overnight, everything changes.</div>
-        <p class="shift-body">Suddenly every business owner in the country had access to an AI that could write, analyze, summarize, and answer questions. The potential was immediate and obvious. The gap between businesses that could use it and businesses that couldn't was not about access — everyone had access. It was about foundation.</p>
-        <p class="shift-body">The businesses that could point the tool at their operation — their documented processes, their organized data, their captured institutional knowledge — started saving hours every week within days. They fed it their SOPs and it trained their staff. They connected it to their data and it built their reports. It worked at full capacity from day one because everything it needed was already in place.</p>
-        <p class="shift-body">The businesses that wanted to use it had nothing to point it at. Their processes lived in people's heads. Their data sat in spreadsheets nobody maintained. Their institutional knowledge existed in email chains nobody could find. They spent months trying to teach a tool about a business that had never been documented. Many gave up and called it overhyped.</p>
-        <div class="shift-conclusion">Same tool. Same access. Completely different outcomes. The only difference was what was already in place before it arrived.</div>
+    <div class="section-label">How It Works</div>
+    <div class="section-headline">Three steps. <em>Low risk at every one.</em></div>
+    <p>You never commit to a build before you know exactly what it is and what it's worth. Each step earns the next.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Discovery Call</div>
+          <div class="step-meta">Free &nbsp;·&nbsp; 20 minutes</div>
+          <div class="step-desc">A real conversation about your operation, your team, and where things feel slow or broken. No pitch. We figure out together whether there's something here worth pursuing.</div>
+        </div>
       </div>
-      <div class="shift">
-        <div class="shift-date">2024</div>
-        <div class="shift-headline">AI gets connected. The leap from "answers questions" to "runs workflows" happens faster than anyone predicted.</div>
-        <p class="shift-body">The tools stopped being isolated. They could read documents, analyze operational data, connect directly to systems, and take action on behalf of the business. For operations with organized infrastructure this was transformational — automations that would have taken months to build were running in days. The intelligence layer that used to require an entire IT department now required a conversation and a connected data source.</p>
-        <p class="shift-body">For businesses still running on fragmented, undocumented operations the new capabilities were effectively inaccessible. There was nothing to connect to. No organized data to analyze. No documented processes to automate. They watched the next wave of capability arrive and had the exact same problem they had in 2022. They weren't ready.</p>
-        <div class="shift-conclusion">The businesses that had been building their foundation since 2022 compounded their advantage. The gap between them and everyone else got wider — not smaller.</div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">The Assessment</div>
+          <div class="step-meta">$750 &nbsp;·&nbsp; Delivered in one week</div>
+          <div class="step-desc">We go deep into how your work actually moves. You get the Opportunity Map: a written report showing every workflow worth optimizing or automating, plotted on an impact and effort matrix, with the real dollar cost of each one. It includes quick wins you can act on yourself, and it's yours to keep whatever you decide. The full $750 credits toward your build.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">The Build</div>
+          <div class="step-meta">Fixed price &nbsp;·&nbsp; About three weeks</div>
+          <div class="step-desc">We pick the highest-impact opportunity and build it. Fixed price quoted from the assessment, so you carry no scope risk. Optimize the process first, then automate it. Clean handoff, documented, yours to run.</div>
+        </div>
       </div>
     </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">What We Build</div>
+    <div class="section-headline">Real fixes for <em>real workflows.</em></div>
+    <p>Every build starts as one named problem you already feel. A few of the things we build:</p>
+    <div class="builds">
+      <div class="build">
+        <div class="build-name">AI Phone Receptionist</div>
+        <div class="build-desc">Every call answered, every message routed. Nothing slips when the front desk is busy.</div>
+      </div>
+      <div class="build">
+        <div class="build-name">Speed to Lead System</div>
+        <div class="build-desc">New leads get a response in seconds, not hours. The first business to reply usually wins the job.</div>
+      </div>
+      <div class="build">
+        <div class="build-name">Staff Knowledge System</div>
+        <div class="build-desc">The know-how in your team's heads, captured and searchable. It stops walking out the door.</div>
+      </div>
+      <div class="build">
+        <div class="build-name">CRM &amp; Route Integration</div>
+        <div class="build-desc">Field updates flow to the office automatically. No re-keying, no lost notes, no end-of-day catch-up.</div>
+      </div>
+      <div class="build">
+        <div class="build-name">Seasonal Outreach System</div>
+        <div class="build-desc">The right message to the right customer at the right time, without anyone remembering to send it.</div>
+      </div>
+      <div class="build">
+        <div class="build-name">Reputation &amp; Review System</div>
+        <div class="build-desc">Reviews requested automatically after every job. Your reputation builds itself.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Engagement</div>
+    <div class="section-headline">Start with one build.<br><em>Grow from there.</em></div>
+    <p>Most owners start with a single build. Once you see what it does, the path forward is a conversation, not a leap.</p>
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-head">
+          <div class="tier-name">The Assessment</div>
+          <div class="tier-price">$750</div>
+        </div>
+        <div class="tier-desc">The Opportunity Map for your operation. Credits in full toward your build.</div>
+      </div>
+      <div class="tier">
+        <div class="tier-head">
+          <div class="tier-name">Focused Build</div>
+          <div class="tier-price">From $3,000</div>
+        </div>
+        <div class="tier-desc">One workflow, solved end to end. Fixed price, scoped from your assessment. About three weeks.</div>
+      </div>
+      <div class="tier">
+        <div class="tier-head">
+          <div class="tier-name">Growth Retainer</div>
+          <div class="tier-price">$1,500&ndash;$2,500 / mo</div>
+        </div>
+        <div class="tier-desc">Everything built keeps running and improving. One new build every month. A monthly strategy call. For owners who want steady momentum without writing a big check.</div>
+      </div>
+      <div class="tier">
+        <div class="tier-head">
+          <div class="tier-name">Full Partnership</div>
+          <div class="tier-price">Quoted</div>
+        </div>
+        <div class="tier-desc">Kodiak embedded in your operation. Deep, ongoing work for owners ready to build the whole foundation. Earned once we've proven what we can do.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Why Kodiak</div>
+    <div class="section-headline">We've run real businesses. <em>We build like it.</em></div>
+    <div class="why-items">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div>
+          <div class="why-title">Assessment first. Always.</div>
+          <div class="why-desc">We never recommend a solution before we understand your operation. Every plan we present is built from your actual workflows, your team, and your goals. Never a template.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div>
+          <div class="why-title">Optimize before we automate.</div>
+          <div class="why-desc">Before we automate anything, we make sure it's worth automating. A streamlined process makes a far better automation than a fast version of a broken one.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div>
+          <div class="why-title">Built by an operator.</div>
+          <div class="why-desc">Kodiak's founder spent thirteen years running owner-operated businesses. We've done payroll at 11pm. We know how a business here actually works because we've been in your seat.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <div>
+          <div class="why-title">Local. Not remote.</div>
+          <div class="why-desc">Based in the Black Hills, serving South Dakota and the Northern Plains. We know how businesses here operate because we are here too. Not calling in from a coast.</div>
+        </div>
+      </div>
+    </div>
+    <div class="verticals">
+      Optometry &amp; Eye Care &nbsp;·&nbsp; Dental &nbsp;·&nbsp; Medical &amp; Healthcare &nbsp;·&nbsp; Law Firms &nbsp;·&nbsp; Accounting &amp; Bookkeeping &nbsp;·&nbsp; Insurance &nbsp;·&nbsp; Roofing &amp; Construction &nbsp;·&nbsp; HVAC &amp; Home Services &nbsp;·&nbsp; Real Estate &nbsp;·&nbsp; Restaurants &amp; Hospitality
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">The Long Game</div>
+    <div class="section-headline">A single build is the start.<br><em>Not the whole picture.</em></div>
+    <p>Every tool you bring in becomes a free feature in the next Salesforce or Microsoft Office within a few years. What doesn't commoditize is your operation's foundation: your processes documented, your data connected, the knowledge in your team's heads captured and organized.</p>
+    <p>Build that, and every AI tool from this point forward hits the ground already knowing your business. <strong>The owners who build their foundation early will look back on it as one of the most important decisions they made.</strong> But you don't start there. You start with one build, you see it work, and you grow into the rest.</p>
     <div class="pull-quote">
-      <p>The next time this happens — and it will happen — which side of that story is your business on?</p>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-label">What Readiness Actually Is</div>
-    <div class="section-headline">Not a tool. Not a subscription.<br><em>A foundation.</em></div>
-    <p>The businesses that were ready both times didn't have better tools. They had better infrastructure. Everything the AI needed to work at full capacity was already in place before it arrived. That is what Kodiak builds.</p>
-    <p>Every AI tool you bring in from this point forward hits the ground already knowing your business — your processes, your people, your institutional knowledge. Not starting from scratch. Starting from complete. That is what the foundation does.</p>
-    <div class="ready-items">
-      <div class="ready-item">
-        <div class="ready-num">01</div>
-        <div>
-          <div class="ready-title">Every process documented and structured</div>
-          <div class="ready-desc">Not in people's heads. Not in a document nobody updates. In a system that is organized, searchable, and ready to work with any AI tool the moment it arrives.</div>
-        </div>
-      </div>
-      <div class="ready-item">
-        <div class="ready-num">02</div>
-        <div>
-          <div class="ready-title">Institutional knowledge preserved</div>
-          <div class="ready-desc">The decades of operational knowledge your best people carry — relationships, context, history — captured before it walks out the door. Permanently.</div>
-        </div>
-      </div>
-      <div class="ready-item">
-        <div class="ready-num">03</div>
-        <div>
-          <div class="ready-title">Data connected and accessible</div>
-          <div class="ready-desc">Every system your operation runs on, unified into one picture. When the next AI capability arrives that can act on that data, it plugs in immediately.</div>
-        </div>
-      </div>
-      <div class="ready-item">
-        <div class="ready-num">04</div>
-        <div>
-          <div class="ready-title">The foundation already built</div>
-          <div class="ready-desc">When the next shift arrives your operation deploys in days. Your competitors spend months catching up. That gap does not close. It widens every month the foundation exists.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-label">The Window</div>
-    <div class="section-headline">Right now this is still<br><em>a differentiator.</em></div>
-    <div class="window-block">
-      <p>In three years it will be table stakes. The businesses building the foundation today will have three years of compounding operational intelligence by the time it becomes obvious to everyone else. That gap does not close. It widens every month.</p>
-      <p>A business that starts building now has twelve months of documented processes, connected data, and captured institutional knowledge by this time next year. A business that waits has nothing. Every month is a month your competitors don't have.</p>
-      <p><strong>The businesses that are sitting in position when the next shift arrives — ready to move in days while everyone else scrambles — are the ones who started building before they needed to. That is the whole advantage. And right now, most of your competitors haven't started.</strong></p>
+      <p>You don't need to know everything about AI. You need someone who knows your operation.</p>
     </div>
   </div>
 
   <div class="cta-section">
-    <div class="cta-headline">The foundation doesn't build itself.</div>
-    <p class="cta-sub">A free conversation about your operation, where the gaps are, and what it would take to be ready for what comes next. No pitch. No commitment beyond the call.</p>
-    <a href="mailto:ryan@kodiakstrategy.com" class="cta-btn">Schedule a Discovery Call</a>
+    <div class="cta-headline">Start with a conversation.</div>
+    <p class="cta-sub">Twenty minutes about your operation, where the gaps are, and whether there's something here worth building. No pitch. No commitment beyond the call.</p>
+    <a href="/intake" class="cta-btn">Book a Discovery Call</a>
     <div class="cta-contact">
       (907) 500-4010 &nbsp;·&nbsp; ryan@kodiakstrategy.com &nbsp;·&nbsp; kodiakstrategy.com
     </div>
