@@ -1,129 +1,162 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How It Works | Kodiak Strategy</title>
-<meta name="description" content="Learn how Kodiak Strategy's AI Assessment process works. One interview, written report within one week, guaranteed results.">
+<title>How It Works — Kodiak Strategy</title>
+<meta name="description" content="Three steps, low risk at every one. Discovery call, the Assessment, and the Build. How Kodiak Strategy works with South Dakota business owners.">
 <link rel="canonical" href="https://kodiakstrategy.com/how-it-works">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { background: #0B0B0B; scroll-behavior: smooth; }
-body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; line-height: 1.7; overflow-x: hidden; }
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: #0B0B0B; border-bottom: 1px solid rgba(198,168,90,0.2); }
-.nav-brand { display: flex; align-items: baseline; gap: 6px; text-decoration: none; }
-.nav-logo { font-size: 16px; font-weight: 800; letter-spacing: 0.25em; color: #FFFFFF; text-transform: uppercase; }
-.nav-strategy { font-size: 13px; font-weight: 400; letter-spacing: 0.15em; color: #C6A85A; text-transform: uppercase; }
-.nav-links { display: flex; align-items: center; gap: 36px; }
-.nav-links a { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #999999; text-decoration: none; }
-.nav-links a:hover { color: #FFFFFF; }
-.nav-cta { background: #C6A85A; color: #0B0B0B; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 11px 28px; border-radius: 2px; text-decoration: none; }
-.page-hero { padding: 140px 80px 60px; max-width: 800px; margin: 0 auto; text-align: center; }
-.page-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #C6A85A; margin-bottom: 20px; font-family: 'Courier New', monospace; display: block; }
-h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.1; color: #FFFFFF; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -0.01em; }
-h1 span { color: #C6A85A; }
-.page-sub { font-size: 18px; color: #999999; font-weight: 300; line-height: 1.8; }
-.section { padding: 80px; max-width: 1000px; margin: 0 auto; }
-h2 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; line-height: 1.2; color: #FFFFFF; margin-bottom: 16px; text-transform: uppercase; letter-spacing: -0.01em; }
-h2 span { color: #C6A85A; }
-p { font-size: 16px; color: #999999; font-weight: 300; line-height: 1.85; margin-bottom: 16px; }
-.phases { display: flex; flex-direction: column; margin-top: 48px; border: 1px solid rgba(198,168,90,0.15); border-radius: 4px; overflow: hidden; }
-.phase { display: grid; grid-template-columns: 140px 1fr; border-bottom: 1px solid rgba(198,168,90,0.1); }
-.phase:last-child { border-bottom: none; }
-.phase-num { background: #111111; padding: 32px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border-right: 1px solid rgba(198,168,90,0.15); }
-.phase-n { font-size: 48px; font-weight: 900; color: #C6A85A; line-height: 1; opacity: 0.5; }
-.phase-tag { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #666666; font-family: 'Courier New', monospace; }
-.phase-content { background: #1A1A1A; padding: 32px 36px; }
-.phase-title { font-size: 15px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.03em; }
-.phase-desc { font-size: 14px; color: #999999; line-height: 1.7; font-weight: 300; margin: 0; }
-.guarantee-box { background: rgba(198,168,90,0.05); border: 1px solid rgba(198,168,90,0.2); border-radius: 4px; padding: 32px 36px; margin-top: 48px; }
-.guarantee-box p { font-size: 14px; color: #999999; margin: 0; line-height: 1.8; }
-.guarantee-box strong { color: #C6A85A; }
-.cta-section { background: #111111; border-top: 2px solid #C6A85A; padding: 80px; text-align: center; }
-.cta-primary { background: #C6A85A; color: #0B0B0B; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 16px 48px; border-radius: 2px; text-decoration: none; display: inline-block; margin-top: 32px; }
-footer { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); padding: 40px 80px; }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-.footer-logo { font-size: 14px; font-weight: 800; letter-spacing: 0.2em; color: #FFFFFF; text-transform: uppercase; }
-.footer-strategy { color: #C6A85A; font-weight: 400; }
-.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-.footer-links a { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #666666; text-decoration: none; font-family: 'Courier New', monospace; }
-.footer-links a:hover { color: #C6A85A; }
-.footer-contact { font-size: 11px; color: #666666; text-align: right; line-height: 2; font-family: 'Courier New', monospace; }
-.footer-contact a { color: #C6A85A; text-decoration: none; }
-@media(max-width: 768px) {
-  nav { padding: 0 24px; } .nav-links { display: none; }
-  .page-hero { padding: 120px 24px 40px; }
-  .section { padding: 60px 24px; }
-  .phase { grid-template-columns: 80px 1fr; }
-  .cta-section { padding: 60px 24px; }
-  footer { padding: 40px 24px; } .footer-inner { flex-direction: column; align-items: flex-start; } .footer-contact { text-align: left; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --stone: #070604;
+  --engraved: #F0EBE0;
+  --engraved-dim: rgba(240,235,224,0.72);
+  --engraved-ghost: rgba(240,235,224,0.08);
+  --incised: rgba(240,235,224,0.14);
+  --incised-faint: rgba(240,235,224,0.08);
+}
+html { background: var(--stone); scroll-behavior: smooth; }
+body {
+  background-color: var(--stone);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='5' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 20% 30%, rgba(22,18,13,0.5) 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 70%, rgba(16,13,9,0.45) 0%, transparent 40%);
+  background-size: 400px 400px, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+  color: var(--engraved);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.vignette { position: fixed; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(4,3,2,0.3) 65%, rgba(2,1,0,0.65) 88%, rgba(1,0,0,0.82) 100%); }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(7,6,4,0.95); border-bottom: 1px solid var(--incised-faint); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 60px; backdrop-filter: blur(10px); }
+.nav-wordmark { font-family: 'Georgia', serif; font-size: 13px; font-weight: 700; letter-spacing: 0.25em; color: var(--engraved); text-transform: uppercase; text-decoration: none; }
+.nav-wordmark em { font-style: italic; font-weight: 400; opacity: 0.55; }
+.nav-links { display: flex; align-items: center; gap: 26px; }
+.nav-link { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--engraved-dim); text-decoration: none; }
+.nav-link:hover { color: var(--engraved); }
+.nav-cta { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--engraved-dim); border: 1px solid var(--incised); padding: 7px 16px; text-decoration: none; }
+.page { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 100px 40px 120px; }
+.opening { padding: 70px 0 60px; border-bottom: 1px solid var(--incised-faint); }
+.opening-kicker { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 28px; opacity: 0.45; display: flex; align-items: center; gap: 14px; }
+.opening-kicker::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+.opening-statement { font-family: 'Georgia', serif; font-size: clamp(26px, 4vw, 42px); font-weight: 400; font-style: italic; color: var(--engraved); line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 28px; }
+.opening-statement strong { font-style: normal; font-weight: 700; }
+.opening-sub { font-family: 'Georgia', serif; font-size: clamp(15px, 1.8vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.85; max-width: 620px; }
+.section { padding: 64px 0; border-bottom: 1px solid var(--incised-faint); }
+.section-label { font-family: 'Courier New', monospace; font-size: 7px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 16px; opacity: 0.4; display: flex; align-items: center; gap: 12px; }
+.section-label::after { content: ''; flex: 0 0 28px; height: 1px; background: currentColor; }
+.section-headline { font-family: 'Georgia', serif; font-size: clamp(22px, 3.5vw, 32px); font-weight: 700; color: var(--engraved); line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 24px; }
+.section-headline em { font-style: italic; color: var(--engraved-dim); }
+p { font-size: clamp(15px, 1.7vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.88; margin-bottom: 22px; }
+p:last-child { margin-bottom: 0; }
+p strong { font-weight: 600; color: var(--engraved); }
+.step-block { margin: 40px 0 0; }
+.step-big { border: 1px solid var(--incised-faint); background: var(--engraved-ghost); padding: 36px 40px; margin-bottom: 2px; position: relative; }
+.step-big::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 2px; background: var(--engraved-dim); opacity: 0.3; }
+.step-eyebrow { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--engraved-dim); opacity: 0.55; margin-bottom: 10px; }
+.step-title { font-family: 'Georgia', serif; font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; color: var(--engraved); margin-bottom: 6px; }
+.step-meta { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--engraved-dim); opacity: 0.65; margin-bottom: 16px; }
+.step-big p { font-size: clamp(14px, 1.5vw, 16px); margin-bottom: 14px; }
+.pull-quote { margin: 48px 0 0; padding: 0 0 0 24px; border-left: 1px solid var(--engraved-dim); }
+.pull-quote p { font-family: 'Georgia', serif; font-size: clamp(18px, 2.5vw, 24px); font-weight: 700; font-style: italic; color: var(--engraved); line-height: 1.4; margin-bottom: 0; opacity: 0.88; }
+.cta-section { padding: 70px 0 0; text-align: center; }
+.cta-headline { font-family: 'Georgia', serif; font-size: clamp(24px, 4vw, 38px); font-weight: 700; font-style: italic; color: var(--engraved); margin-bottom: 16px; line-height: 1.2; }
+.cta-sub { font-size: clamp(14px, 1.6vw, 16px); color: var(--engraved-dim); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.8; font-weight: 300; }
+.cta-btn { display: inline-block; border: 1px solid var(--incised); color: var(--engraved); padding: 14px 36px; font-family: 'Courier New', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; }
+.footer { margin-top: 70px; padding-top: 28px; border-top: 1px solid var(--incised-faint); }
+.footer-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+.footer-brand { font-family: 'Georgia', serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.4; font-style: italic; }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-link { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--engraved-dim); text-decoration: none; opacity: 0.6; }
+.footer-contact { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.12em; color: var(--engraved-dim); opacity: 0.3; text-transform: uppercase; }
+@media(max-width: 680px) {
+  .page { padding: 90px 24px 80px; }
+  .nav { padding: 0 20px; }
+  .nav-links { gap: 14px; }
+  .nav-link { display: none; }
+  .step-big { padding: 28px 24px; }
 }
 </style>
-<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-<nav>
-  <a href="/" class="nav-brand"><span class="nav-logo">KODIAK</span><span class="nav-strategy"> STRATEGY</span></a>
-  <div class="nav-links"><a href="/how-it-works">How It Works</a><a href="/services">Services</a><a href="/faq">FAQ</a><a href="/about">About</a></div>
-  <a href="/intake" class="nav-cta">Book Discovery Call</a>
+<div class="vignette"></div>
+<nav class="nav">
+  <a href="/" class="nav-wordmark">Kodiak <em>Strategy</em></a>
+  <div class="nav-links">
+    <a href="/how-it-works" class="nav-link">How It Works</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/faq" class="nav-link">FAQ</a>
+    <a href="/intake" class="nav-cta">Book a Discovery Call</a>
+  </div>
 </nav>
-<div class="page-hero">
-  <div class="page-label">The Process</div>
-  <h1>Simple. Specific. <span>Guaranteed.</span></h1>
-  <p class="page-sub">Every engagement starts with a conversation. We learn about your business before we recommend anything.</p>
-</div>
-<div class="section">
-  <div class="page-label">Four Phases</div>
-  <h2>Assess. Report. Optimize. <span>Automate.</span></h2>
-  <p>We never build before we understand. We never automate before we optimize.</p>
-  <div class="phases">
-    <div class="phase">
-      <div class="phase-num"><div class="phase-n">1</div><div class="phase-tag">Assess</div></div>
-      <div class="phase-content">
-        <div class="phase-title">A fully comprehensive interview — in person or remote</div>
-        <p class="phase-desc">We take the time to fully understand every aspect of your business and how it operates. The more we know about your processes, your team, and where friction exists, the more accurate and valuable your report will be.</p>
+<div class="page">
+
+  <div class="opening">
+    <div class="opening-kicker">How It Works</div>
+    <div class="opening-statement">Three steps.<br><strong>Low risk at every one.</strong></div>
+    <p class="opening-sub">You never commit to a build before you know exactly what it is and what it's worth. Each step is small, concrete, and earns the next. Here is the whole process, start to finish.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">The Process</div>
+    <div class="step-block">
+
+      <div class="step-big">
+        <div class="step-eyebrow">Step 01</div>
+        <div class="step-title">The Discovery Call</div>
+        <div class="step-meta">Free &nbsp;·&nbsp; About 20 minutes</div>
+        <p>A real conversation about your operation. We ask how your business runs, where your team, where things feel slow or get dropped, and what you wish ran better. No pitch, no slides.</p>
+        <p>By the end we both know whether there's something here worth pursuing. If there isn't, we'll tell you. If there is, the next step is the Assessment.</p>
       </div>
+
+      <div class="step-big">
+        <div class="step-eyebrow">Step 02</div>
+        <div class="step-title">The Assessment</div>
+        <div class="step-meta">$750 &nbsp;·&nbsp; Delivered in one week &nbsp;·&nbsp; Credits toward your build</div>
+        <p>We go deep into how your work actually moves. We map your workflows, talk to the people doing the work, and find every place time and money are leaking.</p>
+        <p>You receive the <strong>Opportunity Map</strong>: a written report, 3 to 5 pages, with every opportunity plotted on an impact and effort matrix. Each one is summarized, tagged optimize or automate, and given a real dollar figure based on the hours it costs you and what those hours are worth. It includes 3 to 4 quick wins you can act on yourself.</p>
+        <p>The Opportunity Map is yours to keep whatever you decide. If we proceed to a build, the full $750 credits toward it. If we don't find something worth fixing, we'll tell you that plainly.</p>
+      </div>
+
+      <div class="step-big">
+        <div class="step-eyebrow">Step 03</div>
+        <div class="step-title">The Build</div>
+        <div class="step-meta">Fixed price, from $3,000 &nbsp;·&nbsp; About three weeks</div>
+        <p>We take the highest-impact opportunity from the Assessment and build it. The price is fixed and quoted from the Assessment, so you carry no scope risk and there are no surprises.</p>
+        <p>We optimize the process before we automate it. A clean workflow makes a far better automation than a fast version of a broken one. When it's done you get a clean handoff: documented, working, and yours to run.</p>
+        <p>From there, most owners want to keep the momentum going. That's a conversation, not a leap. See <a href="/services" style="color:var(--engraved);text-decoration:underline;">Services</a> for what comes after the first build.</p>
+      </div>
+
     </div>
-    <div class="phase">
-      <div class="phase-num"><div class="phase-n">2</div><div class="phase-tag">Report</div></div>
-      <div class="phase-content">
-        <div class="phase-title">Written report delivered within one week</div>
-        <p class="phase-desc">Your $1,000 assessment delivers a written report including 3-4 automations or business flow optimizations ready to implement — each showing exactly how much time and money it recovers. Plus a long-term plan showing every other opportunity we identified. Yours to keep regardless of what you decide after.</p>
-      </div>
-    </div>
-    <div class="phase">
-      <div class="phase-num"><div class="phase-n">3</div><div class="phase-tag">Optimize</div></div>
-      <div class="phase-content">
-        <div class="phase-title">Simplify before you automate</div>
-        <p class="phase-desc">Before we automate anything we make sure it's worth automating. We map your current processes and eliminate the waste first — a streamlined process creates a much more efficient automation.</p>
-      </div>
-    </div>
-    <div class="phase">
-      <div class="phase-num"><div class="phase-n">4</div><div class="phase-tag">Automate</div></div>
-      <div class="phase-content">
-        <div class="phase-title">We present your options — you choose what fits</div>
-        <p class="phase-desc">Based on your assessment we present fully customized AI implementation plans and you decide which one is the best fit for you right now. Then we get to work making it a reality.</p>
-      </div>
+    <div class="pull-quote">
+      <p>Assess before you recommend. Optimize before you automate. Never build something you can't actually use.</p>
     </div>
   </div>
-  <div class="guarantee-box">
-    <p><strong>The Guarantee:</strong> Every assessment identifies 3-4 actionable solutions guaranteed to save measurable time and money. At least 5 hours returned per week and $1,000 in monthly recoverable value — or your fee is fully refunded.</p>
+
+  <div class="cta-section">
+    <div class="cta-headline">Start with a conversation.</div>
+    <p class="cta-sub">Twenty minutes about your operation and whether there's something here worth building. No pitch. No commitment beyond the call.</p>
+    <a href="/intake" class="cta-btn">Book a Discovery Call</a>
   </div>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">Kodiak <em>Strategy</em></div>
+      <div class="footer-links">
+        <a href="/" class="footer-link">Home</a>
+        <a href="/how-it-works" class="footer-link">How It Works</a>
+        <a href="/services" class="footer-link">Services</a>
+        <a href="/about" class="footer-link">About</a>
+        <a href="/faq" class="footer-link">FAQ</a>
+        <a href="/privacy" class="footer-link">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-contact">(907) 500-4010 &nbsp;·&nbsp; ryan@kodiakstrategy.com &nbsp;·&nbsp; Black Hills, South Dakota</div>
+  </footer>
+
 </div>
-<div class="cta-section">
-  <div class="page-label">Ready to Start</div>
-  <h2>Tell us about your business.<br><span>We'll call you within 2 hours.</span></h2>
-  <p style="max-width:480px; margin:0 auto; font-size:16px; color:#999999; font-weight:300;">Ryan will call you personally to learn about your operation and schedule your assessment.</p>
-  <a href="/intake" class="cta-primary">Book a Free Discovery Call</a>
-  <p style="font-size:11px; color:#666666; margin-top:16px; font-family:'Courier New',monospace;">Or call/text — <a href="tel:6056052558" style="color:#C6A85A; text-decoration:none;">(605) 605-2558</a></p>
-</div>
-<footer>
-  <div class="footer-inner">
-    <div><div class="footer-logo">KODIAK <span class="footer-strategy">STRATEGY</span></div><div style="font-size:10px; color:#666666; letter-spacing:0.1em; margin-top:4px; font-family:'Courier New',monospace; text-transform:uppercase;">Black Hills · AI Consulting · South Dakota</div></div>
-    <div class="footer-links"><a href="/">Home</a><a href="/how-it-works">How It Works</a><a href="/services">Services</a><a href="/faq">FAQ</a><a href="/intake">Get Started</a><a href="/privacy">Privacy</a></div>
-    <div class="footer-contact"><div><a href="tel:6056052558">(605) 605-2558</a></div><div><a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a></div></div>
-  </div>
-</footer>
 </body>
 </html>
