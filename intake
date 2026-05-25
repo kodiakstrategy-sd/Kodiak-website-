@@ -1,161 +1,207 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get Started | Kodiak Strategy</title>
-<meta name="description" content="Book a free discovery call with Kodiak Strategy. Tell us about your business and Ryan will call you within 2 hours.">
+<title>Book a Discovery Call — Kodiak Strategy</title>
+<meta name="description" content="Tell us about your business and book a free discovery call with Kodiak Strategy. Ryan will follow up personally.">
 <link rel="canonical" href="https://kodiakstrategy.com/intake">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { background: #0B0B0B; scroll-behavior: smooth; }
-body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; line-height: 1.7; overflow-x: hidden; }
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: #0B0B0B; border-bottom: 1px solid rgba(198,168,90,0.2); }
-.nav-brand { display: flex; align-items: baseline; gap: 6px; text-decoration: none; }
-.nav-logo { font-size: 16px; font-weight: 800; letter-spacing: 0.25em; color: #FFFFFF; text-transform: uppercase; }
-.nav-strategy { font-size: 13px; font-weight: 400; letter-spacing: 0.15em; color: #C6A85A; text-transform: uppercase; }
-.nav-phone { font-size: 11px; color: #C6A85A; text-decoration: none; font-family: 'Courier New', monospace; letter-spacing: 0.08em; }
-.intake-wrap { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 64px; }
-.intake-left { background: #111111; padding: 80px 56px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(198,168,90,0.15); }
-.intake-label { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: #C6A85A; margin-bottom: 20px; font-family: 'Courier New', monospace; }
-h1 { font-size: clamp(32px, 4vw, 52px); font-weight: 800; line-height: 1.1; color: #FFFFFF; margin-bottom: 16px; text-transform: uppercase; letter-spacing: -0.01em; }
-h1 span { color: #C6A85A; }
-.intake-sub { font-size: 16px; color: #999999; font-weight: 300; line-height: 1.8; margin-bottom: 32px; }
-.contact-card { background: #1A1A1A; border: 1px solid rgba(198,168,90,0.15); border-radius: 4px; padding: 20px 24px; margin-bottom: 12px; }
-.contact-card-title { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #C6A85A; margin-bottom: 8px; font-family: 'Courier New', monospace; }
-.contact-card-body { font-size: 16px; color: #FFFFFF; font-weight: 500; }
-.contact-card-body a { color: #C6A85A; text-decoration: none; }
-.contact-card-sub { font-size: 12px; color: #666666; margin-top: 4px; font-family: 'Courier New', monospace; }
-.calendly-link { font-size: 11px; color: #666666; margin-top: 16px; font-family: 'Courier New', monospace; }
-.calendly-link a { color: #999999; text-decoration: underline; }
-.guarantee-note { background: rgba(198,168,90,0.05); border: 1px solid rgba(198,168,90,0.2); border-radius: 4px; padding: 16px 20px; margin-top: 24px; }
-.guarantee-note p { font-size: 12px; color: #999999; line-height: 1.7; font-family: 'Courier New', monospace; letter-spacing: 0.03em; }
-.guarantee-note strong { color: #C6A85A; }
-.intake-right { padding: 80px 56px; display: flex; flex-direction: column; justify-content: center; background: #0B0B0B; }
-h2 { font-size: 28px; font-weight: 800; color: #FFFFFF; margin-bottom: 8px; text-transform: uppercase; letter-spacing: -0.01em; }
-h2 span { color: #C6A85A; }
-.form-sub { font-size: 14px; color: #666666; margin-bottom: 32px; font-family: 'Courier New', monospace; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-.field-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #666666; font-family: 'Courier New', monospace; }
-input, select, textarea { width: 100%; background: #1A1A1A; border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; padding: 12px 16px; font-family: -apple-system, sans-serif; font-size: 14px; color: #FFFFFF; outline: none; transition: border-color 0.2s; }
-input::placeholder, textarea::placeholder { color: #444444; }
-input:focus, select:focus, textarea:focus { border-color: #C6A85A; }
-select option { background: #1A1A1A; }
-textarea { resize: vertical; min-height: 100px; }
-.sms-opt { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px; }
-.sms-opt input[type="checkbox"] { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; cursor: pointer; accent-color: #C6A85A; }
-.sms-opt-label { font-size: 11px; color: #666666; line-height: 1.6; font-family: 'Courier New', monospace; }
-.sms-opt-label a { color: #C6A85A; text-decoration: none; }
-.submit-btn { width: 100%; background: #C6A85A; color: #0B0B0B; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 16px; border: none; border-radius: 2px; cursor: pointer; transition: all 0.2s; margin-top: 8px; }
-.submit-btn:hover { background: #E0C97A; }
-.form-note { font-size: 10px; color: #444444; text-align: center; margin-top: 12px; letter-spacing: 0.06em; font-family: 'Courier New', monospace; }
-.payment-section { margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(198,168,90,0.15); }
-.payment-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #C6A85A; margin-bottom: 14px; font-family: 'Courier New', monospace; display: block; }
-.payment-card { background: #111111; border: 1px solid rgba(198,168,90,0.15); border-top: 2px solid #C6A85A; border-radius: 4px; padding: 24px; }
-.payment-title { font-size: 14px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
-.payment-price { font-size: 36px; font-weight: 800; color: #C6A85A; line-height: 1; margin: 8px 0; }
-.payment-desc { font-size: 13px; color: #666666; line-height: 1.7; margin-bottom: 20px; font-weight: 300; }
-.payment-btn { display: block; background: #1A1A1A; color: #C6A85A; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 14px; border-radius: 2px; text-decoration: none; text-align: center; border: 1px solid rgba(198,168,90,0.2); transition: all 0.2s; font-family: 'Courier New', monospace; }
-.payment-btn:hover { border-color: #C6A85A; background: rgba(198,168,90,0.05); }
-footer { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); padding: 40px 80px; }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-.footer-logo { font-size: 14px; font-weight: 800; letter-spacing: 0.2em; color: #FFFFFF; text-transform: uppercase; }
-.footer-strategy { color: #C6A85A; font-weight: 400; }
-.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-.footer-links a { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #666666; text-decoration: none; font-family: 'Courier New', monospace; }
-.footer-links a:hover { color: #C6A85A; }
-.footer-contact { font-size: 11px; color: #666666; text-align: right; line-height: 2; font-family: 'Courier New', monospace; }
-.footer-contact a { color: #C6A85A; text-decoration: none; }
-@media(max-width: 900px) {
-  nav { padding: 0 24px; }
-  .intake-wrap { grid-template-columns: 1fr; }
-  .intake-left { padding: 100px 24px 48px; }
-  .intake-right { padding: 48px 24px 80px; }
-  .form-row { grid-template-columns: 1fr; }
-  footer { padding: 40px 24px; } .footer-inner { flex-direction: column; align-items: flex-start; } .footer-contact { text-align: left; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --stone: #070604;
+  --engraved: #F0EBE0;
+  --engraved-dim: rgba(240,235,224,0.72);
+  --engraved-ghost: rgba(240,235,224,0.08);
+  --incised: rgba(240,235,224,0.14);
+  --incised-faint: rgba(240,235,224,0.08);
+  --field: rgba(240,235,224,0.05);
+}
+html { background: var(--stone); scroll-behavior: smooth; }
+body {
+  background-color: var(--stone);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='5' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 20% 30%, rgba(22,18,13,0.5) 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 70%, rgba(16,13,9,0.45) 0%, transparent 40%);
+  background-size: 400px 400px, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+  color: var(--engraved);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.vignette { position: fixed; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(4,3,2,0.3) 65%, rgba(2,1,0,0.65) 88%, rgba(1,0,0,0.82) 100%); }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(7,6,4,0.95); border-bottom: 1px solid var(--incised-faint); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 60px; backdrop-filter: blur(10px); }
+.nav-wordmark { font-family: 'Georgia', serif; font-size: 13px; font-weight: 700; letter-spacing: 0.25em; color: var(--engraved); text-transform: uppercase; text-decoration: none; }
+.nav-wordmark em { font-style: italic; font-weight: 400; opacity: 0.55; }
+.nav-phone { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--engraved-dim); text-decoration: none; }
+.page { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; padding: 110px 40px 100px; }
+.intake-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+.intake-left { padding-top: 8px; }
+.kicker { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 26px; opacity: 0.45; display: flex; align-items: center; gap: 14px; }
+.kicker::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+h1 { font-family: 'Georgia', serif; font-size: clamp(28px, 4vw, 40px); font-weight: 400; font-style: italic; color: var(--engraved); line-height: 1.25; margin-bottom: 22px; }
+h1 strong { font-style: normal; font-weight: 700; }
+.lead { font-size: clamp(15px, 1.7vw, 17px); font-weight: 300; color: var(--engraved-dim); line-height: 1.85; margin-bottom: 32px; }
+.contact-card { border: 1px solid var(--incised-faint); background: var(--engraved-ghost); padding: 18px 22px; margin-bottom: 10px; }
+.cc-label { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--engraved-dim); opacity: 0.55; margin-bottom: 7px; }
+.cc-body { font-family: 'Georgia', serif; font-size: 15px; color: var(--engraved); }
+.cc-body a { color: var(--engraved); text-decoration: none; }
+.cc-sub { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.06em; color: var(--engraved-dim); opacity: 0.5; margin-top: 4px; }
+.calendly-line { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--engraved-dim); margin-top: 18px; opacity: 0.7; }
+.calendly-line a { color: var(--engraved); text-decoration: underline; }
+.intake-right { border: 1px solid var(--incised-faint); background: var(--engraved-ghost); padding: 36px 36px 40px; }
+h2 { font-family: 'Georgia', serif; font-size: clamp(19px, 2.4vw, 23px); font-weight: 700; color: var(--engraved); margin-bottom: 6px; }
+.form-sub { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.05em; color: var(--engraved-dim); opacity: 0.6; margin-bottom: 28px; }
+.field-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+label { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--engraved-dim); opacity: 0.7; }
+input, select, textarea {
+  width: 100%; background: var(--field); border: 1px solid var(--incised-faint); border-radius: 0;
+  padding: 12px 14px; font-family: 'Georgia', serif; font-size: 15px; color: var(--engraved); outline: none;
+  transition: border-color 0.2s;
+}
+input::placeholder, textarea::placeholder { color: rgba(240,235,224,0.28); }
+input:focus, select:focus, textarea:focus { border-color: var(--incised); }
+select option { background: #15120D; }
+textarea { resize: vertical; min-height: 96px; line-height: 1.6; }
+.opt-in { display: flex; align-items: flex-start; gap: 11px; margin: 6px 0 22px; }
+.opt-in input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; margin-top: 3px; accent-color: #8A8F97; cursor: pointer; }
+.opt-in-label { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.03em; line-height: 1.7; color: var(--engraved-dim); opacity: 0.65; }
+.opt-in-label a { color: var(--engraved); text-decoration: underline; }
+.submit-btn {
+  width: 100%; background: transparent; border: 1px solid var(--incised); color: var(--engraved);
+  padding: 15px; font-family: 'Courier New', monospace; font-size: 10px; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+}
+.submit-btn:hover { background: var(--engraved-ghost); }
+.submit-btn:disabled { cursor: default; opacity: 0.8; }
+.form-note { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.06em; color: var(--engraved-dim); opacity: 0.4; text-align: center; margin-top: 12px; }
+.footer { max-width: 980px; margin: 70px auto 0; padding: 28px 40px 0; border-top: 1px solid var(--incised-faint); position: relative; z-index: 1; }
+.footer-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 18px; }
+.footer-brand { font-family: 'Georgia', serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.4; font-style: italic; }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-link { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--engraved-dim); text-decoration: none; opacity: 0.6; }
+.footer-contact { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.12em; color: var(--engraved-dim); opacity: 0.3; text-transform: uppercase; padding-bottom: 30px; }
+@media(max-width: 760px) {
+  .page { padding: 100px 22px 60px; }
+  .nav { padding: 0 20px; }
+  .intake-grid { grid-template-columns: 1fr; gap: 40px; }
+  .intake-right { padding: 28px 24px 32px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .footer { padding: 28px 22px 0; }
 }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-<nav>
-  <a href="/" class="nav-brand"><span class="nav-logo">KODIAK</span><span class="nav-strategy"> STRATEGY</span></a>
-  <a href="tel:6056052558" class="nav-phone">(605) 605-2558</a>
+<div class="vignette"></div>
+<nav class="nav">
+  <a href="/" class="nav-wordmark">Kodiak <em>Strategy</em></a>
+  <a href="tel:9075004010" class="nav-phone">(907) 500-4010</a>
 </nav>
-<div class="intake-wrap">
-  <div class="intake-left">
-    <div class="intake-label">Get Started</div>
-    <h1>Start the <span>conversation.</span></h1>
-    <p class="intake-sub">Tell us about your business and Ryan will call you personally within 2 hours. No automated systems. No waiting.</p>
-    <div class="contact-card">
-      <div class="contact-card-title">Call or text directly</div>
-      <div class="contact-card-body"><a href="tel:6056052558">(605) 605-2558</a></div>
-      <div class="contact-card-sub">Ryan Fagerstrom · Founder & AI Consultant</div>
+<div class="page">
+  <div class="intake-grid">
+
+    <div class="intake-left">
+      <div class="kicker">Get Started</div>
+      <h1>Start the <strong>conversation.</strong></h1>
+      <p class="lead">Tell us a little about your business. Ryan will follow up personally to set up your free discovery call. Twenty minutes, no pitch, no pressure. Just a real conversation about your operation and whether there's something worth building.</p>
+
+      <div class="contact-card">
+        <div class="cc-label">Call or text directly</div>
+        <div class="cc-body"><a href="tel:9075004010">(907) 500-4010</a></div>
+        <div class="cc-sub">Ryan Fagerstrom · Founder</div>
+      </div>
+      <div class="contact-card">
+        <div class="cc-label">Email</div>
+        <div class="cc-body"><a href="mailto:ryan@kodiakstrategy.com">ryan@kodiakstrategy.com</a></div>
+      </div>
+      <p class="calendly-line">Prefer to schedule online? <a href="https://calendly.com/kodiakstrategysd" target="_blank" rel="noopener">Book on Calendly &rarr;</a></p>
     </div>
-    <div class="contact-card">
-      <div class="contact-card-title">Email</div>
-      <div class="contact-card-body"><a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a></div>
+
+    <div class="intake-right">
+      <h2>Tell us about your business.</h2>
+      <p class="form-sub">We'll be in touch shortly.</p>
+      <form id="intake-form" action="https://formspree.io/f/xdajlydy" method="POST">
+        <div class="form-row">
+          <div class="field-group"><label>Your Name</label><input type="text" name="name" placeholder="First Last" required></div>
+          <div class="field-group"><label>Business Name</label><input type="text" name="business" placeholder="Acme Roofing Co." required></div>
+        </div>
+        <div class="field-group">
+          <label>Industry</label>
+          <select name="industry" required>
+            <option value="" disabled selected>Select your industry</option>
+            <option>Optometry / Eye Care</option>
+            <option>Dental Practice</option>
+            <option>Medical / Healthcare</option>
+            <option>Law Firm</option>
+            <option>Accounting / Bookkeeping</option>
+            <option>Insurance Agency</option>
+            <option>Roofing / Construction</option>
+            <option>HVAC / Home Services</option>
+            <option>Real Estate</option>
+            <option>Restaurant / Hospitality</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="field-group"><label>Email Address</label><input type="email" name="email" placeholder="you@yourbusiness.com" required></div>
+          <div class="field-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="(000) 000-0000" required></div>
+        </div>
+        <div class="field-group">
+          <label>Biggest operational challenge right now</label>
+          <textarea name="challenge" placeholder="What takes the most time, or causes the most friction, in your business?" required></textarea>
+        </div>
+        <div class="opt-in">
+          <input type="checkbox" id="sms_opt_in" name="sms_opt_in" value="yes">
+          <label class="opt-in-label" for="sms_opt_in">I'd like to receive text updates from Kodiak Strategy about my discovery call and next steps. Message and data rates may apply. Reply STOP to opt out. <a href="/privacy">Privacy Policy</a></label>
+        </div>
+        <button type="submit" class="submit-btn">Request My Discovery Call</button>
+        <p class="form-note">Your information is never shared with third parties.</p>
+      </form>
     </div>
-    <p class="calendly-link">Prefer to schedule online? <a href="https://calendly.com/kodiakstrategysd" target="_blank">Book on Calendly →</a></p>
-    <div class="guarantee-note">
-      <p><strong>Guaranteed:</strong> 3-4 actionable solutions you can implement yourself — each guaranteed to save measurable time and money. At least 5 hours returned per week and $1,000 in monthly recoverable value or your fee is fully refunded.</p>
-    </div>
-  </div>
-  <div class="intake-right">
-    <h2>Tell us about <span>your business.</span></h2>
-    <p class="form-sub">We will be in touch within 2 hours.</p>
-    <form id="intake-form">
-      <div class="form-row">
-        <div class="field-group"><label>Your Name *</label><input type="text" placeholder="First Last" required /></div>
-        <div class="field-group"><label>Business Name *</label><input type="text" placeholder="Acme Roofing Co." required /></div>
-      </div>
-      <div class="field-group">
-        <label>Industry *</label>
-        <select required>
-          <option value="" disabled selected>Select your industry</option>
-          <option>Optometry / Eye Care</option><option>Dental Practice</option><option>Medical / Healthcare</option><option>Law Firm</option><option>Accounting / Bookkeeping</option><option>Insurance Agency</option><option>Roofing / Construction</option><option>HVAC / Home Services</option><option>Real Estate</option><option>Restaurant / Hospitality</option><option>Other</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <div class="field-group"><label>Email Address *</label><input type="email" placeholder="you@yourbusiness.com" required /></div>
-        <div class="field-group"><label>Phone Number *</label><input type="tel" placeholder="(605) 000-0000" required /></div>
-      </div>
-      <div class="field-group"><label>Biggest operational challenge right now *</label><textarea placeholder="What takes the most time or causes the most friction in your business?" required></textarea></div>
-      <div class="sms-opt">
-        <input type="checkbox" id="sms_opt_in" />
-        <label class="sms-opt-label" for="sms_opt_in">I would like to receive text updates about my assessment and report delivery from Kodiak Strategy. Message and data rates may apply. Text STOP to opt out. <a href="/privacy">Privacy Policy</a></label>
-      </div>
-      <button type="submit" class="submit-btn">Get My Report →</button>
-      <p class="form-note">Your information is never shared with third parties.</p>
-    </form>
-    <div class="payment-section">
-      <span class="payment-label">Ready to pay and book now?</span>
-      <div class="payment-card">
-        <div class="payment-title">AI Assessment</div>
-        <div class="payment-price">$1,000</div>
-        <p class="payment-desc">Full assessment session and written report showing every automation opportunity with projected ROI. Guaranteed results or full refund.</p>
-        <a href="https://buy.stripe.com/6oU28renR7fZeVqfyr1VK02" target="_blank" class="payment-btn">Pay and Book →</a>
-      </div>
-    </div>
+
   </div>
 </div>
-<footer>
-  <div class="footer-inner">
-    <div><div class="footer-logo">KODIAK <span class="footer-strategy">STRATEGY</span></div><div style="font-size:10px; color:#666666; letter-spacing:0.1em; margin-top:4px; font-family:'Courier New',monospace; text-transform:uppercase;">Black Hills · AI Consulting · South Dakota</div></div>
-    <div class="footer-links"><a href="/">Home</a><a href="/how-it-works">How It Works</a><a href="/services">Services</a><a href="/faq">FAQ</a><a href="/privacy">Privacy</a></div>
-    <div class="footer-contact"><div><a href="tel:6056052558">(605) 605-2558</a></div><div><a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a></div></div>
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">Kodiak <em>Strategy</em></div>
+    <div class="footer-links">
+      <a href="/" class="footer-link">Home</a>
+      <a href="/how-it-works" class="footer-link">How It Works</a>
+      <a href="/services" class="footer-link">Services</a>
+      <a href="/about" class="footer-link">About</a>
+      <a href="/faq" class="footer-link">FAQ</a>
+      <a href="/privacy" class="footer-link">Privacy</a>
+    </div>
   </div>
+  <div class="footer-contact">(907) 500-4010 &nbsp;·&nbsp; ryan@kodiakstrategy.com &nbsp;·&nbsp; Black Hills, South Dakota</div>
 </footer>
 <script>
-document.getElementById('intake-form').addEventListener('submit', function(e) {
+document.getElementById('intake-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  const btn = this.querySelector('.submit-btn');
-  btn.textContent = 'Submitted — Ryan will call you within 2 hours.';
-  btn.style.background = '#2a7a4b';
-  btn.style.color = '#fff';
+  const form = this;
+  const btn = form.querySelector('.submit-btn');
   btn.disabled = true;
+  btn.textContent = 'Sending...';
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      btn.textContent = 'Received — Ryan will be in touch shortly.';
+    } else {
+      btn.textContent = 'Something went wrong — call (907) 500-4010';
+      btn.disabled = false;
+    }
+  } catch (err) {
+    btn.textContent = 'Something went wrong — call (907) 500-4010';
+    btn.disabled = false;
+  }
 });
 </script>
 </body>
