@@ -1,167 +1,180 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About | Kodiak Strategy — AI Consulting, Black Hills SD</title>
-<meta name="description" content="Learn about Kodiak Strategy and the story behind our assessment-first AI consulting approach. Serving businesses across SD, ND, MT, WY, MN and NE.">
+<title>About — Kodiak Strategy</title>
+<meta name="description" content="Kodiak Strategy is led by Ryan Fagerstrom — thirteen years an owner-operator before building Kodiak. Based in the Black Hills of South Dakota.">
 <link rel="canonical" href="https://kodiakstrategy.com/about">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { background: #0B0B0B; scroll-behavior: smooth; }
-body { background: #0B0B0B; color: #FFFFFF; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; line-height: 1.7; overflow-x: hidden; }
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: #0B0B0B; border-bottom: 1px solid rgba(198,168,90,0.2); }
-.nav-brand { display: flex; align-items: baseline; gap: 6px; text-decoration: none; }
-.nav-logo { font-size: 16px; font-weight: 800; letter-spacing: 0.25em; color: #FFFFFF; text-transform: uppercase; }
-.nav-strategy { font-size: 13px; font-weight: 400; letter-spacing: 0.15em; color: #C6A85A; text-transform: uppercase; }
-.nav-links { display: flex; align-items: center; gap: 36px; }
-.nav-links a { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #999999; text-decoration: none; }
-.nav-links a:hover { color: #FFFFFF; }
-.nav-cta { background: #C6A85A; color: #0B0B0B; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 11px 28px; border-radius: 2px; text-decoration: none; }
-.nav-cta:hover { background: #E0C97A; }
-.page-hero { padding: 140px 80px 60px; max-width: 800px; margin: 0 auto; text-align: center; }
-.page-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #C6A85A; margin-bottom: 20px; font-family: 'Courier New', monospace; display: block; }
-h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.1; color: #FFFFFF; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -0.01em; }
-h1 span { color: #C6A85A; }
-.page-sub { font-size: 18px; color: #999999; font-weight: 300; line-height: 1.8; }
-.profile-section { padding: 60px 80px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: start; }
-.profile-card { background: #111111; border: 1px solid rgba(198,168,90,0.15); border-top: 2px solid #C6A85A; border-radius: 4px; overflow: hidden; position: sticky; top: 80px; }
-.profile-photo { width: 100%; background: #1A1A1A; overflow: hidden; border-bottom: 1px solid rgba(198,168,90,0.15); }
-.profile-info { padding: 24px; }
-.profile-name { font-size: 16px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
-.profile-title { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #C6A85A; margin-bottom: 4px; font-family: 'Courier New', monospace; }
-.profile-location { font-size: 10px; letter-spacing: 0.08em; color: #666666; margin-bottom: 16px; font-family: 'Courier New', monospace; }
-.profile-divider { height: 1px; background: rgba(198,168,90,0.15); margin-bottom: 16px; }
-.profile-contact a { display: block; font-size: 11px; color: #999999; text-decoration: none; margin-bottom: 8px; font-family: 'Courier New', monospace; }
-.profile-contact a:hover { color: #C6A85A; }
-.bio { padding-top: 8px; }
-h2 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; line-height: 1.2; color: #FFFFFF; margin-bottom: 24px; text-transform: uppercase; letter-spacing: -0.01em; }
-h2 span { color: #C6A85A; }
-.bio p { font-size: 17px; color: #999999; font-weight: 300; line-height: 1.9; margin-bottom: 24px; }
-.bio p strong { color: #FFFFFF; font-weight: 500; }
-.pull-quote { border-left: 3px solid #C6A85A; padding: 20px 28px; margin: 40px 0; background: rgba(198,168,90,0.04); border-radius: 0 4px 4px 0; }
-.pull-quote p { font-size: clamp(18px, 2.5vw, 24px); font-weight: 700; color: #FFFFFF; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.02em; margin: 0; }
-.pull-quote p span { color: #C6A85A; }
-.values-section { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); border-bottom: 1px solid rgba(198,168,90,0.15); padding: 80px; }
-.values-inner { max-width: 1100px; margin: 0 auto; }
-.values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 40px; background: rgba(198,168,90,0.15); border: 1px solid rgba(198,168,90,0.15); border-radius: 4px; overflow: hidden; }
-.value-card { background: #1A1A1A; padding: 32px; }
-.value-word { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C6A85A; margin-bottom: 12px; font-family: 'Courier New', monospace; }
-.value-desc { font-size: 14px; color: #999999; line-height: 1.7; font-weight: 300; }
-.region-section { padding: 80px; max-width: 1100px; margin: 0 auto; text-align: center; }
-.region-states { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px; }
-.region-state { background: #1A1A1A; border: 1px solid rgba(198,168,90,0.15); border-radius: 2px; padding: 10px 20px; font-size: 11px; letter-spacing: 0.1em; color: #999999; font-family: 'Courier New', monospace; }
-.cta-section { background: #111111; border-top: 2px solid #C6A85A; padding: 80px; text-align: center; }
-.cta-primary { background: #C6A85A; color: #0B0B0B; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 16px 48px; border-radius: 2px; text-decoration: none; display: inline-block; margin-top: 32px; }
-.cta-primary:hover { background: #E0C97A; }
-footer { background: #111111; border-top: 1px solid rgba(198,168,90,0.15); padding: 40px 80px; }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-.footer-logo { font-size: 14px; font-weight: 800; letter-spacing: 0.2em; color: #FFFFFF; text-transform: uppercase; }
-.footer-strategy { color: #C6A85A; font-weight: 400; }
-.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-.footer-links a { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #666666; text-decoration: none; font-family: 'Courier New', monospace; }
-.footer-links a:hover { color: #C6A85A; }
-.footer-contact { font-size: 11px; color: #666666; text-align: right; line-height: 2; font-family: 'Courier New', monospace; }
-.footer-contact a { color: #C6A85A; text-decoration: none; }
-@media(max-width: 768px) {
-  nav { padding: 0 24px; } .nav-links { display: none; }
-  .page-hero { padding: 120px 24px 40px; }
-  .profile-section { grid-template-columns: 1fr; padding: 40px 24px; gap: 40px; }
-  .profile-card { position: static; }
-  .values-section { padding: 60px 24px; } .values-grid { grid-template-columns: 1fr; }
-  .region-section { padding: 60px 24px; }
-  .cta-section { padding: 60px 24px; }
-  footer { padding: 40px 24px; } .footer-inner { flex-direction: column; align-items: flex-start; } .footer-contact { text-align: left; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --stone: #070604;
+  --engraved: #F0EBE0;
+  --engraved-dim: rgba(240,235,224,0.72);
+  --engraved-ghost: rgba(240,235,224,0.08);
+  --incised: rgba(240,235,224,0.14);
+  --incised-faint: rgba(240,235,224,0.08);
 }
+html { background: var(--stone); scroll-behavior: smooth; }
+body {
+  background-color: var(--stone);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='5' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 20% 30%, rgba(22,18,13,0.5) 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 70%, rgba(16,13,9,0.45) 0%, transparent 40%);
+  background-size: 400px 400px, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+  color: var(--engraved);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.vignette { position: fixed; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(4,3,2,0.3) 65%, rgba(2,1,0,0.65) 88%, rgba(1,0,0,0.82) 100%); }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(7,6,4,0.95); border-bottom: 1px solid var(--incised-faint); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 60px; backdrop-filter: blur(10px); }
+.nav-wordmark { font-family: 'Georgia', serif; font-size: 13px; font-weight: 700; letter-spacing: 0.25em; color: var(--engraved); text-transform: uppercase; text-decoration: none; }
+.nav-wordmark em { font-style: italic; font-weight: 400; opacity: 0.55; }
+.nav-links { display: flex; align-items: center; gap: 26px; }
+.nav-link { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--engraved-dim); text-decoration: none; }
+.nav-link:hover { color: var(--engraved); }
+.nav-cta { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--engraved-dim); border: 1px solid var(--incised); padding: 7px 16px; text-decoration: none; }
+.page { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 100px 40px 120px; }
+.opening { padding: 70px 0 60px; border-bottom: 1px solid var(--incised-faint); }
+.opening-kicker { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 28px; opacity: 0.45; display: flex; align-items: center; gap: 14px; }
+.opening-kicker::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+.opening-statement { font-family: 'Georgia', serif; font-size: clamp(26px, 4vw, 42px); font-weight: 400; font-style: italic; color: var(--engraved); line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 28px; }
+.opening-statement strong { font-style: normal; font-weight: 700; }
+.opening-sub { font-family: 'Georgia', serif; font-size: clamp(15px, 1.8vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.85; max-width: 620px; }
+.section { padding: 64px 0; border-bottom: 1px solid var(--incised-faint); }
+.section-label { font-family: 'Courier New', monospace; font-size: 7px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 16px; opacity: 0.4; display: flex; align-items: center; gap: 12px; }
+.section-label::after { content: ''; flex: 0 0 28px; height: 1px; background: currentColor; }
+.section-headline { font-family: 'Georgia', serif; font-size: clamp(22px, 3.5vw, 32px); font-weight: 700; color: var(--engraved); line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 24px; }
+.section-headline em { font-style: italic; color: var(--engraved-dim); }
+p { font-size: clamp(15px, 1.7vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.88; margin-bottom: 22px; }
+p:last-child { margin-bottom: 0; }
+p strong { font-weight: 600; color: var(--engraved); }
+.founder-row { display: grid; grid-template-columns: 1fr 280px; gap: 36px; align-items: start; }
+.founder-photo { width: 100%; border: 1px solid var(--incised-faint); display: block; filter: grayscale(0.35) contrast(1.03) brightness(0.92); }
+.photo-caption { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--engraved-dim); opacity: 0.5; margin-top: 10px; text-align: center; }
+.pull-quote { margin: 44px 0; padding: 0 0 0 24px; border-left: 1px solid var(--engraved-dim); }
+.pull-quote p { font-family: 'Georgia', serif; font-size: clamp(18px, 2.5vw, 24px); font-weight: 700; font-style: italic; color: var(--engraved); line-height: 1.4; margin-bottom: 0; opacity: 0.88; }
+.values { display: flex; flex-direction: column; gap: 1px; background: var(--incised-faint); margin: 36px 0 0; }
+.value { background: var(--stone); padding: 24px 28px; }
+.value-title { font-family: 'Georgia', serif; font-size: clamp(15px, 1.8vw, 18px); font-weight: 700; color: var(--engraved); margin-bottom: 6px; }
+.value-desc { font-size: clamp(13px, 1.4vw, 15px); color: var(--engraved-dim); line-height: 1.75; font-weight: 300; }
+.cta-section { padding: 70px 0 0; text-align: center; }
+.cta-headline { font-family: 'Georgia', serif; font-size: clamp(24px, 4vw, 38px); font-weight: 700; font-style: italic; color: var(--engraved); margin-bottom: 16px; line-height: 1.2; }
+.cta-sub { font-size: clamp(14px, 1.6vw, 16px); color: var(--engraved-dim); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.8; font-weight: 300; }
+.cta-btn { display: inline-block; border: 1px solid var(--incised); color: var(--engraved); padding: 14px 36px; font-family: 'Courier New', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; }
+.footer { margin-top: 70px; padding-top: 28px; border-top: 1px solid var(--incised-faint); }
+.footer-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+.footer-brand { font-family: 'Georgia', serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.4; font-style: italic; }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-link { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--engraved-dim); text-decoration: none; opacity: 0.6; }
+.footer-contact { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.12em; color: var(--engraved-dim); opacity: 0.3; text-transform: uppercase; }
+@media(max-width: 680px) {
+  .page { padding: 90px 24px 80px; }
+  .nav { padding: 0 20px; }
+  .nav-links { gap: 14px; }
+  .nav-link { display: none; }
+  .founder-row { grid-template-columns: 1fr; gap: 28px; }
+  .founder-photo { max-width: 320px; margin: 0 auto; }
+}
+
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo { height: 32px; width: 32px; object-fit: contain; opacity: 0.92; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
+@media(max-width: 680px) { .nav-logo { height: 26px; width: 26px; } }
 </style>
-<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-<nav>
-  <a href="/" class="nav-brand"><span class="nav-logo">KODIAK</span><span class="nav-strategy"> STRATEGY</span></a>
-  <div class="nav-links"><a href="/how-it-works">How It Works</a><a href="/services">Services</a><a href="/faq">FAQ</a><a href="/about">About</a></div>
-  <a href="/intake" class="nav-cta">Book Discovery Call</a>
+<div class="vignette"></div>
+<nav class="nav">
+  <a href="/" class="nav-brand"><img src="/D3A18687-A4A5-4047-832C-6A78DB334E01.jpeg" alt="Kodiak" class="nav-logo"><span class="nav-wordmark">Kodiak <em>Strategy</em></span></a>
+  <div class="nav-links">
+    <a href="/how-it-works" class="nav-link">How It Works</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/faq" class="nav-link">FAQ</a>
+    <a href="/intake" class="nav-cta">Book a Discovery Call</a>
+  </div>
 </nav>
+<div class="page">
 
-<div class="page-hero">
-  <div class="page-label">About</div>
-  <h1>Built from a <span>real problem.</span></h1>
-  <p class="page-sub">Where can AI help your business?</p>
-</div>
+  <div class="opening">
+    <div class="opening-kicker">About</div>
+    <div class="opening-statement">An operator built this,<br><strong>for operators.</strong></div>
+    <p class="opening-sub">Kodiak Strategy isn't run by software people. It's run by someone who spent thirteen years on the floor of real businesses, making them run.</p>
+  </div>
 
-<div class="profile-section">
-  <div class="profile-card">
-    <div class="profile-photo">
-      <img src="Ryan-family.jpeg" alt="Ryan Fagerstrom — Kodiak Strategy" style="width:100%; height:320px; object-fit:cover; object-position:center 20%; display:block;" />
+  <div class="section">
+    <div class="section-label">The Founder</div>
+    <div class="section-headline">Ryan Fagerstrom</div>
+    <div class="founder-row">
+      <div>
+        <p>I spent thirteen years building and running owner-operated businesses, including two restaurants and a food truck. Hiring, scheduling, margins, logistics, the daily work of keeping an operation running. I know how a business actually works because I ran several of them.</p>
+        <p>I'm not a technologist who decided to consult. I came up the same way most of my clients did, which means I know the difference between a tool that sounds impressive and one that actually removes work. That's the only kind of thing I'm interested in building.</p>
+      </div>
+      <div>
+        <img src="/Ryan-family.jpeg" alt="Ryan Fagerstrom and family" class="founder-photo">
+        <div class="photo-caption">Ryan Fagerstrom &middot; Founder</div>
+      </div>
     </div>
-    <div style="padding:16px 24px; border-bottom:1px solid rgba(198,168,90,0.1);">
-      <p style="font-size:13px; color:#999999; font-weight:300; line-height:1.6; font-style:italic;">When he's not working, Ryan spends his time with his wife Mallorie and their four kids.</p>
+    <div class="pull-quote">
+      <p>You don't need to know everything about AI. You need someone who knows your operation.</p>
     </div>
-    <div class="profile-info">
-      <div class="profile-name">Ryan Fagerstrom</div>
-      <div class="profile-title">Founder & AI Consultant</div>
-      <div class="profile-location">Black Hills, South Dakota</div>
-      <div class="profile-divider"></div>
-      <div class="profile-contact">
-        <a href="tel:6056052558">(605) 605-2558</a>
-        <a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a>
-        <a href="https://kodiakstrategy.com">kodiakstrategy.com</a>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Why Kodiak</div>
+    <div class="section-headline">There was a gap.<br><em>Kodiak fills it.</em></div>
+    <p>After my years as an operator, I spent serious time on how AI actually applies inside a real business. Not the hype. Where it genuinely saves time and money, and where it gets oversold by people who've never run anything.</p>
+    <p>What I found was a clear gap. Business owners across South Dakota know AI matters, but they have no trusted local partner to tell them where it fits in their specific operation and then build it. National vendors sell generic tools. Big firms price themselves out of reach. Nobody is doing the practical, grounded version of this work for the businesses that need it.</p>
+    <p><strong>That's what Kodiak does. We find where AI fits in your business, and we build it.</strong> We assess before we recommend, and we optimize a process before we automate it. It's how I'd have wanted to be treated as an owner, and it's the only way I'm willing to do this work.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">How We Work</div>
+    <div class="section-headline">Four principles. <em>Every engagement.</em></div>
+    <div class="values">
+      <div class="value">
+        <div class="value-title">Assessment first. Always.</div>
+        <div class="value-desc">We never recommend a solution before we understand your operation. Every plan is built from your actual workflows, your team, and your goals. Never a template.</div>
+      </div>
+      <div class="value">
+        <div class="value-title">Optimize before we automate.</div>
+        <div class="value-desc">Automating a broken process just makes it faster. We fix the workflow first, then automate it, so the result runs on something worth running.</div>
+      </div>
+      <div class="value">
+        <div class="value-title">Build things that get used.</div>
+        <div class="value-desc">A tool that sits unused is a failure, however clever it is. We build what's practical, hand it off clean, and make sure it works the way your team works.</div>
+      </div>
+      <div class="value">
+        <div class="value-title">Local, and accountable for it.</div>
+        <div class="value-desc">Based in the Black Hills, working with businesses across South Dakota. Kodiak's reputation and mine are the same reputation, built in the same place.</div>
       </div>
     </div>
   </div>
 
-  <div class="bio">
-    <div class="page-label">The Story</div>
-    <h2>Why Kodiak <span>exists.</span></h2>
-    <p>I have always been an entrepreneur. So when I started learning about AI and what it could do for businesses, something became clear immediately — there are thousands of business owners who know they need to start implementing AI but have no idea where to begin.</p>
-    <p>That gap is exactly where Kodiak Strategy lives.</p>
-    <p>The clearest example I saw was in the roofing industry. Working with contractors, I kept running into the same thing. The tools were there. The problem was they required more from the operator than the operator had to give. Manual entry piled up, systems fell behind, and eventually everyone went back to doing it by hand.</p>
-    <div class="pull-quote">
-      <p>The technology wasn't the issue. <span>The friction was.</span></p>
+  <div class="cta-section">
+    <div class="cta-headline">Let's talk.</div>
+    <p class="cta-sub">Twenty minutes about your operation and whether there's something here worth building. No pitch. No commitment beyond the call.</p>
+    <a href="/intake" class="cta-btn">Book a Discovery Call</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">Kodiak <em>Strategy</em></div>
+      <div class="footer-links">
+        <a href="/" class="footer-link">Home</a>
+        <a href="/how-it-works" class="footer-link">How It Works</a>
+        <a href="/services" class="footer-link">Services</a>
+        <a href="/about" class="footer-link">About</a>
+        <a href="/faq" class="footer-link">FAQ</a>
+        <a href="/privacy" class="footer-link">Privacy</a>
+      </div>
     </div>
-    <p>So I built Roof Flow to remove it. Not a new concept — just a better experience. One that worked the way a real operator works, not the way a software manual says they should.</p>
-    <p>That project taught me something I didn't expect. The same friction exists everywhere. Dentists, lawyers, HVAC companies, real estate firms — different industries, same story. Good tools sitting unused because nobody had time to fight with them.</p>
-    <p>That's the gap Kodiak Strategy was built to fill.</p>
-    <p>Everyone knows AI is the future. But what does that actually mean for your business — your team, your workflows, your bottom line? Our assessment process shows you exactly where it fits. Then we build it for you.</p>
-  </div>
-</div>
+    <div class="footer-contact">(907) 500-4010 &nbsp;&middot;&nbsp; ryan@kodiakstrategy.com &nbsp;&middot;&nbsp; Black Hills, South Dakota</div>
+  </footer>
 
-<div class="values-section">
-  <div class="values-inner">
-    <div class="page-label">How We Work</div>
-    <h2>Direct. Credible. <span>Local.</span></h2>
-    <div class="values-grid">
-      <div class="value-card"><div class="value-word">Direct</div><p class="value-desc">We say what we mean. No buzzwords, no AI hype, no jargon. Every recommendation comes with plain language and real numbers — not a pitch.</p></div>
-      <div class="value-card"><div class="value-word">Credible</div><p class="value-desc">Every claim is backed by a number or a real example. ROI projections are built from your actual workflows and rates — not industry averages.</p></div>
-      <div class="value-card"><div class="value-word">Local</div><p class="value-desc">Based in the Black Hills. Serving the Northern Plains. We know how businesses here operate because we are here too — not calling in from a coast.</p></div>
-    </div>
-  </div>
 </div>
-
-<div class="region-section">
-  <div class="page-label">Service Region</div>
-  <h2>Serving the <span>Northern Plains.</span></h2>
-  <p style="font-size:16px; color:#999999; font-weight:300; max-width:480px; margin:12px auto 0;">Based in the Black Hills. In-person available across the region. Remote available nationwide.</p>
-  <div class="region-states">
-    <span class="region-state">South Dakota</span><span class="region-state">North Dakota</span><span class="region-state">Montana</span><span class="region-state">Wyoming</span><span class="region-state">Minnesota</span><span class="region-state">Nebraska</span>
-  </div>
-</div>
-
-<div class="cta-section">
-  <div class="page-label">Get Started</div>
-  <h2>Ready to find out what AI<br>can do for <span>your business?</span></h2>
-  <p style="font-size:16px; color:#999999; max-width:440px; margin:0 auto; font-weight:300;">Book a free discovery call. No pressure, no pitch — just a real conversation about your business.</p>
-  <a href="/intake" class="cta-primary">Book a Free Discovery Call</a>
-  <p style="font-size:11px; color:#666666; margin-top:16px; font-family:'Courier New',monospace;">Or call Ryan at <a href="tel:6056052558" style="color:#C6A85A; text-decoration:none;">(605) 605-2558</a></p>
-</div>
-
-<footer>
-  <div class="footer-inner">
-    <div><div class="footer-logo">KODIAK <span class="footer-strategy">STRATEGY</span></div><div style="font-size:10px; color:#666666; letter-spacing:0.1em; margin-top:4px; font-family:'Courier New',monospace; text-transform:uppercase;">Black Hills · AI Consulting · South Dakota</div></div>
-    <div class="footer-links"><a href="/">Home</a><a href="/how-it-works">How It Works</a><a href="/services">Services</a><a href="/faq">FAQ</a><a href="/intake">Get Started</a><a href="/privacy">Privacy</a></div>
-    <div class="footer-contact"><div><a href="tel:6056052558">(605) 605-2558</a></div><div><a href="mailto:kodiakstrategysd@gmail.com">kodiakstrategysd@gmail.com</a></div></div>
-  </div>
-</footer>
 </body>
 </html>
