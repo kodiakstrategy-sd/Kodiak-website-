@@ -88,15 +88,23 @@ p strong { font-weight: 600; color: var(--engraved); }
   .tier { padding: 24px 24px; }
   .step { padding: 24px 22px; }
 }
+
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo { height: 32px; width: 32px; object-fit: contain; opacity: 0.92; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
+.hero-mark-wrap { display: flex; justify-content: center; padding-top: 24px; margin-bottom: -8px; }
+.hero-mark { width: clamp(120px, 22vw, 200px); height: auto; opacity: 0.96; filter: drop-shadow(0 4px 18px rgba(0,0,0,0.55)); }
+@media(max-width: 680px) { .nav-logo { height: 26px; width: 26px; } .hero-mark { width: 130px; } }
 </style>
 </head>
 <body>
 <div class="vignette"></div>
 <nav class="nav">
-  <a href="/" class="nav-wordmark">Kodiak <em>Strategy</em></a>
+  <a href="/" class="nav-brand"><img src="/D3A18687-A4A5-4047-832C-6A78DB334E01.jpeg" alt="Kodiak" class="nav-logo"><span class="nav-wordmark">Kodiak <em>Strategy</em></span></a>
   <a href="/intake" class="nav-cta">Book a Discovery Call</a>
 </nav>
 <div class="page">
+
+  <div class="hero-mark-wrap"><img src="/D3A18687-A4A5-4047-832C-6A78DB334E01.jpeg" alt="Kodiak Strategy" class="hero-mark"></div>
 
   <div class="opening">
     <div class="opening-kicker">Kodiak Strategy &nbsp;·&nbsp; Spearfish to Sioux Falls</div>
@@ -193,14 +201,14 @@ p strong { font-weight: 600; color: var(--engraved); }
           <div class="tier-name">Growth Retainer</div>
           <div class="tier-price">$1,500&ndash;$2,500 / mo</div>
         </div>
-        <div class="tier-desc">Everything built keeps running and improving. One new build every month. A monthly strategy call. For owners who want steady momentum without writing a big check.</div>
+        <div class="tier-desc">Everything built keeps running and improving. One new build every month. A monthly strategy call. For owners who want steady momentum without committing to everything at once.</div>
       </div>
       <div class="tier">
         <div class="tier-head">
           <div class="tier-name">Full Partnership</div>
           <div class="tier-price">Quoted</div>
         </div>
-        <div class="tier-desc">Kodiak embedded in your operation. Deep, ongoing work for owners ready to build the whole foundation. Earned once we've proven what we can do.</div>
+        <div class="tier-desc">Kodiak embedded in your operation. Deep, ongoing work for owners building the whole foundation, not just one piece. The right fit once we've worked together and know your business inside out.</div>
       </div>
     </div>
   </div>
