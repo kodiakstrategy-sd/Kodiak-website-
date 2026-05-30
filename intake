@@ -92,13 +92,17 @@ textarea { resize: vertical; min-height: 96px; line-height: 1.6; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .footer { padding: 28px 22px 0; }
 }
+
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo { height: 32px; width: 32px; object-fit: contain; opacity: 0.92; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
+@media(max-width: 680px) { .nav-logo { height: 26px; width: 26px; } }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <div class="vignette"></div>
 <nav class="nav">
-  <a href="/" class="nav-wordmark">Kodiak <em>Strategy</em></a>
+  <a href="/" class="nav-brand"><img src="/D3A18687-A4A5-4047-832C-6A78DB334E01.jpeg" alt="Kodiak" class="nav-logo"><span class="nav-wordmark">Kodiak <em>Strategy</em></span></a>
   <a href="tel:9075004010" class="nav-phone">(907) 500-4010</a>
 </nav>
 <div class="page">
