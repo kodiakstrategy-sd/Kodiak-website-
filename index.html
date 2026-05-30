@@ -33,6 +33,9 @@ body {
 .nav-wordmark { font-family: 'Georgia', serif; font-size: 13px; font-weight: 700; letter-spacing: 0.25em; color: var(--engraved); text-transform: uppercase; text-decoration: none; }
 .nav-wordmark em { font-style: italic; font-weight: 400; opacity: 0.55; }
 .nav-cta { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--engraved-dim); border: 1px solid var(--incised); padding: 7px 16px; text-decoration: none; }
+.nav-right { display: flex; align-items: center; gap: 26px; }
+.nav-link { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--engraved-dim); text-decoration: none; }
+.nav-link:hover { color: var(--engraved); }
 .page { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 100px 40px 120px; }
 .opening { padding: 80px 0 80px; border-bottom: 1px solid var(--incised-faint); }
 .opening-kicker { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.5em; color: var(--engraved-dim); text-transform: uppercase; margin-bottom: 32px; opacity: 0.45; display: flex; align-items: center; gap: 14px; }
@@ -85,6 +88,8 @@ p strong { font-weight: 600; color: var(--engraved); }
   .page { padding: 90px 24px 80px; }
   .nav { padding: 0 20px; }
   .nav-cta { font-size: 8px; padding: 6px 12px; }
+  .nav-right { gap: 14px; }
+  .nav-link { display: none; }
   .tier { padding: 24px 24px; }
   .step { padding: 24px 22px; }
 }
@@ -100,7 +105,13 @@ p strong { font-weight: 600; color: var(--engraved); }
 <div class="vignette"></div>
 <nav class="nav">
   <a href="/" class="nav-brand"><img src="/D3A18687-A4A5-4047-832C-6A78DB334E01.jpeg" alt="Kodiak" class="nav-logo"><span class="nav-wordmark">Kodiak <em>Strategy</em></span></a>
-  <a href="/intake" class="nav-cta">Book a Discovery Call</a>
+  <div class="nav-right">
+    <a href="/how-it-works" class="nav-link">How It Works</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/about" class="nav-link">About</a>
+    <a href="/faq" class="nav-link">FAQ</a>
+    <a href="/intake" class="nav-cta">Book a Discovery Call</a>
+  </div>
 </nav>
 <div class="page">
 
