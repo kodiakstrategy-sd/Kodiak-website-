@@ -77,7 +77,7 @@ textarea { resize: vertical; min-height: 96px; line-height: 1.6; }
 }
 .submit-btn:hover { background: var(--engraved-ghost); }
 .submit-btn:disabled { cursor: default; opacity: 0.8; }
-.form-note { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.06em; color: var(--engraved-dim); opacity: 0.4; text-align: center; margin-top: 12px; }
+.form-note { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.06em; color: var(--engraved-dim); opacity: 0.4; text-align: center; margin-top: 12px; line-height: 1.5; }
 .footer { max-width: 980px; margin: 70px auto 0; padding: 28px 40px 0; border-top: 1px solid var(--incised-faint); position: relative; z-index: 1; }
 .footer-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 18px; }
 .footer-brand { font-family: 'Georgia', serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.4; font-style: italic; }
@@ -163,7 +163,7 @@ textarea { resize: vertical; min-height: 96px; line-height: 1.6; }
           <label class="opt-in-label" for="sms_opt_in">I'd like to receive text updates from Kodiak Strategy about my discovery call and next steps. Message and data rates may apply. Reply STOP to opt out. <a href="/privacy">Privacy Policy</a></label>
         </div>
         <button type="submit" class="submit-btn">Request My Discovery Call</button>
-        <p class="form-note">Your information is never shared with third parties.</p>
+        <p class="form-note">By submitting, you authorize Kodiak Strategy to send text messages with updates and booking details. Message/data rates apply. Reply STOP to cancel. Your information is never shared with third parties.</p>
       </form>
     </div>
 
