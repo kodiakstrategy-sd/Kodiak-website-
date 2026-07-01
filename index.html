@@ -76,6 +76,17 @@ p strong { font-weight: 600; color: var(--engraved); }
 .verticals { font-family: 'Courier New', monospace; font-size: clamp(10px, 1.2vw, 12px); letter-spacing: 0.08em; color: var(--engraved-dim); line-height: 2.4; margin-top: 28px; opacity: 0.7; }
 .pull-quote { margin: 52px 0 0; padding: 0 0 0 24px; border-left: 1px solid var(--engraved-dim); }
 .pull-quote p { font-family: 'Georgia', serif; font-size: clamp(18px, 2.5vw, 26px); font-weight: 700; font-style: italic; color: var(--engraved); line-height: 1.4; margin-bottom: 0; opacity: 0.88; letter-spacing: -0.01em; }
+/* Foundation thesis section */
+.thesis { padding: 78px 0; border-bottom: 1px solid var(--incised-faint); }
+.thesis-open { font-family: 'Georgia', serif; font-size: clamp(17px, 2vw, 21px); font-weight: 300; color: var(--engraved-dim); line-height: 1.85; margin-bottom: 44px; max-width: 660px; }
+.thesis-open strong { font-weight: 700; color: var(--engraved); font-style: normal; }
+.arc { display: flex; flex-direction: column; gap: 1px; background: var(--incised-faint); }
+.arc-step { background: var(--stone); padding: 30px 34px; position: relative; }
+.arc-step::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 2px; background: var(--engraved-dim); opacity: 0.3; }
+.arc-tag { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--engraved-dim); opacity: 0.55; margin-bottom: 12px; }
+.arc-title { font-family: 'Georgia', serif; font-size: clamp(18px, 2.3vw, 24px); font-weight: 700; color: var(--engraved); margin-bottom: 10px; line-height: 1.25; }
+.arc-desc { font-size: clamp(14px, 1.5vw, 16px); color: var(--engraved-dim); line-height: 1.8; font-weight: 300; }
+.arc-desc strong { font-weight: 600; color: var(--engraved); }
 .cta-section { padding: 80px 0 0; text-align: center; }
 .cta-headline { font-family: 'Georgia', serif; font-size: clamp(26px, 4vw, 42px); font-weight: 700; color: var(--engraved); margin-bottom: 16px; line-height: 1.2; letter-spacing: -0.01em; font-style: italic; }
 .cta-sub { font-size: clamp(14px, 1.6vw, 16px); color: var(--engraved-dim); margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.8; font-weight: 300; }
@@ -92,6 +103,7 @@ p strong { font-weight: 600; color: var(--engraved); }
   .nav-link { display: none; }
   .tier { padding: 24px 24px; }
   .step { padding: 24px 22px; }
+  .arc-step { padding: 24px 24px; }
 }
 
 .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -119,9 +131,32 @@ p strong { font-weight: 600; color: var(--engraved); }
 
   <div class="opening">
     <div class="opening-kicker">Kodiak Strategy &nbsp;·&nbsp; Spearfish to Sioux Falls</div>
-    <div class="opening-statement">You know AI could help your business.<br><strong>You just don't know where it fits.</strong></div>
-    <p class="opening-sub">That's the gap we close. We learn how your operation actually runs, find the workflows that are costing you time and money, and build the fix. No guesswork. No tool you'll never use. A clear plan built around what we find in your business.</p>
+    <div class="opening-statement">You're sitting on years of data.<br><strong>You're barely using any of it.</strong></div>
+    <p class="opening-sub">Every business runs on information — client history, past work, what's worked and what hasn't, the know-how in your team's heads. Most of it is scattered across tools, buried in files, or trapped in memory. We get it into one place where it can actually be used, let AI find the value in it, and build the systems that turn that value into faster, sharper operations. That's the gap we close.</p>
     <a href="/intake" class="cta-btn">Book a Discovery Call</a>
+  </div>
+
+  <div class="thesis">
+    <div class="section-label">How We Think</div>
+    <div class="section-headline">Your data is an asset. <em>Right now it's a pile.</em></div>
+    <p class="thesis-open">The most valuable thing in your business isn't a tool you could buy — it's what you already have. Years of client relationships, jobs done, decisions made, patterns you've never had time to see. <strong>AI's single greatest strength is pattern recognition: finding what's in your data that a human would never have the hours to uncover.</strong> But it can only do that if the data is somewhere it can be reached. So we build in a deliberate order.</p>
+    <div class="arc">
+      <div class="arc-step">
+        <div class="arc-tag">First · Foundation</div>
+        <div class="arc-title">Get your data into one usable place.</div>
+        <div class="arc-desc">We take what's scattered across spreadsheets, drives, inboxes, and people's heads and organize it into a single foundation that's searchable, connected, and actually usable. The resource you've always had — finally in a form you can use.</div>
+      </div>
+      <div class="arc-step">
+        <div class="arc-tag">Then · Intelligence</div>
+        <div class="arc-title">Let AI find the value you can't see.</div>
+        <div class="arc-desc">With the foundation in place, AI reads across everything at once — surfacing the patterns, the opportunities, and the answers buried in your own history. <strong>You start operating on what your data actually knows, not on what you had time to notice.</strong> That's an edge most of your competitors aren't even reaching for.</div>
+      </div>
+      <div class="arc-step">
+        <div class="arc-tag">Then · Automation</div>
+        <div class="arc-title">Build the systems that put it to work.</div>
+        <div class="arc-desc">Once your data works for you, we automate around it — the follow-ups, the routing, the repetitive work — so the intelligence turns into speed. Faster responses, less manual work, fewer things falling through the cracks. Automation built on a real foundation, not bolted onto a mess.</div>
+      </div>
+    </div>
   </div>
 
   <div class="section">
@@ -142,7 +177,7 @@ p strong { font-weight: 600; color: var(--engraved); }
         <div>
           <div class="step-title">The Assessment</div>
           <div class="step-meta">$750 &nbsp;·&nbsp; Delivered in one week</div>
-          <div class="step-desc">We go deep into how your work actually moves. You get the Opportunity Map: a written report showing every workflow worth optimizing or automating, plotted on an impact and effort matrix, with the real dollar cost of each one. It includes quick wins you can act on yourself, and it's yours to keep whatever you decide. The full $750 credits toward your build.</div>
+          <div class="step-desc">We go deep into how your work actually moves and what data you're sitting on. You get the Opportunity Map: a written report showing every workflow worth optimizing or automating, plotted on an impact and effort matrix, with the real dollar cost of each one. It includes quick wins you can act on yourself, and it's yours to keep whatever you decide. The full $750 credits toward your build.</div>
         </div>
       </div>
       <div class="step">
@@ -158,34 +193,35 @@ p strong { font-weight: 600; color: var(--engraved); }
 
   <div class="section">
     <div class="section-label">What We Build</div>
-    <div class="section-headline">Real fixes for <em>real workflows.</em></div>
-    <p>Every build starts as one named problem you already feel. A few of the things we build:</p>
+    <div class="section-headline">The foundation first. <em>Then everything on top of it.</em></div>
+    <p>Every engagement starts with getting your data into a usable foundation — then we build the intelligence and automation that foundation makes possible. A few of the things we build:</p>
     <div class="builds">
       <div class="build">
-        <div class="build-name">AI Phone Receptionist</div>
-        <div class="build-desc">Every call answered, every message routed. Nothing slips when the front desk is busy.</div>
+        <div class="build-name">Business Knowledge Base</div>
+        <div class="build-desc">All your scattered data — client history, past work, team know-how — organized into one searchable foundation. The resource you always had, finally usable.</div>
+      </div>
+      <div class="build">
+        <div class="build-name">Client Intelligence Systems</div>
+        <div class="build-desc">AI reads your history and surfaces what matters — who to reach, what they need, what's worked before — so you act on insight instead of memory.</div>
       </div>
       <div class="build">
         <div class="build-name">Speed to Lead System</div>
-        <div class="build-desc">New leads get a response in seconds, not hours. The first business to reply usually wins the job.</div>
+        <div class="build-desc">New leads get a response in seconds, not hours. The first business to reply usually wins the work.</div>
+      </div>
+      <div class="build">
+        <div class="build-name">Follow-Up &amp; Renewal Engine</div>
+        <div class="build-desc">Renewals, check-ins, and reactivations that fire on their own — so revenue you already earned never slips because no one had time to chase it.</div>
       </div>
       <div class="build">
         <div class="build-name">Staff Knowledge System</div>
-        <div class="build-desc">The know-how in your team's heads, captured and searchable. It stops walking out the door.</div>
+        <div class="build-desc">The know-how in your team's heads, captured and searchable. Faster onboarding, and it stops walking out the door.</div>
       </div>
       <div class="build">
-        <div class="build-name">CRM &amp; Route Integration</div>
-        <div class="build-desc">Field updates flow to the office automatically. No re-keying, no lost notes, no end-of-day catch-up.</div>
-      </div>
-      <div class="build">
-        <div class="build-name">Seasonal Outreach System</div>
-        <div class="build-desc">The right message to the right customer at the right time, without anyone remembering to send it.</div>
-      </div>
-      <div class="build">
-        <div class="build-name">Reputation &amp; Review System</div>
-        <div class="build-desc">Reviews requested automatically after every job. Your reputation builds itself.</div>
+        <div class="build-name">Workflow Automation</div>
+        <div class="build-desc">The repetitive hand-offs and re-keying between your tools, handled automatically — so your team spends its time on the work that matters.</div>
       </div>
     </div>
+    <p style="margin-top:28px; font-size:clamp(13px,1.4vw,15px); opacity:0.6;">A few tools of our own are in development — including <strong>Route</strong>, for turning a spoken voice memo into organized, routed data, and an <strong>AI Chief of Staff</strong> that surfaces your priorities each morning. Ask us about early access.</p>
   </div>
 
   <div class="section">
@@ -246,19 +282,19 @@ p strong { font-weight: 600; color: var(--engraved); }
         <div class="why-num">03</div>
         <div>
           <div class="why-title">Built by an operator.</div>
-          <div class="why-desc">Kodiak's founder spent thirteen years running owner-operated businesses. We've done payroll at 11pm. We know how a business here actually works because we've been in your seat.</div>
+          <div class="why-desc">Kodiak's founder spent thirteen years running owner-operated businesses. We've done payroll at 11pm. We know how a business actually works because we've been in your seat.</div>
         </div>
       </div>
       <div class="why-item">
         <div class="why-num">04</div>
         <div>
-          <div class="why-title">Local. Not remote.</div>
-          <div class="why-desc">Based in the Black Hills, serving South Dakota and the Northern Plains. We know how businesses here operate because we are here too. Not calling in from a coast.</div>
+          <div class="why-title">Straight about what's worth it.</div>
+          <div class="why-desc">If a problem is solved by a cheap tool you already understand, we'll tell you — and price it that way. Your investment goes to the work that actually builds you an advantage, never to reinventing what already exists.</div>
         </div>
       </div>
     </div>
     <div class="verticals">
-      Optometry &amp; Eye Care &nbsp;·&nbsp; Dental &nbsp;·&nbsp; Medical &amp; Healthcare &nbsp;·&nbsp; Law Firms &nbsp;·&nbsp; Accounting &amp; Bookkeeping &nbsp;·&nbsp; Insurance &nbsp;·&nbsp; Roofing &amp; Construction &nbsp;·&nbsp; HVAC &amp; Home Services &nbsp;·&nbsp; Real Estate &nbsp;·&nbsp; Restaurants &amp; Hospitality
+      Insurance &amp; Agencies &nbsp;·&nbsp; Media &amp; Content &nbsp;·&nbsp; Optometry &amp; Eye Care &nbsp;·&nbsp; Dental &nbsp;·&nbsp; Medical &amp; Healthcare &nbsp;·&nbsp; Law Firms &nbsp;·&nbsp; Accounting &amp; Bookkeeping &nbsp;·&nbsp; Real Estate &nbsp;·&nbsp; Roofing &amp; Construction &nbsp;·&nbsp; HVAC &amp; Home Services &nbsp;·&nbsp; Restaurants &amp; Hospitality
     </div>
   </div>
 
