@@ -45,14 +45,15 @@ body {
   position: relative; z-index: 1;
   min-height: 76vh;
   display: flex; align-items: center;
-  border-bottom: 1px solid var(--incised-faint);
   background-image: url("/hero_header.jpg");
   background-size: cover;
   background-position: center center;
 }
 .hero-band::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(90deg, rgba(7,6,4,0) 40%, rgba(7,6,4,0.35) 58%, rgba(7,6,4,0.55) 100%);
+  background:
+    linear-gradient(180deg, rgba(7,6,4,0) 78%, rgba(7,6,4,0.75) 93%, var(--stone) 100%),
+    linear-gradient(90deg, rgba(7,6,4,0) 40%, rgba(7,6,4,0.35) 58%, rgba(7,6,4,0.55) 100%);
   z-index: 1;
 }
 .hero-content {
