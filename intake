@@ -130,7 +130,7 @@ textarea { resize: vertical; min-height: 96px; line-height: 1.6; }
     <div class="intake-right">
       <h2>Tell us about your business.</h2>
       <p class="form-sub">We'll be in touch shortly.</p>
-      <form id="intake-form" action="https://services.leadconnectorhq.com/hooks/JxQ9amINRIrgtoArjsAs/webhook-trigger/19401942-59af-4238-9c26-74592eac4851" method="POST">
+      <form id="intake-form" action="/api/intake" method="POST">
 
         <!-- Honeypot field: hidden from humans, bots fill it in. If filled, we treat the submission as spam. Leave the label generic ("Website") as bait. -->
         <div class="hp-field" aria-hidden="true">
@@ -201,7 +201,7 @@ document.getElementById('intake-form').addEventListener('submit', async function
   // --- Honeypot check ---
   // A human never sees or fills the hidden "website" field. If it has a value,
   // a bot filled it. We show the same success message (so the bot thinks it
-  // worked and doesn't adapt) but never actually send to GHL.
+  // worked and doesn't adapt) but never actually send.
   if (form.website && form.website.value.trim() !== '') {
     btn.disabled = true;
     btn.textContent = 'Received — Ryan will be in touch shortly.';
@@ -213,8 +213,8 @@ document.getElementById('intake-form').addEventListener('submit', async function
   try {
     const res = await fetch(form.action, {
       method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(form)))
     });
     if (res.ok) {
       btn.textContent = 'Received — Ryan will be in touch shortly.';
