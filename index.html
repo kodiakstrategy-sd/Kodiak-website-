@@ -153,6 +153,9 @@ p strong { font-weight: 600; color: var(--engraved); }
 .footer { margin-top: 80px; padding-top: 28px; border-top: 1px solid var(--incised-faint); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 .footer-brand { font-family: 'Georgia', serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.3; font-style: italic; }
 .footer-tagline { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.25em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.2; }
+.footer-social { display: flex; gap: 16px; }
+.footer-social-link { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--engraved-dim); text-decoration: none; opacity: 0.35; }
+.footer-social-link:hover { opacity: 0.7; }
 @media(max-width: 680px) {
   .page { padding: 90px 24px 80px; }
   .nav { padding: 0 20px; }
@@ -202,7 +205,6 @@ p strong { font-weight: 600; color: var(--engraved); }
     <p class="thesis-open">Once it's all in one place, AI can do the thing it's genuinely best at: find the patterns. The opportunities, the answers, the connections buried in your own history that no one's had the hours to dig out. <strong>You start operating on everything your business knows — not just what you happened to remember.</strong> That's an edge most of your competitors aren't even reaching for.</p>
     <p class="thesis-open" style="margin-bottom:0;">But the foundation is only the start. Here's how we build on it.</p>
     <div class="arc" style="margin-top:44px;">
-    <div class="arc">
       <div class="arc-step">
         <div class="arc-tag">First · Foundation</div>
         <div class="arc-title">Organize what you have.</div>
@@ -324,7 +326,7 @@ p strong { font-weight: 600; color: var(--engraved); }
 
   <div class="section">
     <div class="section-label">Why Kodiak</div>
-    <div class="section-headline">We've run real businesses. <em>We build like it.</em></div>
+    <div class="section-headline">We find where AI fits. <em>Then we build it right.</em></div>
     <div class="why-items">
       <div class="why-item">
         <div class="why-num">01</div>
@@ -343,8 +345,8 @@ p strong { font-weight: 600; color: var(--engraved); }
       <div class="why-item">
         <div class="why-num">03</div>
         <div>
-          <div class="why-title">Built by an operator.</div>
-          <div class="why-desc">Kodiak's founder spent thirteen years running owner-operated businesses. We've done payroll at 11pm. We know how a business actually works because we've been in your seat.</div>
+          <div class="why-title">Built for how you actually work.</div>
+          <div class="why-desc">Every build starts from your real operation, not a playbook. It's shaped by years spent running owner-operated businesses firsthand, so what we build fits the way the work really moves, not the way it looks on paper.</div>
         </div>
       </div>
       <div class="why-item">
@@ -383,6 +385,11 @@ p strong { font-weight: 600; color: var(--engraved); }
 
   <footer class="footer">
     <div class="footer-brand">Kodiak <em>Strategy</em></div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/ryan-fagerstrom-024a8388" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
+      <a href="https://www.instagram.com/kodiakstrategy" target="_blank" rel="noopener" class="footer-social-link">Instagram</a>
+      <a href="https://www.facebook.com/KodiakStrategy" target="_blank" rel="noopener" class="footer-social-link">Facebook</a>
+    </div>
     <div class="footer-tagline">Built into the operation. Not bolted on.</div>
   </footer>
   
