@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kodiak AI Academy — We Train Your Staff to Use AI</title>
+<meta name="description" content="Staff AI training for Sioux Falls businesses. Two on-site sessions, your team, your real workflows. No software contract, no system to maintain.">
+
+<!-- META PIXEL STUB — paste the pixel base code from Ads Manager here (Events Manager > Data Sources > your pixel > Set Up > Install Manually), then remove this comment. Keep it inside <head> on every page. -->
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --stone: #070604;
+  --engraved: #F0EBE0;
+  --engraved-dim: rgba(240,235,224,0.80);
+  --engraved-ghost: rgba(240,235,224,0.08);
+  --incised: rgba(240,235,224,0.14);
+  --incised-faint: rgba(240,235,224,0.08);
+  --gold: #B99976;
+  --gold-dim: rgba(185,153,118,0.85);
+}
+html { background: var(--stone); scroll-behavior: smooth; }
+body {
+  background-color: var(--stone);
+  background-image:
+    linear-gradient(rgba(7,6,4,0.55), rgba(7,6,4,0.62)),
+    url("/stone_bg.jpg");
+  background-size: cover, 1400px auto;
+  background-position: center center, center top;
+  background-attachment: fixed, fixed;
+  background-repeat: no-repeat, repeat;
+  color: var(--engraved);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.vignette { position: fixed; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(4,3,2,0.35) 62%, rgba(2,1,0,0.7) 86%, rgba(1,0,0,0.88) 100%); }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(7,6,4,0.95); border-bottom: 1px solid var(--incised-faint); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 60px; backdrop-filter: blur(10px); }
+.nav-wordmark { font-family: 'Georgia', serif; font-size: 13px; font-weight: 700; letter-spacing: 0.25em; color: var(--engraved); text-transform: uppercase; text-decoration: none; }
+.nav-wordmark em { font-style: italic; font-weight: 400; opacity: 0.55; }
+.nav-cta { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--engraved-dim); border: 1px solid var(--incised); padding: 7px 16px; text-decoration: none; }
+.nav-right { display: flex; align-items: center; gap: 26px; }
+.nav-link { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--engraved-dim); text-decoration: none; }
+.nav-link:hover { color: var(--engraved); }
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo { height: 32px; width: 32px; object-fit: contain; opacity: 0.92; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
+.page { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 100px 40px 120px; }
+.opening { padding: 90px 0 80px; border-bottom: 1px solid var(--incised-faint); }
+.opening-kicker { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.5em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: 32px; opacity: 0.85; display: flex; align-items: center; gap: 14px; }
+.opening-kicker::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+.opening-statement { font-family: 'Georgia', serif; font-size: clamp(28px, 5vw, 46px); font-weight: 700; color: var(--engraved); line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 18px; }
+.opening-statement em { font-style: italic; font-weight: 400; color: var(--engraved-dim); }
+.opening-sub { font-family: 'Georgia', serif; font-size: clamp(15px, 1.8vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.85; max-width: 640px; margin-bottom: 36px; }
+.section { padding: 72px 0; border-bottom: 1px solid var(--incised-faint); }
+.section-label { font-family: 'Courier New', monospace; font-size: 7px; letter-spacing: 0.5em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: 16px; opacity: 0.9; display: flex; align-items: center; gap: 12px; }
+.section-label::after { content: ''; flex: 0 0 28px; height: 1px; background: currentColor; }
+.section-headline { font-family: 'Georgia', serif; font-size: clamp(22px, 3.5vw, 32px); font-weight: 700; color: var(--engraved); line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 28px; }
+.section-headline em { font-style: italic; color: var(--engraved-dim); }
+p { font-size: clamp(15px, 1.7vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.88; margin-bottom: 24px; }
+p:last-child { margin-bottom: 0; }
+p strong { font-weight: 600; color: var(--engraved); }
+.steps { display: flex; flex-direction: column; gap: 1px; background: var(--incised-faint); margin: 36px 0 0; }
+.step { background: var(--stone); padding: 30px 32px; display: flex; gap: 24px; }
+.step-num { font-family: 'Courier New', monospace; font-size: 10px; color: var(--engraved-dim); flex-shrink: 0; opacity: 0.5; padding-top: 4px; letter-spacing: 0.1em; }
+.step-title { font-family: 'Georgia', serif; font-size: clamp(16px, 2vw, 20px); font-weight: 700; color: var(--engraved); margin-bottom: 8px; }
+.step-meta { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--engraved-dim); opacity: 0.6; margin-bottom: 12px; }
+.step-desc { font-size: clamp(14px, 1.5vw, 16px); color: var(--engraved-dim); line-height: 1.8; font-weight: 300; }
+.tiers { display: flex; flex-direction: column; gap: 2px; margin: 36px 0 0; }
+.tier { background: var(--engraved-ghost); border: 1px solid var(--incised-faint); padding: 30px 36px; position: relative; }
+.tier::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 2px; background: var(--gold); opacity: 0.5; }
+.tier-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.tier-name { font-family: 'Georgia', serif; font-size: clamp(16px, 2vw, 20px); font-weight: 700; color: var(--engraved); }
+.tier-price { font-family: 'Courier New', monospace; font-size: clamp(13px, 1.5vw, 15px); letter-spacing: 0.08em; color: var(--engraved); }
+.tier-desc { font-size: clamp(14px, 1.5vw, 16px); color: var(--engraved-dim); line-height: 1.8; font-weight: 300; }
+.tier-note { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); margin-top: 12px; opacity: 0.85; }
+.fine-print { font-family: 'Courier New', monospace; font-size: clamp(10px, 1.1vw, 11px); letter-spacing: 0.06em; color: var(--engraved-dim); line-height: 2.1; margin-top: 26px; opacity: 0.55; }
+.why-items { display: flex; flex-direction: column; gap: 1px; background: var(--incised-faint); margin: 36px 0 0; }
+.why-item { background: var(--stone); padding: 24px 28px; display: flex; gap: 20px; }
+.why-num { font-family: 'Courier New', monospace; font-size: 9px; color: var(--engraved-dim); flex-shrink: 0; opacity: 0.4; padding-top: 3px; }
+.why-title { font-family: 'Georgia', serif; font-size: clamp(14px, 1.6vw, 16px); font-weight: 700; color: var(--engraved); margin-bottom: 4px; }
+.why-desc { font-size: clamp(13px, 1.4vw, 15px); color: var(--engraved-dim); line-height: 1.7; font-weight: 300; }
+.pull-quote { margin: 52px 0 0; padding: 0 0 0 24px; border-left: 1px solid var(--engraved-dim); }
+.pull-quote p { font-family: 'Georgia', serif; font-size: clamp(18px, 2.5vw, 26px); font-weight: 700; font-style: italic; color: var(--engraved); line-height: 1.4; margin-bottom: 0; opacity: 0.88; letter-spacing: -0.01em; }
+.cta-section { padding: 80px 0 0; text-align: center; }
+.closing-band { position: relative; margin-top: 20px; }
+.closing-band::before {
+  content: ''; position: absolute; top: 0; bottom: 0;
+  left: 50%; transform: translateX(-50%);
+  width: 100vw; z-index: -1;
+  background-image:
+    linear-gradient(rgba(7,6,4,0.6), rgba(7,6,4,0.68)),
+    url("/topo_bg.jpg");
+  background-size: cover, cover;
+  background-position: center, center;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+.cta-headline { font-family: 'Georgia', serif; font-size: clamp(26px, 4vw, 42px); font-weight: 700; color: var(--engraved); margin-bottom: 16px; line-height: 1.2; letter-spacing: -0.01em; font-style: italic; }
+.cta-sub { font-size: clamp(14px, 1.6vw, 16px); color: var(--engraved-dim); margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.8; font-weight: 300; }
+.cta-btn { display: inline-block; border: 1px solid var(--incised); color: var(--engraved); padding: 14px 36px; font-family: 'Courier New', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; }
+.cta-contact { margin-top: 28px; font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.15em; color: var(--engraved-dim); line-height: 2.2; opacity: 0.4; }
+.footer { margin-top: 80px; padding-top: 28px; border-top: 1px solid var(--incised-faint); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-brand { font-family: 'Georgia', serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.3; font-style: italic; }
+.footer-tagline { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.25em; color: var(--engraved-dim); text-transform: uppercase; opacity: 0.2; }
+.footer-social { display: flex; gap: 16px; }
+.footer-social-link { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--engraved-dim); text-decoration: none; opacity: 0.35; }
+.footer-social-link:hover { opacity: 0.7; }
+@media(max-width: 680px) {
+  .page { padding: 90px 24px 80px; }
+  .nav { padding: 0 20px; }
+  .nav-cta { font-size: 8px; padding: 6px 12px; }
+  .nav-right { gap: 14px; }
+  .nav-link { display: none; }
+  .nav-logo { height: 26px; width: 26px; }
+  .tier { padding: 24px 24px; }
+  .step { padding: 24px 22px; }
+}
+</style>
+</head>
+<body>
+<div class="vignette"></div>
+<nav class="nav">
+  <a href="/" class="nav-brand"><img src="/D3A18687-A4A5-4047-832C-6A78DB334E01.jpeg" alt="Kodiak" class="nav-logo"><span class="nav-wordmark">Kodiak <em>Strategy</em></span></a>
+  <div class="nav-right">
+    <a href="/academy" class="nav-link">Academy</a>
+    <a href="/how-it-works" class="nav-link">How It Works</a>
+    <a href="/services" class="nav-link">Services</a>
+    <a href="/about" class="nav-link">About</a>
+    <a href="/faq" class="nav-link">FAQ</a>
+    <a href="/intake" class="nav-cta">Book a Discovery Call</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="opening">
+    <div class="opening-kicker">Kodiak AI Academy</div>
+    <div class="opening-statement">We train your staff to use AI. <em>On your real work.</em></div>
+    <p class="opening-sub">Every owner is hearing they need to do something with AI. So far the options have been a big custom built system, or figure it out yourself. This is the middle step no one else offers: we come into your business and train your team to use AI on the work that eats their hours.</p>
+    <a href="/intake" class="cta-btn">Book a Call</a>
+  </div>
+
+  <div class="section">
+    <div class="section-label">The Idea</div>
+    <div class="section-headline">Nobody knows your business like <em>your people.</em></div>
+    <p>Not a consultant who studied it for two weeks. Not a software vendor. That is exactly why they are the ones we train. Your team already knows where the time goes: the re-keying, the follow-ups, the reports nobody has hours for. We hand them the tool to get that time back.</p>
+    <p><strong>No software contract. No system to maintain.</strong> The value walks around your building after we leave.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">How It Works</div>
+    <div class="section-headline">Two sessions. <em>Real builds by the end of the first.</em></div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Session One</div>
+          <div class="step-meta">On site &nbsp;·&nbsp; 3 to 4 hours</div>
+          <div class="step-desc">We teach the build process on your actual workflows. Everyone in the room picks a real task that eats their time and starts a build on it before the session ends. Nobody leaves with theory.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Session Two</div>
+          <div class="step-meta">About one week later &nbsp;·&nbsp; 3 to 4 hours</div>
+          <div class="step-desc">How did the first build go. What are you stuck on. We work through the hangups, answer what came up during the week, and grow the skillset from there. Your team leaves self-sufficient.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Session Three</div>
+          <div class="step-meta">Optional add-on &nbsp;·&nbsp; Build session</div>
+          <div class="step-desc">A build-your-own-solutions working session. The team brings the next round of problems and we build the fixes together, in the room.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Pricing</div>
+    <div class="section-headline">One price for your team. <em>Bigger teams become a program.</em></div>
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-head">
+          <div class="tier-name">The Academy Session</div>
+          <div class="tier-price">$3,000</div>
+        </div>
+        <div class="tier-desc">Two on-site sessions for teams up to twelve. Your people, your workflows, real builds started in the room. Third session available for $1,000, or $3,750 for all three booked up front.</div>
+        <div class="tier-note">Early schedulers: founding rate $2,500</div>
+      </div>
+      <div class="tier">
+        <div class="tier-head">
+          <div class="tier-name">Larger Teams</div>
+          <div class="tier-price">Scoped</div>
+        </div>
+        <div class="tier-desc">More than twelve people becomes a program: multiple cohorts, a coordinated rollout, training shaped to how your departments actually work. Scoped after a short call.</div>
+      </div>
+      <div class="tier">
+        <div class="tier-head">
+          <div class="tier-name">The Academy Partnership</div>
+          <div class="tier-price">Quoted &nbsp;·&nbsp; 6-month minimum</div>
+        </div>
+        <div class="tier-desc">A dedicated partner invested in your team's success and the longevity of their builds. Kickoff training for your whole team, then monthly workshops: builds reviewed, hangups worked through, one new skill every month.</div>
+      </div>
+    </div>
+    <div class="fine-print">South Dakota clients: pricing plus applicable sales tax. &nbsp;Your team works in your own AI accounts, so everything they build belongs to you.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Why It Works</div>
+    <div class="section-headline">Training done by your people. <em>Not to them.</em></div>
+    <div class="why-items">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div>
+          <div class="why-title">It makes your best people faster.</div>
+          <div class="why-desc">This is not about replacing anyone. Staff who build their own tools actually use them, and the people who know the work best get the most out of the training.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div>
+          <div class="why-title">Real work only.</div>
+          <div class="why-desc">No demo data, no generic exercises. Every build in the room is a task from your actual operation, so the value starts the same day.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div>
+          <div class="why-title">Hours you can count.</div>
+          <div class="why-desc">The goal is measured, not promised: hours back per week, per person, on the work that was eating them.</div>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <div>
+          <div class="why-title">It cannot sit on a shelf.</div>
+          <div class="why-desc">Software gets abandoned. Skills walk around your building. The value stays with your team whether or not any particular tool does.</div>
+        </div>
+      </div>
+    </div>
+    <div class="pull-quote">
+      <p>Your people already know where the time goes. We hand them the tool to get it back.</p>
+    </div>
+  </div>
+
+  <div class="closing-band">
+  <div class="cta-section">
+    <div class="cta-headline">Get your crew in early.</div>
+    <p class="cta-sub">First engagements are open, and early schedulers lock the founding rate. Twenty minutes to see if your team is a fit. No pitch, no commitment beyond the call.</p>
+    <a href="/intake" class="cta-btn">Book a Call</a>
+    <div class="cta-contact">
+      (907) 500-4010 &nbsp;·&nbsp; ryan@kodiakstrategy.com &nbsp;·&nbsp; kodiakstrategy.com
+    </div>
+  </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-brand">Kodiak <em>Strategy</em></div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/ryan-fagerstrom-024a8388" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
+      <a href="https://www.instagram.com/kodiakstrategy" target="_blank" rel="noopener" class="footer-social-link">Instagram</a>
+      <a href="https://www.facebook.com/KodiakStrategy" target="_blank" rel="noopener" class="footer-social-link">Facebook</a>
+    </div>
+    <div class="footer-tagline">Your operation should run without you in the room.</div>
+  </footer>
+
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a2655220b89853eb01854c5" data-source="WEB_USER"></script>
+
+</div>
+</body>
+</html>
