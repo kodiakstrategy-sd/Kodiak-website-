@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kodiak Strategy — Where AI Fits in Your Business</title>
+
+<!-- META PIXEL STUB — paste the pixel base code from Ads Manager here (Events Manager > Data Sources > your pixel > Set Up > Install Manually), then remove this comment. Keep it inside <head> on every page. -->
+
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -63,6 +66,7 @@ body {
   padding: 60px 56px 60px 20px;
   text-align: left;
 }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 @media(max-width: 820px) {
   .hero-band {
     min-height: auto; padding: 0;
@@ -77,6 +81,7 @@ body {
   }
   .hero-band::after { display: none; }
   .hero-content { width: 100%; max-width: 640px; margin: 0 auto; padding: 30px 24px 50px; text-align: center; }
+  .hero-ctas { justify-content: center; }
 }
 .opening { padding: 80px 0 80px; border-bottom: 1px solid var(--incised-faint); }
 .opening-kicker { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.5em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: 32px; opacity: 0.85; display: flex; align-items: center; gap: 14px; }
@@ -92,6 +97,20 @@ body {
 p { font-size: clamp(15px, 1.7vw, 18px); font-weight: 300; color: var(--engraved-dim); line-height: 1.88; margin-bottom: 24px; }
 p:last-child { margin-bottom: 0; }
 p strong { font-weight: 600; color: var(--engraved); }
+/* Two ways to work with Kodiak — side-by-side chooser */
+.twoways { padding: 72px 0; border-bottom: 1px solid var(--incised-faint); }
+.twoways-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 36px; }
+.way { background: var(--engraved-ghost); border: 1px solid var(--incised-faint); padding: 34px 32px; position: relative; display: flex; flex-direction: column; }
+.way::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); opacity: 0.5; }
+.way-kicker { font-family: 'Courier New', monospace; font-size: 8px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold-dim); opacity: 0.9; margin-bottom: 16px; }
+.way-title { font-family: 'Georgia', serif; font-size: clamp(19px, 2.6vw, 26px); font-weight: 700; color: var(--engraved); line-height: 1.25; margin-bottom: 6px; }
+.way-title em { font-style: italic; font-weight: 400; color: var(--engraved-dim); }
+.way-desc { font-size: clamp(14px, 1.5vw, 16px); color: var(--engraved-dim); line-height: 1.8; font-weight: 300; margin-bottom: 20px; flex: 1; }
+.way-price { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--engraved-dim); opacity: 0.7; margin-bottom: 22px; }
+.way .cta-btn { align-self: flex-start; }
+@media(max-width: 820px) {
+  .twoways-grid { grid-template-columns: 1fr; }
+}
 .steps { display: flex; flex-direction: column; gap: 1px; background: var(--incised-faint); margin: 36px 0 0; }
 .step { background: var(--stone); padding: 30px 32px; display: flex; gap: 24px; }
 .step-num { font-family: 'Courier New', monospace; font-size: 10px; color: var(--engraved-dim); flex-shrink: 0; opacity: 0.5; padding-top: 4px; letter-spacing: 0.1em; }
@@ -165,6 +184,7 @@ p strong { font-weight: 600; color: var(--engraved); }
   .tier { padding: 24px 24px; }
   .step { padding: 24px 22px; }
   .arc-step { padding: 24px 24px; }
+  .way { padding: 26px 24px; }
 }
 
 .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -179,6 +199,7 @@ p strong { font-weight: 600; color: var(--engraved); }
 <nav class="nav">
   <a href="/" class="nav-brand"><img src="/D3A18687-A4A5-4047-832C-6A78DB334E01.jpeg" alt="Kodiak" class="nav-logo"><span class="nav-wordmark">Kodiak <em>Strategy</em></span></a>
   <div class="nav-right">
+    <a href="/academy" class="nav-link">Academy</a>
     <a href="/how-it-works" class="nav-link">How It Works</a>
     <a href="/services" class="nav-link">Services</a>
     <a href="/about" class="nav-link">About</a>
@@ -191,11 +212,36 @@ p strong { font-weight: 600; color: var(--engraved); }
   <div class="hero-content">
     <div class="opening-statement">AI consulting for <strong>real businesses.</strong></div>
     <p class="opening-sub">We find where AI actually fits your operation — then build it. No generic tools, no hype. A clear plan grounded in how your business really runs.</p>
-    <a href="/intake" class="cta-btn">Book a Discovery Call</a>
+    <div class="hero-ctas">
+      <a href="/academy" class="cta-btn">Train Your Team</a>
+      <a href="/intake" class="cta-btn">Build Your Systems</a>
+    </div>
   </div>
 </div>
 
 <div class="page">
+
+  <div class="twoways">
+    <div class="section-label">Two Ways to Work With Kodiak</div>
+    <div class="section-headline">Train your team. <em>Or build your systems.</em></div>
+    <p>Some owners want their people equipped. Some want the work built and handled. Most end up doing both, in that order.</p>
+    <div class="twoways-grid">
+      <div class="way">
+        <div class="way-kicker">Kodiak AI Academy</div>
+        <div class="way-title">We train your staff to use AI. <em>On your real work.</em></div>
+        <div class="way-desc">Two on-site sessions with your team. They learn the build process on the tasks that eat their hours, and start real builds in the room. No software contract, no system to maintain. The value walks around your building after we leave.</div>
+        <div class="way-price">$3,000 · Teams up to 12 · Early schedulers $2,500</div>
+        <a href="/academy" class="cta-btn">Explore the Academy</a>
+      </div>
+      <div class="way">
+        <div class="way-kicker">Kodiak Strategy</div>
+        <div class="way-title">We find where AI fits. <em>Then we build it.</em></div>
+        <div class="way-desc">Assessment first, always. We map every workflow worth optimizing or automating in your operation, then build the highest-impact fix at a fixed price. Foundation, then intelligence, then automation. Yours to run.</div>
+        <div class="way-price">Assessment $750 · Builds from $2,500</div>
+        <a href="/intake" class="cta-btn">Book a Discovery Call</a>
+      </div>
+    </div>
+  </div>
 
   <div class="thesis">
     <div class="section-label">The Idea</div>
@@ -302,17 +348,24 @@ p strong { font-weight: 600; color: var(--engraved); }
       </div>
       <div class="tier">
         <div class="tier-head">
-          <div class="tier-name">Focused Build</div>
-          <div class="tier-price">From $3,000</div>
+          <div class="tier-name">Workflow Automation</div>
+          <div class="tier-price">$2,500 fixed</div>
         </div>
-        <div class="tier-desc">One workflow, solved end to end. Fixed price, scoped from your assessment. About three weeks.</div>
+        <div class="tier-desc">One discrete thing, solved end to end: an automation, a chatbot, a single workflow. Scoped from your assessment. Two to three weeks.</div>
+      </div>
+      <div class="tier">
+        <div class="tier-head">
+          <div class="tier-name">Focused Build</div>
+          <div class="tier-price">Quoted</div>
+        </div>
+        <div class="tier-desc">A larger construction: a knowledge base, a platform, a system. A month or more of work, quoted from your assessment so you carry no scope risk.</div>
       </div>
       <div class="tier">
         <div class="tier-head">
           <div class="tier-name">Growth Retainer</div>
-          <div class="tier-price">$1,500&ndash;$2,500 / mo</div>
+          <div class="tier-price">Scoped</div>
         </div>
-        <div class="tier-desc">Everything built keeps running and improving. One new build every month. A monthly strategy call. For owners who want steady momentum without committing to everything at once.</div>
+        <div class="tier-desc">Everything built keeps running and improving, with ongoing support shaped to what you actually need: maintenance, advisory sessions for your team, or help with what you're building yourselves.</div>
       </div>
       <div class="tier">
         <div class="tier-head">
@@ -390,9 +443,9 @@ p strong { font-weight: 600; color: var(--engraved); }
       <a href="https://www.instagram.com/kodiakstrategy" target="_blank" rel="noopener" class="footer-social-link">Instagram</a>
       <a href="https://www.facebook.com/KodiakStrategy" target="_blank" rel="noopener" class="footer-social-link">Facebook</a>
     </div>
-    <div class="footer-tagline">Built into the operation. Not bolted on.</div>
+    <div class="footer-tagline">Your operation should run without you in the room.</div>
   </footer>
-  
+
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a2655220b89853eb01854c5" data-source="WEB_USER"></script>
 
 </div>
