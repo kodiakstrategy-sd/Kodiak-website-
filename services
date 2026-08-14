@@ -120,7 +120,7 @@ p strong { font-weight: 600; color: var(--engraved); }
           <div class="tier-name">The Assessment</div>
           <div class="tier-price">$750</div>
         </div>
-        <div class="tier-desc">A deep review of how your operation runs. You get the <strong>Opportunity Map</strong>: a 3 to 5 page report with every workflow worth optimizing or automating, plotted on an impact and effort matrix, each one carrying a real dollar figure. Includes quick wins you can act on yourself. Delivered in one week, yours to keep, and the full $750 credits toward your build.</div>
+        <div class="tier-desc">A deep review of how your operation runs. You get the <strong>Opportunity Map</strong>: a 3 to 5 page report with every workflow worth optimizing or automating, plotted on an impact and effort matrix, each one carrying a real dollar figure. Includes quick wins you can act on yourself. Delivered in one week, yours to keep, and the first $750 credits toward your build.</div>
       </div>
 
       <div class="tier">

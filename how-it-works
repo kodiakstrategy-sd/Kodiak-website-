@@ -119,10 +119,10 @@ p strong { font-weight: 600; color: var(--engraved); }
       <div class="step-big">
         <div class="step-eyebrow">Step 02</div>
         <div class="step-title">The Assessment</div>
-        <div class="step-meta">$750 &nbsp;·&nbsp; Delivered in one week &nbsp;·&nbsp; Credits toward your build</div>
+        <div class="step-meta">$750 &nbsp;·&nbsp; Delivered in one week &nbsp;·&nbsp; First $750 credits toward your build</div>
         <p>We go deep into how your work actually moves. We map your workflows, talk to the people doing the work, and find every place time and money are leaking.</p>
         <p>You receive the <strong>Opportunity Map</strong>: a written report, 3 to 5 pages, with every opportunity plotted on an impact and effort matrix. Each one is summarized, tagged optimize or automate, and given a real dollar figure based on the hours it costs you and what those hours are worth. It includes 3 to 4 quick wins you can act on yourself.</p>
-        <p>The Opportunity Map is yours to keep whatever you decide. If we proceed to a build, the full $750 credits toward it. If we don't find something worth fixing, we'll tell you that plainly.</p>
+        <p>The Opportunity Map is yours to keep whatever you decide. If we proceed to a build, the first $750 credits toward it. If we don't find something worth fixing, we'll tell you that plainly.</p>
       </div>
 
       <div class="step-big">
