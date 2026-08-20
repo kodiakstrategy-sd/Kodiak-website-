@@ -112,16 +112,19 @@ function Header({ version, slug }: { version: string; slug: string }) {
       </details>
       <Link className="header-cta" href={`${base}/intake`}><span className="cta-full">Book a discovery call</span><span className="cta-short">Discovery</span></Link>
     </header>
-    {version !== "c" && <VersionSwitch version={version} slug={slug}/>}
+    <VersionSwitch version={version} slug={slug}/>
   </>;
 }
 
-function RuggedVisual() {
+function RuggedVisual({ showHook = false }: { showHook?: boolean }) {
   return <div className="rugged-visual" aria-hidden="true">
     <div className="terrain-scan"/>
-    <div className="terrain-ring ring-one"/><div className="terrain-ring ring-two"/>
+    <div className="terrain-target">
+      <div className="terrain-ring ring-one"/><div className="terrain-ring ring-two"/>
+      <img className="ridgeline-mark" src="/ridgeline.png" alt=""/>
+    </div>
     <div className="field-coordinates"><span>43.5460° N</span><span>96.7313° W</span></div>
-    <div className="signal-card"><i/><span>Operational signal</span><strong>Systems connected</strong></div>
+    {showHook && <div className="terrain-hook"><strong>Map the opportunity.</strong><strong>Build the advantage.</strong></div>}
   </div>;
 }
 
@@ -160,9 +163,10 @@ export function PrototypePage({ version, page }: { version: "a" | "b" | "c"; pag
     <Header version={version} slug={page.slug}/>
     <section className={`hero ${page.slug !== "home" ? "inner-hero" : ""}`}>
       <div className="hero-copy"><span className="eyebrow">{page.eyebrow}</span><h1>{page.title}</h1><p>{page.intro}</p><Link className="primary-button" href={`/${version}/intake`}>Book a discovery call</Link></div>
-      {isA ? <div className="constellation"><ParticleField/><span className="sr-only">Animated triangular particles forming the Kodiak bear logo</span></div> : isC ? (page.slug === "founder" ? <FounderVisual/> : <RuggedVisual/>) : <div className="ember-visual"><img src="/hero-header.jpg" alt="Kodiak carved bear artwork"/><span>Assess first · Build what matters</span></div>}
+      {isA ? <div className="constellation"><ParticleField/><span className="sr-only">Animated triangular particles forming the Kodiak bear logo</span></div> : isC ? (page.slug === "founder" ? <FounderVisual/> : <RuggedVisual showHook={page.slug === "home"}/>) : <div className="ember-visual"><img src="/hero-header.jpg" alt="Kodiak carved bear artwork"/><span>Assess first · Build what matters</span></div>}
     </section>
     {isC && page.slug === "home" && <div className="field-marquee"><div>ASSESS THE TERRAIN <b>◆</b> CONNECT THE KNOWLEDGE <b>◆</b> BUILD WHAT WORKS <b>◆</b> TRAIN THE CREW <b>◆</b> ASSESS THE TERRAIN <b>◆</b> CONNECT THE KNOWLEDGE <b>◆</b></div></div>}
+    {isC && page.slug === "home" && <section className="value-bridge"><p>We find where AI can save time, strengthen operations, and drive growth—then build it into the way your business works.</p></section>}
     {page.slug === "intake" && <section className="content-section form-section"><div className="section-heading"><span>Tell us about your business</span><h2>A real conversation starts here.</h2></div><IntakeForm/></section>}
     {page.sections.map((section, idx) => <section className={`content-section ${idx % 2 ? "reverse" : ""}`} key={section.title}>
       <div className="section-heading"><span>{section.label}</span><h2>{section.title}</h2>{section.image && <img className="founder-photo" src={section.image} alt="Ryan Fagerstrom and family"/>}</div>

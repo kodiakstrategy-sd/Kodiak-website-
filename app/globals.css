@@ -129,14 +129,15 @@ footer p,footer a { margin:0; color:var(--muted); font-size:11px; }
 .rugged-visual { position:relative; align-self:stretch; min-height:540px; overflow:hidden; border-left:1px solid rgba(255,255,255,.16); background:linear-gradient(rgba(5,5,4,.05),rgba(5,5,4,.72)),url('/topo-bg.jpg') center/cover; clip-path:polygon(10% 0,100% 0,100% 100%,0 100%,0 12%); }
 .rugged-visual::after { content:""; position:absolute; inset:0; background:linear-gradient(100deg,transparent 55%,rgba(197,162,123,.11)); }
 .terrain-scan { position:absolute; z-index:2; left:0; right:0; height:1px; top:20%; background:linear-gradient(90deg,transparent,var(--accent),transparent); box-shadow:0 0 18px var(--accent); animation:terrainScan 5.5s ease-in-out infinite; }
-.terrain-ring { position:absolute; z-index:2; border:1px solid rgba(197,162,123,.46); border-radius:50%; }
-.ring-one { width:280px; height:280px; right:8%; top:14%; animation:terrainPulse 3.8s ease-out infinite; }
-.ring-two { width:160px; height:160px; right:18%; top:25%; animation:terrainPulse 3.8s 1.2s ease-out infinite; }
+.terrain-target { position:absolute; z-index:2; top:7%; right:0; width:min(92%,430px); aspect-ratio:1; display:grid; place-items:center; }
+.terrain-ring { position:absolute; border:1px solid rgba(197,162,123,.46); border-radius:50%; }
+.ring-one { width:76%; height:76%; animation:terrainPulse 3.8s ease-out infinite; }
+.ring-two { width:48%; height:48%; animation:terrainPulse 3.8s 1.2s ease-out infinite; }
+.ridgeline-mark { position:relative; z-index:2; width:54%; height:auto; opacity:.94; filter:drop-shadow(0 0 26px rgba(197,162,123,.2)); animation:terrainMark 5.5s ease-in-out infinite; }
 .field-coordinates { position:absolute; z-index:3; top:24px; left:26px; display:flex; gap:18px; color:#d1b18d; font:9px var(--font-geist-mono),monospace; letter-spacing:.12em; }
-.signal-card { position:absolute; z-index:3; right:24px; bottom:28px; width:220px; padding:18px; background:rgba(7,7,6,.72); border:1px solid rgba(255,255,255,.16); backdrop-filter:blur(12px); }
-.signal-card i { display:inline-block; width:7px; height:7px; margin-right:8px; background:#91aa92; border-radius:50%; box-shadow:0 0 12px #91aa92; animation:signal 2s infinite; }
-.signal-card span { color:#a9a39a; text-transform:uppercase; font-size:8px; letter-spacing:.15em; }
-.signal-card strong { display:block; margin-top:9px; font-size:14px; font-weight:400; letter-spacing:.02em; }
+.terrain-hook { position:absolute; z-index:4; left:30px; right:30px; bottom:30px; padding-top:18px; border-top:1px solid rgba(197,162,123,.62); text-transform:uppercase; }
+.terrain-hook strong { display:block; font-size:clamp(22px,2.2vw,34px); line-height:1.04; font-weight:560; letter-spacing:-.025em; text-shadow:0 2px 20px rgba(0,0,0,.9); }
+.terrain-hook strong:last-child { color:var(--accent); }
 .founder-hero-visual { position:relative; align-self:stretch; min-height:540px; overflow:hidden; clip-path:polygon(10% 0,100% 0,100% 100%,0 100%,0 12%); border-left:1px solid rgba(255,255,255,.16); }
 .founder-hero-visual::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 48%,rgba(5,5,4,.94)); }
 .founder-hero-visual img { width:100%; height:100%; object-fit:contain; object-position:center; background:#090806; filter:saturate(.72) contrast(1.08) brightness(.75); }
@@ -146,6 +147,8 @@ footer p,footer a { margin:0; color:var(--muted); font-size:11px; }
 .field-marquee { overflow:hidden; border-top:1px solid rgba(255,255,255,.12); border-bottom:1px solid rgba(255,255,255,.12); background:#0e0e0b; }
 .field-marquee div { width:max-content; padding:17px 0; color:#9e978d; font-size:10px; letter-spacing:.2em; white-space:nowrap; animation:fieldMove 24s linear infinite; }
 .field-marquee b { padding:0 24px; color:var(--accent); }
+.value-bridge { padding:clamp(74px,8vw,118px) clamp(30px,8vw,120px); border-bottom:1px solid rgba(255,255,255,.1); background:linear-gradient(115deg,#0d0d0a 0%,#13120e 58%,#0a0a08 100%); }
+.value-bridge p { max-width:1180px; margin:0; font-size:clamp(32px,4.3vw,64px); line-height:1.08; letter-spacing:-.045em; text-wrap:balance; }
 .theme-c .content-section { position:relative; max-width:none; padding:clamp(100px,11vw,180px) clamp(30px,8vw,120px); gap:clamp(60px,10vw,160px); border-top:1px solid rgba(255,255,255,.1); opacity:0; transform:translateY(42px); transition:opacity .8s ease,transform .8s ease; }
 .theme-c .content-section.is-visible,.theme-c .closing.is-visible { opacity:1; transform:none; }
 .theme-c .content-section:nth-of-type(even) { background:linear-gradient(90deg,rgba(8,8,6,.94),rgba(8,8,6,.78)),url('/stone-bg.jpg') center/cover; }
@@ -163,7 +166,7 @@ footer p,footer a { margin:0; color:var(--muted); font-size:11px; }
 .theme-c .intake-form button { border-radius:2px; }
 @keyframes terrainScan { 0%,100%{top:15%;opacity:0} 18%{opacity:1} 82%{opacity:1} 95%{top:85%;opacity:0} }
 @keyframes terrainPulse { 0%{transform:scale(.7);opacity:0} 25%{opacity:.8} 100%{transform:scale(1.5);opacity:0} }
-@keyframes signal { 50%{opacity:.35;transform:scale(.75)} }
+@keyframes terrainMark { 0%,100%{opacity:.78;filter:drop-shadow(0 0 12px rgba(197,162,123,.12))} 50%{opacity:1;filter:drop-shadow(0 0 34px rgba(197,162,123,.34))} }
 @keyframes fieldMove { to{transform:translateX(-50%)} }
 
 .form-section { align-items:start; }
@@ -196,7 +199,8 @@ footer p,footer a { margin:0; color:var(--muted); font-size:11px; }
   .choice-grid>a:last-child { grid-column:1/-1; }
   .theme-c .hero { grid-template-columns:1fr; padding-top:160px; }
   .theme-c .hero-copy { padding-bottom:0; }
-  .rugged-visual { min-height:420px; }
+  .rugged-visual { min-height:500px; }
+  .terrain-target { top:2%; right:5%; width:min(76%,400px); }
   .founder-hero-visual { min-height:480px; }
 }
 @media(max-width:680px) {
@@ -229,6 +233,11 @@ footer p,footer a { margin:0; color:var(--muted); font-size:11px; }
   .theme-c .hero { padding:132px 22px 70px; gap:44px; }
   .theme-c .hero h1 { font-size:clamp(54px,16vw,76px); }
   .rugged-visual { min-height:360px; }
+  .terrain-target { top:0; right:-2%; width:82%; }
+  .terrain-hook { left:22px; right:22px; bottom:24px; padding-top:14px; }
+  .terrain-hook strong { font-size:clamp(21px,7vw,28px); }
+  .value-bridge { padding:66px 22px 72px; }
+  .value-bridge p { font-size:clamp(30px,9vw,43px); line-height:1.1; }
   .founder-hero-visual { min-height:0; aspect-ratio:4/5; }
   .field-coordinates { display:none; }
   .theme-c .content-section,.theme-c .closing { padding-left:22px; padding-right:22px; }
@@ -249,6 +258,6 @@ footer p,footer a { margin:0; color:var(--muted); font-size:11px; }
   .theme-c .hero h1 { font-size:clamp(49px,15vw,62px); }
 }
 @media(prefers-reduced-motion:reduce) {
-  .terrain-scan,.terrain-ring,.signal-card i,.field-marquee div { animation:none!important; }
+  .terrain-scan,.terrain-ring,.ridgeline-mark,.field-marquee div { animation:none!important; }
   .theme-c .content-section,.theme-c .closing { opacity:1; transform:none; transition:none; }
 }
