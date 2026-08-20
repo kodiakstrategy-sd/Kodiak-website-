@@ -112,7 +112,7 @@ function Header({ version, slug }: { version: string; slug: string }) {
       </details>
       <Link className="header-cta" href={`${base}/intake`}><span className="cta-full">Book a discovery call</span><span className="cta-short">Discovery</span></Link>
     </header>
-    <VersionSwitch version={version} slug={slug}/>
+    {version !== "c" && <VersionSwitch version={version} slug={slug}/>}
   </>;
 }
 
