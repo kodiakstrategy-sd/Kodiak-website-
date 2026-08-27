@@ -25,14 +25,13 @@ export default function ThankYou() {
       <section className="hero inner-hero">
         <div className="hero-copy">
           <span className="eyebrow">Request received</span>
-          <h1>That is all I need for now.</h1>
+          <h1>Thank you for your request.</h1>
           <p>
-            Your note is in front of me. I read these myself, and I will get back to
-            you within one business day. Check your inbox for a confirmation in the
-            next minute or two.
+            I will give you a call within one business day. Watch for a
+            confirmation in your inbox in the next minute or two.
           </p>
           <p>
-            If it is quicker to talk, call me directly at{" "}
+            If it is quicker to talk, call or text me directly at{" "}
             <a href="tel:+19075004010">(907) 500-4010</a>.
           </p>
           <Link className="primary-button" href="/">
