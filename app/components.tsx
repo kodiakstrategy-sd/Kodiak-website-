@@ -4,6 +4,11 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { cNav, nav, PageData } from "./site-data";
 
+// Public scheduling link. Empty until it exists: an empty value hides the
+// closing block on the intake page rather than rendering a button that
+// promises scheduling and goes nowhere, which is what it did before.
+const BOOKING_URL = "";
+
 export function ParticleField() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -110,7 +115,7 @@ function Header({ version, slug }: { version: string; slug: string }) {
         <summary>Menu</summary>
         <div className="mobile-nav">{activeNav.map(([href, label]) => <Link key={href} href={`${base}/${href}`}>{label}</Link>)}</div>
       </details>
-      <Link className="header-cta" href={`${base}/intake`}><span className="cta-full">Book a discovery call</span><span className="cta-short">Discovery</span></Link>
+      <Link className="header-cta" href={slug === "intake" ? "#intake-form" : `${base}/intake`}><span className="cta-full">Book a discovery call</span><span className="cta-short">Discovery</span></Link>
     </header>
     {version !== "c" && <VersionSwitch version={version} slug={slug}/>}
   </>;
@@ -249,12 +254,12 @@ export function PrototypePage({ version, page }: { version: "a" | "b" | "c"; pag
   return <main className={`site-shell theme-${version}`}>
     <Header version={version} slug={page.slug}/>
     <section className={`hero ${page.slug !== "home" ? "inner-hero" : ""}`}>
-      <div className="hero-copy"><span className="eyebrow">{page.eyebrow}</span><h1>{page.title}</h1><p>{page.intro}</p><Link className="primary-button" href={`/${version}/intake`}>Book a discovery call</Link></div>
+      <div className="hero-copy"><span className="eyebrow">{page.eyebrow}</span><h1>{page.title}</h1><p>{page.intro}</p><Link className="primary-button" href={page.slug === "intake" ? "#intake-form" : `/${version}/intake`}>{page.slug === "intake" ? "Go to the form" : "Book a discovery call"}</Link></div>
       {isA ? <div className="constellation"><ParticleField/><span className="sr-only">Animated triangular particles forming the Kodiak bear logo</span></div> : isC ? (page.slug === "founder" ? <FounderVisual/> : <RuggedVisual showHook={page.slug === "home"}/>) : <div className="ember-visual"><img src="/hero-header.jpg" alt="Kodiak carved bear artwork"/><span>Assess first · Build what matters</span></div>}
     </section>
     {isC && page.slug === "home" && <div className="field-marquee"><div>ASSESS THE TERRAIN <b>◆</b> CONNECT THE KNOWLEDGE <b>◆</b> BUILD WHAT WORKS <b>◆</b> TRAIN THE CREW <b>◆</b> ASSESS THE TERRAIN <b>◆</b> CONNECT THE KNOWLEDGE <b>◆</b></div></div>}
     {isC && page.slug === "home" && <section className="value-bridge"><p>We find where AI can save time, strengthen operations, and drive growth—then build it into the way your business works.</p></section>}
-    {page.slug === "intake" && <section className="content-section form-section"><div className="section-heading"><span>Tell us about your business</span><h2>A real conversation starts here.</h2></div><IntakeForm/></section>}
+    {page.slug === "intake" && <section id="intake-form" className="content-section form-section"><div className="section-heading"><span>Tell us about your business</span><h2>A real conversation starts here.</h2></div><IntakeForm/></section>}
     {page.sections.map((section, idx) => <section className={`content-section ${idx % 2 ? "reverse" : ""}`} key={section.title}>
       <div className="section-heading"><span>{section.label}</span><h2>{section.title}</h2>{section.image && <img className="founder-photo" src={section.image} alt="Ryan Fagerstrom and family"/>}</div>
       <div className="section-body">
@@ -263,7 +268,9 @@ export function PrototypePage({ version, page }: { version: "a" | "b" | "c"; pag
         {section.quote && <blockquote>{section.quote}</blockquote>}
       </div>
     </section>)}
-    {page.cta && <section className="closing"><span>Next step</span><h2>{page.cta}</h2><Link className="primary-button" href={`/${version}/intake`}>Book a discovery call</Link></section>}
+    {page.cta && !(page.slug === "intake" && !BOOKING_URL) && <section className="closing"><span>Next step</span><h2>{page.slug === "intake" ? "Prefer to pick a time yourself?" : page.cta}</h2>{page.slug === "intake"
+      ? <a className="primary-button" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Pick a time</a>
+      : <Link className="primary-button" href={`/${version}/intake`}>Book a discovery call</Link>}</section>}
     <Footer version={version}/>
   </main>;
 }
