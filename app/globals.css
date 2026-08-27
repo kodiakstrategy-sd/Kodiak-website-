@@ -261,3 +261,14 @@ footer p,footer a { margin:0; color:var(--muted); font-size:11px; }
   .terrain-scan,.terrain-ring,.ridgeline-mark,.field-marquee div { animation:none!important; }
   .theme-c .content-section,.theme-c .closing { opacity:1; transform:none; transition:none; }
 }
+
+/* --- intake form: states added with the working form -------------------- */
+/* Honeypot. Pushed off-screen rather than display:none, which some bots
+   detect and skip. Real people never see or tab into it. */
+.intake-form .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+.intake-form select { width:100%; border:0; border-bottom:1px solid rgba(255,255,255,.26); border-radius:0; outline:0; padding:14px 2px; background:transparent; color:#fff; appearance:none; cursor:pointer; }
+.intake-form select:focus { border-color:var(--accent); }
+.intake-form select option { background:#0b0a08; color:#f5f1e9; }
+.intake-form label.field-error input,.intake-form label.field-error select,.intake-form label.field-error textarea { border-bottom-color:#c5a27b; }
+.form-error { grid-column:1/-1; margin:0; padding:12px 14px; border-left:2px solid var(--accent); background:rgba(197,162,123,.09); color:#f5f1e9; font-size:14px; line-height:1.5; }
+.intake-form button[disabled] { opacity:.55; cursor:progress; }

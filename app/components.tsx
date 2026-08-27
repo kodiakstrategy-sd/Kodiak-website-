@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cNav, nav, PageData } from "./site-data";
 
 export function ParticleField() {
@@ -139,12 +139,99 @@ function Footer({ version }: { version: string }) {
   return <footer><div className="footer-brand">Kodiak Strategy</div><p>Built into the operation. Not bolted on.</p><div className="footer-links"><Link href={`/${version}/privacy`}>Privacy</Link><a href="mailto:ryan@kodiakstrategy.com">ryan@kodiakstrategy.com</a><a href="tel:+19075004010">(907) 500-4010</a></div></footer>;
 }
 
+const INDUSTRIES = [
+  "Optometry / Eye Care",
+  "Dental Practice",
+  "Medical / Healthcare",
+  "Law Firm",
+  "Accounting / Bookkeeping",
+  "Insurance Agency",
+  "Roofing / Construction",
+  "HVAC / Home Services",
+  "Real Estate",
+  "Restaurant / Hospitality",
+  "Other",
+];
+
 function IntakeForm() {
-  return <form className="intake-form" onSubmit={(e) => e.preventDefault()}>
-    {["Your Name", "Business Name", "Industry", "Email Address", "Phone Number"].map(x => <label key={x}><span>{x}</span><input aria-label={x} /></label>)}
-    <label className="wide"><span>Biggest operational challenge right now</span><textarea rows={5} /></label>
-    <label className="check wide"><input type="checkbox"/><span>I’d like to receive text updates about my discovery call and next steps. Message and data rates may apply. Reply STOP to opt out.</span></label>
-    <button type="submit">Send to Ryan</button>
+  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
+  const [message, setMessage] = useState("");
+  const [badFields, setBadFields] = useState<string[]>([]);
+
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (status === "sending") return;
+
+    const data = Object.fromEntries(new FormData(event.currentTarget).entries());
+    setStatus("sending");
+    setMessage("");
+    setBadFields([]);
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, sms_opt_in: data.sms_opt_in === "yes" }),
+      });
+      const body = await res.json().catch(() => ({}));
+
+      if (res.ok && body.ok) {
+        // Full navigation rather than a client push: the thank-you page is a
+        // conversion landing point, and a real page load is what ad platforms
+        // and analytics can see.
+        window.location.href = "/thank-you";
+        return;
+      }
+
+      setStatus("error");
+      setBadFields(Array.isArray(body.fields) ? body.fields : []);
+      setMessage(body.error ?? "Something went wrong. Please call (907) 500-4010.");
+    } catch {
+      setStatus("error");
+      setMessage("That did not send. Please check your connection, or call (907) 500-4010.");
+    }
+  }
+
+  const bad = (field: string) => (badFields.includes(field) ? " field-error" : "");
+
+  return <form className="intake-form" onSubmit={onSubmit} noValidate>
+    {/* Honeypot. Hidden from people, irresistible to bots. Not display:none,
+        which some bots detect and skip. */}
+    <div className="hp" aria-hidden="true">
+      <label htmlFor="website">Website</label>
+      <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off"/>
+    </div>
+
+    <label className={bad("name")}><span>Your Name</span>
+      <input name="name" type="text" autoComplete="name" placeholder="First Last" required/></label>
+    <label className={bad("business")}><span>Business Name</span>
+      <input name="business" type="text" autoComplete="organization" placeholder="Acme Roofing Co." required/></label>
+
+    <label className="wide"><span>Industry</span>
+      <select name="industry" defaultValue="" required>
+        <option value="" disabled>Select your industry</option>
+        {INDUSTRIES.map(i => <option key={i} value={i}>{i}</option>)}
+      </select></label>
+
+    <label className={bad("email")}><span>Email Address</span>
+      <input name="email" type="email" autoComplete="email" placeholder="you@yourbusiness.com" required/></label>
+    <label className={bad("phone")}><span>Phone Number</span>
+      <input name="phone" type="tel" autoComplete="tel" placeholder="(000) 000-0000" required/></label>
+
+    <label className="wide"><span>Biggest operational challenge right now</span>
+      <textarea name="challenge" rows={5} placeholder="What takes the most time, or causes the most friction, in your business?"/></label>
+
+    <label className="check wide">
+      <input type="checkbox" name="sms_opt_in" value="yes"/>
+      <span>I&rsquo;d like to receive text updates about my discovery call and next steps. Message and data rates may apply. Reply STOP to opt out.</span>
+    </label>
+
+    {status === "error" && <p className="form-error wide" role="alert">{message}</p>}
+
+    <button type="submit" disabled={status === "sending"}>
+      {status === "sending" ? "Sending…" : "Send to Ryan"}
+    </button>
+
     <p className="form-note">By submitting, you authorize Kodiak Strategy to send booking updates. Your information is never shared with third parties.</p>
   </form>;
 }
