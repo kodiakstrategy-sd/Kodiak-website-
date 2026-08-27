@@ -4,10 +4,11 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { cNav, nav, PageData } from "./site-data";
 
-// Public scheduling link. Empty until it exists: an empty value hides the
-// closing block on the intake page rather than rendering a button that
-// promises scheduling and goes nowhere, which is what it did before.
-const BOOKING_URL = "";
+// Public scheduling link: Ryan's Google Calendar appointment schedule.
+// An empty value hides the closing block on the intake page rather than
+// rendering a button that promises scheduling and goes nowhere, which is what
+// it did before.
+const BOOKING_URL = "https://calendar.app.google/iRCdeauzJkExa4X1A";
 
 export function ParticleField() {
   const ref = useRef<HTMLCanvasElement>(null);

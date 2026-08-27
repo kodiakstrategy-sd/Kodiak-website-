@@ -140,7 +140,7 @@ export const pages: Record<string, PageData> = {
     ]}], cta: "Still have questions? The fastest answer is a conversation."
   },
   intake: {
-    slug: "intake", eyebrow: "Discovery call", title: "Start the conversation.", intro: "Tell us a little about your business. Ryan will follow up personally. Twenty minutes, no pitch, no pressure.", sections: [], cta: "Prefer to schedule online? Book on Calendly."
+    slug: "intake", eyebrow: "Discovery call", title: "Start the conversation.", intro: "Tell us a little about your business. Ryan will follow up personally. Twenty minutes, no pitch, no pressure.", sections: [], cta: "Prefer to pick a time yourself?"
   },
   privacy: {
     slug: "privacy", eyebrow: "Legal", title: "Privacy Policy", intro: "Last updated: May 4, 2026", sections: [
@@ -269,7 +269,7 @@ export const cPages: Record<string, PageData> = {
   intake: {
     slug: "intake", eyebrow: "Discovery call", title: "Start the conversation.",
     intro: "Tell us a little about your business. Ryan will follow up personally to answer your questions and help determine whether Kodiak Strategy, the AI Academy, or a combination is the right path.",
-    sections: [], cta: "Prefer to schedule online? Book on Calendly."
+    sections: [], cta: "Prefer to pick a time yourself?"
   },
   founder: {
     slug: "founder", eyebrow: "Founder & Principal", title: "Ryan Fagerstrom",
