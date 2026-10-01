@@ -11,15 +11,16 @@ export const nav = [
 ] as const;
 
 export const cNav = [
-  ["how-it-works", "Kodiak Strategy"],
-  ["academy", "AI Academy"],
+  ["how-it-works", "AI Consulting"],
+  ["academy", "AI Training"],
+  ["ai-grant", "SD AI Grant"],
   ["services", "Services"],
   ["founder", "Founder"],
   ["faq", "FAQ"],
 ] as const;
 
 const engagement: Item[] = [
-  { title: "The Assessment", meta: "$750", body: "The Opportunity Map for your operation. Delivered in one week, yours to keep, and credited in full toward your build." },
+  { title: "The Assessment", meta: "From $750", body: "The Opportunity Map for your operation. Yours to keep, with up to $750 credited toward your build." },
   { title: "Workflow Automation", meta: "$2,500 fixed", body: "One discrete thing, solved end to end: an automation, a chatbot, or a single workflow. Scoped from your assessment." },
   { title: "Focused Build", meta: "Quoted", body: "A larger construction: a knowledge base, platform, or system. Fixed scope and clean handoff, so you carry no scope risk." },
   { title: "Growth Retainer", meta: "$1,500–$2,500 / mo", body: "Everything built keeps running and improving, with ongoing support shaped to what you actually need." },
@@ -168,37 +169,51 @@ export const cPages: Record<string, PageData> = {
   ...pages,
   home: {
     slug: "home",
-    eyebrow: "Two paths to practical AI",
-    title: "AI that works where your business works.",
-    intro: "Kodiak gives your business two ways forward: we can assess, optimize, and implement the right systems—or train your team to use AI confidently in the work they already do.",
+    eyebrow: "AI systems for owner-operated businesses. Sioux Falls, SD.",
+    title: "Real-world AI. Real time back.",
+    intro: "Kodiak finds the manual, repetitive work eating your week and hands it to AI, so you review it instead of doing it. Two ways in: we build the systems, or we train your people to use AI in the work they already do. Either way it starts with your operation, not a tool.",
     sections: [
-      { label: "Choose your lane", title: "Strategy and implementation. Or workforce transformation.", body: ["Both paths begin with your business—not a generic tool. We help you choose the right starting point, then shape the work around your operation, your people, and the outcomes that matter."], items: [
-        { title: "Kodiak Strategy", meta: "Assess · Optimize · Implement", body: "We examine the full operation, identify where AI can create measurable impact, improve the workflow, and implement the right systems in practical phases." },
-        { title: "Kodiak AI Academy", meta: "Starting at $3,000 · Teams up to 10", body: "On-site sessions built around your team’s needs—from solving everyday workflow friction to helping sales teams use AI to research, prepare, follow up, and drive revenue." },
+      { label: "Two paths", title: "We build it, or we teach your team to.", items: [
+        { title: "AI Consulting", meta: "Assess · Roadmap · Build", body: "We assess your operation and find where AI actually pays off. You get a custom AI roadmap for your business, yours to keep whether we build it, your team builds it, or you wait. Most clients have us build it, one workflow at a time. Some keep Kodiak on as an embedded AI partner once the first systems are running." },
+        { title: "AI Training", meta: "On-site · From $3,000 · Teams up to 10", body: "Sessions built around your team’s actual work, not generic demos. Your people learn to use AI on the tasks that eat their day, live in the room, and leave with habits they keep." },
       ]},
-      { label: "The multiplier effect", title: "Make the people who know your business even more capable.", body: [
-        "AI creates the most value when it multiplies the judgment, experience, and relationships already inside your company. The goal is not to replace your workforce. It is to remove low-value work and give good people more leverage.",
-        "That can mean automating repetitive handoffs, surfacing what your business already knows, or teaching a sales team to turn better preparation and faster follow-up into more closed business.",
-      ], quote: "The advantage is not AI by itself. It is what your people can do with it." },
-      { label: "Kodiak Strategy", title: "From opportunity map to phased implementation.", items: [
-        { title: "Discovery Call", meta: "For either path", body: "Bring your questions and your priorities. We learn how the business operates, talk through both sides of Kodiak, and decide which path creates the most value now." },
-        { title: "Business Assessment", meta: "Starting at $750", body: "We walk through the entire business, identify every workflow where AI can have an impact, and rank each opportunity by impact, effort, and projected return." },
-        { title: "Implementation", meta: "Built in practical phases", body: "Together, we choose what to build first and create a phased plan that fits your budget, capacity, and priorities." },
+      { label: "Not sure which fits?", title: "Start with a free discovery call.", body: [
+        "Bring your questions. We learn how the business runs and tell you plainly whether consulting, training, or neither is worth your money right now.",
+        "If it makes sense, a Business Assessment maps every place AI can save you time, ranked by impact and effort, and ends with a roadmap you own. From $750, scoped to the size of the operation and the depth of the audit. Up to $750 credits toward whatever we build.",
       ]},
-      { label: "What we build", title: "Exactly what your operation needs. Nothing it does not.", items: [
-        { title: "Custom AI Systems", body: "Purpose-built around your workflows, data, team, and goals—not a one-size-fits-all platform packed with features you will never use." },
-        ...builds,
+      { label: "South Dakota AI funding", title: "Holding a DLR AI award? Spend it on work that pays back.", body: [
+        "South Dakota’s Department of Labor and Regulation matches half the cost of an AI discovery session (up to $5,000) and half the cost of AI training (up to $20,000) for awarded businesses. Kodiak assessments and training are built to meet the program’s invoice and reporting requirements.",
       ]},
-      { label: "Ways to engage", title: "Start where the value is clearest. Expand when it earns the next step.", items: [
-        { title: "Business Assessment", meta: "Starting at $750", body: "A complete opportunity map with impact-versus-effort priorities, projected ROI, and a report that is yours to implement now, build with Kodiak, or keep until the timing is right." },
-        { title: "Workflow Automation", meta: "Starting at $2,500 · Scope dependent", body: "One defined workflow solved from end to end, priced according to its complexity, integrations, and operational reach." },
-        { title: "Focused Build", meta: "Custom quoted", body: "A larger system or phased buildout, scoped and quoted around the exact needs of your business." },
-        { title: "Growth Retainer", meta: "Custom quoted based on scope", body: "Ongoing optimization, support, and new build capacity shaped to the systems and pace your business requires." },
-        { title: "Full Partnership", meta: "Embedded AI partner", body: "Kodiak works inside the business like a fractional team member—helping you build, adapt, and stay ahead as the AI landscape changes." },
+      { label: "Local, and accountable for it", title: "I live here. I work here.", image: "/founder-family.jpg", body: [
+        "My name is Ryan Fagerstrom. I live in Brandon and started Kodiak Strategy to help local businesses in the Sioux Falls area. I’ve been an entrepreneur my whole career, and before Kodiak I ran three businesses in Alaska and South Dakota, so I know what it’s like to be the one holding the weight of it all, doing whatever it takes to keep everything running.",
+        "When I started learning AI I realized it isn’t here to take jobs. It’s a production multiplier for you and your team, whether that means taking manual work off your plate so you can focus on growing the business, or helping your people get more done. Kodiak plans that with you and builds it for you.",
+        "AI is an impersonal industry right now. As your local AI firm, my goal is not to sell you a course and be gone. It is to build a system you can’t wait to talk about.",
       ]},
-      { label: "Why Kodiak", title: "Real-world operating experience. Practical AI execution.", items: principles },
     ],
-    cta: "Start with one conversation. We will find the right lane together."
+    cta: "One conversation. Then a straight answer on what’s worth doing."
+  },
+  "ai-grant": {
+    slug: "ai-grant", eyebrow: "South Dakota DLR AI funding", title: "State money for AI discovery and training. Here is how to use it well.",
+    intro: "South Dakota’s Workforce Development Competitive Funding for AI Adoption reimburses awarded businesses for half the cost of an AI discovery session and half the cost of AI training, paid to the business once a third-party consultant or trainer has been paid. Kodiak is a Sioux Falls consultant and trainer that delivers both.",
+    sections: [
+      { label: "The program", title: "What DLR funds, in plain terms.", items: [
+        { title: "Category 1 · AI Business Discovery", meta: "50% cost share, up to $5,000 from DLR", body: "A consultant-led session that identifies where AI can help the business, the tools to implement, the cost and timeline, and the expected return. That is a Kodiak Business Assessment: the roadmap is the deliverable the program asks for." },
+        { title: "Category 2 · AI Training Implementation", meta: "50% cost share, up to $20,000 from DLR", body: "Hands-on employee training on the tools the business is adopting, with attendee lists, dates, and completion certificates. That is Kodiak AI Training, on site, built around your team’s work." },
+        { title: "Category 3 · AI Awareness", meta: "$1,000 per employee, up to $10,000", body: "Paid to the business for employee time spent on free third-party awareness courses. Kodiak does not sell this category, but we will point your team at the right course if you ask." },
+      ]},
+      { label: "Where it stands", title: "The 2026 application window has closed.", body: [
+        "Applications closed August 7, 2026. Award decisions went out in early September. Awarded businesses must complete the work by June 30, 2027, and Category 1 awardees can apply for Category 2 funding through November 12, 2026 if funds remain.",
+        "If you were awarded: you have state money that has to be spent with a qualified third party on a deadline. If you were not: the state has signaled interest in AI adoption, and Kodiak will let you know if a new round opens. Either way, the discovery call is free.",
+      ]},
+      { label: "How Kodiak fits", title: "Built to meet the program’s paperwork.", items: [
+        { title: "Invoices that satisfy DLR", body: "Every Kodiak assessment invoice describes the discovery process, meeting dates, tools recommended, estimated implementation cost and timeline, and anticipated return, which is what the program requires for payment." },
+        { title: "Training with the receipts", body: "Training invoices itemize the sessions, attendees, dates, and cost, and every participant receives a completion certificate." },
+        { title: "Help with the final report", body: "DLR asks awardees for a final report. We supply the substance for it as part of the engagement." },
+      ]},
+      { label: "Fine print", title: "What Kodiak is not promising.", body: [
+        "Kodiak is not affiliated with DLR and cannot determine your eligibility or guarantee an award. Program terms, deadlines, and amounts are set by the state and can change. Confirm current details at dlr.sd.gov before relying on them.",
+      ]},
+    ], cta: "Awarded, or watching for the next round? Start with a conversation."
   },
   academy: {
     slug: "academy", eyebrow: "Kodiak AI Academy", title: "Turn AI into a workforce multiplier.",
@@ -223,9 +238,10 @@ export const cPages: Record<string, PageData> = {
     intro: "This is how the Strategy side of Kodiak works. Every recommendation begins with a clear understanding of the business and ends with an implementation path that fits it.",
     sections: [
       { label: "01 · Discovery", title: "One conversation. Two possible paths.", body: ["The Discovery Call can lead to either Kodiak Strategy or the Kodiak AI Academy. Bring your questions, challenges, and priorities. We learn how the business works, answer what we can, and decide together which path is the best fit.", "There is no pitch deck and no required commitment beyond the conversation."] },
-      { label: "02 · Assessment", title: "A complete map of where AI can matter.", body: ["Starting at $750, we walk through the entire business to find every workflow and operating area where AI can create an impact.", "Each opportunity is plotted by impact versus effort and supported by projected ROI. You receive the full Opportunity Map and report to implement with Kodiak now, use on your own, or keep until you are ready to do more."] },
+      { label: "02 · Assessment", title: "A complete map of where AI can matter.", body: ["Starting at $750 and scoped to the work, we walk through the entire business to find every workflow and operating area where AI can create an impact.", "Each opportunity is plotted by impact versus effort and supported by projected ROI. You receive the full Opportunity Map and report to implement with Kodiak now, use on your own, or keep until you are ready to do more."] },
       { label: "03 · Roadmap", title: "Turn the opportunity map into a practical build plan.", body: ["Together, we choose the opportunities that should come first and organize implementation into phases that fit your budget, capacity, and priorities.", "You know what is being built, why it matters, and what success should look like before implementation begins."] },
       { label: "04 · Build", title: "Custom implementation. Clean handoff. No unnecessary features.", body: ["Kodiak builds exactly what the business needs—from a focused workflow automation to a connected operating system. The solution is shaped around your workflows rather than forcing your team into a generic platform.", "Every phase is documented, tested, and designed to create measurable value before the next one begins."], quote: "Assess before recommending. Optimize before automating. Build what the operation will actually use." },
+      { label: "How we work", title: "Four rules every engagement follows.", items: principles },
     ], cta: "Start with the questions. We will find the right path from there."
   },
   services: {
@@ -233,11 +249,11 @@ export const cPages: Record<string, PageData> = {
     intro: "No generic packages and no oversized platforms. Kodiak matches the engagement to the opportunity, the team, and the phase your business is ready for.",
     sections: [
       { label: "Kodiak Strategy", title: "From assessment to embedded partnership.", items: [
-        { title: "Business Assessment", meta: "Starting at $750", body: "A company-wide opportunity map ranking AI use cases by impact, effort, and projected ROI. The complete report is yours to keep." },
+        { title: "Business Assessment", meta: "From $750 · Scoped to the work", body: "A company-wide opportunity map ranking AI use cases by impact, effort, and projected ROI, ending in a custom AI roadmap that is yours to keep. Up to $750 credits toward your build." },
         { title: "Workflow Automation", meta: "Starting at $2,500 · Scope dependent", body: "One defined workflow solved end to end, with the final investment based on complexity and integrations." },
         { title: "Focused Build", meta: "Custom quoted", body: "A custom system or phased implementation designed around the business’s specific workflows, data, and needs." },
-        { title: "Growth Retainer", meta: "Custom quoted based on scope", body: "Ongoing support, optimization, and additional build capacity at the pace your operation requires." },
-        { title: "Full Partnership", meta: "Embedded AI partner", body: "Kodiak becomes a fractional member of your team—helping the business build, adapt, and stay ahead in an AI landscape that keeps changing." },
+        { title: "Growth Retainer", meta: "Custom quoted based on scope", body: "For businesses with systems already running. Kodiak keeps them working, improves them, and adds build capacity at the pace you need, without a new scoping cycle each time." },
+        { title: "Full Partnership", meta: "Embedded AI partner", body: "For businesses past their first build who want Kodiak in the room as the AI landscape moves. Kodiak works like a fractional member of your team: strategy, builds, and training, ongoing." },
       ]},
       { label: "Kodiak AI Academy", title: "Practical on-site training for teams up to 10.", body: ["Academy engagements start at $3,000. Every training package is created around your team’s needs, roles, workflows, and goals."], items: [
         { title: "Workflow Enablement", body: "Teach staff to use AI in the everyday work that consumes their time." },
@@ -256,7 +272,8 @@ export const cPages: Record<string, PageData> = {
     sections: [{ label: "FAQ", title: "What you should know", items: [
       { title: "Which side of Kodiak is right for us?", body: "Kodiak Strategy is for businesses that want help assessing, optimizing, and implementing AI systems. Kodiak AI Academy trains your staff to use AI in everyday work. The Discovery Call helps us decide which path—or combination—is the best fit." },
       { title: "What happens during the Discovery Call?", body: "We answer your questions, learn how the business operates, and talk through the outcomes you want. There is no pitch and no required commitment beyond the conversation." },
-      { title: "What does the Business Assessment cost?", body: "Assessments start at $750. Scope depends on the size and complexity of the operation." },
+      { title: "What does the Business Assessment cost?", body: "Assessments start at $750 and are scoped to the size of the operation and the depth of the audit, from a phone interview to a full on-site process review. Up to $750 is credited toward your build if you have Kodiak implement." },
+      { title: "Does Kodiak work with the South Dakota DLR AI funding?", body: "Yes. Kodiak assessments fit the program’s AI Business Discovery category and Kodiak training fits AI Training Implementation. Our invoices and reporting are built to the program’s requirements. See the SD AI Grant page for details." },
       { title: "What do we receive from the Assessment?", body: "You receive a full Opportunity Map showing where AI can have an impact, ranked by impact versus effort and supported by projected ROI. The entire report is yours to implement with Kodiak, use on your own, or keep until you are ready." },
       { title: "What does a workflow automation cost?", body: "Workflow automations start at $2,500. Final pricing depends on scope, complexity, integrations, and operational reach." },
       { title: "How are larger builds priced?", body: "Focused Builds, Growth Retainers, and Full Partnerships are custom quoted based on the scope and needs of the business." },
@@ -289,3 +306,16 @@ export const cPages: Record<string, PageData> = {
 };
 
 export const pageKeys = Object.keys(pages);
+
+export type PageMeta = { title: string; description: string };
+export const pageMeta: Record<string, PageMeta> = {
+  home: { title: "Kodiak Strategy | AI Consulting & Training for Owner-Operated Businesses | Sioux Falls, SD", description: "Real-world AI. Real time back. Kodiak Strategy builds AI systems and trains teams for owner-operated businesses in Sioux Falls and across South Dakota." },
+  "how-it-works": { title: "AI Consulting for Small Business in Sioux Falls, SD | Kodiak Strategy", description: "Assessment-first AI consulting for owner-operated businesses: find where AI pays off, get a roadmap you keep, then build in practical phases." },
+  academy: { title: "AI Training for Employees in Sioux Falls, SD | Kodiak AI Academy", description: "On-site AI training built around your team’s actual work. From $3,000 for teams up to 10. Eligible for South Dakota DLR AI training funding." },
+  services: { title: "AI Consulting Services & Pricing | Kodiak Strategy, Sioux Falls SD", description: "Business assessments from $750, workflow automation from $2,500, focused builds, retainers, and embedded partnership for small businesses in South Dakota." },
+  "ai-grant": { title: "South Dakota DLR AI Grant: Discovery & Training Funding | Kodiak Strategy", description: "How South Dakota’s AI adoption funding works, what it covers, and how Kodiak assessments and training meet the program’s requirements." },
+  founder: { title: "Ryan Fagerstrom, Founder | Kodiak Strategy, Sioux Falls SD", description: "Thirteen years running owner-operated restaurants, now building practical AI systems for South Dakota businesses. Based in Sioux Falls." },
+  faq: { title: "AI Consulting FAQ | Kodiak Strategy, Sioux Falls SD", description: "Straight answers on Kodiak’s assessments, pricing, training, and the South Dakota DLR AI funding." },
+  intake: { title: "Book a Free AI Discovery Call | Kodiak Strategy, Sioux Falls SD", description: "Tell us about your business. Ryan follows up personally to find whether AI consulting, training, or neither is worth your money right now." },
+  privacy: { title: "Privacy Policy | Kodiak Strategy", description: "How Kodiak Strategy handles the information you share with us." },
+};

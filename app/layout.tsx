@@ -14,24 +14,26 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kodiakstrategy.com"),
-  title: "Kodiak Strategy | Practical AI for Real Businesses",
-  description: "Kodiak Strategy helps businesses assess, optimize, implement, and teach practical AI that creates measurable operational value.",
+  title: "Kodiak Strategy | AI Consulting & Training for Owner-Operated Businesses | Sioux Falls, SD",
+  description: "Real-world AI. Real time back. Kodiak Strategy builds AI systems and trains teams for owner-operated businesses in Sioux Falls and across South Dakota.",
+  alternates: { canonical: "/" },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
   },
   openGraph: {
-    title: "Kodiak Strategy | Practical AI for Real Businesses",
-    description: "Practical AI strategy, implementation, and team training built around how real businesses operate.",
+    title: "Kodiak Strategy | Real-world AI. Real time back.",
+    description: "AI systems and training for owner-operated businesses, based in Sioux Falls, SD.",
     url: "/",
     siteName: "Kodiak Strategy",
-    images: [{ url: "/og.png", width: 1731, height: 909, alt: "Kodiak Strategy — Practical AI for real businesses." }],
+    locale: "en_US",
+    images: [{ url: "/og.png", width: 1731, height: 909, alt: "Kodiak Strategy. Real-world AI. Real time back." }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kodiak Strategy | Practical AI for Real Businesses",
-    description: "Practical AI strategy, implementation, and team training built around how real businesses operate.",
+    title: "Kodiak Strategy | Real-world AI. Real time back.",
+    description: "AI systems and training for owner-operated businesses, based in Sioux Falls, SD.",
     images: ["/og.png"],
   },
 };

@@ -110,7 +110,7 @@ function Header({ version, slug }: { version: string; slug: string }) {
     {version === "b" && <div className="ticker">KODIAK FIELD NOTE • AI THAT FITS THE OPERATION • SOUTH DAKOTA</div>}
     <header className="site-header">
       <Link href={base} className="brand"><img className="brand-logo" src="/kodiak-logo.png" alt="Kodiak Strategy"/></Link>
-      {version === "c" && <span className="brand-line">Rugged intelligence<br/>for real operations</span>}
+      {version === "c" && <span className="brand-line">Sioux Falls,<br/>South Dakota</span>}
       <nav>{activeNav.map(([href, label]) => <Link key={href} href={`${base}/${href}`}>{label}</Link>)}</nav>
       <details className="mobile-menu">
         <summary>Menu</summary>
@@ -130,7 +130,7 @@ function RuggedVisual({ showHook = false }: { showHook?: boolean }) {
       <img className="ridgeline-mark" src="/ridgeline.png" alt=""/>
     </div>
     <div className="field-coordinates"><span>43.5460° N</span><span>96.7313° W</span></div>
-    {showHook && <div className="terrain-hook"><strong>Map the opportunity.</strong><strong>Build the advantage.</strong></div>}
+    {showHook && <div className="terrain-hook"><strong>Sioux Falls.</strong><strong>South Dakota.</strong></div>}
   </div>;
 }
 
@@ -142,7 +142,7 @@ function FounderVisual() {
 }
 
 function Footer({ version }: { version: string }) {
-  return <footer><div className="footer-brand">Kodiak Strategy</div><p>Built into the operation. Not bolted on.</p><div className="footer-links"><Link href={`/${version}/privacy`}>Privacy</Link><a href="mailto:ryan@kodiakstrategy.com">ryan@kodiakstrategy.com</a><a href="tel:+19075004010">(907) 500-4010</a></div></footer>;
+  return <footer><div className="footer-brand">Kodiak Strategy</div><p>Real-world AI. Real time back.</p><div className="footer-links"><span>Sioux Falls, South Dakota</span><Link href={`/${version}/privacy`}>Privacy</Link><a href="mailto:ryan@kodiakstrategy.com">ryan@kodiakstrategy.com</a><a href="tel:+19075004010">(907) 500-4010</a></div></footer>;
 }
 
 const INDUSTRIES = [
@@ -259,7 +259,7 @@ export function PrototypePage({ version, page }: { version: "a" | "b" | "c"; pag
       {isA ? <div className="constellation"><ParticleField/><span className="sr-only">Animated triangular particles forming the Kodiak bear logo</span></div> : isC ? (page.slug === "founder" ? <FounderVisual/> : <RuggedVisual showHook={page.slug === "home"}/>) : <div className="ember-visual"><img src="/hero-header.jpg" alt="Kodiak carved bear artwork"/><span>Assess first · Build what matters</span></div>}
     </section>
     {isC && page.slug === "home" && <div className="field-marquee"><div>ASSESS THE TERRAIN <b>◆</b> CONNECT THE KNOWLEDGE <b>◆</b> BUILD WHAT WORKS <b>◆</b> TRAIN THE CREW <b>◆</b> ASSESS THE TERRAIN <b>◆</b> CONNECT THE KNOWLEDGE <b>◆</b></div></div>}
-    {isC && page.slug === "home" && <section className="value-bridge"><p>We find where AI can save time, strengthen operations, and drive growth—then build it into the way your business works.</p></section>}
+    {isC && page.slug === "home" && <section className="value-bridge"><p>The tedious work goes to AI. You review it. Your week comes back.</p></section>}
     {page.slug === "intake" && <section id="intake-form" className="content-section form-section"><div className="section-heading"><span>Tell us about your business</span><h2>A real conversation starts here.</h2></div><IntakeForm/></section>}
     {page.sections.map((section, idx) => <section className={`content-section ${idx % 2 ? "reverse" : ""}`} key={section.title}>
       <div className="section-heading"><span>{section.label}</span><h2>{section.title}</h2>{section.image && <img className="founder-photo" src={section.image} alt="Ryan Fagerstrom and family"/>}</div>

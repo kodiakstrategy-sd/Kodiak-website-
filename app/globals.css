@@ -79,6 +79,7 @@ footer { max-width:1380px; margin:0 auto; padding:44px 30px 38px; display:grid; 
 footer .footer-brand { letter-spacing:.18em; text-transform:uppercase; font-size:12px; }
 footer p,footer a { margin:0; color:var(--muted); font-size:11px; }
 .footer-links { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:18px; }
+.footer-links span { opacity:.7; }
 
 .theme-a { --accent:#b99976; --muted:#aaa6a0; background:#000; color:#fff; }
 .theme-a .site-header { background:transparent; }
