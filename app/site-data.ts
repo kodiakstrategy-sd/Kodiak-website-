@@ -13,7 +13,6 @@ export const nav = [
 export const cNav = [
   ["how-it-works", "AI Consulting"],
   ["academy", "AI Training"],
-  ["ai-grant", "SD AI Grant"],
   ["services", "Services"],
   ["founder", "Founder"],
   ["faq", "FAQ"],
@@ -182,9 +181,6 @@ export const cPages: Record<string, PageData> = {
         "Bring your questions. We learn how the business runs and tell you plainly whether consulting, training, or neither is worth your money right now.",
         "If it makes sense, a Business Assessment maps every place AI can save you time, ranked by impact and effort, and ends with a roadmap you own. From $750, scoped to the size of the operation and the depth of the audit.",
       ]},
-      { label: "South Dakota AI funding", title: "Holding a DLR AI award? Spend it on work that pays back.", body: [
-        "South Dakota’s Department of Labor and Regulation matches half the cost of an AI discovery session (up to $5,000) and half the cost of AI training (up to $20,000) for awarded businesses. Kodiak assessments and training are built to meet the program’s invoice and reporting requirements.",
-      ]},
       { label: "Local, and accountable for it", title: "I live here. I work here.", image: "/founder-family.jpg", body: [
         "My name is Ryan Fagerstrom. I live in Brandon and started Kodiak Strategy to help local businesses in the Sioux Falls area. I’ve been an entrepreneur my whole career, and before Kodiak I ran three businesses in Alaska and South Dakota, so I know what it’s like to be the one holding the weight of it all, doing whatever it takes to keep everything running.",
         "When I started learning AI I realized it isn’t here to take jobs. It’s a production multiplier for you and your team, whether that means taking manual work off your plate so you can focus on growing the business, or helping your people get more done. Kodiak plans that with you and builds it for you.",
@@ -192,29 +188,6 @@ export const cPages: Record<string, PageData> = {
       ]},
     ],
     cta: "One conversation. Then a straight answer on what’s worth doing."
-  },
-  "ai-grant": {
-    slug: "ai-grant", eyebrow: "South Dakota DLR AI funding", title: "State money for AI discovery and training. Here is how to use it well.",
-    intro: "South Dakota’s Workforce Development Competitive Funding for AI Adoption reimburses awarded businesses for half the cost of an AI discovery session and half the cost of AI training, paid to the business once a third-party consultant or trainer has been paid. Kodiak is a Sioux Falls consultant and trainer that delivers both.",
-    sections: [
-      { label: "The program", title: "What DLR funds, in plain terms.", items: [
-        { title: "Category 1 · AI Business Discovery", meta: "50% cost share, up to $5,000 from DLR", body: "A consultant-led session that identifies where AI can help the business, the tools to implement, the cost and timeline, and the expected return. That is a Kodiak Business Assessment: the roadmap is the deliverable the program asks for." },
-        { title: "Category 2 · AI Training Implementation", meta: "50% cost share, up to $20,000 from DLR", body: "Hands-on employee training on the tools the business is adopting, with attendee lists, dates, and completion certificates. That is Kodiak AI Training, on site, built around your team’s work." },
-        { title: "Category 3 · AI Awareness", meta: "$1,000 per employee, up to $10,000", body: "Paid to the business for employee time spent on free third-party awareness courses. Kodiak does not sell this category, but we will point your team at the right course if you ask." },
-      ]},
-      { label: "Where it stands", title: "The 2026 application window has closed.", body: [
-        "Applications closed August 7, 2026. Award decisions went out in early September. Awarded businesses must complete the work by June 30, 2027, and Category 1 awardees can apply for Category 2 funding through November 12, 2026 if funds remain.",
-        "If you were awarded: you have state money that has to be spent with a qualified third party on a deadline. If you were not: the state has signaled interest in AI adoption, and Kodiak will let you know if a new round opens. Either way, the discovery call is free.",
-      ]},
-      { label: "How Kodiak fits", title: "Built to meet the program’s paperwork.", items: [
-        { title: "Invoices that satisfy DLR", body: "Every Kodiak assessment invoice describes the discovery process, meeting dates, tools recommended, estimated implementation cost and timeline, and anticipated return, which is what the program requires for payment." },
-        { title: "Training with the receipts", body: "Training invoices itemize the sessions, attendees, dates, and cost, and every participant receives a completion certificate." },
-        { title: "Help with the final report", body: "DLR asks awardees for a final report. We supply the substance for it as part of the engagement." },
-      ]},
-      { label: "Fine print", title: "What Kodiak is not promising.", body: [
-        "Kodiak is not affiliated with DLR and cannot determine your eligibility or guarantee an award. Program terms, deadlines, and amounts are set by the state and can change. Confirm current details at dlr.sd.gov before relying on them.",
-      ]},
-    ], cta: "Awarded, or watching for the next round? Start with a conversation."
   },
   academy: {
     slug: "academy", eyebrow: "Kodiak AI Academy", title: "Turn AI into a workforce multiplier.",
@@ -274,7 +247,6 @@ export const cPages: Record<string, PageData> = {
       { title: "Which side of Kodiak is right for us?", body: "Kodiak Strategy is for businesses that want help assessing, optimizing, and implementing AI systems. Kodiak AI Academy trains your staff to use AI in everyday work. The Discovery Call helps us decide which path—or combination—is the best fit." },
       { title: "What happens during the Discovery Call?", body: "We answer your questions, learn how the business operates, and talk through the outcomes you want. There is no pitch and no required commitment beyond the conversation." },
       { title: "What does the Business Assessment cost?", body: "Assessments start at $750 and are scoped to the size of the operation and the depth of the audit, from a phone interview to a full on-site process review." },
-      { title: "Does Kodiak work with the South Dakota DLR AI funding?", body: "Yes. Kodiak assessments fit the program’s AI Business Discovery category and Kodiak training fits AI Training Implementation. Our invoices and reporting are built to the program’s requirements. See the SD AI Grant page for details." },
       { title: "What do we receive from the Assessment?", body: "You receive a full Opportunity Map showing where AI can have an impact, ranked by impact versus effort and supported by projected ROI. The entire report is yours to implement with Kodiak, use on your own, or keep until you are ready." },
       { title: "What does a workflow automation cost?", body: "Workflow automations start at $2,500. Final pricing depends on scope, complexity, integrations, and operational reach." },
       { title: "How are larger builds priced?", body: "Focused Builds, Growth Retainers, and Full Partnerships are custom quoted based on the scope and needs of the business." },
@@ -312,11 +284,10 @@ export type PageMeta = { title: string; description: string };
 export const pageMeta: Record<string, PageMeta> = {
   home: { title: "Kodiak Strategy | AI Consulting & Training for Owner-Operated Businesses | Sioux Falls, SD", description: "Real-world AI. Real time back. Kodiak Strategy builds AI systems and trains teams for owner-operated businesses in Sioux Falls and across South Dakota." },
   "how-it-works": { title: "AI Consulting for Small Business in Sioux Falls, SD | Kodiak Strategy", description: "Assessment-first AI consulting for owner-operated businesses: find where AI pays off, get a roadmap you keep, then build in practical phases." },
-  academy: { title: "AI Training for Employees in Sioux Falls, SD | Kodiak AI Academy", description: "On-site AI training built around your team’s actual work. From $3,500 for teams up to 10. Eligible for South Dakota DLR AI training funding." },
+  academy: { title: "AI Training for Employees in Sioux Falls, SD | Kodiak AI Academy", description: "On-site AI training built around your team’s actual work. From $3,500 for teams up to 10." },
   services: { title: "AI Consulting Services & Pricing | Kodiak Strategy, Sioux Falls SD", description: "Business assessments from $750, workflow automation from $2,500, focused builds, retainers, and embedded partnership for small businesses in South Dakota." },
-  "ai-grant": { title: "South Dakota DLR AI Grant: Discovery & Training Funding | Kodiak Strategy", description: "How South Dakota’s AI adoption funding works, what it covers, and how Kodiak assessments and training meet the program’s requirements." },
   founder: { title: "Ryan Fagerstrom, Founder | Kodiak Strategy, Sioux Falls SD", description: "Thirteen years running owner-operated restaurants, now building practical AI systems for South Dakota businesses. Based in Sioux Falls." },
-  faq: { title: "AI Consulting FAQ | Kodiak Strategy, Sioux Falls SD", description: "Straight answers on Kodiak’s assessments, pricing, training, and the South Dakota DLR AI funding." },
+  faq: { title: "AI Consulting FAQ | Kodiak Strategy, Sioux Falls SD", description: "Straight answers on Kodiak’s assessments, pricing, and training." },
   intake: { title: "Book a Free AI Discovery Call | Kodiak Strategy, Sioux Falls SD", description: "Tell us about your business. Ryan follows up personally to find whether AI consulting, training, or neither is worth your money right now." },
   privacy: { title: "Privacy Policy | Kodiak Strategy", description: "How Kodiak Strategy handles the information you share with us." },
 };

@@ -5,7 +5,7 @@ import { cPages, pageMeta, pages } from "../../site-data";
 
 // Only these pages exist. Every other address returns a real 404 instead of
 // an empty "not found" page served with a 200, which Google treats as a soft 404.
-const LIVE_C = ["home", "how-it-works", "services", "academy", "ai-grant", "founder", "faq", "intake", "privacy"];
+const LIVE_C = ["home", "how-it-works", "services", "academy", "founder", "faq", "intake", "privacy"];
 export const dynamicParams = false;
 export function generateStaticParams() {
   const live = LIVE_C.map(key => ({ version: "c", slug: key === "home" ? [] : [key] }));
@@ -16,7 +16,7 @@ export function generateStaticParams() {
 type Params = Promise<{ version: string; slug?: string[] }>;
 
 // Each live /c/ page gets its own title, description and canonical so the
-// consulting, training, grant and founder pages can rank for different intents.
+// consulting, training and founder pages can rank for different intents.
 // The /c home is a duplicate of / and canonicalizes there. The a/b design
 // prototypes are kept reachable but hidden from search.
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
