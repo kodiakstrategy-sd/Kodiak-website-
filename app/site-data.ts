@@ -20,7 +20,7 @@ export const cNav = [
 ] as const;
 
 const engagement: Item[] = [
-  { title: "The Assessment", meta: "From $750", body: "The Opportunity Map for your operation. Yours to keep, with up to $750 credited toward your build." },
+  { title: "The Assessment", meta: "From $750", body: "The Opportunity Map for your operation. Yours to keep." },
   { title: "Workflow Automation", meta: "$2,500 fixed", body: "One discrete thing, solved end to end: an automation, a chatbot, or a single workflow. Scoped from your assessment." },
   { title: "Focused Build", meta: "Quoted", body: "A larger construction: a knowledge base, platform, or system. Fixed scope and clean handoff, so you carry no scope risk." },
   { title: "Growth Retainer", meta: "$1,500–$2,500 / mo", body: "Everything built keeps running and improving, with ongoing support shaped to what you actually need." },
@@ -100,7 +100,7 @@ export const pages: Record<string, PageData> = {
     intro: "You never commit to a build before you know exactly what it is and what it is worth. Each step is small, concrete, and earns the next.",
     sections: [
       { label: "01 · Discovery", title: "The Discovery Call", body: ["A free, twenty-minute conversation about how your business runs, where things feel slow, and what you wish ran better. No pitch and no slides.", "By the end we both know whether there is something worth pursuing. If there is not, we will tell you." ]},
-      { label: "02 · Assessment", title: "The Opportunity Map", body: ["For $750, we map your workflows, talk to the people doing the work, and find every place time and money are leaking.", "You receive a 3–5 page report with each opportunity plotted by impact and effort, tagged optimize or automate, and given a real dollar figure. It includes quick wins, is yours to keep, and credits in full toward a build." ]},
+      { label: "02 · Assessment", title: "The Opportunity Map", body: ["For $750, we map your workflows, talk to the people doing the work, and find every place time and money are leaking.", "You receive a 3–5 page report with each opportunity plotted by impact and effort, tagged optimize or automate, and given a real dollar figure. It includes quick wins and is yours to keep." ]},
       { label: "03 · Build", title: "Fixed price. About three weeks.", body: ["Focused builds start at $3,000. We take the highest-impact opportunity, optimize the process before automating it, and quote a fixed price from the Assessment.", "When it is done you get a clean handoff: documented, working, and yours to run."], quote: "Assess before you recommend. Optimize before you automate. Never build something you cannot actually use." },
     ], cta: "Start with a conversation."
   },
@@ -130,7 +130,7 @@ export const pages: Record<string, PageData> = {
     slug: "faq", eyebrow: "Frequently asked", title: "Straight answers, before you ever call.", intro: "The details owners ask us most often, answered plainly.",
     sections: [{ label: "FAQ", title: "What you should know", items: [
       { title: "What does the discovery call cost?", body: "Nothing. It is free and runs about twenty minutes. It is a real conversation, not a sales pitch." },
-      { title: "What is the Assessment and what does it cost?", body: "The Assessment is $750. You receive the Opportunity Map within a week, and the full amount credits toward a build." },
+      { title: "What is the Assessment and what does it cost?", body: "The Assessment is $750. You receive the Opportunity Map within a week." },
       { title: "Why pay for an assessment instead of getting a free quote?", body: "Because a real answer takes real work. A free quote is a guess; the Assessment is a documented, dollar-backed plan you keep." },
       { title: "What does a build cost and how long does it take?", body: "Focused Builds start at $3,000, fixed price. Most take about three weeks." },
       { title: "What if I decide not to build?", body: "The Opportunity Map and its quick wins are yours to keep. There is no obligation to continue." },
@@ -144,14 +144,15 @@ export const pages: Record<string, PageData> = {
     slug: "intake", eyebrow: "Discovery call", title: "Start the conversation.", intro: "Tell us a little about your business. Ryan will follow up personally. Twenty minutes, no pitch, no pressure.", sections: [], cta: "Prefer to pick a time yourself?"
   },
   privacy: {
-    slug: "privacy", eyebrow: "Legal", title: "Privacy Policy", intro: "Last updated: May 4, 2026", sections: [
+    slug: "privacy", eyebrow: "Legal", title: "Privacy Policy", intro: "Last updated: October 14, 2026", sections: [
       { label: "01", title: "Information We Collect", body: ["We collect information you provide directly — including your name, business name, email address, phone number, and details shared during the assessment process."] },
       { label: "02", title: "How We Use Your Information", body: ["Your information is used solely to prepare your AI Assessment Report, conduct your strategy session, and follow up regarding our services. We do not sell or share it with third parties."] },
       { label: "03", title: "SMS Communications", body: ["By providing your phone number and checking the SMS opt-in box, you consent to receive text messages regarding your session, report delivery, and follow-up. Message and data rates may apply. Text HELP for help and STOP to opt out.", "Text messaging originator opt-in data and consent will not be shared with third parties."] },
       { label: "04", title: "Data Retention", body: ["Session recordings and transcripts are deleted after your report is delivered. Contact information is retained in our secure CRM for business relationship purposes only."] },
       { label: "05", title: "Third Party Services", body: ["We use industry-standard services including Stripe and communication platforms. These services have their own privacy policies."] },
-      { label: "06", title: "Your Rights", body: ["You may request access to, correction of, or deletion of your personal information at any time."] },
-      { label: "07", title: "Contact", body: ["Ryan Fagerstrom · kodiakstrategysd@gmail.com · (605) 605-2558 · kodiakstrategy.com"] },
+      { label: "06", title: "Website Analytics", body: ["We use PostHog to understand how visitors use this website, including pages viewed, clicks, and anonymized session recordings. Text typed into form fields is masked and is not recorded. We use this only to improve the site and never sell it."] },
+      { label: "07", title: "Your Rights", body: ["You may request access to, correction of, or deletion of your personal information at any time."] },
+      { label: "08", title: "Contact", body: ["Ryan Fagerstrom · kodiakstrategysd@gmail.com · (605) 605-2558 · kodiakstrategy.com"] },
     ]
   },
   "blog-speed-to-lead": {
@@ -175,11 +176,11 @@ export const cPages: Record<string, PageData> = {
     sections: [
       { label: "Two paths", title: "We build it, or we teach your team to.", items: [
         { title: "AI Consulting", meta: "Assess · Roadmap · Build", body: "We assess your operation and find where AI actually pays off. You get a custom AI roadmap for your business, yours to keep whether we build it, your team builds it, or you wait. Most clients have us build it, one workflow at a time. Some keep Kodiak on as an embedded AI partner once the first systems are running." },
-        { title: "AI Training", meta: "On-site · From $3,000 · Teams up to 10", body: "Sessions built around your team’s actual work, not generic demos. Your people learn to use AI on the tasks that eat their day, live in the room, and leave with habits they keep." },
+        { title: "AI Training", meta: "On-site · From $3,500 · Teams up to 10", body: "Sessions built around your team’s actual work, not generic demos. Your people learn to use AI on the tasks that eat their day, live in the room, and leave with habits they keep." },
       ]},
       { label: "Not sure which fits?", title: "Start with a free discovery call.", body: [
         "Bring your questions. We learn how the business runs and tell you plainly whether consulting, training, or neither is worth your money right now.",
-        "If it makes sense, a Business Assessment maps every place AI can save you time, ranked by impact and effort, and ends with a roadmap you own. From $750, scoped to the size of the operation and the depth of the audit. Up to $750 credits toward whatever we build.",
+        "If it makes sense, a Business Assessment maps every place AI can save you time, ranked by impact and effort, and ends with a roadmap you own. From $750, scoped to the size of the operation and the depth of the audit.",
       ]},
       { label: "South Dakota AI funding", title: "Holding a DLR AI award? Spend it on work that pays back.", body: [
         "South Dakota’s Department of Labor and Regulation matches half the cost of an AI discovery session (up to $5,000) and half the cost of AI training (up to $20,000) for awarded businesses. Kodiak assessments and training are built to meet the program’s invoice and reporting requirements.",
@@ -225,7 +226,7 @@ export const cPages: Record<string, PageData> = {
         { title: "On-site sessions", body: "Your team learns by applying AI directly to everyday work, live in the room, with guidance that fits their experience level." },
         { title: "Build useful habits", body: "We focus on repeatable methods your team can use after the session—not temporary excitement that disappears when the training ends." },
       ]},
-      { label: "Investment", title: "Starting at $3,000 for teams up to 10.", body: ["The final package is shaped by team size, roles, objectives, and the depth of training required. Every engagement is scoped around what your people need to become more capable and productive."] },
+      { label: "Investment", title: "Starting at $3,500 for teams up to 10.", body: ["The final package is shaped by team size, roles, objectives, and the depth of training required. Every engagement is scoped around what your people need to become more capable and productive."] },
       { label: "What changes", title: "Better work, faster learning, stronger execution.", items: [
         { title: "Everyday workflows", body: "Reduce repetitive work, accelerate writing and analysis, and solve the friction your team encounters every day." },
         { title: "Sales enablement", body: "Help sales teams research accounts, prepare for conversations, develop sharper messaging, and follow up with more speed and consistency." },
@@ -249,13 +250,13 @@ export const cPages: Record<string, PageData> = {
     intro: "No generic packages and no oversized platforms. Kodiak matches the engagement to the opportunity, the team, and the phase your business is ready for.",
     sections: [
       { label: "Kodiak Strategy", title: "From assessment to embedded partnership.", items: [
-        { title: "Business Assessment", meta: "From $750 · Scoped to the work", body: "A company-wide opportunity map ranking AI use cases by impact, effort, and projected ROI, ending in a custom AI roadmap that is yours to keep. Up to $750 credits toward your build." },
+        { title: "Business Assessment", meta: "From $750 · Scoped to the work", body: "A company-wide opportunity map ranking AI use cases by impact, effort, and projected ROI, ending in a custom AI roadmap that is yours to keep." },
         { title: "Workflow Automation", meta: "Starting at $2,500 · Scope dependent", body: "One defined workflow solved end to end, with the final investment based on complexity and integrations." },
         { title: "Focused Build", meta: "Custom quoted", body: "A custom system or phased implementation designed around the business’s specific workflows, data, and needs." },
         { title: "Growth Retainer", meta: "Custom quoted based on scope", body: "For businesses with systems already running. Kodiak keeps them working, improves them, and adds build capacity at the pace you need, without a new scoping cycle each time." },
         { title: "Full Partnership", meta: "Embedded AI partner", body: "For businesses past their first build who want Kodiak in the room as the AI landscape moves. Kodiak works like a fractional member of your team: strategy, builds, and training, ongoing." },
       ]},
-      { label: "Kodiak AI Academy", title: "Practical on-site training for teams up to 10.", body: ["Academy engagements start at $3,000. Every training package is created around your team’s needs, roles, workflows, and goals."], items: [
+      { label: "Kodiak AI Academy", title: "Practical on-site training for teams up to 10.", body: ["Academy engagements start at $3,500. Every training package is created around your team’s needs, roles, workflows, and goals."], items: [
         { title: "Workflow Enablement", body: "Teach staff to use AI in the everyday work that consumes their time." },
         { title: "Sales Team Enablement", body: "Build better research, preparation, messaging, follow-up, and sales execution with AI." },
         { title: "Custom Team Program", body: "Combine roles, use cases, and sessions into a program designed for the outcomes your business needs." },
@@ -272,12 +273,12 @@ export const cPages: Record<string, PageData> = {
     sections: [{ label: "FAQ", title: "What you should know", items: [
       { title: "Which side of Kodiak is right for us?", body: "Kodiak Strategy is for businesses that want help assessing, optimizing, and implementing AI systems. Kodiak AI Academy trains your staff to use AI in everyday work. The Discovery Call helps us decide which path—or combination—is the best fit." },
       { title: "What happens during the Discovery Call?", body: "We answer your questions, learn how the business operates, and talk through the outcomes you want. There is no pitch and no required commitment beyond the conversation." },
-      { title: "What does the Business Assessment cost?", body: "Assessments start at $750 and are scoped to the size of the operation and the depth of the audit, from a phone interview to a full on-site process review. Up to $750 is credited toward your build if you have Kodiak implement." },
+      { title: "What does the Business Assessment cost?", body: "Assessments start at $750 and are scoped to the size of the operation and the depth of the audit, from a phone interview to a full on-site process review." },
       { title: "Does Kodiak work with the South Dakota DLR AI funding?", body: "Yes. Kodiak assessments fit the program’s AI Business Discovery category and Kodiak training fits AI Training Implementation. Our invoices and reporting are built to the program’s requirements. See the SD AI Grant page for details." },
       { title: "What do we receive from the Assessment?", body: "You receive a full Opportunity Map showing where AI can have an impact, ranked by impact versus effort and supported by projected ROI. The entire report is yours to implement with Kodiak, use on your own, or keep until you are ready." },
       { title: "What does a workflow automation cost?", body: "Workflow automations start at $2,500. Final pricing depends on scope, complexity, integrations, and operational reach." },
       { title: "How are larger builds priced?", body: "Focused Builds, Growth Retainers, and Full Partnerships are custom quoted based on the scope and needs of the business." },
-      { title: "How much does the Kodiak AI Academy cost?", body: "Academy engagements start at $3,000 for teams up to ten. Every training package is created around your team’s roles, workflows, and goals." },
+      { title: "How much does the Kodiak AI Academy cost?", body: "Academy engagements start at $3,500 for teams up to ten. Every training package is created around your team’s roles, workflows, and goals." },
       { title: "Is the Academy only for operations teams?", body: "No. We can focus on everyday workflow improvements, sales enablement, leadership use cases, or a custom combination built around your people." },
       { title: "Do you sell prebuilt software packages?", body: "No. Kodiak custom builds what your business actually needs, without forcing your team into a one-size-fits-all platform filled with unnecessary features." },
       { title: "Do we have to sign a long contract?", body: "No. An Assessment or Workflow Automation can stand on its own. Ongoing engagements are available when they make sense for the business." },
@@ -311,7 +312,7 @@ export type PageMeta = { title: string; description: string };
 export const pageMeta: Record<string, PageMeta> = {
   home: { title: "Kodiak Strategy | AI Consulting & Training for Owner-Operated Businesses | Sioux Falls, SD", description: "Real-world AI. Real time back. Kodiak Strategy builds AI systems and trains teams for owner-operated businesses in Sioux Falls and across South Dakota." },
   "how-it-works": { title: "AI Consulting for Small Business in Sioux Falls, SD | Kodiak Strategy", description: "Assessment-first AI consulting for owner-operated businesses: find where AI pays off, get a roadmap you keep, then build in practical phases." },
-  academy: { title: "AI Training for Employees in Sioux Falls, SD | Kodiak AI Academy", description: "On-site AI training built around your team’s actual work. From $3,000 for teams up to 10. Eligible for South Dakota DLR AI training funding." },
+  academy: { title: "AI Training for Employees in Sioux Falls, SD | Kodiak AI Academy", description: "On-site AI training built around your team’s actual work. From $3,500 for teams up to 10. Eligible for South Dakota DLR AI training funding." },
   services: { title: "AI Consulting Services & Pricing | Kodiak Strategy, Sioux Falls SD", description: "Business assessments from $750, workflow automation from $2,500, focused builds, retainers, and embedded partnership for small businesses in South Dakota." },
   "ai-grant": { title: "South Dakota DLR AI Grant: Discovery & Training Funding | Kodiak Strategy", description: "How South Dakota’s AI adoption funding works, what it covers, and how Kodiak assessments and training meet the program’s requirements." },
   founder: { title: "Ryan Fagerstrom, Founder | Kodiak Strategy, Sioux Falls SD", description: "Thirteen years running owner-operated restaurants, now building practical AI systems for South Dakota businesses. Based in Sioux Falls." },

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import posthog from "posthog-js";
 import { cNav, nav, PageData } from "./site-data";
 
 // Public scheduling link: Ryan's Google Calendar appointment schedule.
@@ -185,6 +186,7 @@ function IntakeForm() {
         // Full navigation rather than a client push: the thank-you page is a
         // conversion landing point, and a real page load is what ad platforms
         // and analytics can see.
+        posthog.capture("lead_form_submitted", { industry: data.industry });
         window.location.href = "/thank-you";
         return;
       }

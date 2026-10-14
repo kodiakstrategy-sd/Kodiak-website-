@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
-const BASE = "https://kodiakstrategy.com";
-const LAST = new Date("2026-09-24");
+const BASE = "https://www.kodiakstrategy.com";
+const LAST = new Date("2026-10-14");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const live: Array<[string, number]> = [

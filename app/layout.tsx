@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kodiakstrategy.com"),
+  metadataBase: new URL("https://www.kodiakstrategy.com"),
   title: "Kodiak Strategy | AI Consulting & Training for Owner-Operated Businesses | Sioux Falls, SD",
   description: "Real-world AI. Real time back. Kodiak Strategy builds AI systems and trains teams for owner-operated businesses in Sioux Falls and across South Dakota.",
   alternates: { canonical: "/" },

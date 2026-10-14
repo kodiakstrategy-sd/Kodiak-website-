@@ -5,6 +5,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       { userAgent: "*", allow: ["/", "/c/"], disallow: ["/a/", "/b/", "/api/", "/thank-you"] },
     ],
-    sitemap: "https://kodiakstrategy.com/sitemap.xml",
+    sitemap: "https://www.kodiakstrategy.com/sitemap.xml",
   };
 }

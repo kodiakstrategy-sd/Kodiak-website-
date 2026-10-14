@@ -3,6 +3,16 @@ import { notFound } from "next/navigation";
 import { PrototypePage } from "../../components";
 import { cPages, pageMeta, pages } from "../../site-data";
 
+// Only these pages exist. Every other address returns a real 404 instead of
+// an empty "not found" page served with a 200, which Google treats as a soft 404.
+const LIVE_C = ["home", "how-it-works", "services", "academy", "ai-grant", "founder", "faq", "intake", "privacy"];
+export const dynamicParams = false;
+export function generateStaticParams() {
+  const live = LIVE_C.map(key => ({ version: "c", slug: key === "home" ? [] : [key] }));
+  const drafts = ["a", "b"].flatMap(version => Object.keys(pages).map(key => ({ version, slug: key === "home" ? [] : [key] })));
+  return [...live, ...drafts];
+}
+
 type Params = Promise<{ version: string; slug?: string[] }>;
 
 // Each live /c/ page gets its own title, description and canonical so the
@@ -29,6 +39,7 @@ export default async function VersionPage({ params }: { params: Params }) {
   const { version, slug } = await params;
   if (version !== "a" && version !== "b" && version !== "c") notFound();
   const key = slug?.[0] ?? "home";
+  if (version === "c" && !LIVE_C.includes(key)) notFound();
   const page = version === "c" ? cPages[key] : pages[key];
   if (!page) notFound();
   return <PrototypePage version={version} page={page}/>;
