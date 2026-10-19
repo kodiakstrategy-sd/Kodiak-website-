@@ -151,7 +151,7 @@ export const pages: Record<string, PageData> = {
       { label: "05", title: "Third Party Services", body: ["We use industry-standard services including Stripe and communication platforms. These services have their own privacy policies."] },
       { label: "06", title: "Website Analytics", body: ["We use PostHog to understand how visitors use this website, including pages viewed, clicks, and anonymized session recordings. Text typed into form fields is masked and is not recorded. We use this only to improve the site and never sell it."] },
       { label: "07", title: "Your Rights", body: ["You may request access to, correction of, or deletion of your personal information at any time."] },
-      { label: "08", title: "Contact", body: ["Ryan Fagerstrom · ryan@kodiakstrategy.com · (907) 500-4010 · kodiakstrategy.com"] },
+      { label: "08", title: "Contact", body: ["Ryan Fagerstrom · ryan@kodiakstrategy.com · (605) 250-6772 · kodiakstrategy.com"] },
     ]
   },
   "blog-speed-to-lead": {

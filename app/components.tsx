@@ -143,7 +143,7 @@ function FounderVisual() {
 }
 
 function Footer({ version }: { version: string }) {
-  return <footer><div className="footer-brand">Kodiak Strategy</div><p>Real-world AI. Real time back.</p><div className="footer-links"><span>Sioux Falls, South Dakota</span><Link href={`/${version}/privacy`}>Privacy</Link><a href="mailto:ryan@kodiakstrategy.com">ryan@kodiakstrategy.com</a><a href="tel:+19075004010">(907) 500-4010</a></div></footer>;
+  return <footer><div className="footer-brand">Kodiak Strategy</div><p>Real-world AI. Real time back.</p><div className="footer-links"><span>Sioux Falls, South Dakota</span><Link href={`/${version}/privacy`}>Privacy</Link><a href="mailto:ryan@kodiakstrategy.com">ryan@kodiakstrategy.com</a><a href="tel:+16052506772">(605) 250-6772</a></div></footer>;
 }
 
 const INDUSTRIES = [
@@ -193,10 +193,10 @@ function IntakeForm() {
 
       setStatus("error");
       setBadFields(Array.isArray(body.fields) ? body.fields : []);
-      setMessage(body.error ?? "Something went wrong. Please call (907) 500-4010.");
+      setMessage(body.error ?? "Something went wrong. Please call (605) 250-6772.");
     } catch {
       setStatus("error");
-      setMessage("That did not send. Please check your connection, or call (907) 500-4010.");
+      setMessage("That did not send. Please check your connection, or call (605) 250-6772.");
     }
   }
 
