@@ -196,14 +196,14 @@ export async function POST(request: Request) {
       const sent = await emailFallback(lead, `Den responded ${denRes.status}`);
       return sent
         ? Response.json({ ok: true, degraded: true })
-        : Response.json({ error: "We could not send that. Please call (907) 500-4010." }, { status: 502 });
+        : Response.json({ error: "We could not send that. Please call (605) 250-6772." }, { status: 502 });
     } catch (err) {
       const reason = err instanceof Error ? err.message : String(err);
       console.error("Den unreachable:", reason);
       const sent = await emailFallback(lead, `Den unreachable: ${reason}`);
       return sent
         ? Response.json({ ok: true, degraded: true })
-        : Response.json({ error: "We could not send that. Please call (907) 500-4010." }, { status: 502 });
+        : Response.json({ error: "We could not send that. Please call (605) 250-6772." }, { status: 502 });
     }
   }
 
@@ -212,7 +212,7 @@ export async function POST(request: Request) {
   const sent = await emailFallback(lead, "INTAKE_INGEST_KEY is not configured");
   return sent
     ? Response.json({ ok: true, degraded: true })
-    : Response.json({ error: "We could not send that. Please call (907) 500-4010." }, { status: 502 });
+    : Response.json({ error: "We could not send that. Please call (605) 250-6772." }, { status: 502 });
 }
 
 export async function GET() {

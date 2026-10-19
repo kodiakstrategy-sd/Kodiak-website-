@@ -32,7 +32,7 @@ export default function ThankYou() {
           </p>
           <p>
             If it is quicker to talk, call or text me directly at{" "}
-            <a href="tel:+19075004010">(907) 500-4010</a>.
+            <a href="tel:+16052506772">(605) 250-6772</a>.
           </p>
           <Link className="primary-button" href="/">
             Back to the site
@@ -45,7 +45,7 @@ export default function ThankYou() {
         <p>Built into the operation. Not bolted on.</p>
         <div className="footer-links">
           <a href="mailto:ryan@kodiakstrategy.com">ryan@kodiakstrategy.com</a>
-          <a href="tel:+19075004010">(907) 500-4010</a>
+          <a href="tel:+16052506772">(605) 250-6772</a>
         </div>
       </footer>
     </main>

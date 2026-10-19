@@ -201,7 +201,7 @@ body::before { content: ''; position: fixed; inset: 0; background-image: url("da
   <a class="quick-link" href="https://buy.stripe.com/6oU28renR7fZeVqfyr1VK02" target="_blank"><span class="ql-icon">💳</span><div><span class="ql-name">Stripe</span><span class="ql-desc">$1,000 assessment link</span></div></a>
   <a class="quick-link" href="https://jarvis-app-4c142e36.base44.app" target="_blank"><span class="ql-icon">🤖</span><div><span class="ql-name">Jarvis Hub</span><span class="ql-desc">Internal command center</span></div></a>
   <a class="quick-link" href="mailto:kodiakstrategysd@gmail.com"><span class="ql-icon">✉️</span><div><span class="ql-name">Email</span><span class="ql-desc">kodiakstrategysd@gmail.com</span></div></a>
-  <a class="quick-link" href="tel:9075004010"><span class="ql-icon">📞</span><div><span class="ql-name">Phone</span><span class="ql-desc">(907) 500-4010</span></div></a>
+  <a class="quick-link" href="tel:+16052506772"><span class="ql-icon">📞</span><div><span class="ql-name">Phone</span><span class="ql-desc">(605) 250-6772</span></div></a>
   <a class="quick-link" href="https://search.google.com/search-console" target="_blank"><span class="ql-icon">📊</span><div><span class="ql-name">Search Console</span><span class="ql-desc">Google SEO dashboard</span></div></a>
   <a class="quick-link" href="https://business.google.com" target="_blank"><span class="ql-icon">📍</span><div><span class="ql-name">Google Business</span><span class="ql-desc">Local listing manager</span></div></a>
   <a class="quick-link" href="https://supabase.com/dashboard/project/flhnntxmikmppcoucdky" target="_blank"><span class="ql-icon">🗄</span><div><span class="ql-name">Supabase</span><span class="ql-desc">Database dashboard</span></div></a>

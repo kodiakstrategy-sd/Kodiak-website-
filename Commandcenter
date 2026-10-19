@@ -273,7 +273,7 @@ body{
           <strong>Last contact:</strong> May 6th in-person meeting · 7 days ago
         </div>
         <div class="kai-action-row">
-          <button class="kai-action-btn" onclick="window.location='tel:+19075004010'">📞 Call Now</button>
+          <button class="kai-action-btn" onclick="window.location='tel:+16052506772'">📞 Call Now</button>
           <button class="kai-action-btn" onclick="window.location='mailto:ryan@kodiakstrategy.com'">✉ Draft Email</button>
         </div>
       </div>
@@ -474,11 +474,11 @@ body{
   <div id="m-followup" style="display:none;flex-direction:column;flex:1">
     <div class="modal-hdr"><div class="modal-title">Follow Up Before You Close</div><button class="modal-close" onclick="closeModal()">✕ Close</button></div>
     <div class="modal-body">
-      <div class="fu-item"><div class="fu-av">RF</div><div class="fu-info"><div class="fu-name">Rick Furnish — Wellspring / Landmark Realty</div><div class="fu-ctx">Confirm meeting this week. Do not pitch. Let Rick pull the follow-up.</div></div><div class="fu-badge ov">This Week</div><div class="fu-btns"><a href="tel:+19075004010" class="fu-btn">📞 Call</a><a href="mailto:ryan@kodiakstrategy.com" class="fu-btn">✉ Email</a></div></div>
-      <div class="fu-item"><div class="fu-av">MB</div><div class="fu-info"><div class="fu-name">Marv's Body Shop — Steve</div><div class="fu-ctx">Knowledge base engagement proposal question. 7 days silent. Call today.</div></div><div class="fu-badge ov">Call Today</div><div class="fu-btns"><a href="tel:+19075004010" class="fu-btn">📞 Call</a></div></div>
+      <div class="fu-item"><div class="fu-av">RF</div><div class="fu-info"><div class="fu-name">Rick Furnish — Wellspring / Landmark Realty</div><div class="fu-ctx">Confirm meeting this week. Do not pitch. Let Rick pull the follow-up.</div></div><div class="fu-badge ov">This Week</div><div class="fu-btns"><a href="tel:+16052506772" class="fu-btn">📞 Call</a><a href="mailto:ryan@kodiakstrategy.com" class="fu-btn">✉ Email</a></div></div>
+      <div class="fu-item"><div class="fu-av">MB</div><div class="fu-info"><div class="fu-name">Marv's Body Shop — Steve</div><div class="fu-ctx">Knowledge base engagement proposal question. 7 days silent. Call today.</div></div><div class="fu-badge ov">Call Today</div><div class="fu-btns"><a href="tel:+16052506772" class="fu-btn">📞 Call</a></div></div>
       <div class="fu-item"><div class="fu-av">OW</div><div class="fu-info"><div class="fu-name">One Way Service Pros</div><div class="fu-ctx">Deck is built and ready. Send it today. 2 minutes.</div></div><div class="fu-badge ov">Today</div><div class="fu-btns"><a href="mailto:ryan@kodiakstrategy.com" class="fu-btn">✉ Send Deck</a></div></div>
-      <div class="fu-item"><div class="fu-av">AP</div><div class="fu-info"><div class="fu-name">Austin Paul — Design North Roofing</div><div class="fu-ctx">Call this week. New infrastructure angle, not old pitch.</div></div><div class="fu-badge du">This Week</div><div class="fu-btns"><a href="tel:+19075004010" class="fu-btn">📞 Call</a></div></div>
-      <div class="fu-item"><div class="fu-av">JH</div><div class="fu-info"><div class="fu-name">Joy Howe — Prairie Sons HVAC</div><div class="fu-ctx">Email sent, no reply. Follow up by phone.</div></div><div class="fu-badge ok">Follow Up</div><div class="fu-btns"><a href="tel:+19075004010" class="fu-btn">📞 Call</a></div></div>
+      <div class="fu-item"><div class="fu-av">AP</div><div class="fu-info"><div class="fu-name">Austin Paul — Design North Roofing</div><div class="fu-ctx">Call this week. New infrastructure angle, not old pitch.</div></div><div class="fu-badge du">This Week</div><div class="fu-btns"><a href="tel:+16052506772" class="fu-btn">📞 Call</a></div></div>
+      <div class="fu-item"><div class="fu-av">JH</div><div class="fu-info"><div class="fu-name">Joy Howe — Prairie Sons HVAC</div><div class="fu-ctx">Email sent, no reply. Follow up by phone.</div></div><div class="fu-badge ok">Follow Up</div><div class="fu-btns"><a href="tel:+16052506772" class="fu-btn">📞 Call</a></div></div>
     </div>
   </div>
 
